@@ -28,32 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnDarAlta = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.tb_user = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.tb_pass = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cbo_rol = new System.Windows.Forms.ComboBox();
             this.tb_pass_confirm = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.cmd_sgte = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnDarAlta
-            // 
-            this.btnDarAlta.BackColor = System.Drawing.Color.SeaGreen;
-            this.btnDarAlta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDarAlta.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnDarAlta.Location = new System.Drawing.Point(68, 257);
-            this.btnDarAlta.Margin = new System.Windows.Forms.Padding(2);
-            this.btnDarAlta.Name = "btnDarAlta";
-            this.btnDarAlta.Size = new System.Drawing.Size(128, 34);
-            this.btnDarAlta.TabIndex = 17;
-            this.btnDarAlta.Text = "Dar de Alta";
-            this.btnDarAlta.UseVisualStyleBackColor = false;
-            this.btnDarAlta.Click += new System.EventHandler(this.btnDarAlta_Click);
             // 
             // label1
             // 
@@ -101,6 +89,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.cbo_rol);
             this.groupBox1.Controls.Add(this.tb_pass_confirm);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.tb_pass);
@@ -116,6 +106,36 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Detalles del Usuario";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(18, 101);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(26, 13);
+            this.label3.TabIndex = 22;
+            this.label3.Text = "Rol:";
+            // 
+            // cbo_rol
+            // 
+            this.cbo_rol.AccessibleDescription = "";
+            this.cbo_rol.AccessibleName = "";
+            this.cbo_rol.AutoCompleteCustomSource.AddRange(new string[] {
+            "Cliente",
+            "Proveedor",
+            "Administrador"});
+            this.cbo_rol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbo_rol.FormattingEnabled = true;
+            this.cbo_rol.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.cbo_rol.Items.AddRange(new object[] {
+            "Cliente",
+            "Proveedor",
+            "Administrador"});
+            this.cbo_rol.Location = new System.Drawing.Point(140, 95);
+            this.cbo_rol.MaxDropDownItems = 3;
+            this.cbo_rol.Name = "cbo_rol";
+            this.cbo_rol.Size = new System.Drawing.Size(231, 21);
+            this.cbo_rol.TabIndex = 21;
+            // 
             // tb_pass_confirm
             // 
             this.tb_pass_confirm.Location = new System.Drawing.Point(140, 69);
@@ -127,7 +147,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(17, 72);
+            this.label2.Location = new System.Drawing.Point(17, 74);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(98, 13);
             this.label2.TabIndex = 6;
@@ -138,7 +158,7 @@
             this.btnCancelar.BackColor = System.Drawing.Color.SeaGreen;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnCancelar.Location = new System.Drawing.Point(200, 257);
+            this.btnCancelar.Location = new System.Drawing.Point(68, 257);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(128, 34);
@@ -147,13 +167,27 @@
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // cmd_sgte
+            // 
+            this.cmd_sgte.BackColor = System.Drawing.Color.SeaGreen;
+            this.cmd_sgte.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmd_sgte.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.cmd_sgte.Location = new System.Drawing.Point(242, 257);
+            this.cmd_sgte.Margin = new System.Windows.Forms.Padding(2);
+            this.cmd_sgte.Name = "cmd_sgte";
+            this.cmd_sgte.Size = new System.Drawing.Size(128, 34);
+            this.cmd_sgte.TabIndex = 26;
+            this.cmd_sgte.Text = "Siguiente";
+            this.cmd_sgte.UseVisualStyleBackColor = false;
+            this.cmd_sgte.Click += new System.EventHandler(this.cmd_sgte_Click);
+            // 
             // RegistroUsr
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(427, 311);
+            this.Controls.Add(this.cmd_sgte);
             this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.btnDarAlta);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -169,7 +203,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnDarAlta;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox tb_user;
@@ -179,6 +212,9 @@
         private System.Windows.Forms.TextBox tb_pass_confirm;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cbo_rol;
+        private System.Windows.Forms.Button cmd_sgte;
 
         
     }

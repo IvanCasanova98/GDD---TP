@@ -40,8 +40,10 @@ namespace FrbaOfertas
             this.lblContraseña = new System.Windows.Forms.LinkLabel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtUsuario
@@ -54,7 +56,7 @@ namespace FrbaOfertas
             this.txtUsuario.TabIndex = 0;
             this.txtUsuario.Tag = "";
             this.txtUsuario.Text = "Nombre de usuario";
-            this.txtUsuario.TextChanged += new System.EventHandler(this.txtUsuario_TextChanged);
+            //this.txtUsuario.TextChanged += new System.EventHandler(this.txtUsuario_TextChanged);
             // 
             // txtPassword
             // 
@@ -139,6 +141,7 @@ namespace FrbaOfertas
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.ForeColor = System.Drawing.Color.Transparent;
             this.groupBox1.Location = new System.Drawing.Point(47, -3);
             this.groupBox1.Name = "groupBox1";
@@ -146,6 +149,17 @@ namespace FrbaOfertas
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.DarkRed;
+            this.button1.Location = new System.Drawing.Point(261, 22);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(28, 26);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "X";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // LOGIN
             // 
@@ -169,6 +183,7 @@ namespace FrbaOfertas
             this.Load += new System.EventHandler(this.LOGIN_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -185,6 +200,7 @@ namespace FrbaOfertas
         private System.Windows.Forms.LinkLabel lblContraseña;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button button1;
 
     }
 }

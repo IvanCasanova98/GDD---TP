@@ -27,10 +27,37 @@ namespace FrbaOfertas.RegistroUsuario
 
         }
 
-        private void label3_Click(object sender, EventArgs e)
+        private Boolean validarDatos()
         {
-
+            // if(Usuario no existe en la base de datos)
+            // if(tbpass no es vacío, y tbpass_confirm no es vacìo, y tbpass = tbpass_confirm)
+            // if(rol no esta vacío)
+            return true;
         }
+
+        private void cmd_sgte_Click(object sender, EventArgs e)
+        {
+            if (this.validarDatos())
+            {
+                switch(cbo_rol.Text)
+                {
+                    case "Cliente":
+                        FrbaOfertas.AbmCliente.AltaCliente dialogCliente = new FrbaOfertas.AbmCliente.AltaCliente();
+                        dialogCliente.ShowDialog(this);
+                        break;
+                    case "Proveedor":
+                        FrbaOfertas.AbmProveedor.AltaProveedor dialogProveedor = new FrbaOfertas.AbmProveedor.AltaProveedor();
+                        dialogProveedor.ShowDialog(this);
+                        break;
+                    case "Administrador":
+                        MessageBox.Show("No puede ser administrador.");
+                        break;
+
+                }
+
+            }
+        }
+
 
     
     }

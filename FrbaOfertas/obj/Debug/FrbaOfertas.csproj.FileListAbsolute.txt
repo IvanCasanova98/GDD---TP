@@ -10,3 +10,4 @@ C:\Users\Ivan\Desktop\TPGDD\Aplicacion\FrbaOfertas\GDD---TP\FrbaOfertas\bin\Debu
 C:\Users\Ivan\Desktop\TPGDD\Aplicacion\FrbaOfertas\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.exe
 C:\Users\Ivan\Desktop\TPGDD\Aplicacion\FrbaOfertas\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.pdb
 C:\Users\Ivan\Desktop\TPGDD\Aplicacion\FrbaOfertas\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.RegistroUsuario.RegistroUsr.resources
+C:\Users\Ivan\Desktop\TPGDD\Aplicacion\FrbaOfertas\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.AbmCliente.AltaCliente.resources
