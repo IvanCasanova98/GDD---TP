@@ -1,2 +1,12 @@
 C:\Users\Matias\Desktop\Groupon2019\src\FrbaOfertas\FrbaOfertas\bin\Debug\FrbaOfertas.exe.config
 C:\Users\Ivan\Desktop\TPGDD\Aplicacion\FrbaOfertas\FrbaOfertas\bin\Debug\FrbaOfertas.exe.config
+C:\Users\Ivan\Desktop\TPGDD\Aplicacion\FrbaOfertas\GDD---TP\FrbaOfertas\bin\Debug\FrbaOfertas.exe.config
+C:\Users\Ivan\Desktop\TPGDD\Aplicacion\FrbaOfertas\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.csprojResolveAssemblyReference.cache
+C:\Users\Ivan\Desktop\TPGDD\Aplicacion\FrbaOfertas\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.LOGIN.resources
+C:\Users\Ivan\Desktop\TPGDD\Aplicacion\FrbaOfertas\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.Properties.Resources.resources
+C:\Users\Ivan\Desktop\TPGDD\Aplicacion\FrbaOfertas\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.csproj.GenerateResource.Cache
+C:\Users\Ivan\Desktop\TPGDD\Aplicacion\FrbaOfertas\GDD---TP\FrbaOfertas\bin\Debug\FrbaOfertas.exe
+C:\Users\Ivan\Desktop\TPGDD\Aplicacion\FrbaOfertas\GDD---TP\FrbaOfertas\bin\Debug\FrbaOfertas.pdb
+C:\Users\Ivan\Desktop\TPGDD\Aplicacion\FrbaOfertas\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.exe
+C:\Users\Ivan\Desktop\TPGDD\Aplicacion\FrbaOfertas\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.pdb
+C:\Users\Ivan\Desktop\TPGDD\Aplicacion\FrbaOfertas\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.RegistroUsuario.RegistroUsr.resources
