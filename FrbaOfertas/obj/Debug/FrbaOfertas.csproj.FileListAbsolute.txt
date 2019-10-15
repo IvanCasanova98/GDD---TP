@@ -11,3 +11,15 @@ C:\Users\Ivan\Desktop\TPGDD\Aplicacion\FrbaOfertas\GDD---TP\FrbaOfertas\obj\Debu
 C:\Users\Ivan\Desktop\TPGDD\Aplicacion\FrbaOfertas\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.pdb
 C:\Users\Ivan\Desktop\TPGDD\Aplicacion\FrbaOfertas\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.RegistroUsuario.RegistroUsr.resources
 C:\Users\Ivan\Desktop\TPGDD\Aplicacion\FrbaOfertas\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.AbmCliente.AltaCliente.resources
+C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\bin\Debug\FrbaOfertas.exe.config
+C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.exe
+C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.pdb
+C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\bin\Debug\FrbaOfertas.exe
+C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\bin\Debug\FrbaOfertas.pdb
+C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.csprojResolveAssemblyReference.cache
+C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.AbmCliente.AltaCliente.resources
+C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.LOGIN.resources
+C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.Properties.Resources.resources
+C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.RegistroUsuario.RegistroUsr.resources
+C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.csproj.GenerateResource.Cache
+C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.AbmProveedor.AltaProveedor.resources

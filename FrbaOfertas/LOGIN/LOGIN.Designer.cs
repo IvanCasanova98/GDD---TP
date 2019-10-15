@@ -50,13 +50,12 @@ namespace FrbaOfertas
             // 
             this.txtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsuario.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.txtUsuario.Location = new System.Drawing.Point(97, 72);
+            this.txtUsuario.Location = new System.Drawing.Point(51, 74);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(196, 26);
             this.txtUsuario.TabIndex = 0;
             this.txtUsuario.Tag = "";
             this.txtUsuario.Text = "Nombre de usuario";
-            //this.txtUsuario.TextChanged += new System.EventHandler(this.txtUsuario_TextChanged);
             // 
             // txtPassword
             // 
@@ -64,7 +63,7 @@ namespace FrbaOfertas
             this.txtPassword.AccessibleName = "";
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.txtPassword.Location = new System.Drawing.Point(97, 102);
+            this.txtPassword.Location = new System.Drawing.Point(51, 104);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(196, 26);
             this.txtPassword.TabIndex = 2;
@@ -75,7 +74,7 @@ namespace FrbaOfertas
             this.btnLogin.BackColor = System.Drawing.Color.SeaGreen;
             this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
             this.btnLogin.ForeColor = System.Drawing.Color.Honeydew;
-            this.btnLogin.Location = new System.Drawing.Point(97, 141);
+            this.btnLogin.Location = new System.Drawing.Point(51, 143);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(195, 34);
             this.btnLogin.TabIndex = 5;
@@ -96,7 +95,7 @@ namespace FrbaOfertas
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.label4.ForeColor = System.Drawing.Color.SeaGreen;
-            this.label4.Location = new System.Drawing.Point(223, 187);
+            this.label4.Location = new System.Drawing.Point(177, 189);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(12, 13);
@@ -108,7 +107,7 @@ namespace FrbaOfertas
             this.lblRegistrarse.ActiveLinkColor = System.Drawing.Color.RoyalBlue;
             this.lblRegistrarse.AutoSize = true;
             this.lblRegistrarse.LinkColor = System.Drawing.Color.SeaGreen;
-            this.lblRegistrarse.Location = new System.Drawing.Point(233, 187);
+            this.lblRegistrarse.Location = new System.Drawing.Point(187, 189);
             this.lblRegistrarse.Name = "lblRegistrarse";
             this.lblRegistrarse.Size = new System.Drawing.Size(60, 13);
             this.lblRegistrarse.TabIndex = 11;
@@ -121,7 +120,7 @@ namespace FrbaOfertas
             this.lblContraseña.ActiveLinkColor = System.Drawing.Color.RoyalBlue;
             this.lblContraseña.AutoSize = true;
             this.lblContraseña.LinkColor = System.Drawing.Color.SeaGreen;
-            this.lblContraseña.Location = new System.Drawing.Point(93, 187);
+            this.lblContraseña.Location = new System.Drawing.Point(47, 189);
             this.lblContraseña.Name = "lblContraseña";
             this.lblContraseña.Size = new System.Drawing.Size(133, 13);
             this.lblContraseña.TabIndex = 12;
@@ -131,7 +130,7 @@ namespace FrbaOfertas
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(97, 12);
+            this.pictureBox2.Location = new System.Drawing.Point(51, 14);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(195, 50);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -142,13 +141,14 @@ namespace FrbaOfertas
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.ForeColor = System.Drawing.Color.Transparent;
-            this.groupBox1.Location = new System.Drawing.Point(47, -3);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.ForeColor = System.Drawing.Color.Black;
+            this.groupBox1.Location = new System.Drawing.Point(1, -1);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(304, 219);
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "Inicio de Sesión";
             // 
             // button1
             // 
@@ -166,7 +166,7 @@ namespace FrbaOfertas
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(402, 234);
+            this.ClientSize = new System.Drawing.Size(307, 220);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.lblContraseña);
             this.Controls.Add(this.lblRegistrarse);

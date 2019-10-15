@@ -16,8 +16,8 @@ namespace FrbaOfertas.Utils
 
         public Boolean isEmpty(String palabra)
         {
-            if (palabra != ""){palabra = palabra.Trim();}
-            return palabra == "";   
+            if (palabra != "") { palabra = palabra.Trim(); }
+            return palabra == "";
         }
 
         public Boolean isNumeric(String palabra)
@@ -35,7 +35,7 @@ namespace FrbaOfertas.Utils
         public Boolean fueraDeRango(String palabra, int inf, int sup)
         {
             palabra = palabra.Trim();
-            return ( palabra.Length > sup ) || ( palabra.Length < inf );
+            return (palabra.Length > sup) || (palabra.Length < inf);
         }
 
         public Boolean IsValidEmail(String email)
@@ -43,13 +43,18 @@ namespace FrbaOfertas.Utils
             try
             {
                 var addr = new System.Net.Mail.MailAddress(email);
-               
-                return (addr.Address == email) && ( email.Contains(".com") );
+
+                return (addr.Address == email) && (email.Contains(".com"));
             }
             catch
             {
                 return false;
             }
+        }
+
+        public Boolean FechaFutura(DateTime fechaDelDateTimePicker)
+        {
+            return DateTime.Compare(fechaDelDateTimePicker, DateTime.Now) > 0;
         }
 
     }

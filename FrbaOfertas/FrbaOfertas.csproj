@@ -68,10 +68,10 @@
     <Compile Include="ComprarOferta\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="CragaCredito\Form1.cs">
+    <Compile Include="CargaCredito\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CragaCredito\Form1.Designer.cs">
+    <Compile Include="CargaCredito\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="CrearOferta\Form1.cs">
@@ -109,6 +109,9 @@
     <Compile Include="Utils\Validador.cs" />
     <EmbeddedResource Include="AbmCliente\AltaCliente.resx">
       <DependentUpon>AltaCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmProveedor\AltaProveedor.resx">
+      <DependentUpon>AltaProveedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LOGIN\LOGIN.resx">
       <DependentUpon>LOGIN.cs</DependentUpon>

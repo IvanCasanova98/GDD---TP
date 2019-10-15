@@ -44,15 +44,15 @@
             this.txt_ciudad = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.Detalles = new System.Windows.Forms.GroupBox();
+            this.txt_localidad = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txt_dpto = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txt_piso = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.cmd_darAlta = new System.Windows.Forms.Button();
             this.cmd_cancelar = new System.Windows.Forms.Button();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txt_piso = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txt_char = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txt_localidad = new System.Windows.Forms.TextBox();
             this.Detalles.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -181,7 +181,7 @@
             // 
             this.Detalles.Controls.Add(this.txt_localidad);
             this.Detalles.Controls.Add(this.label11);
-            this.Detalles.Controls.Add(this.txt_char);
+            this.Detalles.Controls.Add(this.txt_dpto);
             this.Detalles.Controls.Add(this.label10);
             this.Detalles.Controls.Add(this.txt_piso);
             this.Detalles.Controls.Add(this.label9);
@@ -208,7 +208,55 @@
             this.Detalles.Size = new System.Drawing.Size(343, 311);
             this.Detalles.TabIndex = 18;
             this.Detalles.TabStop = false;
-            this.Detalles.Text = "Detalles";
+            this.Detalles.Text = "Detalles Cliente";
+            // 
+            // txt_localidad
+            // 
+            this.txt_localidad.Location = new System.Drawing.Point(80, 129);
+            this.txt_localidad.Name = "txt_localidad";
+            this.txt_localidad.Size = new System.Drawing.Size(221, 20);
+            this.txt_localidad.TabIndex = 33;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(20, 132);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(53, 13);
+            this.label11.TabIndex = 32;
+            this.label11.Text = "Localidad";
+            // 
+            // txt_dpto
+            // 
+            this.txt_dpto.Location = new System.Drawing.Point(265, 103);
+            this.txt_dpto.Name = "txt_dpto";
+            this.txt_dpto.Size = new System.Drawing.Size(36, 20);
+            this.txt_dpto.TabIndex = 31;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(235, 106);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(30, 13);
+            this.label10.TabIndex = 30;
+            this.label10.Text = "Dpto";
+            // 
+            // txt_piso
+            // 
+            this.txt_piso.Location = new System.Drawing.Point(193, 103);
+            this.txt_piso.Name = "txt_piso";
+            this.txt_piso.Size = new System.Drawing.Size(36, 20);
+            this.txt_piso.TabIndex = 29;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(160, 106);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(27, 13);
+            this.label9.TabIndex = 28;
+            this.label9.Text = "Piso";
             // 
             // cmd_darAlta
             // 
@@ -243,54 +291,6 @@
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker.TabIndex = 18;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(160, 106);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(27, 13);
-            this.label9.TabIndex = 28;
-            this.label9.Text = "Piso";
-            // 
-            // txt_piso
-            // 
-            this.txt_piso.Location = new System.Drawing.Point(193, 103);
-            this.txt_piso.Name = "txt_piso";
-            this.txt_piso.Size = new System.Drawing.Size(36, 20);
-            this.txt_piso.TabIndex = 29;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(235, 106);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(30, 13);
-            this.label10.TabIndex = 30;
-            this.label10.Text = "Dpto";
-            // 
-            // txt_char
-            // 
-            this.txt_char.Location = new System.Drawing.Point(265, 103);
-            this.txt_char.Name = "txt_char";
-            this.txt_char.Size = new System.Drawing.Size(36, 20);
-            this.txt_char.TabIndex = 31;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(20, 132);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(53, 13);
-            this.label11.TabIndex = 32;
-            this.label11.Text = "Localidad";
-            // 
-            // txt_localidad
-            // 
-            this.txt_localidad.Location = new System.Drawing.Point(80, 129);
-            this.txt_localidad.Name = "txt_localidad";
-            this.txt_localidad.Size = new System.Drawing.Size(221, 20);
-            this.txt_localidad.TabIndex = 33;
             // 
             // AltaCliente
             // 
@@ -327,7 +327,7 @@
         private System.Windows.Forms.Button cmd_darAlta;
         private System.Windows.Forms.Button cmd_cancelar;
         private System.Windows.Forms.DateTimePicker dateTimePicker;
-        private System.Windows.Forms.TextBox txt_char;
+        private System.Windows.Forms.TextBox txt_dpto;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txt_piso;
         private System.Windows.Forms.Label label9;
