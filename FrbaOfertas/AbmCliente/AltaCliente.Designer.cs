@@ -86,7 +86,7 @@
             this.txt_apellido.Location = new System.Drawing.Point(80, 51);
             this.txt_apellido.Name = "txt_apellido";
             this.txt_apellido.Size = new System.Drawing.Size(221, 20);
-            this.txt_apellido.TabIndex = 2;
+            this.txt_apellido.TabIndex = 1;
             // 
             // label3
             // 
@@ -102,7 +102,7 @@
             this.txt_dni.Location = new System.Drawing.Point(80, 77);
             this.txt_dni.Name = "txt_dni";
             this.txt_dni.Size = new System.Drawing.Size(221, 20);
-            this.txt_dni.TabIndex = 4;
+            this.txt_dni.TabIndex = 2;
             // 
             // label4
             // 
@@ -118,7 +118,7 @@
             this.txt_calle.Location = new System.Drawing.Point(80, 103);
             this.txt_calle.Name = "txt_calle";
             this.txt_calle.Size = new System.Drawing.Size(74, 20);
-            this.txt_calle.TabIndex = 6;
+            this.txt_calle.TabIndex = 3;
             // 
             // label5
             // 
@@ -134,7 +134,7 @@
             this.txt_tel.Location = new System.Drawing.Point(80, 158);
             this.txt_tel.Name = "txt_tel";
             this.txt_tel.Size = new System.Drawing.Size(221, 20);
-            this.txt_tel.TabIndex = 8;
+            this.txt_tel.TabIndex = 7;
             // 
             // label6
             // 
@@ -150,7 +150,7 @@
             this.txt_mail.Location = new System.Drawing.Point(80, 187);
             this.txt_mail.Name = "txt_mail";
             this.txt_mail.Size = new System.Drawing.Size(221, 20);
-            this.txt_mail.TabIndex = 10;
+            this.txt_mail.TabIndex = 8;
             // 
             // label7
             // 
@@ -166,7 +166,7 @@
             this.txt_ciudad.Location = new System.Drawing.Point(80, 213);
             this.txt_ciudad.Name = "txt_ciudad";
             this.txt_ciudad.Size = new System.Drawing.Size(221, 20);
-            this.txt_ciudad.TabIndex = 12;
+            this.txt_ciudad.TabIndex = 9;
             // 
             // label8
             // 
@@ -215,7 +215,7 @@
             this.txt_localidad.Location = new System.Drawing.Point(80, 129);
             this.txt_localidad.Name = "txt_localidad";
             this.txt_localidad.Size = new System.Drawing.Size(221, 20);
-            this.txt_localidad.TabIndex = 33;
+            this.txt_localidad.TabIndex = 6;
             // 
             // label11
             // 
@@ -231,7 +231,7 @@
             this.txt_dpto.Location = new System.Drawing.Point(265, 103);
             this.txt_dpto.Name = "txt_dpto";
             this.txt_dpto.Size = new System.Drawing.Size(36, 20);
-            this.txt_dpto.TabIndex = 31;
+            this.txt_dpto.TabIndex = 5;
             // 
             // label10
             // 
@@ -247,7 +247,7 @@
             this.txt_piso.Location = new System.Drawing.Point(193, 103);
             this.txt_piso.Name = "txt_piso";
             this.txt_piso.Size = new System.Drawing.Size(36, 20);
-            this.txt_piso.TabIndex = 29;
+            this.txt_piso.TabIndex = 4;
             // 
             // label9
             // 
@@ -267,7 +267,7 @@
             this.cmd_darAlta.Margin = new System.Windows.Forms.Padding(2);
             this.cmd_darAlta.Name = "cmd_darAlta";
             this.cmd_darAlta.Size = new System.Drawing.Size(128, 34);
-            this.cmd_darAlta.TabIndex = 27;
+            this.cmd_darAlta.TabIndex = 11;
             this.cmd_darAlta.Text = "Dar Alta";
             this.cmd_darAlta.UseVisualStyleBackColor = false;
             this.cmd_darAlta.Click += new System.EventHandler(this.cmd_darAlta_Click);
@@ -281,7 +281,7 @@
             this.cmd_cancelar.Margin = new System.Windows.Forms.Padding(2);
             this.cmd_cancelar.Name = "cmd_cancelar";
             this.cmd_cancelar.Size = new System.Drawing.Size(128, 34);
-            this.cmd_cancelar.TabIndex = 26;
+            this.cmd_cancelar.TabIndex = 12;
             this.cmd_cancelar.Text = "Cancelar";
             this.cmd_cancelar.UseVisualStyleBackColor = false;
             this.cmd_cancelar.Click += new System.EventHandler(this.cmd_cancelar_Click);
@@ -291,7 +291,7 @@
             this.dateTimePicker.Location = new System.Drawing.Point(119, 239);
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker.TabIndex = 18;
+            this.dateTimePicker.TabIndex = 10;
             // 
             // AltaCliente
             // 

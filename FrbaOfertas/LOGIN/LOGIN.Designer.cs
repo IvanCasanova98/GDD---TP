@@ -66,7 +66,7 @@ namespace FrbaOfertas
             this.txtPassword.Location = new System.Drawing.Point(51, 104);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(196, 26);
-            this.txtPassword.TabIndex = 2;
+            this.txtPassword.TabIndex = 1;
             this.txtPassword.Text = "Contraseña";
             // 
             // btnLogin
@@ -77,7 +77,7 @@ namespace FrbaOfertas
             this.btnLogin.Location = new System.Drawing.Point(51, 143);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(195, 34);
-            this.btnLogin.TabIndex = 5;
+            this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "ENTRAR";
             this.btnLogin.UseVisualStyleBackColor = false;
             // 
@@ -110,7 +110,7 @@ namespace FrbaOfertas
             this.lblRegistrarse.Location = new System.Drawing.Point(187, 189);
             this.lblRegistrarse.Name = "lblRegistrarse";
             this.lblRegistrarse.Size = new System.Drawing.Size(60, 13);
-            this.lblRegistrarse.TabIndex = 11;
+            this.lblRegistrarse.TabIndex = 3;
             this.lblRegistrarse.TabStop = true;
             this.lblRegistrarse.Text = "Registrarse";
             this.lblRegistrarse.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblRegistrarse_LinkClicked);
@@ -123,7 +123,7 @@ namespace FrbaOfertas
             this.lblContraseña.Location = new System.Drawing.Point(47, 189);
             this.lblContraseña.Name = "lblContraseña";
             this.lblContraseña.Size = new System.Drawing.Size(133, 13);
-            this.lblContraseña.TabIndex = 12;
+            this.lblContraseña.TabIndex = 4;
             this.lblContraseña.TabStop = true;
             this.lblContraseña.Text = "He olvidado mi contraseña";
             // 

@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.Detalles = new System.Windows.Forms.GroupBox();
+            this.txt_nombreContacto = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.txt_rubro = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txt_ciudad = new System.Windows.Forms.TextBox();
@@ -53,8 +55,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txt_tel = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.txt_nombreContacto = new System.Windows.Forms.TextBox();
             this.Detalles.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -93,12 +93,28 @@
             this.Detalles.TabStop = false;
             this.Detalles.Text = "Detalles Proveedor";
             // 
+            // txt_nombreContacto
+            // 
+            this.txt_nombreContacto.Location = new System.Drawing.Point(115, 271);
+            this.txt_nombreContacto.Name = "txt_nombreContacto";
+            this.txt_nombreContacto.Size = new System.Drawing.Size(202, 20);
+            this.txt_nombreContacto.TabIndex = 11;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(20, 271);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(89, 13);
+            this.label12.TabIndex = 38;
+            this.label12.Text = "Nombre contacto";
+            // 
             // txt_rubro
             // 
             this.txt_rubro.Location = new System.Drawing.Point(96, 239);
             this.txt_rubro.Name = "txt_rubro";
             this.txt_rubro.Size = new System.Drawing.Size(221, 20);
-            this.txt_rubro.TabIndex = 37;
+            this.txt_rubro.TabIndex = 10;
             // 
             // label8
             // 
@@ -114,7 +130,7 @@
             this.txt_ciudad.Location = new System.Drawing.Point(96, 103);
             this.txt_ciudad.Name = "txt_ciudad";
             this.txt_ciudad.Size = new System.Drawing.Size(221, 20);
-            this.txt_ciudad.TabIndex = 35;
+            this.txt_ciudad.TabIndex = 5;
             // 
             // label2
             // 
@@ -130,7 +146,7 @@
             this.txt_localidad.Location = new System.Drawing.Point(96, 77);
             this.txt_localidad.Name = "txt_localidad";
             this.txt_localidad.Size = new System.Drawing.Size(221, 20);
-            this.txt_localidad.TabIndex = 33;
+            this.txt_localidad.TabIndex = 4;
             // 
             // label11
             // 
@@ -146,7 +162,7 @@
             this.txt_dpto.Location = new System.Drawing.Point(281, 51);
             this.txt_dpto.Name = "txt_dpto";
             this.txt_dpto.Size = new System.Drawing.Size(36, 20);
-            this.txt_dpto.TabIndex = 31;
+            this.txt_dpto.TabIndex = 3;
             // 
             // label10
             // 
@@ -162,7 +178,7 @@
             this.txt_piso.Location = new System.Drawing.Point(209, 51);
             this.txt_piso.Name = "txt_piso";
             this.txt_piso.Size = new System.Drawing.Size(36, 20);
-            this.txt_piso.TabIndex = 29;
+            this.txt_piso.TabIndex = 2;
             // 
             // label9
             // 
@@ -182,7 +198,7 @@
             this.cmd_darAlta.Margin = new System.Windows.Forms.Padding(2);
             this.cmd_darAlta.Name = "cmd_darAlta";
             this.cmd_darAlta.Size = new System.Drawing.Size(126, 34);
-            this.cmd_darAlta.TabIndex = 27;
+            this.cmd_darAlta.TabIndex = 12;
             this.cmd_darAlta.Text = "Dar Alta";
             this.cmd_darAlta.UseVisualStyleBackColor = false;
             this.cmd_darAlta.Click += new System.EventHandler(this.cmd_darAlta_Click);
@@ -196,7 +212,7 @@
             this.cmd_cancelar.Margin = new System.Windows.Forms.Padding(2);
             this.cmd_cancelar.Name = "cmd_cancelar";
             this.cmd_cancelar.Size = new System.Drawing.Size(128, 34);
-            this.cmd_cancelar.TabIndex = 26;
+            this.cmd_cancelar.TabIndex = 13;
             this.cmd_cancelar.Text = "Cancelar";
             this.cmd_cancelar.UseVisualStyleBackColor = false;
             this.cmd_cancelar.Click += new System.EventHandler(this.cmd_cancelar_Click);
@@ -231,14 +247,14 @@
             this.txt_cuit.Location = new System.Drawing.Point(96, 187);
             this.txt_cuit.Name = "txt_cuit";
             this.txt_cuit.Size = new System.Drawing.Size(221, 20);
-            this.txt_cuit.TabIndex = 12;
+            this.txt_cuit.TabIndex = 8;
             // 
             // txt_codpostal
             // 
             this.txt_codpostal.Location = new System.Drawing.Point(96, 132);
             this.txt_codpostal.Name = "txt_codpostal";
             this.txt_codpostal.Size = new System.Drawing.Size(221, 20);
-            this.txt_codpostal.TabIndex = 4;
+            this.txt_codpostal.TabIndex = 6;
             // 
             // label6
             // 
@@ -263,14 +279,14 @@
             this.txt_mail.Location = new System.Drawing.Point(96, 161);
             this.txt_mail.Name = "txt_mail";
             this.txt_mail.Size = new System.Drawing.Size(221, 20);
-            this.txt_mail.TabIndex = 10;
+            this.txt_mail.TabIndex = 7;
             // 
             // txt_calle
             // 
             this.txt_calle.Location = new System.Drawing.Point(96, 51);
             this.txt_calle.Name = "txt_calle";
             this.txt_calle.Size = new System.Drawing.Size(74, 20);
-            this.txt_calle.TabIndex = 6;
+            this.txt_calle.TabIndex = 1;
             // 
             // label5
             // 
@@ -295,23 +311,7 @@
             this.txt_tel.Location = new System.Drawing.Point(96, 213);
             this.txt_tel.Name = "txt_tel";
             this.txt_tel.Size = new System.Drawing.Size(221, 20);
-            this.txt_tel.TabIndex = 8;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(20, 271);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(89, 13);
-            this.label12.TabIndex = 38;
-            this.label12.Text = "Nombre contacto";
-            // 
-            // txt_nombreContacto
-            // 
-            this.txt_nombreContacto.Location = new System.Drawing.Point(115, 271);
-            this.txt_nombreContacto.Name = "txt_nombreContacto";
-            this.txt_nombreContacto.Size = new System.Drawing.Size(202, 20);
-            this.txt_nombreContacto.TabIndex = 39;
+            this.txt_tel.TabIndex = 9;
             // 
             // AltaProveedor
             // 

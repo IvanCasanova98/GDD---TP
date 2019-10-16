@@ -68,7 +68,7 @@
             this.tb_user.Location = new System.Drawing.Point(140, 18);
             this.tb_user.Name = "tb_user";
             this.tb_user.Size = new System.Drawing.Size(231, 20);
-            this.tb_user.TabIndex = 1;
+            this.tb_user.TabIndex = 0;
             // 
             // label7
             // 
@@ -85,7 +85,7 @@
             this.tb_pass.Name = "tb_pass";
             this.tb_pass.PasswordChar = '*';
             this.tb_pass.Size = new System.Drawing.Size(231, 20);
-            this.tb_pass.TabIndex = 10;
+            this.tb_pass.TabIndex = 1;
             // 
             // groupBox1
             // 
@@ -134,7 +134,7 @@
             this.cbo_rol.MaxDropDownItems = 3;
             this.cbo_rol.Name = "cbo_rol";
             this.cbo_rol.Size = new System.Drawing.Size(231, 21);
-            this.cbo_rol.TabIndex = 21;
+            this.cbo_rol.TabIndex = 3;
             // 
             // tb_pass_confirm
             // 
@@ -142,7 +142,7 @@
             this.tb_pass_confirm.Name = "tb_pass_confirm";
             this.tb_pass_confirm.PasswordChar = '*';
             this.tb_pass_confirm.Size = new System.Drawing.Size(231, 20);
-            this.tb_pass_confirm.TabIndex = 20;
+            this.tb_pass_confirm.TabIndex = 2;
             // 
             // label2
             // 
@@ -162,7 +162,7 @@
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(128, 34);
-            this.btnCancelar.TabIndex = 25;
+            this.btnCancelar.TabIndex = 1;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -176,7 +176,7 @@
             this.cmd_sgte.Margin = new System.Windows.Forms.Padding(2);
             this.cmd_sgte.Name = "cmd_sgte";
             this.cmd_sgte.Size = new System.Drawing.Size(128, 34);
-            this.cmd_sgte.TabIndex = 26;
+            this.cmd_sgte.TabIndex = 0;
             this.cmd_sgte.Text = "Siguiente";
             this.cmd_sgte.UseVisualStyleBackColor = false;
             this.cmd_sgte.Click += new System.EventHandler(this.cmd_sgte_Click);
