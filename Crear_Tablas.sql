@@ -11,24 +11,32 @@ create table Cliente (
 	ID_Clie smallint NOT NULL,
 	Clie_Nom varchar(255) NOT NULL,
 	Clie_Apellido varchar(255) NOT NULL,
-	Clie_DNI numeric(18,0) UNIQUE NOT NULL,
-	Clie_Direc varchar(255),
-	Clie_Tel numeric(18,0) UNIQUE, 
-	Clie_Mail varchar(255) UNIQUE, 
+	Clie_DNI numeric(9,0) UNIQUE NOT NULL,
+	Clie_Calle varchar(255),
+	Clie_Piso numeric(2,0),
+	Clie_Dpto varchar(2),
+	Clie_Localidad varchar(255),
+	Clie_Tel numeric(14,0) UNIQUE, 
+	Clie_Mail varchar(255) UNIQUE,
+	Clie_Ciudad varchar(255),
 	Clie_Fecha_Nac datetime,
-	Clie_Ciudad varchar(255)
 	PRIMARY KEY (ID_Clie)
 )
 
 create table Proveedor (
 	ID_Proveedor smallint NOT NULL,
-	Provee_Rs varchar(100),
-	Provee_Dom varchar(100),
+	Provee_Rs varchar(100) UNIQUE NOT NULL,
+	Provee_Calle varchar(255),
+	Provee_Piso numeric(2,0),
+	Provee_Dpto varchar(2),
+	Provee_Localidad varchar(255),
 	Provee_Ciudad varchar(255),
-	Provee_Tel numeric(18,0),
-	Provee_CUIT varchar(20),
+	Provee_CodPostal numeric(4,0),
+	Provee_Mail varchar(255) UNIQUE,
+	Provee_CUIT numeric(11,0) UNIQUE NOT NULL,
+	Provee_Tel numeric(14,0) UNIQUE,
 	Provee_Rubro varchar(20),
-	Provee_Mail varchar(20),
+	Provee_NombreContacto varchar(100),
 	PRIMARY KEY (ID_Proveedor)
 )
 
@@ -65,7 +73,7 @@ create table Cuenta (
 	ID_Cuenta smallint NOT NULL,
 	ID_Clie smallint NOT NULL,
 	Carga_Fecha datetime,
-	Carga_Monto numeric(10,0),
+	Carga_Monto numeric(10,3),
 	Tipo_Pago varchar(5),
 	PRIMARY KEY (ID_Cuenta),
 	FOREIGN KEY (ID_Clie) REFERENCES Cliente (ID_Clie) 

@@ -53,11 +53,15 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txt_tel = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txt_nombreContacto = new System.Windows.Forms.TextBox();
             this.Detalles.SuspendLayout();
             this.SuspendLayout();
             // 
             // Detalles
             // 
+            this.Detalles.Controls.Add(this.txt_nombreContacto);
+            this.Detalles.Controls.Add(this.label12);
             this.Detalles.Controls.Add(this.txt_rubro);
             this.Detalles.Controls.Add(this.label8);
             this.Detalles.Controls.Add(this.txt_ciudad);
@@ -84,7 +88,7 @@
             this.Detalles.Controls.Add(this.txt_tel);
             this.Detalles.Location = new System.Drawing.Point(12, 12);
             this.Detalles.Name = "Detalles";
-            this.Detalles.Size = new System.Drawing.Size(343, 311);
+            this.Detalles.Size = new System.Drawing.Size(343, 362);
             this.Detalles.TabIndex = 19;
             this.Detalles.TabStop = false;
             this.Detalles.Text = "Detalles Proveedor";
@@ -111,7 +115,6 @@
             this.txt_ciudad.Name = "txt_ciudad";
             this.txt_ciudad.Size = new System.Drawing.Size(221, 20);
             this.txt_ciudad.TabIndex = 35;
-            this.txt_ciudad.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label2
             // 
@@ -175,26 +178,28 @@
             this.cmd_darAlta.BackColor = System.Drawing.Color.SeaGreen;
             this.cmd_darAlta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmd_darAlta.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.cmd_darAlta.Location = new System.Drawing.Point(191, 272);
+            this.cmd_darAlta.Location = new System.Drawing.Point(191, 313);
             this.cmd_darAlta.Margin = new System.Windows.Forms.Padding(2);
             this.cmd_darAlta.Name = "cmd_darAlta";
             this.cmd_darAlta.Size = new System.Drawing.Size(126, 34);
             this.cmd_darAlta.TabIndex = 27;
             this.cmd_darAlta.Text = "Dar Alta";
             this.cmd_darAlta.UseVisualStyleBackColor = false;
+            this.cmd_darAlta.Click += new System.EventHandler(this.cmd_darAlta_Click);
             // 
             // cmd_cancelar
             // 
             this.cmd_cancelar.BackColor = System.Drawing.Color.SeaGreen;
             this.cmd_cancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmd_cancelar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.cmd_cancelar.Location = new System.Drawing.Point(26, 272);
+            this.cmd_cancelar.Location = new System.Drawing.Point(23, 313);
             this.cmd_cancelar.Margin = new System.Windows.Forms.Padding(2);
             this.cmd_cancelar.Name = "cmd_cancelar";
             this.cmd_cancelar.Size = new System.Drawing.Size(128, 34);
             this.cmd_cancelar.TabIndex = 26;
             this.cmd_cancelar.Text = "Cancelar";
             this.cmd_cancelar.UseVisualStyleBackColor = false;
+            this.cmd_cancelar.Click += new System.EventHandler(this.cmd_cancelar_Click);
             // 
             // label1
             // 
@@ -292,11 +297,27 @@
             this.txt_tel.Size = new System.Drawing.Size(221, 20);
             this.txt_tel.TabIndex = 8;
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(20, 271);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(89, 13);
+            this.label12.TabIndex = 38;
+            this.label12.Text = "Nombre contacto";
+            // 
+            // txt_nombreContacto
+            // 
+            this.txt_nombreContacto.Location = new System.Drawing.Point(115, 271);
+            this.txt_nombreContacto.Name = "txt_nombreContacto";
+            this.txt_nombreContacto.Size = new System.Drawing.Size(202, 20);
+            this.txt_nombreContacto.TabIndex = 39;
+            // 
             // AltaProveedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(358, 330);
+            this.ClientSize = new System.Drawing.Size(367, 386);
             this.Controls.Add(this.Detalles);
             this.Name = "AltaProveedor";
             this.Text = "Alta Proveedor";
@@ -333,6 +354,8 @@
         private System.Windows.Forms.TextBox txt_cuit;
         private System.Windows.Forms.TextBox txt_rubro;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txt_nombreContacto;
+        private System.Windows.Forms.Label label12;
 
     }
 }
