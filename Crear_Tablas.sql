@@ -4,6 +4,8 @@ create table Usuario(
 	ID_Usuario smallint NOT NULL,
 	USR_USRName varchar(255),
 	USR_Pass varchar(255),
+	USR_Intentos smallint NOT NULL,
+	USR_Habilitado Bit NOT NULL,
 	PRIMARY KEY (ID_Usuario)
 )
 

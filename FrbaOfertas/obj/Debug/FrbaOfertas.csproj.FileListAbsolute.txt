@@ -23,3 +23,6 @@ C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\Frb
 C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.RegistroUsuario.RegistroUsr.resources
 C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.csproj.GenerateResource.Cache
 C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.AbmProveedor.AltaProveedor.resources
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\bin\Debug\FrbaOfertas.exe.config
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.exe
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.pdb
