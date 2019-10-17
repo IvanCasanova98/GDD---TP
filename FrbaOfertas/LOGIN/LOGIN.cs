@@ -80,6 +80,12 @@ namespace FrbaOfertas
             }
         }
 
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            FrbaOfertas.AbmRol.AltaRol dialog = new FrbaOfertas.AbmRol.AltaRol();
+            dialog.ShowDialog(this);
+        }
+
 
       
 

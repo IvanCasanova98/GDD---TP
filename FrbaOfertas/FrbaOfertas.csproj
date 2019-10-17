@@ -76,6 +76,8 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="ConectorDB\FuncionesCliente.cs" />
+    <Compile Include="ConectorDB\FuncionesFuncion.cs" />
+    <Compile Include="ConectorDB\FuncionesRol.cs" />
     <Compile Include="CrearOferta\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,15 +103,16 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Modelo\Cliente.cs" />
+    <Compile Include="Modelo\Cuenta.cs" />
     <Compile Include="Modelo\Funcionalidad.cs" />
     <Compile Include="Modelo\Rol.cs" />
     <Compile Include="Modelo\Usuario.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PropiedadesConfig\Settings1.Designer.cs">
+    <Compile Include="PropiedadesConfig\Config.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings1.settings</DependentUpon>
+      <DependentUpon>Config.settings</DependentUpon>
     </Compile>
     <Compile Include="RegistroUsuario\RegistroUsr.cs">
       <SubType>Form</SubType>
@@ -151,9 +154,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="PropiedadesConfig\Settings1.settings">
+    <None Include="PropiedadesConfig\Config.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
+      <LastGenOutput>Config.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>

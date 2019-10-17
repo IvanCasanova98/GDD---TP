@@ -7,7 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using FrbaOfertas.Modelo;
+using FrbaOfertas.Properties;
 namespace FrbaOfertas.AbmCliente
 {
     public partial class AltaCliente : Form
@@ -20,7 +21,7 @@ namespace FrbaOfertas.AbmCliente
         private void cmd_darAlta_Click(object sender, EventArgs e)
         {
             FrbaOfertas.Utils.Validador validador = new FrbaOfertas.Utils.Validador();
-
+            Cliente cliente = new Cliente();
             //Validamos NOMBRE Clie_Nom
             if (validador.isEmpty(txt_nombre.Text) || validador.containsNumber(txt_nombre.Text) || validador.fueraDeRango(txt_nombre.Text,0,255)) 
                 MessageBox.Show("Error en campo NOMBRE.");
@@ -62,6 +63,9 @@ namespace FrbaOfertas.AbmCliente
             //Validamos FECHA NACIMIENTO Clie_Fecha_Nac
             if (validador.FechaFutura(dateTimePicker.Value))
                 MessageBox.Show("Error en campo FECHA DE NACIMIENTO.");
+          
+                
+                
         }
 
         private void cmd_cancelar_Click(object sender, EventArgs e)

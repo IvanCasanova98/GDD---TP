@@ -5,8 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
-using System.Collections.Generic;
-
+using FrbaOfertas.Modelo;
+using System.Globalization;
+using FrbaOfertas.BaseDeDatos;
 
 namespace FrbaOfertas.ConectorDB
 {
@@ -14,17 +15,12 @@ namespace FrbaOfertas.ConectorDB
     {
         public static Boolean altaCliente(Cliente cliente)
         {
-            SqlConnection connection = new SqlConnection(Connection.getStringConnection());
+            SqlConnection connection = new SqlConnection(Conexion.getStringConnection());
             SqlCommand comm = connection.CreateCommand();
-            comm.CommandText = "INSERT INTO EL_REJUNTE.Cliente (clie_nombre, clie_apellido, clie_tipo_documento, clie_documento, clie_cuil, clie_email, clie_telefono, clie_direccion_id, clie_fecha_nacimiento, clie_fecha_creacion, clie_tarjeta_id, clie_habilitado, clie_usuario_id) " +
-                                "VALUES ('" + cliente.nombre + "', '" + cliente.apellido + "', '" + cliente.tipo_documento + "', '" + cliente.documento + "', '" + cliente.cuil + "', '" + cliente.mail + "'," +
-                                " '" + cliente.telefono + "'," + "(SELECT TOP 1 dire_id FROM EL_REJUNTE.Direccion WHERE dire_calle = '" + cliente.dire.calle + "' AND dire_numero = '" + cliente.dire.numero +
-                                "' AND dire_piso = '" + cliente.dire.piso + "' AND dire_depto = '" + cliente.dire.depto + "' AND dire_localidad = '" + cliente.dire.localidad + "' AND dire_codigo_postal = '" +
-                                cliente.dire.codigo_postal + "') , '" + cliente.fecha_nacimiento.ToString("yyyy-MM-dd HH:mm:ss") +
-                                "', '" + VariablesGlobales.FechaHoraSistemaString + "' ," + "(SELECT TOP 1 tarj_id FROM EL_REJUNTE.Tarjeta WHERE tarj_numero = '" + cliente.tarjeta.numero + "' AND tarj_cod_seguridad = '" +
-                                cliente.tarjeta.cod_seguridad + "' AND tarj_vencimiento = '" + cliente.tarjeta.vencimiento + "' AND tarj_titular = '" + cliente.tarjeta.titular + "' AND tarj_tipo = '" +
-                                cliente.tarjeta.tipo + "')" + ", 1, (SELECT u.usuario_id FROM EL_REJUNTE.Usuario u WHERE u.usuario_username = '" + cliente.documento + "')" +
-                                ")";
+            comm.CommandText = "INSERT INTO dbo.Cliente (Clie_Nom, Clie_Apellido, Clie_DNI, Clie_Calle, Clie_Piso, Clie_Dpto, Clie_Localidad, Clie_Tel, Clie_Mail, Clie_Ciudad, Clie_Fecha_Nac, Clie_Monto, Clie_EstadoBaja) " +
+                                "VALUES ('" + cliente.nombre + "', '" + cliente.apellido + "', '" + cliente.documento + "', '"  + cliente.Calle + "'," +
+                                " '" + cliente.Piso + "'," + cliente.Dpto + "'," + cliente.Localidad + ",'" + cliente.telefono + "'," + cliente.mail + "'," + cliente.Ciudad + "'," + cliente.fecha_nacimiento.ToString("yyyy-MM-dd HH:mm:ss") +
+                                "'," + cliente.monto + "'," + cliente.habilitado + ")";
             comm.Connection = connection;
             comm.Connection.Open();
             int rows = comm.ExecuteNonQuery();

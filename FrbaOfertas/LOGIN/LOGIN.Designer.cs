@@ -80,6 +80,7 @@ namespace FrbaOfertas
             this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "ENTRAR";
             this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // pictureBox1
             // 
