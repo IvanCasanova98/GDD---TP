@@ -3,7 +3,7 @@ use GD2C2019
 create table Usuario(
 	ID_Usuario smallint NOT NULL,
 	USR_USRName varchar(255),
-	USR_Pass varchar(255),
+	USR_Pass VARBINARY (32),
 	USR_Intentos smallint NOT NULL,
 	USR_Bloqueado Bit NOT NULL,
 	USR_Habilitado Bit NOT NULL,

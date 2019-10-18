@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.Detalles = new System.Windows.Forms.GroupBox();
+            this.cmd_limpiar = new System.Windows.Forms.Button();
             this.txt_nombreContacto = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.txt_rubro = new System.Windows.Forms.TextBox();
@@ -60,6 +61,7 @@
             // 
             // Detalles
             // 
+            this.Detalles.Controls.Add(this.cmd_limpiar);
             this.Detalles.Controls.Add(this.txt_nombreContacto);
             this.Detalles.Controls.Add(this.label12);
             this.Detalles.Controls.Add(this.txt_rubro);
@@ -88,16 +90,30 @@
             this.Detalles.Controls.Add(this.txt_tel);
             this.Detalles.Location = new System.Drawing.Point(12, 12);
             this.Detalles.Name = "Detalles";
-            this.Detalles.Size = new System.Drawing.Size(343, 362);
-            this.Detalles.TabIndex = 19;
+            this.Detalles.Size = new System.Drawing.Size(405, 362);
+            this.Detalles.TabIndex = 0;
             this.Detalles.TabStop = false;
             this.Detalles.Text = "Detalles Proveedor";
+            // 
+            // cmd_limpiar
+            // 
+            this.cmd_limpiar.BackColor = System.Drawing.SystemColors.Control;
+            this.cmd_limpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmd_limpiar.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.cmd_limpiar.Location = new System.Drawing.Point(159, 313);
+            this.cmd_limpiar.Margin = new System.Windows.Forms.Padding(2);
+            this.cmd_limpiar.Name = "cmd_limpiar";
+            this.cmd_limpiar.Size = new System.Drawing.Size(86, 34);
+            this.cmd_limpiar.TabIndex = 13;
+            this.cmd_limpiar.Text = "Limpiar";
+            this.cmd_limpiar.UseVisualStyleBackColor = false;
+            this.cmd_limpiar.Click += new System.EventHandler(this.cmd_limpiar_Click);
             // 
             // txt_nombreContacto
             // 
             this.txt_nombreContacto.Location = new System.Drawing.Point(115, 271);
             this.txt_nombreContacto.Name = "txt_nombreContacto";
-            this.txt_nombreContacto.Size = new System.Drawing.Size(202, 20);
+            this.txt_nombreContacto.Size = new System.Drawing.Size(265, 20);
             this.txt_nombreContacto.TabIndex = 11;
             // 
             // label12
@@ -113,7 +129,7 @@
             // 
             this.txt_rubro.Location = new System.Drawing.Point(96, 239);
             this.txt_rubro.Name = "txt_rubro";
-            this.txt_rubro.Size = new System.Drawing.Size(221, 20);
+            this.txt_rubro.Size = new System.Drawing.Size(284, 20);
             this.txt_rubro.TabIndex = 10;
             // 
             // label8
@@ -129,7 +145,7 @@
             // 
             this.txt_ciudad.Location = new System.Drawing.Point(96, 103);
             this.txt_ciudad.Name = "txt_ciudad";
-            this.txt_ciudad.Size = new System.Drawing.Size(221, 20);
+            this.txt_ciudad.Size = new System.Drawing.Size(284, 20);
             this.txt_ciudad.TabIndex = 5;
             // 
             // label2
@@ -145,7 +161,7 @@
             // 
             this.txt_localidad.Location = new System.Drawing.Point(96, 77);
             this.txt_localidad.Name = "txt_localidad";
-            this.txt_localidad.Size = new System.Drawing.Size(221, 20);
+            this.txt_localidad.Size = new System.Drawing.Size(284, 20);
             this.txt_localidad.TabIndex = 4;
             // 
             // label11
@@ -159,7 +175,7 @@
             // 
             // txt_dpto
             // 
-            this.txt_dpto.Location = new System.Drawing.Point(281, 51);
+            this.txt_dpto.Location = new System.Drawing.Point(344, 51);
             this.txt_dpto.Name = "txt_dpto";
             this.txt_dpto.Size = new System.Drawing.Size(36, 20);
             this.txt_dpto.TabIndex = 3;
@@ -167,7 +183,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(251, 54);
+            this.label10.Location = new System.Drawing.Point(314, 54);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(30, 13);
             this.label10.TabIndex = 30;
@@ -175,7 +191,7 @@
             // 
             // txt_piso
             // 
-            this.txt_piso.Location = new System.Drawing.Point(209, 51);
+            this.txt_piso.Location = new System.Drawing.Point(272, 51);
             this.txt_piso.Name = "txt_piso";
             this.txt_piso.Size = new System.Drawing.Size(36, 20);
             this.txt_piso.TabIndex = 2;
@@ -183,7 +199,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(176, 54);
+            this.label9.Location = new System.Drawing.Point(239, 54);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(27, 13);
             this.label9.TabIndex = 28;
@@ -191,10 +207,10 @@
             // 
             // cmd_darAlta
             // 
-            this.cmd_darAlta.BackColor = System.Drawing.Color.SeaGreen;
+            this.cmd_darAlta.BackColor = System.Drawing.SystemColors.Control;
             this.cmd_darAlta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmd_darAlta.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.cmd_darAlta.Location = new System.Drawing.Point(191, 313);
+            this.cmd_darAlta.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.cmd_darAlta.Location = new System.Drawing.Point(254, 313);
             this.cmd_darAlta.Margin = new System.Windows.Forms.Padding(2);
             this.cmd_darAlta.Name = "cmd_darAlta";
             this.cmd_darAlta.Size = new System.Drawing.Size(126, 34);
@@ -205,14 +221,14 @@
             // 
             // cmd_cancelar
             // 
-            this.cmd_cancelar.BackColor = System.Drawing.Color.SeaGreen;
+            this.cmd_cancelar.BackColor = System.Drawing.SystemColors.Control;
             this.cmd_cancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmd_cancelar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.cmd_cancelar.ForeColor = System.Drawing.SystemColors.ControlText;
             this.cmd_cancelar.Location = new System.Drawing.Point(23, 313);
             this.cmd_cancelar.Margin = new System.Windows.Forms.Padding(2);
             this.cmd_cancelar.Name = "cmd_cancelar";
             this.cmd_cancelar.Size = new System.Drawing.Size(128, 34);
-            this.cmd_cancelar.TabIndex = 13;
+            this.cmd_cancelar.TabIndex = 14;
             this.cmd_cancelar.Text = "Cancelar";
             this.cmd_cancelar.UseVisualStyleBackColor = false;
             this.cmd_cancelar.Click += new System.EventHandler(this.cmd_cancelar_Click);
@@ -230,7 +246,7 @@
             // 
             this.txt_razonsocial.Location = new System.Drawing.Point(96, 25);
             this.txt_razonsocial.Name = "txt_razonsocial";
-            this.txt_razonsocial.Size = new System.Drawing.Size(221, 20);
+            this.txt_razonsocial.Size = new System.Drawing.Size(284, 20);
             this.txt_razonsocial.TabIndex = 0;
             // 
             // label7
@@ -246,14 +262,14 @@
             // 
             this.txt_cuit.Location = new System.Drawing.Point(96, 187);
             this.txt_cuit.Name = "txt_cuit";
-            this.txt_cuit.Size = new System.Drawing.Size(221, 20);
+            this.txt_cuit.Size = new System.Drawing.Size(284, 20);
             this.txt_cuit.TabIndex = 8;
             // 
             // txt_codpostal
             // 
             this.txt_codpostal.Location = new System.Drawing.Point(96, 132);
             this.txt_codpostal.Name = "txt_codpostal";
-            this.txt_codpostal.Size = new System.Drawing.Size(221, 20);
+            this.txt_codpostal.Size = new System.Drawing.Size(284, 20);
             this.txt_codpostal.TabIndex = 6;
             // 
             // label6
@@ -278,14 +294,14 @@
             // 
             this.txt_mail.Location = new System.Drawing.Point(96, 161);
             this.txt_mail.Name = "txt_mail";
-            this.txt_mail.Size = new System.Drawing.Size(221, 20);
+            this.txt_mail.Size = new System.Drawing.Size(284, 20);
             this.txt_mail.TabIndex = 7;
             // 
             // txt_calle
             // 
             this.txt_calle.Location = new System.Drawing.Point(96, 51);
             this.txt_calle.Name = "txt_calle";
-            this.txt_calle.Size = new System.Drawing.Size(74, 20);
+            this.txt_calle.Size = new System.Drawing.Size(137, 20);
             this.txt_calle.TabIndex = 1;
             // 
             // label5
@@ -310,14 +326,14 @@
             // 
             this.txt_tel.Location = new System.Drawing.Point(96, 213);
             this.txt_tel.Name = "txt_tel";
-            this.txt_tel.Size = new System.Drawing.Size(221, 20);
+            this.txt_tel.Size = new System.Drawing.Size(284, 20);
             this.txt_tel.TabIndex = 9;
             // 
             // AltaProveedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(367, 386);
+            this.ClientSize = new System.Drawing.Size(427, 386);
             this.Controls.Add(this.Detalles);
             this.Name = "AltaProveedor";
             this.Text = "Alta Proveedor";
@@ -356,6 +372,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txt_nombreContacto;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button cmd_limpiar;
 
     }
 }

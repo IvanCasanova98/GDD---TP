@@ -47,7 +47,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(20, 30);
+            this.label1.Location = new System.Drawing.Point(18, 12);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(176, 26);
@@ -89,7 +89,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cmd_sgte);
             this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.btnCancelar);
             this.groupBox1.Controls.Add(this.cbo_rol);
             this.groupBox1.Controls.Add(this.tb_pass_confirm);
             this.groupBox1.Controls.Add(this.label2);
@@ -97,7 +99,7 @@
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.tb_user);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Location = new System.Drawing.Point(23, 69);
+            this.groupBox1.Location = new System.Drawing.Point(21, 51);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
@@ -155,10 +157,10 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnCancelar.BackColor = System.Drawing.SystemColors.Control;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnCancelar.Location = new System.Drawing.Point(68, 257);
+            this.btnCancelar.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnCancelar.Location = new System.Drawing.Point(45, 136);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(128, 34);
@@ -169,10 +171,10 @@
             // 
             // cmd_sgte
             // 
-            this.cmd_sgte.BackColor = System.Drawing.Color.SeaGreen;
+            this.cmd_sgte.BackColor = System.Drawing.SystemColors.Control;
             this.cmd_sgte.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmd_sgte.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.cmd_sgte.Location = new System.Drawing.Point(242, 257);
+            this.cmd_sgte.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.cmd_sgte.Location = new System.Drawing.Point(224, 136);
             this.cmd_sgte.Margin = new System.Windows.Forms.Padding(2);
             this.cmd_sgte.Name = "cmd_sgte";
             this.cmd_sgte.Size = new System.Drawing.Size(128, 34);
@@ -185,9 +187,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(427, 311);
-            this.Controls.Add(this.cmd_sgte);
-            this.Controls.Add(this.btnCancelar);
+            this.ClientSize = new System.Drawing.Size(425, 248);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
