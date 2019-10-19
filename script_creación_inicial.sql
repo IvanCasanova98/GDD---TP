@@ -1,7 +1,7 @@
 use GD2C2019
 
 create table Usuario(
-	ID_Usuario smallint NOT NULL,
+	ID_Usuario identity(1,1) NOT NULL,
 	USR_USRName varchar(255),
 	USR_Pass VARBINARY (32),
 	USR_Intentos smallint NOT NULL,
@@ -11,7 +11,7 @@ create table Usuario(
 )
 
 create table Cliente ( 
-	ID_Clie smallint NOT NULL,
+	ID_Clie identity(1,1) NOT NULL,
 	Clie_Nom varchar(255) NOT NULL,
 	Clie_Apellido varchar(255) NOT NULL,
 	Clie_DNI numeric(9,0) UNIQUE NOT NULL,
@@ -29,7 +29,7 @@ create table Cliente (
 )
 
 create table Proveedor (
-	ID_Proveedor smallint NOT NULL,
+	ID_Proveedor identity(1,1) NOT NULL,
 	Provee_Rs varchar(100) UNIQUE NOT NULL,
 	Provee_Calle varchar(255),
 	Provee_Piso numeric(2,0),
@@ -47,38 +47,38 @@ create table Proveedor (
 )
 
 create table Administrativo (
-	ID_Admin smallint NOT NULL,
+	ID_Admin identity(1,1) NOT NULL,
 	PRIMARY KEY (ID_Admin)
 )
 
 create table Rol(
-	ID_Rol smallint NOT NULL,
+	ID_Rol identity(1,1) NOT NULL,
 	Rol_Habilitado Bit DEFAULT 1,
 	PRIMARY KEY (ID_Rol)
 )
 
 create table Funcion (
-	ID_Func smallint NOT NULL,
+	ID_Func identity(1,1) NOT NULL,
 	PRIMARY KEY (ID_Func)
 )
 
 create table Roles_Por_Usuario (
-	ID_Usuario smallint NOT NULL,
+	ID_Usuario identity(1,1) NOT NULL,
 	ID_Rol smallint NOT NULL,
 	FOREIGN KEY (ID_Usuario) REFERENCES Usuario (ID_Usuario),
 	FOREIGN KEY (ID_Rol) REFERENCES Rol (ID_Rol)
 )
 
 create table Funcion_Por_Rol (
-	ID_Rol smallint NOT NULL,
-	ID_Func smallint NOT NULL,
+	ID_Rol identity(1,1) NOT NULL,
+	ID_Func identity(1,1) NOT NULL,
 	FOREIGN KEY (ID_Rol) REFERENCES Rol (ID_Rol),
 	FOREIGN KEY (ID_Func) REFERENCES Funcion (ID_Func)
 )
 
 create table Cuenta (
-	ID_Cuenta smallint NOT NULL,
-	ID_Clie smallint NOT NULL,
+	ID_Cuenta identity(1,1) NOT NULL,
+	ID_Clie identity(1,1) NOT NULL,
 	Carga_Fecha datetime,
 	Carga_Monto numeric(10,3),
 	Tipo_Pago varchar(5),
@@ -87,8 +87,8 @@ create table Cuenta (
 )
 
 create table Tarjeta (
-	ID_Tarjeta smallint NOT NULL,
-	ID_Cuenta smallint NOT NULL,
+	ID_Tarjeta identity(1,1) NOT NULL,
+	ID_Cuenta identity(1,1) NOT NULL,
 	Tarj_Nro numeric(20,0) UNIQUE,
 	Tarj_Cod_Seg numeric(3,0),
 	PRIMARY KEY (ID_Tarjeta),
@@ -96,8 +96,8 @@ create table Tarjeta (
 )
 
 create table Factura (
-	ID_Fact smallint NOT NULL,
-	ID_Proveedor smallint NOT NULL,
+	ID_Fact identity(1,1) NOT NULL,
+	ID_Proveedor identity(1,1) NOT NULL,
 	Fact_Fecha datetime,
 	Fact_Nro numeric (18,0),
 	PRIMARY KEY (ID_Fact),
@@ -105,8 +105,8 @@ create table Factura (
 )
 
 create table Oferta (
-	ID_Oferta smallint NOT NULL,
-	ID_Proveedor smallint NOT NULL,
+	ID_Oferta identity(1,1) NOT NULL,
+	ID_Proveedor identity(1,1) NOT NULL,
 	Ofe_Precio numeric(18,2) NOT NULL,
 	Ofe_Precio_Ficticio numeric(18,2),
 	Ofe_Fecha datetime,
@@ -120,9 +120,9 @@ create table Oferta (
 )
 
 create table Compra (
-	ID_Compra smallint NOT NULL,
-	ID_Oferta smallint NOT NULL,
-	ID_Clie smallint NOT NULL,
+	ID_Compra identity(1,1) NOT NULL,
+	ID_Oferta identity(1,1) NOT NULL,
+	ID_Clie identity(1,1) NOT NULL,
 	Compra_Fecha datetime,
 	Compra_Cant numeric(18,0),
 	PRIMARY KEY (ID_Compra),
@@ -131,8 +131,8 @@ create table Compra (
 )
 
 create table Cupon (
-	ID_Cupon smallint NOT NULL,
-	ID_Compra smallint NOT NULL,
+	ID_Cupon identity(1,1) NOT NULL,
+	ID_Compra identity(1,1) NOT NULL,
 	Cup_Fecha_Consumo datetime,
 	Cup_Fecha_Venc datetime,
 	PRIMARY KEY (ID_Cupon),
@@ -141,9 +141,9 @@ create table Cupon (
 )
 
 create table Detalle_Facturacion (
-	ID_Detalle_Fact smallint NOT NULL,
-	ID_Fact smallint NOT NULL,
-	ID_Compra smallint NOT NULL,
+	ID_Detalle_Fact identity(1,1) NOT NULL,
+	ID_Fact identity(1,1) NOT NULL,
+	ID_Compra identity(1,1) NOT NULL,
 	PRIMARY KEY (ID_Detalle_Fact),
 	FOREIGN KEY (ID_Fact) REFERENCES Factura (ID_Fact),
 	FOREIGN KEY (ID_Compra) REFERENCES Compra (ID_Compra)
