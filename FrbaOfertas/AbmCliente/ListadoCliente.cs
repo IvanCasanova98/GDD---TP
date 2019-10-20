@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace FrbaOfertas.AbmCliente
 {
-    public partial class ModificacionCliente : Form
+    public partial class ListadoCliente : Form
     {
-        public ModificacionCliente()
+        public ListadoCliente()
         {
             InitializeComponent();
         }
@@ -22,15 +22,7 @@ namespace FrbaOfertas.AbmCliente
             txt_nombre.Text = "";
             txt_apellido.Text = "";
             txt_dni.Text = "";
-            txt_calle.Text = "";
-            txt_piso.Text = "";
-            txt_dpto.Text = "";
-            txt_localidad.Text = "";
-            txt_tel.Text = "";
             txt_mail.Text = "";
-            txt_ciudad.Text = "";
-            dateTimePicker.Value = DateTime.Now;
-
             txt_nombre.Select();
         }
 
