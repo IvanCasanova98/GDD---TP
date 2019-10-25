@@ -8,6 +8,8 @@ namespace FrbaOfertas.Utils
 {
     class Validador
     {
+
+    
         public Boolean containsNumber(String palabra)
         {
             palabra = palabra.Trim();

@@ -1,35 +1,51 @@
-use GD2C2019
+USE GD2C2019;
 
-create table Usuario(
-	ID_Usuario identity(1,1) NOT NULL,
-	USR_USRName varchar(255),
-	USR_Pass VARBINARY (32),
-	USR_Intentos smallint NOT NULL,
-	USR_Bloqueado Bit NOT NULL,
-	USR_Habilitado Bit NOT NULL,
-	PRIMARY KEY (ID_Usuario)
-)
+IF NOT EXISTS (select * from sys.schemas where name = 'HPBC')
+BEGIN
+EXEC('create schema HPBC')
+END;
+GO
 
-create table Cliente ( 
-	ID_Clie identity(1,1) NOT NULL,
-	Clie_Nom varchar(255) NOT NULL,
-	Clie_Apellido varchar(255) NOT NULL,
-	Clie_DNI numeric(9,0) UNIQUE NOT NULL,
-	Clie_Calle varchar(255),
-	Clie_Piso numeric(2,0),
-	Clie_Dpto varchar(2),
-	Clie_Localidad varchar(255),
-	Clie_Tel numeric(14,0) UNIQUE, 
-	Clie_Mail varchar(255) UNIQUE,
-	Clie_Ciudad varchar(255),
-	Clie_Fecha_Nac datetime,
-	Clie_Habilitado Bit NOT NULL,
-	Clue_Monto numeric(18,0),
-	PRIMARY KEY (ID_Clie)
-)
+IF NOT EXISTS (select * from sysobjects where name='Cliente' and xtype='U')
+CREATE TABLE HPBC.Cliente(
+	clie_ID INT NOT NULL IDENTITY(1,1),
+	clie_nombre nvarchar(255) NOT NULL,
+	clie_apellido nvarchar(255) NOT NULL,
+	clie_dni numeric(9,0) UNIQUE NOT NULL,
+	clie_mail nvarchar(255) UNIQUE NOT NULL,
+	clie_tel numeric(14,0) UNIQUE NULL,
+	clie_direccion nvarchar(50) NOT NULL,
+	clie_fecha_nac date NOT NULL,
+	clie_ciudad nvarchar(255) NULL,
+	clie_localidad nvarchar(255) NULL,
+	clie_habilitado bit NOT NULL,
+	clie_monto numeric(18,0) NOT NULL,
+	clie_usuario_ID INT,
+ CONSTRAINT PK_Cliente PRIMARY KEY CLUSTERED(
+	clie_ID ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+)ON [PRIMARY]
+GO
 
-create table Proveedor (
-	ID_Proveedor identity(1,1) NOT NULL,
+
+IF NOT EXISTS (select * from sysobjects where name='Usuario' and xtype='U')
+CREATE TABLE HPBC.Usuario(
+	usuario_id INT NOT NULL IDENTITY(1,1),
+	usuario_username nvarchar(50) NOT NULL,
+	usuario_password nvarchar(255) NOT NULL,
+	usuario_habilitado BIT NOT NULL,
+	usuario_bloqueado BIT NOT NULL,
+	usuario_cant_logeo_error INT NULL,
+ CONSTRAINT PK_Usuario PRIMARY KEY CLUSTERED(
+	usuario_id ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+)ON [PRIMARY]
+GO
+
+
+IF NOT EXISTS (select * from sysobjects where name='Proveedor' and xtype='U')
+CREATE TABLE HPBC.Proveedor(
+	Provee_ID INT NOT NULL identity(1,1) ,
 	Provee_Rs varchar(100) UNIQUE NOT NULL,
 	Provee_Calle varchar(255),
 	Provee_Piso numeric(2,0),
@@ -40,73 +56,113 @@ create table Proveedor (
 	Provee_Mail varchar(255) UNIQUE,
 	Provee_CUIT numeric(11,0) UNIQUE NOT NULL,
 	Provee_Tel numeric(14,0) UNIQUE,
-	Provee_Rubro varchar(20),
 	Provee_NombreContacto varchar(100),
 	Provee_Habilitado Bit NOT NULL,
-	PRIMARY KEY (ID_Proveedor)
-)
+	Provee_Rubro INT,
+	Provee_usuario_id INT,
+ CONSTRAINT PK_Proveedor PRIMARY KEY CLUSTERED(
+	Provee_ID ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+)ON [PRIMARY]
+GO
 
-create table Administrativo (
-	ID_Admin identity(1,1) NOT NULL,
-	PRIMARY KEY (ID_Admin)
-)
+IF NOT EXISTS (select * from sysobjects where name='Administrativo' and xtype='U')
+CREATE TABLE HPBC.Administrativo(
+	Admin_ID INT identity(1,1) NOT NULL,
+ CONSTRAINT PK_Administrativo PRIMARY KEY CLUSTERED(
+	Admin_ID ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+)ON [PRIMARY]
+GO
 
-create table Rol(
-	ID_Rol identity(1,1) NOT NULL,
+
+IF NOT EXISTS (select * from sysobjects where name='Rol' and xtype='U')
+CREATE TABLE HPBC.Rol(
+	Rol_ID INT identity(1,1) NOT NULL,
+	Rol_detalle nvarchar(255) NOT NULL,
 	Rol_Habilitado Bit DEFAULT 1,
-	PRIMARY KEY (ID_Rol)
-)
+ CONSTRAINT PK_Rol PRIMARY KEY CLUSTERED(
+	Rol_ID ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+)ON [PRIMARY]
+GO
 
-create table Funcion (
-	ID_Func identity(1,1) NOT NULL,
-	PRIMARY KEY (ID_Func)
-)
+IF NOT EXISTS (select * from sysobjects where name='Funcion' and xtype='U')
+CREATE TABLE HPBC.Funcion(
+	Func_ID INT identity(1,1) NOT NULL,
+	Func_detalle nvarchar(255) NOT NULL,
+ CONSTRAINT PK_Funcion PRIMARY KEY CLUSTERED(
+	Func_ID ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+)ON [PRIMARY]
+GO
 
-create table Roles_Por_Usuario (
-	ID_Usuario identity(1,1) NOT NULL,
-	ID_Rol smallint NOT NULL,
-	FOREIGN KEY (ID_Usuario) REFERENCES Usuario (ID_Usuario),
-	FOREIGN KEY (ID_Rol) REFERENCES Rol (ID_Rol)
-)
 
-create table Funcion_Por_Rol (
-	ID_Rol identity(1,1) NOT NULL,
-	ID_Func identity(1,1) NOT NULL,
-	FOREIGN KEY (ID_Rol) REFERENCES Rol (ID_Rol),
-	FOREIGN KEY (ID_Func) REFERENCES Funcion (ID_Func)
-)
 
-create table Cuenta (
-	ID_Cuenta identity(1,1) NOT NULL,
-	ID_Clie identity(1,1) NOT NULL,
+IF NOT EXISTS (select * from sysobjects where name='Rol_Por_Usuario' and xtype='U')
+CREATE TABLE HPBC.Rol_Por_Usuario(
+	ID_Rol INT NOT NULL,
+	ID_Usuario INT NOT NULL,
+ CONSTRAINT PK_Rol_Por_Usuario PRIMARY KEY CLUSTERED(
+	ID_Rol ASC,
+	ID_Usuario ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+IF NOT EXISTS (select * from sysobjects where name='Funcion_Por_Rol' and xtype='U')
+CREATE TABLE HPBC.Funcion_Por_Rol(
+	Rol_ID INT NOT NULL,
+	Func_ID INT NOT NULL,
+ CONSTRAINT PK_Funcion_Por_Rol PRIMARY KEY CLUSTERED(
+	Rol_ID ASC,
+	Func_ID ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+IF NOT EXISTS (select * from sysobjects where name='Credito' and xtype='U')
+CREATE TABLE HPBC.Credito(
+	Credito_ID INT identity(1,1) NOT NULL,
+	Credito_ID_Clie INT NOT NULL,
 	Carga_Fecha datetime,
-	Carga_Monto numeric(10,3),
-	Tipo_Pago varchar(5),
-	PRIMARY KEY (ID_Cuenta),
-	FOREIGN KEY (ID_Clie) REFERENCES Cliente (ID_Clie) 
-)
+	Carga_Monto numeric(12,2),
+	Credito_ID_Tarjeta INT NOT NULL,
+ CONSTRAINT PK_Creditos PRIMARY KEY CLUSTERED(
+	Credito_ID ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+)ON [PRIMARY]
+GO
 
-create table Tarjeta (
-	ID_Tarjeta identity(1,1) NOT NULL,
-	ID_Cuenta identity(1,1) NOT NULL,
+IF NOT EXISTS (select * from sysobjects where name='Tipo_Pago' and xtype='U')
+CREATE TABLE HPBC.Tipo_Pago(
+	Tipo_Pago_ID INT identity(1,1) NOT NULL,
+	Tarj_Detalle nvarchar(255) NOT NULL,
 	Tarj_Nro numeric(20,0) UNIQUE,
 	Tarj_Cod_Seg numeric(3,0),
-	PRIMARY KEY (ID_Tarjeta),
-	FOREIGN KEY (ID_Cuenta) REFERENCES Cuenta (ID_Cuenta)
-)
+ CONSTRAINT PK_Tipo_Pago PRIMARY KEY CLUSTERED(
+	Tipo_Pago_ID ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+)ON [PRIMARY]
+GO
 
-create table Factura (
-	ID_Fact identity(1,1) NOT NULL,
-	ID_Proveedor identity(1,1) NOT NULL,
+IF NOT EXISTS (select * from sysobjects where name='Factura' and xtype='U')
+CREATE TABLE HPBC.Factura(
+	Fact_ID INT identity(1,1) NOT NULL,
+	Fact_ID_Proveedor INT NOT NULL,
 	Fact_Fecha datetime,
 	Fact_Nro numeric (18,0),
-	PRIMARY KEY (ID_Fact),
-	FOREIGN KEY (ID_Proveedor) REFERENCES Proveedor (ID_Proveedor)
-)
+ CONSTRAINT PK_Fact PRIMARY KEY CLUSTERED(
+	Fact_ID ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+)ON [PRIMARY]
+GO
 
-create table Oferta (
-	ID_Oferta identity(1,1) NOT NULL,
-	ID_Proveedor identity(1,1) NOT NULL,
+
+IF NOT EXISTS (select * from sysobjects where name='Oferta' and xtype='U')
+CREATE TABLE HPBC.Oferta(
+	Ofe_ID INT identity(1,1) NOT NULL,
+	Ofe_ID_Proveedor INT NOT NULL,
 	Ofe_Precio numeric(18,2) NOT NULL,
 	Ofe_Precio_Ficticio numeric(18,2),
 	Ofe_Fecha datetime,
@@ -115,91 +171,216 @@ create table Oferta (
 	Ofe_Cant numeric(18,0),
 	Ofe_Fecha_Compra datetime,
 	Ofe_Cod smallint NOT NULL,
-	PRIMARY KEY (ID_Oferta),
-	FOREIGN KEY (ID_Proveedor) REFERENCES Proveedor (ID_Proveedor)
-)
+ CONSTRAINT PK_Oferta PRIMARY KEY CLUSTERED(
+	Ofe_ID ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+)ON [PRIMARY]
+GO
 
-create table Compra (
-	ID_Compra identity(1,1) NOT NULL,
-	ID_Oferta identity(1,1) NOT NULL,
-	ID_Clie identity(1,1) NOT NULL,
+
+IF NOT EXISTS (select * from sysobjects where name='Compra' and xtype='U')
+CREATE TABLE HPBC.Compra(
+	Compra_ID int identity(1,1) NOT NULL,
+	Compra_ID_Oferta int  NOT NULL,
+	Compra_ID_Clie_Dest Int  NOT NULL,
 	Compra_Fecha datetime,
 	Compra_Cant numeric(18,0),
-	PRIMARY KEY (ID_Compra),
-	FOREIGN KEY (ID_Oferta) REFERENCES Oferta (ID_Oferta),
-	FOREIGN KEY (ID_Clie) REFERENCES Cliente (ID_Clie)
-)
+ CONSTRAINT PK_Compra PRIMARY KEY CLUSTERED(
+	Compra_ID ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+)ON [PRIMARY]
+GO
 
-create table Cupon (
-	ID_Cupon identity(1,1) NOT NULL,
-	ID_Compra identity(1,1) NOT NULL,
+IF NOT EXISTS (select * from sysobjects where name='Cupon' and xtype='U')
+CREATE TABLE HPBC.Cupon(
+	Cupon_ID Int identity(1,1) NOT NULL,
+	Cupon_ID_Compra Int NOT NULL,
 	Cup_Fecha_Consumo datetime,
 	Cup_Fecha_Venc datetime,
-	PRIMARY KEY (ID_Cupon),
-	FOREIGN KEY (ID_Compra) REFERENCES Compra (ID_Compra)
+ CONSTRAINT PK_Cupon PRIMARY KEY CLUSTERED(
+	Cupon_ID ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+)ON [PRIMARY]
+GO
 
-)
+IF NOT EXISTS (select * from sysobjects where name='Detalle_Fact' and xtype='U')
+CREATE TABLE HPBC.Detalle_Fact(
+	Detalle_Fact_ID int identity(1,1) NOT NULL,
+	Detalle_ID_Fact Int NOT NULL,
+	Detalle_ID_Compra int NOT NULL,
+ CONSTRAINT PK_Detalle_Fact PRIMARY KEY CLUSTERED(
+	Detalle_Fact_ID ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+)ON [PRIMARY]
+GO
 
-create table Detalle_Facturacion (
-	ID_Detalle_Fact identity(1,1) NOT NULL,
-	ID_Fact identity(1,1) NOT NULL,
-	ID_Compra identity(1,1) NOT NULL,
-	PRIMARY KEY (ID_Detalle_Fact),
-	FOREIGN KEY (ID_Fact) REFERENCES Factura (ID_Fact),
-	FOREIGN KEY (ID_Compra) REFERENCES Compra (ID_Compra)
-)
-
-
-INSERT INTO dbo.Funcion(ID_Func,Funcion_Nombre)
-Values(1,'AMB DE ROL')
-INSERT INTO dbo.Funcion(ID_Func,Funcion_Nombre)
-Values(2,'REGISTRO')
-INSERT INTO dbo.Funcion(ID_Func,Funcion_Nombre)
-Values(3,'AMB DE CLIENTES')
-INSERT INTO dbo.Funcion(ID_Func,Funcion_Nombre)
-Values(4,'AMB DE PROVEDOR')
-INSERT INTO dbo.Funcion(ID_Func,Funcion_Nombre)
-Values(5,'CARGA DE CREDITO')
-INSERT INTO dbo.Funcion(ID_Func,Funcion_Nombre)
-Values(6,'CONFECCION Y PUBLICACION DE OFERTAS')
-INSERT INTO dbo.Funcion(ID_Func,Funcion_Nombre)
-Values(7,'COMPRAR OFERTA')
-INSERT INTO dbo.Funcion(ID_Func,Funcion_Nombre)
-Values(8,'ENTREGA/CONSUMO DE OFERTA')
-INSERT INTO dbo.Funcion(ID_Func,Funcion_Nombre)
-Values(9,'FACTURACION PROVEDOR')
-INSERT INTO dbo.Funcion(ID_Func,Funcion_Nombre)
-Values(10,'LISTADO ESTADISTICO')
+IF NOT EXISTS (select * from sysobjects where name='Rubro' and xtype='U')
+CREATE TABLE HPBC.Rubro(
+	Rubro_ID int identity(1,1) NOT NULL,
+	Rubro_detalle nvarchar(255) NOT NULL,
+ CONSTRAINT PK_Rubro PRIMARY KEY CLUSTERED(
+	Rubro_ID ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+)ON [PRIMARY]
+GO
 
 
-INSERT INTO dbo.Rol(ID_Rol,Rol_Nombre)
-Values(1,'Administrativo')
-INSERT INTO dbo.Rol(ID_Rol,Rol_Nombre)
-Values(2,'Cliente')
-INSERT INTO dbo.Rol(ID_Rol,Rol_Nombre)
-Values(3,'Provedor')
-/*le doy a los roles sus funcs*/
-INSERT INTO dbo.Funcion_Por_Rol(ID_Rol,ID_Func)
-Values(1,1)
-INSERT INTO dbo.Funcion_Por_Rol(ID_Rol,ID_Func)
-Values(1,3)
-INSERT INTO dbo.Funcion_Por_Rol(ID_Rol,ID_Func)
-Values(1,4)
-INSERT INTO dbo.Funcion_Por_Rol(ID_Rol,ID_Func)
-Values(1,9)
-INSERT INTO dbo.Funcion_Por_Rol(ID_Rol,ID_Func)
-Values(1,10)
+CREATE TABLE HPBC.TablaMaestra(
+	[Cli_Nombre] [nvarchar](255) NULL,
+	[Cli_Apellido] [nvarchar](255) NULL,
+	[Cli_Dni] [numeric](18, 0) NULL,
+	[Cli_Direccion] [nvarchar](255) NULL,
+	[Cli_Telefono] [numeric](14,0) NULL,
+	[Cli_Mail] [nvarchar](255) NULL,
+	[Cli_Fecha_Nac] [datetime] NULL,
+	[Cli_Ciudad] [nvarchar](255) NULL,
+	[Carga_Credito] [numeric](12,2) NULL,
+	[Carga_Fecha] [datetime] NULL,
+	[Tipo_Pago_Desc] [nvarchar](255) NULL,
+	[Cli_Dest_Nombre] [nvarchar](255) NULL,
+    [Cli_Dest_Apellido] [nvarchar](255) NULL,
+    [Cli_Dest_Dni] [numeric](18, 0) NULL,
+    [Cli_Dest_Direccion] [nvarchar](255) NULL,
+    [Cli_Dest_Telefono] [numeric](14,0) NULL,
+    [Cli_Dest_Mail] [nvarchar](255) NULL,
+    [Cli_Dest_Fecha_Nac] [datetime] NULL,
+    [Cli_Dest_Ciudad] [nvarchar](255) NULL,
+	[Provee_RS] [nvarchar](100) NULL,
+	[Provee_Dom] [nvarchar](255) NULL,
+	[Provee_Ciudad] [nvarchar](255) NULL,
+	[Provee_Telefono] [numeric](14,0) NULL,
+	[Provee_CUIT] [numeric] (11,0) NULL,
+	[Provee_Rubro] [nvarchar](255) NULL,
+	[Oferta_Precio] [numeric](18, 0) NULL,
+	[Oferta_Precio_Ficticio] [numeric](18, 0) NULL,
+	[Oferta_Fecha] [datetime] NULL,
+	[Oferta_Fecha_Venc] [datetime] NULL,
+	[Oferta_Cantidad] [numeric](18, 0) NULL,
+	[Oferta_Descripcion] [nvarchar](255) NULL,
+	[Oferta_Fecha_Compra] [datetime] NULL,
+	[Oferta_Codigo] [smallint] NULL,
+	[Oferta_Entregado_Fecha] [datetime] NULL,
+	[Factura_Nro] [numeric](18, 0) NULL,
+	[Factura_Fecha] [datetime] NULL
+) ON [PRIMARY]
 
-INSERT INTO dbo.Funcion_Por_Rol(ID_Rol,ID_Func)
-Values(2,2)
-INSERT INTO dbo.Funcion_Por_Rol(ID_Rol,ID_Func)
-Values(2,5)
-INSERT INTO dbo.Funcion_Por_Rol(ID_Rol,ID_Func)
-Values(2,7)
 
-INSERT INTO dbo.Funcion_Por_Rol(ID_Rol,ID_Func)
-Values(3,2)
-INSERT INTO dbo.Funcion_Por_Rol(ID_Rol,ID_Func)
-Values(3,6)
-INSERT INTO dbo.Funcion_Por_Rol(ID_Rol,ID_Func)
-Values(3,8)
+/* Creacion de las 16 FOREIGN KEYS */
+
+ALTER TABLE HPBC.Cliente WITH CHECK ADD CONSTRAINT FK_ID_USUARIO  FOREIGN KEY(clie_usuario_ID)
+REFERENCES HPBC.Usuario(usuario_id)
+GO
+
+ALTER TABLE HPBC.Proveedor WITH CHECK ADD CONSTRAINT FK_ID_Proveedor FOREIGN KEY(Provee_usuario_id)
+REFERENCES HPBC.Usuario(usuario_id)
+GO
+
+ALTER TABLE HPBC.Rol_Por_Usuario WITH CHECK ADD CONSTRAINT FK_ID_Rol FOREIGN KEY(ID_Rol)
+REFERENCES HPBC.Rol(Rol_ID)
+GO
+
+ALTER TABLE HPBC.Rol_Por_Usuario WITH CHECK ADD CONSTRAINT FK_ID_Usuario FOREIGN KEY(ID_Usuario)
+REFERENCES HPBC.Usuario(usuario_id)
+GO
+
+ALTER TABLE HPBC.Funcion_Por_Rol WITH CHECK ADD CONSTRAINT FK_ID_Rol FOREIGN KEY(Rol_ID)
+REFERENCES HPBC.Rol(Rol_ID)
+GO
+
+ALTER TABLE HPBC.Funcion_Por_Rol WITH CHECK ADD CONSTRAINT FK_ID_Funcion FOREIGN KEY(Func_ID)
+REFERENCES HPBC.Funcion(Func_ID)
+GO
+
+ALTER TABLE HPBC.Oferta WITH CHECK ADD CONSTRAINT FK_ID_Oferta FOREIGN KEY(Ofe_ID_Proveedor)
+REFERENCES HPBC.Proveedor(Provee_ID)
+GO
+
+ALTER TABLE HPBC.Proveedor WITH CHECK ADD CONSTRAINT FK_Provee_Rubro FOREIGN KEY(Provee_Rubro)
+REFERENCES HPBC.Rubro(Rubro_ID)
+GO
+
+ALTER TABLE HPBC.Compra WITH CHECK ADD CONSTRAINT FK_ID_Oferta FOREIGN KEY(Compra_ID_Oferta)
+REFERENCES HPBC.Oferta(Ofe_ID)
+GO
+
+ALTER TABLE HPBC.Compra WITH CHECK ADD CONSTRAINT FK_ID_Clie FOREIGN KEY(Compra_ID_Clie_Dest)
+REFERENCES HPBC.Cliente(clie_ID)
+GO
+
+ALTER TABLE HPBC.Cupon WITH CHECK ADD CONSTRAINT FK_Cupon_ID_Compra FOREIGN KEY (Cupon_ID_Compra)
+REFERENCES HPBC.Compra(Compra_ID)
+GO
+
+ALTER TABLE HPBC.Credito WITH CHECK ADD CONSTRAINT FK_Credito_ID_Clie FOREIGN KEY (Credito_ID_Clie)
+REFERENCES HPBC.Cliente(clie_ID)
+GO
+
+ALTER TABLE HPBC.Credito WITH CHECK ADD CONSTRAINT FK_Credito_ID_Tarjeta FOREIGN KEY (Credito_ID_Tarjeta)
+REFERENCES HPBC.Tipo_Pago(Tipo_Pago_ID)
+GO
+
+ALTER TABLE HPBC.Factura WITH CHECK ADD CONSTRAINT FK_Fact_ID_Proveedor FOREIGN KEY (Fact_ID_Proveedor)
+REFERENCES HPBC.Proveedor(Provee_ID)
+GO
+
+ALTER TABLE HPBC.Detalle_Fact WITH CHECK ADD CONSTRAINT FK_Detalle_ID_Fact FOREIGN KEY (Detalle_ID_Fact)
+REFERENCES HPBC.Factura(Fact_ID)
+GO
+
+ALTER TABLE HPCB.Detalle_Fact  WITH CHECK ADD CONSTRAINT FK_Detalle_ID_Compra FOREIGN KEY (Detalle_ID_Compra)
+REFERENCES HPBC.Compra(Compra_ID)
+GO
+
+--INSERT INTO dbo.Funcion(ID_Func,Funcion_Nombre)
+--Values(1,'AMB DE ROL')
+--INSERT INTO dbo.Funcion(ID_Func,Funcion_Nombre)
+--Values(2,'REGISTRO')
+--INSERT INTO dbo.Funcion(ID_Func,Funcion_Nombre)
+--Values(3,'AMB DE CLIENTES')
+--INSERT INTO dbo.Funcion(ID_Func,Funcion_Nombre)
+--Values(4,'AMB DE PROVEDOR')
+--INSERT INTO dbo.Funcion(ID_Func,Funcion_Nombre)
+--Values(5,'CARGA DE CREDITO')
+--INSERT INTO dbo.Funcion(ID_Func,Funcion_Nombre)
+--Values(6,'CONFECCION Y PUBLICACION DE OFERTAS')
+--INSERT INTO dbo.Funcion(ID_Func,Funcion_Nombre)
+--Values(7,'COMPRAR OFERTA')
+--INSERT INTO dbo.Funcion(ID_Func,Funcion_Nombre)
+--Values(8,'ENTREGA/CONSUMO DE OFERTA')
+--INSERT INTO dbo.Funcion(ID_Func,Funcion_Nombre)
+--Values(9,'FACTURACION PROVEDOR')
+--INSERT INTO dbo.Funcion(ID_Func,Funcion_Nombre)
+--Values(10,'LISTADO ESTADISTICO')
+
+
+--INSERT INTO dbo.Rol(ID_Rol,Rol_Nombre)
+--Values(1,'Administrativo')
+--INSERT INTO dbo.Rol(ID_Rol,Rol_Nombre)
+--Values(2,'Cliente')
+--INSERT INTO dbo.Rol(ID_Rol,Rol_Nombre)
+--Values(3,'Provedor')
+--/*le doy a los roles sus funcs*/
+--INSERT INTO dbo.Funcion_Por_Rol(ID_Rol,ID_Func)
+--Values(1,1)
+--INSERT INTO dbo.Funcion_Por_Rol(ID_Rol,ID_Func)
+--Values(1,3)
+--INSERT INTO dbo.Funcion_Por_Rol(ID_Rol,ID_Func)
+--Values(1,4)
+--INSERT INTO dbo.Funcion_Por_Rol(ID_Rol,ID_Func)
+--Values(1,9)
+--INSERT INTO dbo.Funcion_Por_Rol(ID_Rol,ID_Func)
+--Values(1,10)
+
+--INSERT INTO dbo.Funcion_Por_Rol(ID_Rol,ID_Func)
+--Values(2,2)
+--INSERT INTO dbo.Funcion_Por_Rol(ID_Rol,ID_Func)
+--Values(2,5)
+--INSERT INTO dbo.Funcion_Por_Rol(ID_Rol,ID_Func)
+--Values(2,7)
+
+--INSERT INTO dbo.Funcion_Por_Rol(ID_Rol,ID_Func)
+--Values(3,2)
+--INSERT INTO dbo.Funcion_Por_Rol(ID_Rol,ID_Func)
+--Values(3,6)
+--INSERT INTO dbo.Funcion_Por_Rol(ID_Rol,ID_Func)
+--Values(3,8)

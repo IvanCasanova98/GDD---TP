@@ -39,3 +39,5 @@ C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.csproj
 C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.AbmRol.AltaRol.resources
 C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.AbmCliente.ModificacionCliente.resources
 C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.AbmProveedor.ModificacionProveedor.resources
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.AbmCliente.ListadoCliente.resources
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.AbmProveedor.ListadoProveedor.resources
