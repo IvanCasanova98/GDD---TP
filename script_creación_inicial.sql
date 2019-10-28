@@ -224,8 +224,8 @@ CREATE TABLE HPBC.Rubro(
 )ON [PRIMARY]
 GO
 
-
-CREATE TABLE HPBC.TablaMaestra(
+IF NOT EXISTS (select * from sysobjects where name='TablaTemporal' and xtype='U')
+CREATE TABLE HPBC.TablaTemporal(
 	[Cli_Nombre] [nvarchar](255) NULL,
 	[Cli_Apellido] [nvarchar](255) NULL,
 	[Cli_Dni] [numeric](18, 0) NULL,
@@ -267,120 +267,168 @@ CREATE TABLE HPBC.TablaMaestra(
 
 /* Creacion de las 16 FOREIGN KEYS */
 
-ALTER TABLE HPBC.Cliente WITH CHECK ADD CONSTRAINT FK_ID_USUARIO  FOREIGN KEY(clie_usuario_ID)
+IF NOT EXISTS (select * from sysobjects where name='FK_Cliente_ID_Usuario' and xtype='F')
+ALTER TABLE HPBC.Cliente WITH CHECK ADD CONSTRAINT FK_Cliente_ID_Usuario  FOREIGN KEY(clie_usuario_ID)
 REFERENCES HPBC.Usuario(usuario_id)
 GO
 
-ALTER TABLE HPBC.Proveedor WITH CHECK ADD CONSTRAINT FK_ID_Proveedor FOREIGN KEY(Provee_usuario_id)
+IF NOT EXISTS (select * from sysobjects where name='FK_Provedor_ID_Usuario' and xtype='F')
+ALTER TABLE HPBC.Proveedor WITH CHECK ADD CONSTRAINT FK_Provedor_ID_Usuario FOREIGN KEY(Provee_usuario_id)
 REFERENCES HPBC.Usuario(usuario_id)
 GO
 
-ALTER TABLE HPBC.Rol_Por_Usuario WITH CHECK ADD CONSTRAINT FK_ID_Rol FOREIGN KEY(ID_Rol)
+IF NOT EXISTS (select * from sysobjects where name='FK_Usuario_ID_Rol' and xtype='F')
+ALTER TABLE HPBC.Rol_Por_Usuario WITH CHECK ADD CONSTRAINT FK_Usuario_ID_Rol FOREIGN KEY(ID_Rol)
 REFERENCES HPBC.Rol(Rol_ID)
 GO
 
-ALTER TABLE HPBC.Rol_Por_Usuario WITH CHECK ADD CONSTRAINT FK_ID_Usuario FOREIGN KEY(ID_Usuario)
+IF NOT EXISTS (select * from sysobjects where name='FK_Rol_ID_Usuario' and xtype='F')
+ALTER TABLE HPBC.Rol_Por_Usuario WITH CHECK ADD CONSTRAINT FK_Rol_ID_Usuario FOREIGN KEY(ID_Usuario)
 REFERENCES HPBC.Usuario(usuario_id)
 GO
 
-ALTER TABLE HPBC.Funcion_Por_Rol WITH CHECK ADD CONSTRAINT FK_ID_Rol FOREIGN KEY(Rol_ID)
+IF NOT EXISTS (select * from sysobjects where name='FK_Funcion_ID_Rol' and xtype='F')
+ALTER TABLE HPBC.Funcion_Por_Rol WITH CHECK ADD CONSTRAINT FK_Funcion_ID_Rol FOREIGN KEY(Rol_ID)
 REFERENCES HPBC.Rol(Rol_ID)
 GO
 
-ALTER TABLE HPBC.Funcion_Por_Rol WITH CHECK ADD CONSTRAINT FK_ID_Funcion FOREIGN KEY(Func_ID)
+IF NOT EXISTS (select * from sysobjects where name='FK_Rol_ID_Funcion' and xtype='F')
+ALTER TABLE HPBC.Funcion_Por_Rol WITH CHECK ADD CONSTRAINT FK_Rol_ID_Funcion FOREIGN KEY(Func_ID)
 REFERENCES HPBC.Funcion(Func_ID)
 GO
 
-ALTER TABLE HPBC.Oferta WITH CHECK ADD CONSTRAINT FK_ID_Oferta FOREIGN KEY(Ofe_ID_Proveedor)
+
+IF NOT EXISTS (select * from sysobjects where name='FK_Oferta_ID_Provedor' and xtype='F')
+ALTER TABLE HPBC.Oferta WITH CHECK ADD CONSTRAINT FK_Oferta_ID_Provedor FOREIGN KEY(Ofe_ID_Proveedor)
 REFERENCES HPBC.Proveedor(Provee_ID)
 GO
 
-ALTER TABLE HPBC.Proveedor WITH CHECK ADD CONSTRAINT FK_Provee_Rubro FOREIGN KEY(Provee_Rubro)
+IF NOT EXISTS (select * from sysobjects where name='FK_Provee_ID_Rubro' and xtype='F')
+ALTER TABLE HPBC.Proveedor WITH CHECK ADD CONSTRAINT FK_Provee_ID_Rubro FOREIGN KEY(Provee_Rubro)
 REFERENCES HPBC.Rubro(Rubro_ID)
 GO
 
-ALTER TABLE HPBC.Compra WITH CHECK ADD CONSTRAINT FK_ID_Oferta FOREIGN KEY(Compra_ID_Oferta)
+
+IF NOT EXISTS (select * from sysobjects where name='FK_Compra_ID_Oferta' and xtype='F')
+ALTER TABLE HPBC.Compra WITH CHECK ADD CONSTRAINT FK_Compra_ID_Oferta FOREIGN KEY(Compra_ID_Oferta)
 REFERENCES HPBC.Oferta(Ofe_ID)
 GO
 
-ALTER TABLE HPBC.Compra WITH CHECK ADD CONSTRAINT FK_ID_Clie FOREIGN KEY(Compra_ID_Clie_Dest)
+IF NOT EXISTS (select * from sysobjects where name='FK_Compra_ID_Clie' and xtype='F')
+ALTER TABLE HPBC.Compra WITH CHECK ADD CONSTRAINT FK_Compra_ID_Clie FOREIGN KEY(Compra_ID_Clie_Dest)
 REFERENCES HPBC.Cliente(clie_ID)
 GO
 
+IF NOT EXISTS (select * from sysobjects where name='FK_Cupon_ID_Compra' and xtype='F')
 ALTER TABLE HPBC.Cupon WITH CHECK ADD CONSTRAINT FK_Cupon_ID_Compra FOREIGN KEY (Cupon_ID_Compra)
 REFERENCES HPBC.Compra(Compra_ID)
 GO
 
+
+IF NOT EXISTS (select * from sysobjects where name='FK_Credito_ID_Clie' and xtype='F')
 ALTER TABLE HPBC.Credito WITH CHECK ADD CONSTRAINT FK_Credito_ID_Clie FOREIGN KEY (Credito_ID_Clie)
 REFERENCES HPBC.Cliente(clie_ID)
 GO
 
+IF NOT EXISTS (select * from sysobjects where name='FK_Credito_ID_Tarjeta' and xtype='F')
 ALTER TABLE HPBC.Credito WITH CHECK ADD CONSTRAINT FK_Credito_ID_Tarjeta FOREIGN KEY (Credito_ID_Tarjeta)
 REFERENCES HPBC.Tipo_Pago(Tipo_Pago_ID)
 GO
 
+IF NOT EXISTS (select * from sysobjects where name='FK_Fact_ID_Proveedor' and xtype='F')
 ALTER TABLE HPBC.Factura WITH CHECK ADD CONSTRAINT FK_Fact_ID_Proveedor FOREIGN KEY (Fact_ID_Proveedor)
 REFERENCES HPBC.Proveedor(Provee_ID)
 GO
 
+IF NOT EXISTS (select * from sysobjects where name='FK_Detalle_ID_Fact' and xtype='F')
 ALTER TABLE HPBC.Detalle_Fact WITH CHECK ADD CONSTRAINT FK_Detalle_ID_Fact FOREIGN KEY (Detalle_ID_Fact)
 REFERENCES HPBC.Factura(Fact_ID)
 GO
 
-ALTER TABLE HPCB.Detalle_Fact  WITH CHECK ADD CONSTRAINT FK_Detalle_ID_Compra FOREIGN KEY (Detalle_ID_Compra)
+IF NOT EXISTS (select * from sysobjects where name='FK_Detalle_ID_Compra' and xtype='F')
+ALTER TABLE HPBC.Detalle_Fact  WITH CHECK ADD CONSTRAINT FK_Detalle_ID_Compra FOREIGN KEY (Detalle_ID_Compra)
 REFERENCES HPBC.Compra(Compra_ID)
 GO
 
---INSERT INTO dbo.Funcion(ID_Func,Funcion_Nombre)
---Values(1,'AMB DE ROL')
---INSERT INTO dbo.Funcion(ID_Func,Funcion_Nombre)
---Values(2,'REGISTRO')
---INSERT INTO dbo.Funcion(ID_Func,Funcion_Nombre)
---Values(3,'AMB DE CLIENTES')
---INSERT INTO dbo.Funcion(ID_Func,Funcion_Nombre)
---Values(4,'AMB DE PROVEDOR')
---INSERT INTO dbo.Funcion(ID_Func,Funcion_Nombre)
---Values(5,'CARGA DE CREDITO')
---INSERT INTO dbo.Funcion(ID_Func,Funcion_Nombre)
---Values(6,'CONFECCION Y PUBLICACION DE OFERTAS')
---INSERT INTO dbo.Funcion(ID_Func,Funcion_Nombre)
---Values(7,'COMPRAR OFERTA')
---INSERT INTO dbo.Funcion(ID_Func,Funcion_Nombre)
---Values(8,'ENTREGA/CONSUMO DE OFERTA')
---INSERT INTO dbo.Funcion(ID_Func,Funcion_Nombre)
---Values(9,'FACTURACION PROVEDOR')
---INSERT INTO dbo.Funcion(ID_Func,Funcion_Nombre)
---Values(10,'LISTADO ESTADISTICO')
+
+IF EXISTS (SELECT name FROM sysobjects WHERE name='limpiar_tablas' AND type='p')
+DROP PROCEDURE dbo.limpiar_tablas
+GO
+CREATE PROCEDURE limpiar_tablas
+AS
+BEGIN
+DELETE FROM [HPBC].[Administrativo]
+DELETE FROM [HPBC].[Cliente]
+DELETE FROM [HPBC].[Compra]
+DELETE FROM [HPBC].[Credito]
+DELETE FROM [HPBC].[Cupon]
+DELETE FROM [HPBC].[Detalle_Fact]
+DELETE FROM [HPBC].[Factura]
+DELETE FROM [HPBC].[Funcion]
+DELETE FROM [HPBC].[Funcion_Por_Rol]
+DELETE FROM [HPBC].[Oferta]
+DELETE FROM [HPBC].[Proveedor]
+DELETE FROM [HPBC].[Rol]
+DELETE FROM [HPBC].[Rol_Por_Usuario]
+DELETE FROM [HPBC].[Rubro]
+DELETE FROM [HPBC].[Tipo_Pago]
+DELETE FROM [HPBC].[TablaTemporal]
+DELETE FROM [HPBC].[Usuario]
+END
+
+EXEC dbo.limpiar_tablas
+GO
 
 
---INSERT INTO dbo.Rol(ID_Rol,Rol_Nombre)
---Values(1,'Administrativo')
---INSERT INTO dbo.Rol(ID_Rol,Rol_Nombre)
---Values(2,'Cliente')
---INSERT INTO dbo.Rol(ID_Rol,Rol_Nombre)
---Values(3,'Provedor')
---/*le doy a los roles sus funcs*/
---INSERT INTO dbo.Funcion_Por_Rol(ID_Rol,ID_Func)
---Values(1,1)
---INSERT INTO dbo.Funcion_Por_Rol(ID_Rol,ID_Func)
---Values(1,3)
---INSERT INTO dbo.Funcion_Por_Rol(ID_Rol,ID_Func)
---Values(1,4)
---INSERT INTO dbo.Funcion_Por_Rol(ID_Rol,ID_Func)
---Values(1,9)
---INSERT INTO dbo.Funcion_Por_Rol(ID_Rol,ID_Func)
---Values(1,10)
+INSERT INTO HPBC.Funcion(Func_detalle)
+Values('AMB DE ROL')
+INSERT INTO HPBC.Funcion(Func_detalle)
+Values('REGISTRO')
+INSERT INTO HPBC.Funcion(Func_detalle)
+Values('AMB DE CLIENTES')
+INSERT INTO HPBC.Funcion(Func_detalle)
+Values('AMB DE PROVEDOR')
+INSERT INTO HPBC.Funcion(Func_detalle)
+Values('CARGA DE CREDITO')
+INSERT INTO HPBC.Funcion(Func_detalle)
+Values('CONFECCION Y PUBLICACION DE OFERTAS')
+INSERT INTO HPBC.Funcion(Func_detalle)
+Values('COMPRAR OFERTA')
+INSERT INTO HPBC.Funcion(Func_detalle)
+Values('ENTREGA/CONSUMO DE OFERTA')
+INSERT INTO HPBC.Funcion(Func_detalle)
+Values('FACTURACION PROVEDOR')
+INSERT INTO HPBC.Funcion(Func_detalle)
+Values('LISTADO ESTADISTICO')
 
---INSERT INTO dbo.Funcion_Por_Rol(ID_Rol,ID_Func)
---Values(2,2)
---INSERT INTO dbo.Funcion_Por_Rol(ID_Rol,ID_Func)
---Values(2,5)
---INSERT INTO dbo.Funcion_Por_Rol(ID_Rol,ID_Func)
---Values(2,7)
+INSERT INTO HPBC.Rol(Rol_detalle)
+Values('Administrativo')
+INSERT INTO HPBC.Rol(Rol_detalle)
+Values('Cliente')
+INSERT INTO HPBC.Rol(Rol_detalle)
+Values('Provedor')
+/*le doy a los roles sus funcs*/
+INSERT INTO HPBC.Funcion_Por_Rol(Rol_ID,Func_ID)
+Values(1,1)
+INSERT INTO HPBC.Funcion_Por_Rol(Rol_ID,Func_ID)
+Values(1,3)
+INSERT INTO HPBC.Funcion_Por_Rol(Rol_ID,Func_ID)
+Values(1,4)
+INSERT INTO HPBC.Funcion_Por_Rol(Rol_ID,Func_ID)
+Values(1,9)
+INSERT INTO HPBC.Funcion_Por_Rol(Rol_ID,Func_ID)
+Values(1,10)
 
---INSERT INTO dbo.Funcion_Por_Rol(ID_Rol,ID_Func)
---Values(3,2)
---INSERT INTO dbo.Funcion_Por_Rol(ID_Rol,ID_Func)
---Values(3,6)
---INSERT INTO dbo.Funcion_Por_Rol(ID_Rol,ID_Func)
---Values(3,8)
+INSERT INTO HPBC.Funcion_Por_Rol(Rol_ID,Func_ID)
+Values(2,2)
+INSERT INTO HPBC.Funcion_Por_Rol(Rol_ID,Func_ID)
+Values(2,5)
+INSERT INTO HPBC.Funcion_Por_Rol(Rol_ID,Func_ID)
+Values(2,7)
+
+INSERT INTO HPBC.Funcion_Por_Rol(Rol_ID,Func_ID)
+Values(3,2)
+INSERT INTO HPBC.Funcion_Por_Rol(Rol_ID,Func_ID)
+Values(3,6)
+INSERT INTO HPBC.Funcion_Por_Rol(Rol_ID,Func_ID)
+Values(3,8)
