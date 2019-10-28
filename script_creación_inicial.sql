@@ -352,9 +352,9 @@ GO
 
 
 IF EXISTS (SELECT name FROM sysobjects WHERE name='limpiar_tablas' AND type='p')
-DROP PROCEDURE dbo.limpiar_tablas
+DROP PROCEDURE HPBC.limpiar_tablas
 GO
-CREATE PROCEDURE limpiar_tablas
+CREATE PROCEDURE HPBC.limpiar_tablas
 AS
 BEGIN
 DELETE FROM [HPBC].[Administrativo]
@@ -376,7 +376,7 @@ DELETE FROM [HPBC].[TablaTemporal]
 DELETE FROM [HPBC].[Usuario]
 END
 
-EXEC dbo.limpiar_tablas
+EXEC HPBC.limpiar_tablas
 GO
 
 
@@ -432,3 +432,20 @@ INSERT INTO HPBC.Funcion_Por_Rol(Rol_ID,Func_ID)
 Values(3,6)
 INSERT INTO HPBC.Funcion_Por_Rol(Rol_ID,Func_ID)
 Values(3,8)
+
+--admin
+INSERT INTO HPBC.Usuario(usuario_username, usuario_password, usuario_habilitado, usuario_bloqueado, usuario_cant_logeo_error)
+VALUES('admin','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918',1,0,0)
+
+GO
+
+--Creo triggers para bajas logicas
+
+CREATE TRIGGER HPBC.trigger_baja_logica ON HPBC.Rol FOR UPDATE
+AS 
+BEGIN TRANSACTION
+	IF EXISTS(SELECT 1 FROM inserted i WHERE i.rol_habilitado = 0)
+	BEGIN
+		DELETE FROM HPBC.Rol_Por_Usuario
+		WHERE ID_Rol = (SELECT i.Rol_ID FROM inserted i)
+	END
