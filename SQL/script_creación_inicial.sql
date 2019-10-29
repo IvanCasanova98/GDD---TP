@@ -144,10 +144,10 @@ GO
 
 IF NOT EXISTS (select * from sysobjects where name='Tipo_Pago' and xtype='U')
 CREATE TABLE HPBC.Tipo_Pago(
-	Tipo_Pago_ID INT identity(1,1) NOT NULL,
+	Tipo_Pago_ID INT NOT NULL identity(1,1) ,
 	Tarj_Detalle nvarchar(255) NOT NULL,
-	Tarj_Nro numeric(20,0) UNIQUE,
-	Tarj_Cod_Seg numeric(3,0),
+	Tarj_Nro numeric(20,0) null,
+	Tarj_Cod_Seg numeric(3,0) null,
  CONSTRAINT PK_Tipo_Pago PRIMARY KEY CLUSTERED(
 	Tipo_Pago_ID ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
@@ -230,47 +230,6 @@ CREATE TABLE HPBC.Rubro(
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 )ON [PRIMARY]
 GO
-
-IF NOT EXISTS (select * from sysobjects where name='TablaTemporal' and xtype='U')
-CREATE TABLE HPBC.TablaTemporal(
-	[Cli_Nombre] [nvarchar](255) NULL,
-	[Cli_Apellido] [nvarchar](255) NULL,
-	[Cli_Dni] [numeric](18, 0) NULL,
-	[Cli_Direccion] [nvarchar](255) NULL,
-	[Cli_Telefono] [numeric](14,0) NULL,
-	[Cli_Mail] [nvarchar](255) NULL,
-	[Cli_Fecha_Nac] [datetime] NULL,
-	[Cli_Ciudad] [nvarchar](255) NULL,
-	[Carga_Credito] [numeric](12,2) NULL,
-	[Carga_Fecha] [datetime] NULL,
-	[Tipo_Pago_Desc] [nvarchar](255) NULL,
-	[Cli_Dest_Nombre] [nvarchar](255) NULL,
-    [Cli_Dest_Apellido] [nvarchar](255) NULL,
-    [Cli_Dest_Dni] [numeric](18, 0) NULL,
-    [Cli_Dest_Direccion] [nvarchar](255) NULL,
-    [Cli_Dest_Telefono] [numeric](14,0) NULL,
-    [Cli_Dest_Mail] [nvarchar](255) NULL,
-    [Cli_Dest_Fecha_Nac] [datetime] NULL,
-    [Cli_Dest_Ciudad] [nvarchar](255) NULL,
-	[Provee_RS] [nvarchar](100) NULL,
-	[Provee_Dom] [nvarchar](255) NULL,
-	[Provee_Ciudad] [nvarchar](255) NULL,
-	[Provee_Telefono] [numeric](14,0) NULL,
-	[Provee_CUIT] [numeric] (11,0) NULL,
-	[Provee_Rubro] [nvarchar](255) NULL,
-	[Oferta_Precio] [numeric](18, 0) NULL,
-	[Oferta_Precio_Ficticio] [numeric](18, 0) NULL,
-	[Oferta_Fecha] [datetime] NULL,
-	[Oferta_Fecha_Venc] [datetime] NULL,
-	[Oferta_Cantidad] [numeric](18, 0) NULL,
-	[Oferta_Descripcion] [nvarchar](255) NULL,
-	[Oferta_Fecha_Compra] [datetime] NULL,
-	[Oferta_Codigo] [smallint] NULL,
-	[Oferta_Entregado_Fecha] [datetime] NULL,
-	[Factura_Nro] [numeric](18, 0) NULL,
-	[Factura_Fecha] [datetime] NULL
-) ON [PRIMARY]
-
 
 /* Creacion de las 16 FOREIGN KEYS */
 
@@ -386,9 +345,9 @@ DELETE FROM [HPBC].[Rol]
 DELETE FROM [HPBC].[Rol_Por_Usuario]
 DELETE FROM [HPBC].[Rubro]
 DELETE FROM [HPBC].[Tipo_Pago]
-DELETE FROM [HPBC].[TablaTemporal]
 DELETE FROM [HPBC].[Usuario]
 END
+GO
 
 EXEC HPBC.limpiar_tablas
 GO
@@ -468,11 +427,12 @@ BEGIN TRANSACTION
 COMMIT TRANSACTION
 GO
 
-
-/* CLIENTES */
-	/* Me traigo todos los clientes que sean distintos */
-
-	/*Se agrupa clientes de la tabla Maestra y se inserta en una tabla Temporal*/
+IF EXISTS (SELECT name FROM sysobjects WHERE name='pr_limpiar_tabla_maestra_clientes' AND type='p')
+DROP PROCEDURE HPBC.pr_limpiar_tabla_maestra_clientes
+GO
+CREATE PROCEDURE HPBC.pr_limpiar_tabla_maestra_clientes
+	AS
+	BEGIN
 	SELECT Cli_Nombre AS Nombre,Cli_Apellido AS Apellido,convert(nvarchar(255),Cli_Dni) AS Dni ,Cli_Direccion, Cli_Telefono AS Telefono, Cli_Mail as Email,Cli_Ciudad, Cli_Fecha_Nac
 	INTO #Temp_Clientes
 	FROM GD2C2019.gd_esquema.Maestra
@@ -509,6 +469,53 @@ GO
 	WHERE cantDni = 1 and cantEmail = 1 
 	ORDER BY dni
 	
-	/* No sirve mas */
+	
 	DROP TABLE #Temp_Cli_Incons;
+	END
+	GO
 
+
+EXEC HPBC.pr_limpiar_tabla_maestra_clientes
+GO
+
+CREATE TRIGGER HPBC.updatear_monto_por_carga ON HPBC.Credito for insert
+AS
+BEGIN TRANSACTION
+	UPDATE Cliente set clie_monto = clie_monto + (SELECT sum(Carga_Monto) from inserted where Credito_ID_Clie = clie_ID)
+	WHERE EXISTS(SELECT 1 FROM inserted WHERE Credito_ID_Clie = clie_ID)
+	
+COMMIT TRANSACTION
+GO
+
+IF EXISTS (SELECT name FROM sysobjects WHERE name='pr_cargar_tarjetas' AND type='p')
+DROP PROCEDURE HPBC.pr_cargar_tarjetas
+GO
+CREATE PROCEDURE HPBC.pr_cargar_tarjetas 
+AS
+BEGIN
+INSERT INTO HPBC.Tipo_Pago(Tarj_Detalle,Tarj_Nro,Tarj_Cod_Seg)
+SELECT DISTINCT Tipo_Pago_Desc, null,null from gd_esquema.Maestra
+WHERE Tipo_Pago_Desc is NOT NULL
+Group by Tipo_Pago_Desc
+END
+GO
+
+EXEC HPBC.pr_cargar_tarjetas
+GO
+
+
+IF EXISTS (SELECT name FROM sysobjects WHERE name='pr_cargar_creditos' AND type='p')
+DROP PROCEDURE HPBC.pr_cargar_creditos
+GO
+CREATE PROCEDURE HPBC.pr_cargar_creditos
+AS
+BEGIN
+INSERT INTO HPBC.Credito(Credito_ID_Clie,Carga_Fecha,Carga_Monto,Credito_ID_Tarjeta)
+SELECT clie_ID , gd.Carga_Fecha, gd.Carga_Credito, (SELECT Tipo_Pago_ID from HPBC.Tipo_Pago where gd.Tipo_Pago_Desc=Tarj_Detalle)
+from gd_esquema.Maestra gd  join HPBC.Cliente ON clie_dni = gd.Cli_Dni and clie_mail = gd.Cli_Mail
+WHERE  gd.Carga_Fecha IS NOT NULL AND gd.Carga_Credito IS NOT NULL and gd.Cli_Dni IS NOT NULL AND gd.Tipo_Pago_Desc IS NOT NULL
+END
+GO
+
+EXEC HPBC.pr_cargar_creditos
+GO
