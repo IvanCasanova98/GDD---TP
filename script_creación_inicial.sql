@@ -6,15 +6,25 @@ EXEC('create schema HPBC')
 END;
 GO
 
+create FUNCTION HPBC.Hash_Contraseña(@AEncriptar nvarchar(255))
+RETURNS varbinary(8000)
+BEGIN
+
+RETURN HASHBYTES('SHA2_256', @AEncriptar); 
+
+END
+GO
+
+
 IF NOT EXISTS (select * from sysobjects where name='Cliente' and xtype='U')
 CREATE TABLE HPBC.Cliente(
 	clie_ID INT NOT NULL IDENTITY(1,1),
 	clie_nombre nvarchar(255) NOT NULL,
 	clie_apellido nvarchar(255) NOT NULL,
-	clie_dni numeric(9,0) UNIQUE NOT NULL,
+	clie_dni numeric(18,0) UNIQUE NOT NULL,
 	clie_mail nvarchar(255) UNIQUE NOT NULL,
-	clie_tel numeric(14,0) UNIQUE NULL,
-	clie_direccion nvarchar(50) NOT NULL,
+	clie_tel numeric(18,0) UNIQUE NULL,
+	clie_direccion nvarchar(255) NOT NULL,
 	clie_fecha_nac date NOT NULL,
 	clie_ciudad nvarchar(255) NULL,
 	clie_localidad nvarchar(255) NULL,
@@ -32,7 +42,7 @@ IF NOT EXISTS (select * from sysobjects where name='Usuario' and xtype='U')
 CREATE TABLE HPBC.Usuario(
 	usuario_id INT NOT NULL IDENTITY(1,1),
 	usuario_username nvarchar(50) NOT NULL,
-	usuario_password nvarchar(255) NOT NULL,
+	usuario_password varbinary(8000) NOT NULL,
 	usuario_habilitado BIT NOT NULL,
 	usuario_bloqueado BIT NOT NULL,
 	usuario_cant_logeo_error INT NULL,
@@ -97,8 +107,6 @@ CREATE TABLE HPBC.Funcion(
 )ON [PRIMARY]
 GO
 
-
-
 IF NOT EXISTS (select * from sysobjects where name='Rol_Por_Usuario' and xtype='U')
 CREATE TABLE HPBC.Rol_Por_Usuario(
 	ID_Rol INT NOT NULL,
@@ -158,7 +166,6 @@ CREATE TABLE HPBC.Factura(
 )ON [PRIMARY]
 GO
 
-
 IF NOT EXISTS (select * from sysobjects where name='Oferta' and xtype='U')
 CREATE TABLE HPBC.Oferta(
 	Ofe_ID INT identity(1,1) NOT NULL,
@@ -171,12 +178,12 @@ CREATE TABLE HPBC.Oferta(
 	Ofe_Cant numeric(18,0),
 	Ofe_Fecha_Compra datetime,
 	Ofe_Cod smallint NOT NULL,
+	Ofe_Max_Cant_Por_Usuario numeric(18,0) null
  CONSTRAINT PK_Oferta PRIMARY KEY CLUSTERED(
 	Ofe_ID ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 )ON [PRIMARY]
 GO
-
 
 IF NOT EXISTS (select * from sysobjects where name='Compra' and xtype='U')
 CREATE TABLE HPBC.Compra(
@@ -350,6 +357,13 @@ ALTER TABLE HPBC.Detalle_Fact  WITH CHECK ADD CONSTRAINT FK_Detalle_ID_Compra FO
 REFERENCES HPBC.Compra(Compra_ID)
 GO
 
+USE [master]
+GO
+ALTER DATABASE [GD2C2019] SET READ_WRITE 
+GO
+USE GD2C2019;
+GO
+
 
 IF EXISTS (SELECT name FROM sysobjects WHERE name='limpiar_tablas' AND type='p')
 DROP PROCEDURE HPBC.limpiar_tablas
@@ -435,13 +449,15 @@ Values(3,8)
 
 --admin
 INSERT INTO HPBC.Usuario(usuario_username, usuario_password, usuario_habilitado, usuario_bloqueado, usuario_cant_logeo_error)
-VALUES('admin','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918',1,0,0)
-
+VALUES('admin',HASHBYTES('SHA2_256','admin'),1,0,0)
+GO
+INSERT INTO HPBC.Rol_Por_Usuario(ID_Rol ,ID_Usuario)
+SELECT 1, (SELECT usuario_id from  HPBC.Usuario WHERE usuario_username= 'admin')
 GO
 
 --Creo triggers para bajas logicas
 
-CREATE TRIGGER HPBC.trigger_baja_logica ON HPBC.Rol FOR UPDATE
+create TRIGGER HPBC.trigger_baja_logica ON HPBC.Rol FOR UPDATE
 AS 
 BEGIN TRANSACTION
 	IF EXISTS(SELECT 1 FROM inserted i WHERE i.rol_habilitado = 0)
@@ -449,3 +465,50 @@ BEGIN TRANSACTION
 		DELETE FROM HPBC.Rol_Por_Usuario
 		WHERE ID_Rol = (SELECT i.Rol_ID FROM inserted i)
 	END
+COMMIT TRANSACTION
+GO
+
+
+/* CLIENTES */
+	/* Me traigo todos los clientes que sean distintos */
+
+	/*Se agrupa clientes de la tabla Maestra y se inserta en una tabla Temporal*/
+	SELECT Cli_Nombre AS Nombre,Cli_Apellido AS Apellido,convert(nvarchar(255),Cli_Dni) AS Dni ,Cli_Direccion, Cli_Telefono AS Telefono, Cli_Mail as Email,Cli_Ciudad, Cli_Fecha_Nac
+	INTO #Temp_Clientes
+	FROM GD2C2019.gd_esquema.Maestra
+	WHERE Cli_Dni IS NOT NULL AND Cli_Mail IS NOT NULL
+	GROUP BY Cli_Nombre,Cli_Apellido,Cli_Dni,Cli_Fecha_Nac,Cli_Mail,Cli_Direccion,Cli_Telefono,Cli_Ciudad;
+	
+	/*Se busca si existe incosistencia en los datos mediante otra tabla Temporal*/
+	SELECT  Nombre,Apellido,Dni,Cli_Fecha_Nac,Email,Cli_Direccion,Telefono,Cli_Ciudad,row_number() OVER(PARTITION BY Dni ORDER BY Email) AS cantDni,row_number() OVER(PARTITION BY Email ORDER BY Email) AS cantEmail
+	INTO #Temp_Cli_Incons
+	FROM #Temp_Clientes
+	GROUP BY Nombre,Apellido,Dni,Cli_Fecha_Nac,Email,Cli_Direccion,Telefono,Cli_Ciudad;
+	
+	/* Borro la primer tabla temporal, ya que no sirve mas */
+	DROP TABLE #Temp_Clientes;
+	
+	/* Se cren los usuarios de los Clientes */
+	INSERT INTO HPBC.Usuario (usuario_username, usuario_password, usuario_habilitado, usuario_bloqueado, usuario_cant_logeo_error)
+	SELECT Dni AS username , HASHBYTES('SHA2_256',Dni), 1, 0, 0
+	FROM #Temp_Cli_Incons
+	WHERE cantDni = 1 AND cantEmail = 1 
+	
+	/* Se les asigna el Rol de Cliente */
+	INSERT INTO HPBC.Rol_Por_Usuario(ID_Rol ,ID_Usuario)
+	SELECT 2, usuario_id 
+	FROM HPBC.Usuario
+	WHERE usuario_id NOT IN (SELECT ID_Usuario FROM HPBC.Rol_Por_Usuario)
+	
+	/* Ahora si se insertan los Clientes */
+	INSERT INTO HPBC.Cliente (clie_nombre, clie_apellido,  clie_dni, clie_mail, clie_tel, clie_direccion, clie_fecha_nac, clie_ciudad,clie_localidad, clie_habilitado,clie_monto, clie_usuario_id)
+	SELECT Nombre, Apellido, convert(numeric(18,0),Dni),  Email, Telefono, Cli_Direccion,Cli_Fecha_Nac,Cli_Ciudad,null, 1,200 ,u.usuario_id
+	FROM #Temp_Cli_Incons 
+	INNER JOIN HPBC.Usuario u
+	ON Dni = u.usuario_username
+	WHERE cantDni = 1 and cantEmail = 1 
+	ORDER BY dni
+	
+	/* No sirve mas */
+	DROP TABLE #Temp_Cli_Incons;
+
