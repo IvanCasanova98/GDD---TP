@@ -63,9 +63,9 @@ CREATE TABLE HPBC.Proveedor(
 	Provee_Localidad varchar(255),
 	Provee_Ciudad varchar(255),
 	Provee_CodPostal numeric(4,0),
-	Provee_Mail varchar(255) UNIQUE,
-	Provee_CUIT numeric(11,0) UNIQUE NOT NULL,
-	Provee_Tel numeric(14,0) UNIQUE,
+	Provee_Mail varchar(255) ,
+	Provee_CUIT nvarchar(255) UNIQUE NOT NULL,
+	Provee_Tel numeric(14,0) ,
 	Provee_NombreContacto varchar(100),
 	Provee_Habilitado Bit NOT NULL,
 	Provee_Rubro INT,
@@ -178,7 +178,8 @@ CREATE TABLE HPBC.Oferta(
 	Ofe_Cant numeric(18,0),
 	Ofe_Fecha_Compra datetime,
 	Ofe_Cod smallint NOT NULL,
-	Ofe_Max_Cant_Por_Usuario numeric(18,0) null
+	Ofe_Max_Cant_Por_Usuario numeric(18,0) null,
+	Ofe_Accesible BIT DEFAULT 1
  CONSTRAINT PK_Oferta PRIMARY KEY CLUSTERED(
 	Ofe_ID ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
@@ -519,3 +520,62 @@ GO
 
 EXEC HPBC.pr_cargar_creditos
 GO
+
+
+IF EXISTS (SELECT name FROM sysobjects WHERE name='pr_cargar_rubros' AND type='p')
+DROP PROCEDURE HPBC.pr_cargar_rubros
+GO
+CREATE PROCEDURE HPBC.pr_cargar_rubros
+AS
+BEGIN
+INSERT INTO HPBC.Rubro(Rubro_detalle)
+SELECT DISTINCT Provee_Rubro from gd_esquema.Maestra
+where Provee_Rubro is not null
+END
+GO
+
+EXEC HPBC.pr_cargar_rubros
+GO
+
+IF EXISTS (SELECT name FROM sysobjects WHERE name='pr_cargar_provedores' AND type='p')
+DROP PROCEDURE HPBC.pr_cargar_provedores
+GO
+CREATE PROCEDURE HPBC.pr_cargar_provedores
+AS
+BEGIN
+	SELECT Provee_RS AS RS,Provee_Dom AS Domicilio,Provee_Telefono AS Telefono, REPLACE(Provee_CUIT,'-','') AS CUIT ,Provee_Rubro, Provee_Ciudad as Ciudad
+	INTO #Temp_Provee
+	FROM GD2C2019.gd_esquema.Maestra
+	WHERE Provee_RS IS NOT NULL AND Provee_CUIT IS NOT NULL
+	GROUP BY Provee_RS,Provee_Dom,Provee_Telefono,Provee_CUIT,Provee_Rubro,Provee_Ciudad
+	
+	SELECT  RS,Domicilio,Telefono,CUIT,Provee_Rubro,Ciudad,row_number() OVER(PARTITION BY RS ORDER BY CUIT) AS cantRS,row_number() OVER(PARTITION BY CUIT ORDER BY CUIT) AS cantCUIT
+	INTO #Temp_Provee_Incons
+	FROM #Temp_Provee
+	GROUP BY RS,Domicilio,Telefono,CUIT,Provee_Rubro,Ciudad
+
+	DROP TABLE #Temp_Provee;
+	
+	/* Se cren los usuarios de los Clientes */
+	INSERT INTO HPBC.Usuario (usuario_username, usuario_password, usuario_habilitado, usuario_bloqueado, usuario_cant_logeo_error)
+	SELECT CUIT AS username , HASHBYTES('SHA2_256',CUIT), 1, 0, 0
+	FROM #Temp_Provee_Incons
+	WHERE cantRS = 1 AND cantCUIT = 1
+
+	INSERT INTO HPBC.Rol_Por_Usuario(ID_Rol ,ID_Usuario)
+	SELECT 1, usuario_id 
+	FROM HPBC.Usuario
+	WHERE usuario_id NOT IN (SELECT ID_Usuario FROM HPBC.Rol_Por_Usuario)
+
+
+	INSERT INTO HPBC.Proveedor(Provee_Rs, Provee_Calle, Provee_Piso,Provee_Dpto,Provee_Localidad,Provee_Ciudad,Provee_CodPostal,Provee_Mail,Provee_CUIT,Provee_Tel,Provee_NombreContacto,Provee_Habilitado,Provee_Rubro,Provee_usuario_id)
+	SELECT RS, Domicilio,null,null,null,Ciudad,null,null, CUIT,  Telefono, null, 1,(SELECT Rubro_ID from HPBC.Rubro where Rubro_detalle = Provee_Rubro) ,u.usuario_id
+	FROM #Temp_Provee_Incons 
+	INNER JOIN HPBC.Usuario u
+	ON CUIT = u.usuario_username
+	WHERE cantCUIT = 1 and cantRS = 1 
+	ORDER BY CUIT
+	END
+	GO
+
+exec HPBC.pr_cargar_provedores
