@@ -41,3 +41,5 @@ C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\Frb
 C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.AbmProveedor.ModificacionProveedor.resources
 C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.AbmCliente.ListadoCliente.resources
 C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.AbmProveedor.ListadoProveedor.resources
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.Home.SeleccionarRol.resources
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.Home.MenuPrincial.resources

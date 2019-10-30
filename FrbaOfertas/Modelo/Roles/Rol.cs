@@ -10,7 +10,6 @@ namespace FrbaOfertas.Modelo
     {
         public int id { get; set; }
         public string nombre { get; set; }
-        public bool habilitado { get; set; }
         public List<Funcionalidad> funcionalidades { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FrbaOfertas.Modelo
 {
-    class Cliente
+    class Cliente : Rol
     {
         public int id { get; set; }
         public string nombre { get; set; }
@@ -15,15 +15,13 @@ namespace FrbaOfertas.Modelo
         public string mail { get; set; }
         public string telefono { get; set; }
         public DateTime fecha_nacimiento { get; set; } 
-        public bool habilitado { get; set; }
-        public List<Cuenta> creditos { get; set; }
-        public Usuario usuario { get; set; }
         public string Ciudad { get; set; }
         public string Calle { get; set; }
         public string Piso { get; set; }
         public string Dpto { get; set; }
         public string Localidad { get; set; }
         public string monto { get; set; }
+        public bool habilitado { get; set; }
 
     }
 }

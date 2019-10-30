@@ -59,6 +59,27 @@ namespace FrbaOfertas.ConectorDB
             conn.Close();
             
         }
+
+        public static void recuperar_usuario_id(string username, string pass)
+        {
+            
+            SqlConnection conn = new SqlConnection(Conexion.getStringConnection());
+            SqlCommand command = conn.CreateCommand();
+            command.CommandText = "SELECT usuario_id FROM HPBC.Usuario WHERE usuario_username = '"+username+"' and usuario_password = HASHBYTES('SHA2_256', '"+pass+"')";
+            command.Connection = conn;
+            command.Connection.Open();
+            command.ExecuteNonQuery();
+            SqlDataReader reader = command.ExecuteReader() as SqlDataReader;
+            reader.Read();
+            Usuario.id = (int)reader["usuario_id"];
+            Usuario.rol = null;
+            Usuario.username = username;
+            Usuario.password = pass;
+            command.Connection.Close();
+            conn.Close();
+            
+
+        }
     }
 
 

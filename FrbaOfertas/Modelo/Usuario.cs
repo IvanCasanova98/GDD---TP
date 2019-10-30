@@ -3,17 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using FrbaOfertas.ConectorDB;
 namespace FrbaOfertas.Modelo
 {
-    class Usuario
+    static class Usuario
     {
-        public int id { get; set; }
-        public string username { get; set; }
-        public string password { get; set; }
-        public bool habilitado { get; set; }
-        public bool bloqueado { get; set; }
-        public List<Rol> roles { get; set; }
-        
+        public static int id { get; set; }
+        public static string username { get; set; }
+        public static string password { get; set; }
+        public static Rol rol { get; set; }
+
+        public static void IngresoUsuario(string username, string pass)
+        {
+            FrbaOfertas.ConectorDB.FuncionesUsername.recuperar_usuario_id(username, pass);
+
+        }
     }
 }

@@ -91,6 +91,7 @@ CREATE TABLE HPBC.Rol(
 	Rol_ID INT identity(1,1) NOT NULL,
 	Rol_detalle nvarchar(255) NOT NULL,
 	Rol_Habilitado Bit DEFAULT 1,
+	Rol_baja_logica Bit DEFAULT 0,
  CONSTRAINT PK_Rol PRIMARY KEY CLUSTERED(
 	Rol_ID ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
@@ -563,7 +564,7 @@ BEGIN
 	WHERE cantRS = 1 AND cantCUIT = 1
 
 	INSERT INTO HPBC.Rol_Por_Usuario(ID_Rol ,ID_Usuario)
-	SELECT 1, usuario_id 
+	SELECT 3, usuario_id 
 	FROM HPBC.Usuario
 	WHERE usuario_id NOT IN (SELECT ID_Usuario FROM HPBC.Rol_Por_Usuario)
 
@@ -645,3 +646,12 @@ UPDATE HPBC.Usuario
 SET usuario_bloqueado = 1
 Where usuario_id = (SELECT u.usuario_id from HPBC.Usuario u Where u.usuario_username = usuario_username and usuario_cant_logeo_error >= 3)
 COMMIT TRANSACTION
+
+
+
+CREATE FUNCTION HPBC.devolver_Funciones_Rol(@nombreRol varchar(255))
+returns table (nombre_funcion varchar(255))
+BEGIN
+return (select Func_detalle from Funcion f join Funcion_Por_Rol fr on f.Func_ID = fr.Func_ID join Rol r on fr.Rol_ID = r.Rol_ID where r.Rol_detalle = @nombreRol)
+end
+go

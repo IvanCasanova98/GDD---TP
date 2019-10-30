@@ -84,9 +84,10 @@ namespace FrbaOfertas
         private void btnLogin_Click(object sender, EventArgs e)
         {
             if(FrbaOfertas.Utils.ProtocoloSQL.protocoloLoginSQL(txtUsuario.Text,txtPassword.Text)){
-                FrbaOfertas.Home.MenuPrincial menu = new FrbaOfertas.Home.MenuPrincial ();
-                menu.ShowDialog(this);
-                this.Hide();
+                FrbaOfertas.Modelo.Usuario.IngresoUsuario(txtUsuario.Text, txtPassword.Text);
+                FrbaOfertas.Home.MenuPrincial menu = new FrbaOfertas.Home.MenuPrincial();
+                FrbaOfertas.Utils.Transicion.transicionForms(this, menu);
+
             }
         }
 
