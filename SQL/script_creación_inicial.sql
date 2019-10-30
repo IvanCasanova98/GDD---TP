@@ -579,3 +579,69 @@ BEGIN
 	GO
 
 exec HPBC.pr_cargar_provedores
+
+
+IF EXISTS (SELECT name FROM sysobjects WHERE name='validar_usuario' AND type='fn')
+DROP FUNCTION HPBC.validar_usuario
+GO
+CREATE FUNCTION HPBC.validar_usuario (@usuario varchar(255), @pass varchar(255))
+RETURNS INT
+AS
+BEGIN
+DECLARE @respuestaProtocolo INT
+IF EXISTS(SELECT 1 FROM HPBC.Usuario where usuario_username = @usuario and usuario_password = HASHBYTES('SHA2_256',@pass) and usuario_bloqueado=0 and usuario_habilitado=1)
+	BEGIN
+	SET @respuestaProtocolo = 1
+	RETURN @respuestaProtocolo 
+	END
+IF EXISTS(SELECT 1 FROM HPBC.Usuario where usuario_username = @usuario and usuario_password != HASHBYTES('SHA2_256',@pass) and usuario_bloqueado=0 and usuario_habilitado=1) 
+	BEGIN
+	SET @respuestaProtocolo = 4
+	RETURN @respuestaProtocolo 
+	END
+IF EXISTS(SELECT 1 FROM HPBC.Usuario where usuario_username = @usuario  and usuario_bloqueado=1)
+	BEGIN
+	SET @respuestaProtocolo = 3
+	RETURN @respuestaProtocolo
+	END
+IF EXISTS(SELECT 1 FROM HPBC.Usuario where usuario_username = @usuario and usuario_habilitado=0)
+	BEGIN
+	SET @respuestaProtocolo = 2
+	RETURN @respuestaProtocolo
+	END
+RETURN 0
+END
+GO
+
+IF EXISTS (SELECT name FROM sysobjects WHERE name='pr_aumentar_cant_login_fallido' AND type='p')
+DROP PROCEDURE HPBC.pr_aumentar_cant_login_fallido
+GO
+CREATE PROCEDURE HPBC.pr_aumentar_cant_login_fallido(@username varchar(255))
+AS
+BEGIN
+UPDATE HPBC.Usuario 
+SET usuario_cant_logeo_error = usuario_cant_logeo_error + 1
+WHERE usuario_id = (SELECT u.usuario_id FROM HPBC.Usuario u WHERE u.usuario_username =  @username )
+END
+GO
+
+IF EXISTS (SELECT name FROM sysobjects WHERE name='pr_resetear_cant_login_fallido' AND type='p')
+DROP PROCEDURE HPBC.pr_resetear_cant_login_fallido
+GO
+CREATE PROCEDURE HPBC.pr_resetear_cant_login_fallido(@username varchar(255))
+AS
+BEGIN
+UPDATE HPBC.Usuario 
+SET usuario_cant_logeo_error = 0
+WHERE usuario_id = (SELECT u.usuario_id FROM HPBC.Usuario u WHERE u.usuario_username =  @username )
+END
+GO
+
+
+CREATE TRIGGER HPBC.tr_bloquear_usuario on HPBC.Usuario after UPDATE
+AS
+BEGIN TRANSACTION
+UPDATE HPBC.Usuario
+SET usuario_bloqueado = 1
+Where usuario_id = (SELECT u.usuario_id from HPBC.Usuario u Where u.usuario_username = usuario_username and usuario_cant_logeo_error >= 3)
+COMMIT TRANSACTION

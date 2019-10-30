@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FrbaOfertas.Utils;
 
 namespace FrbaOfertas
 {
@@ -82,8 +83,11 @@ namespace FrbaOfertas
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            FrbaOfertas.AbmRol.AltaRol dialog = new FrbaOfertas.AbmRol.AltaRol();
-            dialog.ShowDialog(this);
+            if(FrbaOfertas.Utils.ProtocoloSQL.protocoloLoginSQL(txtUsuario.Text,txtPassword.Text)){
+                FrbaOfertas.Home.MenuPrincial menu = new FrbaOfertas.Home.MenuPrincial ();
+                menu.ShowDialog(this);
+                this.Hide();
+            }
         }
 
 
