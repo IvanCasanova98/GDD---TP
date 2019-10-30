@@ -48,5 +48,10 @@ namespace FrbaOfertas.Home
             MessageBox.Show("El usuario se encuentra inhabilitado, comuniquese con un administrativo", "USUARIO INHABILITADO", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

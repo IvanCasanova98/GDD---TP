@@ -16,6 +16,8 @@ namespace FrbaOfertas.Home
         {
             InitializeComponent();
         }
+        
+ 
 
         private void modificarDatosToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -31,6 +33,41 @@ namespace FrbaOfertas.Home
         {
           
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MenuPrincial_Load(object sender, EventArgs e)
+        {
+                  
+            label2.Text = "Bienvenido " + FrbaOfertas.Modelo.Usuario.username;
+            foreach (String listing in FrbaOfertas.ConectorDB.FuncionesRol.ObtenerRolesDeUnUsuario(FrbaOfertas.Modelo.Usuario.id))
+            {
+                ListViewItem itemrol = new ListViewItem(listing);
+                RolesView.Items.Add(itemrol);
+            }
+
+            foreach (String listing in FrbaOfertas.ConectorDB.FuncionesUsername.ObtenerFuncionalidadesDeUnUsuario(FrbaOfertas.Modelo.Usuario.username))
+            {
+                ListViewItem itemrol = new ListViewItem(listing);
+                listView1.Items.Add(itemrol);
+            }
+        }
+
+        private void listView1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+        
+
+
 
 
 
