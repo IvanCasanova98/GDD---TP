@@ -9,6 +9,9 @@ using FrbaOfertas.Modelo;
 using System.Globalization;
 using FrbaOfertas.BaseDeDatos;
 
+
+//CONECTOR ENTRE SQL SERVER Y C# PARA TODAS LAS FUNCIONALIDADES RELACIONADAS CON ROL USOS PRINCIPALES: OTORGAR A UN USUARIO FUNCIONALIDAD
+
 namespace FrbaOfertas.ConectorDB
 {
     class FuncionesRol

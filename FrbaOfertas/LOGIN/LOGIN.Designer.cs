@@ -60,6 +60,7 @@ namespace FrbaOfertas
             this.txtUsuario.TabIndex = 0;
             this.txtUsuario.Tag = "";
             this.txtUsuario.Text = "Nombre de usuario";
+            this.txtUsuario.TextChanged += new System.EventHandler(this.txtUsuario_TextChanged);
             // 
             // txtPassword
             // 
@@ -72,6 +73,7 @@ namespace FrbaOfertas
             this.txtPassword.Size = new System.Drawing.Size(196, 26);
             this.txtPassword.TabIndex = 1;
             this.txtPassword.Text = "Contraseña";
+            this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
             // 
             // btnLogin
             // 

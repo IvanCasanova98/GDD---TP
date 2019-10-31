@@ -646,12 +646,17 @@ UPDATE HPBC.Usuario
 SET usuario_bloqueado = 1
 Where usuario_id = (SELECT u.usuario_id from HPBC.Usuario u Where u.usuario_username = usuario_username and usuario_cant_logeo_error >= 3)
 COMMIT TRANSACTION
-
-
-
-CREATE FUNCTION HPBC.devolver_Funciones_Rol(@nombreRol varchar(255) , @password var(255))
-returns 
-BEGIN
-return (select Func_detalle from Funcion f join Funcion_Por_Rol fr on f.Func_ID = fr.Func_ID join Rol r on fr.Rol_ID = r.Rol_ID where r.Rol_detalle = @nombreRol)
-end
 go
+
+
+CREATE FUNCTION HPBC.existeUsuario(@username varchar(255))
+returns Bit
+AS
+BEGIN
+if Exists(SELECT 1 FROM HPBC.Usuario WHERE UPPER(usuario_username) = @username)
+	Begin
+	return 1
+	end
+return 0
+end
+GO

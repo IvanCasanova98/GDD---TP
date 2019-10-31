@@ -140,10 +140,10 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Config.settings</DependentUpon>
     </Compile>
-    <Compile Include="RegistroUsuario\RegistroUsr.cs">
+    <Compile Include="Login\RegistroUsr.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RegistroUsuario\RegistroUsr.Designer.cs">
+    <Compile Include="Login\RegistroUsr.Designer.cs">
       <DependentUpon>RegistroUsr.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\Transicion.cs" />
@@ -183,7 +183,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="RegistroUsuario\RegistroUsr.resx">
+    <EmbeddedResource Include="Login\RegistroUsr.resx">
       <DependentUpon>RegistroUsr.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">

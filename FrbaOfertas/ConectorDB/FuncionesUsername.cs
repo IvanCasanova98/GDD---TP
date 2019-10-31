@@ -9,6 +9,9 @@ using FrbaOfertas.Modelo;
 using System.Globalization;
 using FrbaOfertas.BaseDeDatos;
 
+
+//CONECTOR ENTRE SQL SERVER Y C# PARA TODAS LAS FUNCIONALIDADES RELACIONADAS CON USUARIO USOS PRINCIPALES: LOGIN, REGISTRO Y OTORGAR A UN USUARIO FUNCIONALIDAD
+
 namespace FrbaOfertas.ConectorDB
 {
     class FuncionesUsername
@@ -97,6 +100,19 @@ namespace FrbaOfertas.ConectorDB
             }
             return lista;
 
+        }
+        public static Boolean existeUsername(string username) { 
+            Boolean existeUnico;
+            SqlConnection conn = new SqlConnection(Conexion.getStringConnection());
+            conn.Open();
+            string SQL = "SELECT HPBC.existeUsuario(@username)";
+            SqlCommand command = new SqlCommand(SQL, conn);
+            command.Parameters.AddWithValue("@username", username.ToUpper());
+            existeUnico = (Boolean)command.ExecuteScalar();
+            conn.Close();
+            return existeUnico;
+        
+        
         }
 
     }

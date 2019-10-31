@@ -34,12 +34,12 @@
             this.label7 = new System.Windows.Forms.Label();
             this.tb_pass = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmd_sgte = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.cbo_rol = new System.Windows.Forms.ComboBox();
             this.tb_pass_confirm = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.cmd_sgte = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,6 +65,8 @@
             // 
             // tb_user
             // 
+            this.tb_user.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.tb_user.ForeColor = System.Drawing.Color.Black;
             this.tb_user.Location = new System.Drawing.Point(140, 18);
             this.tb_user.Name = "tb_user";
             this.tb_user.Size = new System.Drawing.Size(231, 20);
@@ -108,6 +110,20 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Detalles del Usuario";
             // 
+            // cmd_sgte
+            // 
+            this.cmd_sgte.BackColor = System.Drawing.SystemColors.Control;
+            this.cmd_sgte.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmd_sgte.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.cmd_sgte.Location = new System.Drawing.Point(224, 136);
+            this.cmd_sgte.Margin = new System.Windows.Forms.Padding(2);
+            this.cmd_sgte.Name = "cmd_sgte";
+            this.cmd_sgte.Size = new System.Drawing.Size(128, 34);
+            this.cmd_sgte.TabIndex = 0;
+            this.cmd_sgte.Text = "Siguiente";
+            this.cmd_sgte.UseVisualStyleBackColor = false;
+            this.cmd_sgte.Click += new System.EventHandler(this.cmd_sgte_Click);
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -116,6 +132,20 @@
             this.label3.Size = new System.Drawing.Size(26, 13);
             this.label3.TabIndex = 22;
             this.label3.Text = "Rol:";
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.BackColor = System.Drawing.SystemColors.Control;
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnCancelar.Location = new System.Drawing.Point(45, 136);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(128, 34);
+            this.btnCancelar.TabIndex = 1;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // cbo_rol
             // 
@@ -154,34 +184,6 @@
             this.label2.Size = new System.Drawing.Size(98, 13);
             this.label2.TabIndex = 6;
             this.label2.Text = "Repita Contraseña:";
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.BackColor = System.Drawing.SystemColors.Control;
-            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnCancelar.Location = new System.Drawing.Point(45, 136);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(128, 34);
-            this.btnCancelar.TabIndex = 1;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = false;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // cmd_sgte
-            // 
-            this.cmd_sgte.BackColor = System.Drawing.SystemColors.Control;
-            this.cmd_sgte.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmd_sgte.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.cmd_sgte.Location = new System.Drawing.Point(224, 136);
-            this.cmd_sgte.Margin = new System.Windows.Forms.Padding(2);
-            this.cmd_sgte.Name = "cmd_sgte";
-            this.cmd_sgte.Size = new System.Drawing.Size(128, 34);
-            this.cmd_sgte.TabIndex = 0;
-            this.cmd_sgte.Text = "Siguiente";
-            this.cmd_sgte.UseVisualStyleBackColor = false;
-            this.cmd_sgte.Click += new System.EventHandler(this.cmd_sgte_Click);
             // 
             // RegistroUsr
             // 
