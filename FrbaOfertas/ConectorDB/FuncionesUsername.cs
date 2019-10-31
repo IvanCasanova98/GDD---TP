@@ -87,7 +87,7 @@ namespace FrbaOfertas.ConectorDB
             SqlConnection connection = new SqlConnection(Conexion.getStringConnection());
             SqlCommand comm = connection.CreateCommand();
             comm.CommandText =
-                "SELECT Func_detalle FROM HPBC.Funcion f join HPBC.Funcion_Por_Rol fr on f.Func_ID = fr.Func_ID join HPBC.Rol r on fr.Rol_ID = r.Rol_ID join HPBC.Rol_Por_Usuario on ID_Rol = r.Rol_ID join HPBC.Usuario on usuario_id = ID_Usuario where usuario_username = '" + username+ "'";
+                "SELECT Distinct Func_detalle FROM HPBC.Funcion f join HPBC.Funcion_Por_Rol fr on f.Func_ID = fr.Func_ID join HPBC.Rol r on fr.Rol_ID = r.Rol_ID join HPBC.Rol_Por_Usuario on ID_Rol = r.Rol_ID join HPBC.Usuario on usuario_id = ID_Usuario where usuario_username = '" + username+ "'";
             comm.Connection = connection;
             comm.Connection.Open();
             SqlDataReader reader = comm.ExecuteReader() as SqlDataReader;

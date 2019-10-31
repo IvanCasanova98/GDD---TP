@@ -356,32 +356,32 @@ GO
 
 
 INSERT INTO HPBC.Funcion(Func_detalle)
-Values('AMB DE ROL')
+Values('ABM DE ROL')
 INSERT INTO HPBC.Funcion(Func_detalle)
 Values('REGISTRO')
 INSERT INTO HPBC.Funcion(Func_detalle)
-Values('AMB DE CLIENTES')
+Values('ABM DE CLIENTE')
 INSERT INTO HPBC.Funcion(Func_detalle)
-Values('AMB DE PROVEDOR')
+Values('ABM DE PROVEEDOR')
 INSERT INTO HPBC.Funcion(Func_detalle)
-Values('CARGA DE CREDITO')
+Values('CARGAR CREDITO')
 INSERT INTO HPBC.Funcion(Func_detalle)
-Values('CONFECCION Y PUBLICACION DE OFERTAS')
+Values('CONFECCIÓN Y PUBLICACIÓN DE OFERTAS')
 INSERT INTO HPBC.Funcion(Func_detalle)
 Values('COMPRAR OFERTA')
 INSERT INTO HPBC.Funcion(Func_detalle)
 Values('ENTREGA/CONSUMO DE OFERTA')
 INSERT INTO HPBC.Funcion(Func_detalle)
-Values('FACTURACION PROVEDOR')
+Values('FACTURACIÓN A PROVEEDOR')
 INSERT INTO HPBC.Funcion(Func_detalle)
-Values('LISTADO ESTADISTICO')
+Values('LISTADO ESTADÍSTICO')
 
 INSERT INTO HPBC.Rol(Rol_detalle)
 Values('Administrativo')
 INSERT INTO HPBC.Rol(Rol_detalle)
 Values('Cliente')
 INSERT INTO HPBC.Rol(Rol_detalle)
-Values('Provedor')
+Values('Proveedor')
 /*le doy a los roles sus funcs*/
 INSERT INTO HPBC.Funcion_Por_Rol(Rol_ID,Func_ID)
 Values(1,1)
@@ -649,8 +649,8 @@ COMMIT TRANSACTION
 
 
 
-CREATE FUNCTION HPBC.devolver_Funciones_Rol(@nombreRol varchar(255))
-returns table (nombre_funcion varchar(255))
+CREATE FUNCTION HPBC.devolver_Funciones_Rol(@nombreRol varchar(255) , @password var(255))
+returns 
 BEGIN
 return (select Func_detalle from Funcion f join Funcion_Por_Rol fr on f.Func_ID = fr.Func_ID join Rol r on fr.Rol_ID = r.Rol_ID where r.Rol_detalle = @nombreRol)
 end

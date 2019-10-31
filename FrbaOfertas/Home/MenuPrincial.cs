@@ -19,34 +19,9 @@ namespace FrbaOfertas.Home
         
  
 
-        private void modificarDatosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-          
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void MenuPrincial_Load(object sender, EventArgs e)
         {
-                  
+
             label2.Text = "Bienvenido " + FrbaOfertas.Modelo.Usuario.username;
             foreach (String listing in FrbaOfertas.ConectorDB.FuncionesRol.ObtenerRolesDeUnUsuario(FrbaOfertas.Modelo.Usuario.id))
             {
@@ -59,12 +34,47 @@ namespace FrbaOfertas.Home
                 ListViewItem itemrol = new ListViewItem(listing);
                 listView1.Items.Add(itemrol);
             }
+            
+             //Itero por la lista de funciones y voy "activando los botones del menu en caso de que coincidan"
+                
+            
+                foreach (ToolStripMenuItem item in menuStrip1.Items)
+                {
+                    List<String> Funciones = FrbaOfertas.ConectorDB.FuncionesUsername.ObtenerFuncionalidadesDeUnUsuario(FrbaOfertas.Modelo.Usuario.username);    
+                    if (Funciones.Contains(item.Text.ToUpper()))
+                    {
+                        item.Visible = true;
+                    }
+
+                    foreach (ToolStripDropDownItem rol in modificiarDatosPersonalesToolStripMenuItem.DropDownItems)
+                    {
+                        List<String> roles = FrbaOfertas.ConectorDB.FuncionesRol.ObtenerRolesDeUnUsuario(FrbaOfertas.Modelo.Usuario.id);
+                        if (roles.Contains(rol.Text))
+                        {
+                            rol.Visible = true;
+                        }
+                    }
+            }
         }
 
-        private void listView1_SelectedIndexChanged_1(object sender, EventArgs e)
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }
+
+        private void ABMDEROL_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+
+
+
         
 
 
