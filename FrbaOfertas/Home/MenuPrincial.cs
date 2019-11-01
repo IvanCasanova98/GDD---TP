@@ -72,6 +72,12 @@ namespace FrbaOfertas.Home
 
         }
 
+        private void cerrarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrbaOfertas.LOGIN dialog = new FrbaOfertas.LOGIN();
+            FrbaOfertas.Utils.Transicion.transicionForms(this, dialog);
+        }
+
 
 
 

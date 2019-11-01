@@ -159,15 +159,12 @@
             this.cbo_rol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbo_rol.FormattingEnabled = true;
             this.cbo_rol.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.cbo_rol.Items.AddRange(new object[] {
-            "Cliente",
-            "Proveedor",
-            "Administrador"});
             this.cbo_rol.Location = new System.Drawing.Point(140, 95);
             this.cbo_rol.MaxDropDownItems = 3;
             this.cbo_rol.Name = "cbo_rol";
             this.cbo_rol.Size = new System.Drawing.Size(231, 21);
             this.cbo_rol.TabIndex = 3;
+            this.cbo_rol.SelectedIndexChanged += new System.EventHandler(this.cbo_rol_SelectedIndexChanged);
             // 
             // tb_pass_confirm
             // 
@@ -198,6 +195,7 @@
             this.Name = "RegistroUsr";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registro de Usuarios";
+            this.Load += new System.EventHandler(this.RegistroUsr_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

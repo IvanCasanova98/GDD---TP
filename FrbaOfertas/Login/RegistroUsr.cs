@@ -21,6 +21,14 @@ namespace FrbaOfertas.RegistroUsuario
             tb_pass_confirm.GotFocus += new EventHandler(this.ConfirmGotFocus);
         }
 
+        private void RegistroUsr_Load(object sender, EventArgs e)
+        {
+            foreach (String listing in FrbaOfertas.ConectorDB.FuncionesRol.ObtenerRolesRegistrables())
+            {
+                cbo_rol.Items.Add(listing);
+            }
+        }
+
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -44,17 +52,19 @@ namespace FrbaOfertas.RegistroUsuario
             tb_user.ForeColor = Color.Red;
             pass = false;
             }
-            if(tb_user.Text.Contains(" ")){
+            if (validador.isEmpty(tb_user.Text))
+            {
+                validador.ErrorFaltaCompletarCampo(tb_user);
+                pass = false;
+            }else 
+            
+            if(string.IsNullOrWhiteSpace(tb_user.Text) || tb_user.Text.Contains(" ")){
                 tb_user.Text = "El usuario no puede contener espacios";
                 tb_user.ForeColor = Color.Red;
                 pass = false;
             }
 
-            if (validador.isEmpty(tb_user.Text))
-            {
-                validador.ErrorFaltaCompletarCampo(tb_user);
-                pass = false;
-            }
+       
 
             if (validador.isEmpty(tb_pass.Text))
             {
@@ -112,7 +122,7 @@ namespace FrbaOfertas.RegistroUsuario
         public void UserGotFocus(object sender, EventArgs e)
         {
 
-            if (tb_user.Text == "El usuario ya existe" || tb_user.Text == "Falta completar campo")
+            if (tb_user.Text == "El usuario ya existe" || tb_user.Text == "Falta completar campo" || tb_user.Text == "El usuario no puede contener espacios")
             {
                 tb_user.Text = "";
                 tb_user.ForeColor = Color.Black;
@@ -139,6 +149,13 @@ namespace FrbaOfertas.RegistroUsuario
                 tb_pass_confirm.PasswordChar = '*';
             }
         }
+
+        private void cbo_rol_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
 
     }
 }

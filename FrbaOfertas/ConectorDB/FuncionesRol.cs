@@ -52,6 +52,21 @@ namespace FrbaOfertas.ConectorDB
 
 
         }
+        public static List<String> ObtenerRolesRegistrables() {
+            List<String> lista = new List<string>();
+            SqlConnection connection = new SqlConnection(Conexion.getStringConnection());
+            SqlCommand comm = connection.CreateCommand();
+            comm.CommandText = "SELECT DISTINCT Rol_detalle from HPBC.Rol f join HPBC.Funcion_Por_Rol fr on f.Rol_ID = fr.Rol_ID join HPBC.Funcion r on fr.Func_ID= r.Func_ID where r.Func_detalle = 'REGISTRO' and f.Rol_Habilitado = 1";
+            comm.Connection = connection;
+            comm.Connection.Open();
+            SqlDataReader reader = comm.ExecuteReader() as SqlDataReader;
+            while (reader.Read())
+            {
+                lista.Add(reader["Rol_detalle"].ToString());
+            }
+            return lista;
+        
+        }
 
     }
 }
