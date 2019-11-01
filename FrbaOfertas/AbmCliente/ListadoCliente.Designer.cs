@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListadoCliente));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txt_mail = new System.Windows.Forms.TextBox();
             this.txt_nombre = new System.Windows.Forms.TextBox();
@@ -177,6 +178,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.cmd_limpiar);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ListadoCliente";
             this.Text = "Listado Cliente";
             this.groupBox1.ResumeLayout(false);

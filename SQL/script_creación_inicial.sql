@@ -649,11 +649,35 @@ COMMIT TRANSACTION
 go
 
 
-CREATE FUNCTION HPBC.existeUsuario(@username varchar(255))
+CREATE FUNCTION HPBC.existeUsuario(@buscado varchar(255))
 returns Bit
 AS
 BEGIN
-if Exists(SELECT 1 FROM HPBC.Usuario WHERE UPPER(usuario_username) = @username)
+if Exists(SELECT 1 FROM HPBC.Usuario WHERE UPPER(usuario_username) = @buscado)
+	Begin
+	return 1
+	end
+return 0
+end
+GO
+
+CREATE FUNCTION HPBC.existeDNI(@buscado varchar(255))
+returns Bit
+AS
+BEGIN
+if Exists(SELECT 1 FROM HPBC.Cliente WHERE clie_dni = @buscado)
+	Begin
+	return 1
+	end
+return 0
+end
+GO
+
+CREATE FUNCTION HPBC.existeEmail(@buscado varchar(255))
+returns Bit
+AS
+BEGIN
+if Exists(SELECT 1 FROM HPBC.Cliente WHERE clie_mail = @buscado)
 	Begin
 	return 1
 	end

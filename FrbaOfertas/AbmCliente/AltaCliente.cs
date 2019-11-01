@@ -16,54 +16,115 @@ namespace FrbaOfertas.AbmCliente
         public AltaCliente()
         {
             InitializeComponent();
+            txt_nombre.GotFocus += new EventHandler(this.UserGotFocus);
+            txt_apellido.GotFocus += new EventHandler(this.UserGotFocus);
+            txt_calle.GotFocus += new EventHandler(this.UserGotFocus);
+            txt_ciudad.GotFocus += new EventHandler(this.UserGotFocus);
+            txt_dni.GotFocus += new EventHandler(this.UserGotFocus);
+            txt_dpto.GotFocus += new EventHandler(this.UserGotFocus);
+            txt_localidad.GotFocus += new EventHandler(this.UserGotFocus);
+            txt_mail.GotFocus += new EventHandler(this.UserGotFocus);
+            txt_piso.GotFocus += new EventHandler(this.UserGotFocus);
+            txt_tel.GotFocus += new EventHandler(this.UserGotFocus);
         }
+        private Boolean validarDatos()
+        {
+            Boolean pass = true;
+            FrbaOfertas.Utils.Validador validador = new FrbaOfertas.Utils.Validador();
+            //Valida Nombre
+            pass = validador.validaCadenaCaracter(txt_nombre,pass);
+            //Valida Apellido
+            pass = validador.validaCadenaCaracter(txt_apellido,pass);           
+            //Valida DNI
+            pass = validador.validacionDni(txt_dni, pass);
+            //Valida Calle
+            pass=validador.validaCadenaCaracter(txt_calle, pass);
+            //Valida Piso
+            if (validador.isEmpty(txt_piso.Text))
+            {
+                validador.ErrorFaltaCompletarCampo(txt_piso);
+                pass = false;
+            }
+            else if (!validador.isNumeric(txt_piso.Text))
+            {
+                validador.ErrornoContenerLetras(txt_piso);
+                pass = false;
+            }
+            else if (validador.superaCantidadCaracteres(txt_piso.Text, 2))
+            {
+                validador.ErrorSuperaRango(txt_piso);
+                pass = false;
+            }
+            //DPTO
+            if (validador.isEmpty(txt_dpto.Text))
+            {
+                validador.ErrorFaltaCompletarCampo(txt_dpto);
+                pass = false;
+            }
+            else if (validador.fueraDeRango(txt_dpto.Text, 0, 3))
+            {
+                validador.ErrorSuperaRango(txt_dpto);
+                pass = false;
+            }
+            //Localidad
+            pass = validador.validaCadenaCaracter(txt_localidad, pass);
+            //Telefono
+            if (validador.isEmpty(txt_tel.Text))
+            {
+                validador.ErrorFaltaCompletarCampo(txt_tel);
+                pass = false;
+            }
+            else if (!validador.isNumeric(txt_tel.Text))
+            {
+                validador.ErrornoContenerLetras(txt_tel);
+                pass = false;
+            }
+            else if (validador.fueraDeRango(txt_tel.Text, 8, 15))
+            {
+                validador.ErrorSuperaRango(txt_tel);
+                pass = false;
+            }
+            //EMAIL
+            if (validador.isEmpty(txt_mail.Text))
+            {
+                validador.ErrorFaltaCompletarCampo(txt_mail);
+                pass = false;
+            }
+            else if (validador.isNumeric(txt_mail.Text))
+            {
+                validador.ErrornoContenerLetras(txt_mail);
+                pass = false;
+            }
+            else if (!validador.IsValidEmail(txt_mail.Text))
+            {
+                validador.ErrorEmail(txt_mail);
+                pass = false;
+            }
+            else if (validador.existeMailenDB(txt_mail.Text))
+            {
+                validador.ErrorCampoYaExisteEnLaBase(txt_mail);
+                pass = false;
+            }
+
+            pass = validador.validaCadenaCaracter(txt_ciudad, pass);     
+                               
+                                  
+ 
+          
+                //Validamos FECHA NACIMIENTO Clie_Fecha_Nac
+            if (validador.FechaFutura(dateTimePicker.Value))
+            {
+                MessageBox.Show("Fecha de nacimiento fuera de rango");
+                pass = false;
+            }
+            return pass;
+        }
+
 
         private void cmd_darAlta_Click(object sender, EventArgs e)
         {
-            FrbaOfertas.Utils.Validador validador = new FrbaOfertas.Utils.Validador();
             Cliente cliente = new Cliente();
-            //Validamos NOMBRE Clie_Nom
-            if (validador.isEmpty(txt_nombre.Text) || validador.containsNumber(txt_nombre.Text) || validador.fueraDeRango(txt_nombre.Text,0,255)) 
-                MessageBox.Show("Error en campo NOMBRE.");
-            else
-            //Validamos APELLIDO Clie_Apellido
-                if (validador.isEmpty(txt_apellido.Text) || validador.containsNumber(txt_apellido.Text) || validador.fueraDeRango(txt_apellido.Text, 0, 255)) 
-                MessageBox.Show("Error en campo APELLIDO.");
-            else
-            //Validamos DNI Clie_DNI
-            if ((!validador.isNumeric(txt_dni.Text)) || (validador.isNumeric(txt_dni.Text) && (txt_dni.Text.Length < 8) || (txt_dni.Text.Length > 9)) || validador.isEmpty(txt_dni.Text)) 
-                MessageBox.Show("Error en campo DNI.");
-            else
-             //Validamos CALLE Clie_Calle
-            if (validador.containsNumber(txt_calle.Text) || validador.isEmpty(txt_calle.Text) || validador.fueraDeRango(txt_calle.Text, 0, 255)) 
-                MessageBox.Show("Error en campo CALLE.");
-            else
-             //Validamos PISO Clie_Piso
-            if ( (!validador.isNumeric(txt_piso.Text)) || ( (validador.isNumeric(txt_piso.Text)) && (txt_piso.Text.Length > 2)) || validador.isEmpty(txt_piso.Text)) 
-                MessageBox.Show("Error en campo PISO.");
-            else
-             //Validamos DPTO Clie_Dpto
-            if (validador.isEmpty(txt_dpto.Text) || validador.fueraDeRango(txt_dpto.Text,0,3)) 
-                MessageBox.Show("Error en campo DPTO.");
-            else
-             //Validamos LOCALIDAD Clie_Localidad
-            if (validador.containsNumber(txt_localidad.Text) || validador.isEmpty(txt_localidad.Text) || validador.fueraDeRango(txt_localidad.Text, 0, 255))
-                MessageBox.Show("Error en campo LOCALIDAD.");
-            else
-            //Validamos TEL Clie_Tel
-            if ((!validador.isNumeric(txt_tel.Text)) || validador.isEmpty(txt_tel.Text) || validador.fueraDeRango(txt_tel.Text, 8, 15))
-                MessageBox.Show("Error en campo TELEFONO.");
-            //Validamos MAIL Clie_Mail
-            if (!validador.IsValidEmail(txt_mail.Text) || validador.isNumeric(txt_mail.Text) || validador.fueraDeRango(txt_mail.Text,0,255) ) 
-                MessageBox.Show("Error en campo MAIL.");
-            //Validamos CIUDAD Clie_Ciudad
-            if (validador.containsNumber(txt_ciudad.Text) || validador.isEmpty(txt_ciudad.Text) || validador.fueraDeRango(txt_ciudad.Text, 0, 255))
-                MessageBox.Show("Error en campo CIUDAD.");
-            else
-            //Validamos FECHA NACIMIENTO Clie_Fecha_Nac
-            if (validador.FechaFutura(dateTimePicker.Value))
-                MessageBox.Show("Error en campo FECHA DE NACIMIENTO.");
-          
+            this.validarDatos();
                 
                 
         }
@@ -90,7 +151,16 @@ namespace FrbaOfertas.AbmCliente
             txt_nombre.Select();
         }
 
-
+        public void UserGotFocus(object sender, EventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            if (textBox.Text == "El campo ya existe" || textBox.Text == "Falta completar campo" || textBox.Text == "El Campo ingresado ya existe en la base de datos"
+                || textBox.Text == "El Campo no debe contener numeros" || textBox.Text == "El Campo no debe contener Letras" || textBox.Text == "El Campo supera el rango maximo de caracteres" || textBox.Text == "Usá el formato nombre@ejemplo.com")
+            {
+                textBox.Text = "";
+                textBox.ForeColor = Color.Black;
+            }
+        }
      
 
 

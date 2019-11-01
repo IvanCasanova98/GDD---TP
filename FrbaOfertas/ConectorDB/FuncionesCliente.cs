@@ -29,5 +29,17 @@ namespace FrbaOfertas.ConectorDB
             return rows > 0;
         }
 
+        public static Boolean existeDNI(string dni)
+        {
+           return FrbaOfertas.ConectorDB.FuncionesGlobales.existeTabla(dni, "DNI");
+
+        }
+
+        public static Boolean existeMail(string mail)
+        {
+            return FrbaOfertas.ConectorDB.FuncionesGlobales.existeTabla(mail, "Email");
+
+        }
+
     }
 }

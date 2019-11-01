@@ -14,8 +14,16 @@ namespace FrbaOfertas.Utils
 
         public  Boolean existeUsernameConDB(String username) {
             return FrbaOfertas.ConectorDB.FuncionesUsername.existeUsername(username);
+        }
 
+        public Boolean existeDNIenDB(String dni)
+        {
+            return FrbaOfertas.ConectorDB.FuncionesCliente.existeDNI(dni);
+        }
 
+        public Boolean existeMailenDB(String mail)
+        {
+            return FrbaOfertas.ConectorDB.FuncionesCliente.existeMail(mail);
         }
     
         public Boolean containsNumber(String palabra)
@@ -26,7 +34,11 @@ namespace FrbaOfertas.Utils
 
         public  Boolean isEmpty(String palabra)
         {
-            if (palabra == "Falta completar campo") return false;
+            if (palabra == "El campo ya existe" || palabra == "Falta completar campo" || palabra == "El Campo ingresado ya existe en la base de datos"
+               || palabra == "El Campo no debe contener numeros" || palabra == "El Campo no debe contener Letras" || palabra == "El Campo supera el rango maximo de caracteres" || palabra == "Usá el formato nombre@ejemplo.com")
+            {
+                return true;
+            }
             if (palabra != "") { palabra = palabra.Trim(); }
             return palabra == "";
         }
@@ -67,13 +79,36 @@ namespace FrbaOfertas.Utils
         {
             return DateTime.Compare(fechaDelDateTimePicker, DateTime.Now) > 0;
         }
-        
-        
-        public void FaltaCompletarCampo(TextBox textbox)
-        {
-            textbox.Text = "Falta completar campo";
+
+        public void textoDeError(TextBox textbox, string texto) {
+            textbox.Text = texto;
             textbox.ForeColor = Color.Red;
         }
+        
+        public void ErrorFaltaCompletarCampo(TextBox textbox)
+        {
+            textoDeError(textbox,"Falta completar campo");
+        }
+        public void ErrorCampoYaExisteEnLaBase(TextBox textbox)
+        {
+            textoDeError(textbox, "El Campo ingresado ya existe en la base de datos");
+        }
+        public void ErrornoContenerNumeros(TextBox textbox) {
+            textoDeError(textbox, "El Campo no debe contener numeros");
+        }
+        public void ErrornoContenerLetras(TextBox textbox)
+        {
+            textoDeError(textbox, "El Campo no debe contener Letras");
+        }
+        public void ErrorSuperaRango(TextBox textbox)
+        {
+            textoDeError(textbox, "El Campo supera el rango maximo de caracteres");
+        }
+        public void ErrorEmail(TextBox textbox)
+        {
+            textoDeError(textbox, "Usá el formato nombre@ejemplo.com");
+        }
+
 
         public static void  crearCajaDeError(string texto, string titulo)
         {
@@ -81,5 +116,55 @@ namespace FrbaOfertas.Utils
 
         }
 
+        //creo esta funcion ya que hay muchos campos que necesitan validar estas mismas propiedades (nombre, apellido, calle, etc)
+        public Boolean validaCadenaCaracter(TextBox textbox, Boolean pass)
+        {
+            if (this.isEmpty(textbox.Text))
+            {
+                this.ErrorFaltaCompletarCampo(textbox);
+                pass = false;
+            }
+            else if (this.containsNumber(textbox.Text))
+            {
+                this.ErrornoContenerNumeros(textbox);
+                pass = false;
+            }
+            else if (this.fueraDeRango(textbox.Text, 0, 255))
+            {
+                this.ErrorSuperaRango(textbox);
+                pass = false;
+            }
+            return pass;
+
+        }
+        public Boolean validacionDni(TextBox textboxDni, Boolean pass) {
+            if (this.isEmpty(textboxDni.Text))
+            {
+                this.ErrorFaltaCompletarCampo(textboxDni);
+                pass = false;
+            }
+            else if (!this.isNumeric(textboxDni.Text))
+            {
+                this.ErrornoContenerLetras(textboxDni);
+                pass = false;
+            }
+            else if (this.fueraDeRango(textboxDni.Text, 8, 9))
+            {
+                this.ErrorSuperaRango(textboxDni);
+                pass = false;
+            }
+            else if (this.existeDNIenDB(textboxDni.Text))
+            {
+                this.ErrorCampoYaExisteEnLaBase(textboxDni);
+                pass = false;
+            }
+            return pass;
+        
+        }
+
+
+
+        }
+
        }
-}
+

@@ -51,7 +51,7 @@ namespace FrbaOfertas
 
         public void UserLostFocus(object sender, EventArgs e)
         {
-
+            
             if (txtUsuario.Text == "")
             {
                 txtUsuario.Text = "Nombre de usuario";

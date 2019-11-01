@@ -89,6 +89,7 @@
     </Compile>
     <Compile Include="ConectorDB\FuncionesCliente.cs" />
     <Compile Include="ConectorDB\FuncionesFuncion.cs" />
+    <Compile Include="ConectorDB\FuncionesGlobales.cs" />
     <Compile Include="ConectorDB\FuncionesRol.cs" />
     <Compile Include="ConectorDB\FuncionesUsername.cs" />
     <Compile Include="CrearOferta\Form1.cs">
@@ -132,6 +133,7 @@
     <Compile Include="Modelo\Cuenta.cs" />
     <Compile Include="Modelo\Funcionalidad.cs" />
     <Compile Include="Modelo\Roles\Rol.cs" />
+    <Compile Include="Modelo\StateDarAlta.cs" />
     <Compile Include="Modelo\Usuario.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

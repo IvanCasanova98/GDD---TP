@@ -101,18 +101,8 @@ namespace FrbaOfertas.ConectorDB
             return lista;
 
         }
-        public static Boolean existeUsername(string username) { 
-            Boolean existeUnico;
-            SqlConnection conn = new SqlConnection(Conexion.getStringConnection());
-            conn.Open();
-            string SQL = "SELECT HPBC.existeUsuario(@username)";
-            SqlCommand command = new SqlCommand(SQL, conn);
-            command.Parameters.AddWithValue("@username", username.ToUpper());
-            existeUnico = (Boolean)command.ExecuteScalar();
-            conn.Close();
-            return existeUnico;
-        
-        
+        public static Boolean existeUsername(string username) {
+            return FrbaOfertas.ConectorDB.FuncionesGlobales.existeTabla(username, "Usuario");
         }
 
     }

@@ -35,27 +35,35 @@ namespace FrbaOfertas.RegistroUsuario
             FrbaOfertas.Utils.Validador validador = new FrbaOfertas.Utils.Validador();
 
             Boolean pass = true;
+            
+            
             if (validador.existeUsernameConDB(tb_user.Text))
             {
             tb_user.Text = "El usuario ya existe";
             tb_user.ForeColor = Color.Red;
             pass = false;
             }
+            if(tb_user.Text.Contains(" ")){
+                tb_user.Text = "El usuario no puede contener espacios";
+                tb_user.ForeColor = Color.Red;
+                pass = false;
+            }
+
             if (validador.isEmpty(tb_user.Text))
             {
-                validador.FaltaCompletarCampo(tb_user);
+                validador.ErrorFaltaCompletarCampo(tb_user);
                 pass = false;
             }
 
             if (validador.isEmpty(tb_pass.Text))
             {
-                validador.FaltaCompletarCampo(tb_pass);
+                validador.ErrorFaltaCompletarCampo(tb_pass);
                 tb_pass.PasswordChar = '\0';
                 pass = false;
             }
             if (validador.isEmpty(tb_pass_confirm.Text))
             {
-                validador.FaltaCompletarCampo(tb_pass_confirm);
+                validador.ErrorFaltaCompletarCampo(tb_pass_confirm);
                 tb_pass_confirm.PasswordChar = '\0';
                 pass = false;
             }
