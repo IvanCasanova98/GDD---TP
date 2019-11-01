@@ -13,9 +13,14 @@ namespace FrbaOfertas.AbmCliente
 {
     public partial class AltaCliente : Form
     {
-        public AltaCliente()
+
+        StateGuardar modoDeGuardado;
+        public AltaCliente(StateGuardar guardado)
         {
+            this.modoDeGuardado = guardado;
             InitializeComponent();
+
+            this.CenterToScreen();
             txt_nombre.GotFocus += new EventHandler(this.UserGotFocus);
             txt_apellido.GotFocus += new EventHandler(this.UserGotFocus);
             txt_calle.GotFocus += new EventHandler(this.UserGotFocus);
@@ -123,8 +128,25 @@ namespace FrbaOfertas.AbmCliente
 
         private void cmd_darAlta_Click(object sender, EventArgs e)
         {
-            Cliente cliente = new Cliente();
-            this.validarDatos();
+            
+            if (this.validarDatos()) {
+                Cliente cliente = new Cliente();
+                cliente.nombre = txt_nombre.Text;
+                cliente.apellido = txt_apellido.Text;
+                cliente.documento = txt_dni.Text;
+                cliente.Calle = txt_calle.Text;
+                cliente.Piso = txt_piso.Text;
+                cliente.Dpto = txt_dpto.Text;
+                cliente.Localidad = txt_localidad.Text;
+                cliente.telefono = txt_tel.Text;
+                cliente.mail = txt_mail.Text;
+                cliente.Ciudad = txt_ciudad.Text;
+                cliente.fecha_nacimiento = dateTimePicker.Value;
+                cliente.habilitado = 1;
+                modoDeGuardado.Guardar(cliente);
+                MessageBox.Show("Cliente creado con exito", "REGISTRO");
+                this.Close();
+            }
                 
                 
         }
@@ -160,6 +182,11 @@ namespace FrbaOfertas.AbmCliente
                 textBox.Text = "";
                 textBox.ForeColor = Color.Black;
             }
+        }
+
+        private void AltaCliente_Load(object sender, EventArgs e)
+        {
+
         }
      
 

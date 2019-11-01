@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 
 namespace FrbaOfertas.Modelo
 {
-    class Rol
+    public abstract class Rol
     {
-        public int id { get; set; }
-        public string nombre { get; set; }
-        public List<Funcionalidad> funcionalidades { get; set; }
+
+        public abstract string getIdentificadorPrincipal();
+        public abstract string getName();
+        public abstract void Instertar();
+        public abstract void Modificar();
     }
+
 }

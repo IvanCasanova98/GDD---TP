@@ -105,6 +105,36 @@ namespace FrbaOfertas.ConectorDB
             return FrbaOfertas.ConectorDB.FuncionesGlobales.existeTabla(username, "Usuario");
         }
 
+        public static void GuardarUsuario(String usuario, String pass) {
+            SqlConnection connection = new SqlConnection(Conexion.getStringConnection());
+            SqlCommand comm = connection.CreateCommand();
+
+            comm.CommandText = "INSERT INTO HPBC.Usuario(usuario_username, usuario_password, usuario_habilitado, usuario_bloqueado, usuario_cant_logeo_error) " +
+                                "VALUES ('" + usuario + "'," + "HASHBYTES('SHA2_256','" + pass + "') , 1 , 0 , 0)";
+            comm.Connection = connection;
+            comm.Connection.Open();
+            comm.ExecuteNonQuery();
+            comm.Connection.Close();
+            connection.Close();
+        
+        
+        }
+
+        public static void insertarRolxUsuario(string Rol, string usuario) {
+            SqlConnection connection = new SqlConnection(Conexion.getStringConnection());
+            SqlCommand comm = connection.CreateCommand();
+
+            comm.CommandText = "INSERT INTO HPBC.Rol_Por_Usuario(ID_Rol ,ID_Usuario) " +
+                                "VALUES ((SELECT Distinct ID_Rol from HPBC.Rol_Por_Usuario join HPBC.Rol on ID_Rol = Rol_ID where Rol_detalle = '" + Rol + "'), (SELECT usuario_id from  HPBC.Usuario WHERE usuario_username= '" + usuario + "'))";
+            comm.Connection = connection;
+            comm.Connection.Open();
+            comm.ExecuteNonQuery();
+            comm.Connection.Close();
+            connection.Close();
+        
+        
+        }
+
     }
 
 

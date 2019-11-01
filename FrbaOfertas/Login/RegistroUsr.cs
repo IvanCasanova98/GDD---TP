@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FrbaOfertas.Modelo.GuardarDB;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -83,11 +84,17 @@ namespace FrbaOfertas.RegistroUsuario
                 switch(cbo_rol.Text)
                 {
                     case "Cliente":
-                        FrbaOfertas.AbmCliente.AltaCliente dialogCliente = new FrbaOfertas.AbmCliente.AltaCliente();
+                        FrbaOfertas.Modelo.Usuario.username = tb_user.Text;
+                        FrbaOfertas.Modelo.Usuario.password = tb_pass.Text;
+                        FrbaOfertas.AbmCliente.AltaCliente dialogCliente = new FrbaOfertas.AbmCliente.AltaCliente(new RegistroGuardar());
                         dialogCliente.ShowDialog(this);
+                        this.Close();
                         break;
                     case "Proveedor":
+                        FrbaOfertas.Modelo.Usuario.username = tb_user.Text;
+                        FrbaOfertas.Modelo.Usuario.password = tb_pass.Text;
                         FrbaOfertas.AbmProveedor.AltaProveedor dialogProveedor = new FrbaOfertas.AbmProveedor.AltaProveedor();
+
                         dialogProveedor.ShowDialog(this);
                         break;
                     case "Administrador":

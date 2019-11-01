@@ -287,7 +287,7 @@
             this.cmd_darAlta.Name = "cmd_darAlta";
             this.cmd_darAlta.Size = new System.Drawing.Size(128, 34);
             this.cmd_darAlta.TabIndex = 11;
-            this.cmd_darAlta.Text = "Dar Alta";
+            this.cmd_darAlta.Text = "Guardar";
             this.cmd_darAlta.UseVisualStyleBackColor = false;
             this.cmd_darAlta.Click += new System.EventHandler(this.cmd_darAlta_Click);
             // 
@@ -322,6 +322,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AltaCliente";
             this.Text = "Alta Cliente";
+            this.Load += new System.EventHandler(this.AltaCliente_Load);
             this.Detalles.ResumeLayout(false);
             this.Detalles.PerformLayout();
             this.ResumeLayout(false);
