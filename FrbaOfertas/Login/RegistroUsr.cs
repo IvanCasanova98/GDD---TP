@@ -51,7 +51,7 @@ namespace FrbaOfertas.RegistroUsuario
             tb_user.Text = "El usuario ya existe";
             tb_user.ForeColor = Color.Red;
             pass = false;
-            }
+            } else
             if (validador.isEmpty(tb_user.Text))
             {
                 validador.ErrorFaltaCompletarCampo(tb_user);
@@ -103,9 +103,9 @@ namespace FrbaOfertas.RegistroUsuario
                     case "Proveedor":
                         FrbaOfertas.Modelo.Usuario.username = tb_user.Text;
                         FrbaOfertas.Modelo.Usuario.password = tb_pass.Text;
-                        FrbaOfertas.AbmProveedor.AltaProveedor dialogProveedor = new FrbaOfertas.AbmProveedor.AltaProveedor();
-
+                        FrbaOfertas.AbmProveedor.AltaProveedor dialogProveedor = new FrbaOfertas.AbmProveedor.AltaProveedor(new RegistroGuardar());
                         dialogProveedor.ShowDialog(this);
+                        this.Close();
                         break;
                     case "Administrador":
                         MessageBox.Show("No puede ser administrador.");

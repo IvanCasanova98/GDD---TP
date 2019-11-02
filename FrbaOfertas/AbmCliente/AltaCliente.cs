@@ -32,6 +32,18 @@ namespace FrbaOfertas.AbmCliente
             txt_piso.GotFocus += new EventHandler(this.UserGotFocus);
             txt_tel.GotFocus += new EventHandler(this.UserGotFocus);
         }
+
+        /*cuando haya que modificar descomentar este. Seria como un decorator medio trucho ya que le da la funcionalidad de agregar los datos de un cliente ya cargado
+        public AltaCliente(StateGuardar guardado,Cliente cliente a modificar){
+         * this.AltaCliente(guardado);
+         *  txt_nombre.Text = cliente.nombre;
+            faltan los demas
+         * 
+         * 
+         * }
+         
+          
+        */
         private Boolean validarDatos()
         {
             Boolean pass = true;
@@ -144,8 +156,10 @@ namespace FrbaOfertas.AbmCliente
                 cliente.fecha_nacimiento = dateTimePicker.Value;
                 cliente.habilitado = 1;
                 modoDeGuardado.Guardar(cliente);
-                MessageBox.Show("Cliente creado con exito", "REGISTRO");
+                
                 this.Close();
+                
+            
             }
                 
                 

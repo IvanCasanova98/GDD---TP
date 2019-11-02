@@ -34,8 +34,10 @@ namespace FrbaOfertas.Utils
 
         public  Boolean isEmpty(String palabra)
         {
+            //Estos son mensajes de error de no estar aca podrian crearse usuario con username = "El campo ya existe"
             if (palabra == "El campo ya existe" || palabra == "Falta completar campo" || palabra == "El Campo ingresado ya existe en la base de datos"
-               || palabra == "El Campo no debe contener numeros" || palabra == "El Campo no debe contener Letras" || palabra == "El Campo supera el rango maximo de caracteres" || palabra == "Usá el formato nombre@ejemplo.com")
+               || palabra == "El Campo no debe contener numeros" || palabra == "El Campo no debe contener Letras" || palabra == "El Campo supera el rango maximo de caracteres" || palabra == "Usá el formato nombre@ejemplo.com" 
+               || palabra == "El usuario ya existe")
             {
                 return true;
             }
@@ -108,7 +110,10 @@ namespace FrbaOfertas.Utils
         {
             textoDeError(textbox, "Usá el formato nombre@ejemplo.com");
         }
-
+        public void ErrorCuitLongitud(TextBox textbox)
+        {
+            textoDeError(textbox, "Utilice el formato tipo-DNI-DigitoVerificador, 11 numeros");
+        }
 
         public static void  crearCajaDeError(string texto, string titulo)
         {
@@ -161,6 +166,30 @@ namespace FrbaOfertas.Utils
             return pass;
         
         }
+        public Boolean validarCuit(TextBox TBcuit, Boolean pass)
+        {
+            string cuit = TBcuit.Text.Replace("-", string.Empty);
+            if (this.isEmpty(TBcuit.Text))
+            {
+                this.ErrorFaltaCompletarCampo(TBcuit);
+                pass = false;
+            }
+           
+            else if (!this.isNumeric(TBcuit.Text))
+            {
+                this.ErrornoContenerLetras(TBcuit);
+                pass = false;
+            }
+            else if (cuit.Length != 11)
+            {
+                 this.ErrorCuitLongitud(TBcuit);
+                 pass = false;    
+            }
+            
+
+            return pass;
+        }
+
 
 
 

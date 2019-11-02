@@ -684,3 +684,16 @@ if Exists(SELECT 1 FROM HPBC.Cliente WHERE clie_mail = @buscado)
 return 0
 end
 GO
+
+
+CREATE FUNCTION HPBC.existeRubro(@buscado varchar(255))
+returns Bit
+AS
+BEGIN
+if Exists(SELECT 1 FROM HPBC.Rubro WHERE Rubro_detalle = @buscado)
+	Begin
+	return 1
+	end
+return 0
+end
+GO

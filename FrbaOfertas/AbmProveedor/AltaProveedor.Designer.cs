@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AltaProveedor));
             this.Detalles = new System.Windows.Forms.GroupBox();
             this.cmd_limpiar = new System.Windows.Forms.Button();
             this.txt_nombreContacto = new System.Windows.Forms.TextBox();
@@ -215,7 +216,7 @@
             this.cmd_darAlta.Name = "cmd_darAlta";
             this.cmd_darAlta.Size = new System.Drawing.Size(126, 34);
             this.cmd_darAlta.TabIndex = 12;
-            this.cmd_darAlta.Text = "Dar Alta";
+            this.cmd_darAlta.Text = "Guardar";
             this.cmd_darAlta.UseVisualStyleBackColor = false;
             this.cmd_darAlta.Click += new System.EventHandler(this.cmd_darAlta_Click);
             // 
@@ -335,8 +336,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(427, 386);
             this.Controls.Add(this.Detalles);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AltaProveedor";
             this.Text = "Alta Proveedor";
+            this.Load += new System.EventHandler(this.AltaProveedor_Load);
             this.Detalles.ResumeLayout(false);
             this.Detalles.PerformLayout();
             this.ResumeLayout(false);
