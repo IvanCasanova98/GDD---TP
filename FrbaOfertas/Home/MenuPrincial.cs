@@ -89,6 +89,17 @@ namespace FrbaOfertas.Home
 
         }
 
+        private void listadoRolToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listadoRolToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FrbaOfertas.AbmRol.ListadoRol dialog = new FrbaOfertas.AbmRol.ListadoRol();
+            dialog.ShowDialog(this);
+        }
+
 
 
 

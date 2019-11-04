@@ -68,6 +68,9 @@
             this.clienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.proveedorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modificarDatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listadoRolToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.listadoRolToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.listadoProveedorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -150,7 +153,8 @@
             this.ABMDEROL.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.altaRolToolStripMenuItem,
             this.bajaRolToolStripMenuItem,
-            this.listadoRolToolStripMenuItem});
+            this.listadoRolToolStripMenuItem,
+            this.listadoRolToolStripMenuItem1});
             this.ABMDEROL.Name = "ABMDEROL";
             this.ABMDEROL.Padding = new System.Windows.Forms.Padding(4, 10, 4, 0);
             this.ABMDEROL.Size = new System.Drawing.Size(210, 29);
@@ -183,7 +187,8 @@
             this.ABMDECLIENTES.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.altaClienteToolStripMenuItem,
             this.bajaClienteToolStripMenuItem,
-            this.listadoClienteToolStripMenuItem});
+            this.listadoClienteToolStripMenuItem,
+            this.listadoRolToolStripMenuItem2});
             this.ABMDECLIENTES.Name = "ABMDECLIENTES";
             this.ABMDECLIENTES.Padding = new System.Windows.Forms.Padding(4, 10, 4, 0);
             this.ABMDECLIENTES.Size = new System.Drawing.Size(210, 29);
@@ -213,7 +218,8 @@
             this.ABMDEPROVEDOR.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.altaProveedorToolStripMenuItem,
             this.bajaProveedorToolStripMenuItem,
-            this.listadoProveedoToolStripMenuItem});
+            this.listadoProveedoToolStripMenuItem,
+            this.listadoProveedorToolStripMenuItem});
             this.ABMDEPROVEDOR.Name = "ABMDEPROVEDOR";
             this.ABMDEPROVEDOR.Padding = new System.Windows.Forms.Padding(4, 10, 4, 0);
             this.ABMDEPROVEDOR.Size = new System.Drawing.Size(210, 29);
@@ -409,6 +415,26 @@
             this.modificarDatosToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
             this.modificarDatosToolStripMenuItem.Text = "Modificar datos personales";
             // 
+            // listadoRolToolStripMenuItem1
+            // 
+            this.listadoRolToolStripMenuItem1.Name = "listadoRolToolStripMenuItem1";
+            this.listadoRolToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.listadoRolToolStripMenuItem1.Text = "Listado Rol";
+            this.listadoRolToolStripMenuItem1.Click += new System.EventHandler(this.listadoRolToolStripMenuItem1_Click);
+            // 
+            // listadoRolToolStripMenuItem2
+            // 
+            this.listadoRolToolStripMenuItem2.Name = "listadoRolToolStripMenuItem2";
+            this.listadoRolToolStripMenuItem2.Size = new System.Drawing.Size(165, 22);
+            this.listadoRolToolStripMenuItem2.Text = "Listado Cliente";
+            this.listadoRolToolStripMenuItem2.Click += new System.EventHandler(this.listadoRolToolStripMenuItem2_Click);
+            // 
+            // listadoProveedorToolStripMenuItem
+            // 
+            this.listadoProveedorToolStripMenuItem.Name = "listadoProveedorToolStripMenuItem";
+            this.listadoProveedorToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.listadoProveedorToolStripMenuItem.Text = "Listado Proveedor";
+            // 
             // MenuPrincial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -477,6 +503,9 @@
         private System.Windows.Forms.ToolStripMenuItem clienteToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem proveedorToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem cerrarSesiónToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem listadoRolToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem listadoRolToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem listadoProveedorToolStripMenuItem;
 
 
     }
