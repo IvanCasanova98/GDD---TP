@@ -1,4 +1,5 @@
 ﻿using FrbaOfertas.BaseDeDatos;
+using FrbaOfertas.Modelo.Listado;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,9 +15,11 @@ namespace FrbaOfertas.AbmRol
 {
     public partial class ListadoRol : Form
     {
-        public ListadoRol()
+        public ListadoRol(Listado deco)
         {
             InitializeComponent();
+            deco.ModificarDataGrid(dataGridView1);
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -72,6 +75,11 @@ namespace FrbaOfertas.AbmRol
             }
 
             conn.Close();
+
+        }
+
+        private void ListadoRol_Load(object sender, EventArgs e)
+        {
 
         }
     }

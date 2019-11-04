@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FrbaOfertas.Modelo.Listado;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -86,7 +87,8 @@ namespace FrbaOfertas.Home
 
         private void listadoRolToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            FrbaOfertas.AbmRol.ListadoRol dialog = new FrbaOfertas.AbmRol.ListadoRol(new ListadoModificar());
+            dialog.ShowDialog(this);
         }
 
         private void listadoRolToolStripMenuItem2_Click(object sender, EventArgs e)
@@ -96,7 +98,7 @@ namespace FrbaOfertas.Home
 
         private void listadoRolToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            FrbaOfertas.AbmRol.ListadoRol dialog = new FrbaOfertas.AbmRol.ListadoRol();
+            FrbaOfertas.AbmRol.ListadoRol dialog = new FrbaOfertas.AbmRol.ListadoRol(new ListadoNormal());
             dialog.ShowDialog(this);
         }
 

@@ -80,6 +80,12 @@
     <Compile Include="AbmRol\ListadoRol.Designer.cs">
       <DependentUpon>ListadoRol.cs</DependentUpon>
     </Compile>
+    <Compile Include="AbmRol\ModificacionRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmRol\ModificacionRol.Designer.cs">
+      <DependentUpon>ModificacionRol.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaseDeDatos\Conexion.cs" />
     <Compile Include="ComprarOferta\Form1.cs">
       <SubType>Form</SubType>
@@ -138,6 +144,7 @@
     <Compile Include="Modelo\GuardarDB\AbmAltaGuardar.cs" />
     <Compile Include="Modelo\GuardarDB\AbmModificarGuardar.cs" />
     <Compile Include="Modelo\GuardarDB\RegistroGuardar.cs" />
+    <Compile Include="Modelo\Listado\Listado.cs" />
     <Compile Include="Modelo\Listado\ListadoBaja.cs" />
     <Compile Include="Modelo\Listado\ListadoModificar.cs" />
     <Compile Include="Modelo\Listado\ListadoNormal.cs" />

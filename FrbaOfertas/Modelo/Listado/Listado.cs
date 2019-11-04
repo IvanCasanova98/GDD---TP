@@ -7,12 +7,8 @@ using System.Windows.Forms;
 
 namespace FrbaOfertas.Modelo.Listado
 {
-    class ListadoNormal : Listado
+   public abstract class Listado
     {
-        public override void ModificarDataGrid(DataGridView dgv) { 
-  
-        }
-
-
+       public abstract void ModificarDataGrid(DataGridView dgv);
     }
 }
