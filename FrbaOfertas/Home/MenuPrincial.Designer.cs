@@ -121,20 +121,20 @@
             // usuarioToolStripMenuItem1
             // 
             this.usuarioToolStripMenuItem1.Name = "usuarioToolStripMenuItem1";
-            this.usuarioToolStripMenuItem1.Size = new System.Drawing.Size(128, 22);
+            this.usuarioToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.usuarioToolStripMenuItem1.Text = "Usuario";
             // 
             // clienteToolStripMenuItem1
             // 
             this.clienteToolStripMenuItem1.Name = "clienteToolStripMenuItem1";
-            this.clienteToolStripMenuItem1.Size = new System.Drawing.Size(128, 22);
+            this.clienteToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.clienteToolStripMenuItem1.Text = "Cliente";
             this.clienteToolStripMenuItem1.Visible = false;
             // 
             // proveedorToolStripMenuItem1
             // 
             this.proveedorToolStripMenuItem1.Name = "proveedorToolStripMenuItem1";
-            this.proveedorToolStripMenuItem1.Size = new System.Drawing.Size(128, 22);
+            this.proveedorToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.proveedorToolStripMenuItem1.Text = "Proveedor";
             this.proveedorToolStripMenuItem1.Visible = false;
             // 
@@ -161,20 +161,22 @@
             // altaRolToolStripMenuItem
             // 
             this.altaRolToolStripMenuItem.Name = "altaRolToolStripMenuItem";
-            this.altaRolToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.altaRolToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.altaRolToolStripMenuItem.Text = "Alta Rol";
+            this.altaRolToolStripMenuItem.Click += new System.EventHandler(this.altaRolToolStripMenuItem_Click);
             // 
             // bajaRolToolStripMenuItem
             // 
             this.bajaRolToolStripMenuItem.Name = "bajaRolToolStripMenuItem";
-            this.bajaRolToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.bajaRolToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.bajaRolToolStripMenuItem.Text = "Baja Rol";
             // 
             // listadoRolToolStripMenuItem
             // 
             this.listadoRolToolStripMenuItem.Name = "listadoRolToolStripMenuItem";
-            this.listadoRolToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
-            this.listadoRolToolStripMenuItem.Text = "Listado Rol";
+            this.listadoRolToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.listadoRolToolStripMenuItem.Text = "Modificar Rol";
+            this.listadoRolToolStripMenuItem.Click += new System.EventHandler(this.listadoRolToolStripMenuItem_Click);
             // 
             // ABMDECLIENTES
             // 
@@ -191,20 +193,20 @@
             // altaClienteToolStripMenuItem
             // 
             this.altaClienteToolStripMenuItem.Name = "altaClienteToolStripMenuItem";
-            this.altaClienteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.altaClienteToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.altaClienteToolStripMenuItem.Text = "Alta Cliente";
             // 
             // bajaClienteToolStripMenuItem
             // 
             this.bajaClienteToolStripMenuItem.Name = "bajaClienteToolStripMenuItem";
-            this.bajaClienteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.bajaClienteToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.bajaClienteToolStripMenuItem.Text = "Baja Cliente";
             // 
             // listadoClienteToolStripMenuItem
             // 
             this.listadoClienteToolStripMenuItem.Name = "listadoClienteToolStripMenuItem";
-            this.listadoClienteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.listadoClienteToolStripMenuItem.Text = "Listado Cliente";
+            this.listadoClienteToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.listadoClienteToolStripMenuItem.Text = "Modificar Cliente";
             // 
             // ABMDEPROVEDOR
             // 
@@ -221,20 +223,20 @@
             // altaProveedorToolStripMenuItem
             // 
             this.altaProveedorToolStripMenuItem.Name = "altaProveedorToolStripMenuItem";
-            this.altaProveedorToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.altaProveedorToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.altaProveedorToolStripMenuItem.Text = "Alta Proveedor";
             // 
             // bajaProveedorToolStripMenuItem
             // 
             this.bajaProveedorToolStripMenuItem.Name = "bajaProveedorToolStripMenuItem";
-            this.bajaProveedorToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.bajaProveedorToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.bajaProveedorToolStripMenuItem.Text = "Baja Proveedor";
             // 
             // listadoProveedoToolStripMenuItem
             // 
             this.listadoProveedoToolStripMenuItem.Name = "listadoProveedoToolStripMenuItem";
-            this.listadoProveedoToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
-            this.listadoProveedoToolStripMenuItem.Text = "Listado Proveedor";
+            this.listadoProveedoToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.listadoProveedoToolStripMenuItem.Text = "Modificar Proveedor";
             // 
             // CARGADECREDITO
             // 

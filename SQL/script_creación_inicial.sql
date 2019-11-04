@@ -648,6 +648,17 @@ Where usuario_id = (SELECT u.usuario_id from HPBC.Usuario u Where u.usuario_user
 COMMIT TRANSACTION
 go
 
+IF EXISTS (SELECT name FROM sysobjects WHERE name='pr_borrar_relaciones_de_un_rol_x_funcion' AND type='p')
+DROP PROCEDURE HPBC.pr_borrar_relaciones_de_un_rol_x_funcion
+GO
+CREATE PROCEDURE HPBC.pr_borrar_relaciones_de_un_rol_x_funcion(@rol varchar(255))
+AS
+BEGIN
+Delete from HPBC.Funcion_Por_Rol 
+WHERE Func_ID in (select fr.Func_ID from HPBC.Rol r join HPBC.Funcion_Por_Rol fr on r.Rol_ID = fr.Rol_ID where r.Rol_detalle = @rol) and Rol_ID = (SELECT distinct r.Rol_ID from HPBC.Rol r where r.Rol_detalle=@rol)
+END
+GO
+
 
 CREATE FUNCTION HPBC.existeUsuario(@buscado varchar(255))
 returns Bit
@@ -691,6 +702,18 @@ returns Bit
 AS
 BEGIN
 if Exists(SELECT 1 FROM HPBC.Rubro WHERE Rubro_detalle = @buscado)
+	Begin
+	return 1
+	end
+return 0
+end
+GO
+
+CREATE FUNCTION HPBC.existeRol(@buscado varchar(255))
+returns Bit
+AS
+BEGIN
+if Exists(SELECT 1 FROM HPBC.Rol WHERE Rol_detalle = @buscado)
 	Begin
 	return 1
 	end

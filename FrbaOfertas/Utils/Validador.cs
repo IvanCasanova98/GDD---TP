@@ -35,7 +35,7 @@ namespace FrbaOfertas.Utils
         public  Boolean isEmpty(String palabra)
         {
             //Estos son mensajes de error de no estar aca podrian crearse usuario con username = "El campo ya existe"
-            if (palabra == "El campo ya existe" || palabra == "Falta completar campo" || palabra == "El Campo ingresado ya existe en la base de datos"
+            if (palabra == "El campo ya existe" || palabra == "Falta completar campo" || palabra == "El Campo ingresado ya existe en la base de datos" || palabra == "El Rol ya existe"
                || palabra == "El Campo no debe contener numeros" || palabra == "El Campo no debe contener Letras" || palabra == "El Campo supera el rango maximo de caracteres" || palabra == "Usá el formato nombre@ejemplo.com" 
                || palabra == "El usuario ya existe")
             {
@@ -102,6 +102,11 @@ namespace FrbaOfertas.Utils
         {
             textoDeError(textbox, "El Campo no debe contener Letras");
         }
+        public void ErrorYaExisteRol(TextBox textbox)
+        {
+            textoDeError(textbox, "El Rol ya existe");
+        }
+
         public void ErrorSuperaRango(TextBox textbox)
         {
             textoDeError(textbox, "El Campo supera el rango maximo de caracteres");

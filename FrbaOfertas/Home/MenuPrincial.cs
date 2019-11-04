@@ -78,6 +78,17 @@ namespace FrbaOfertas.Home
             FrbaOfertas.Utils.Transicion.transicionForms(this, dialog);
         }
 
+        private void altaRolToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrbaOfertas.AbmRol.AltaRol dialog = new FrbaOfertas.AbmRol.AltaRol();
+            dialog.ShowDialog(this);
+        }
+
+        private void listadoRolToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
 
 
 

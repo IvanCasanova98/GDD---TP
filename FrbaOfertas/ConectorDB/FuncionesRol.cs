@@ -67,6 +67,30 @@ namespace FrbaOfertas.ConectorDB
             return lista;
         
         }
+        public static Boolean existeRol(string rol)
+        {
+            return FrbaOfertas.ConectorDB.FuncionesGlobales.existeTabla(rol, "Rol");
+
+        }
+
+        public static void GuardarRol(String Rol, List<String> listaFunciones)
+        {
+            SqlConnection connection = new SqlConnection(Conexion.getStringConnection());
+            SqlCommand comm = connection.CreateCommand();
+
+            comm.CommandText = "INSERT INTO HPBC.Rol(Rol_detalle, Rol_Habilitado, Rol_baja_logica) " +
+                                "VALUES ('" + Rol + "', 1 , 0)";
+            comm.Connection = connection;
+            comm.Connection.Open();
+            comm.ExecuteNonQuery();
+            comm.Connection.Close();
+            connection.Close();
+            foreach (String funcion in listaFunciones) {
+                FrbaOfertas.ConectorDB.FuncionesFuncion.GuardarRolXFuncion(Rol, funcion);
+           
+            }
+
+        }
 
     }
 }

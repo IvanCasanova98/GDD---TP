@@ -22,4 +22,6 @@ namespace FrbaOfertas.Utils
             nuevo.Focus();
         }
     }
+
+
 }
