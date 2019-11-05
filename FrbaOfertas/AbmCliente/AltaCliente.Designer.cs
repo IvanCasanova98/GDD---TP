@@ -41,8 +41,6 @@
             this.txt_tel = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txt_mail = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txt_ciudad = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.Detalles = new System.Windows.Forms.GroupBox();
             this.cmd_limpiar = new System.Windows.Forms.Button();
@@ -154,22 +152,6 @@
             this.txt_mail.Size = new System.Drawing.Size(313, 20);
             this.txt_mail.TabIndex = 8;
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(20, 213);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(40, 13);
-            this.label7.TabIndex = 13;
-            this.label7.Text = "Ciudad";
-            // 
-            // txt_ciudad
-            // 
-            this.txt_ciudad.Location = new System.Drawing.Point(80, 213);
-            this.txt_ciudad.Name = "txt_ciudad";
-            this.txt_ciudad.Size = new System.Drawing.Size(313, 20);
-            this.txt_ciudad.TabIndex = 9;
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -195,9 +177,7 @@
             this.Detalles.Controls.Add(this.txt_nombre);
             this.Detalles.Controls.Add(this.label8);
             this.Detalles.Controls.Add(this.txt_apellido);
-            this.Detalles.Controls.Add(this.label7);
             this.Detalles.Controls.Add(this.label2);
-            this.Detalles.Controls.Add(this.txt_ciudad);
             this.Detalles.Controls.Add(this.txt_dni);
             this.Detalles.Controls.Add(this.label6);
             this.Detalles.Controls.Add(this.label3);
@@ -343,8 +323,6 @@
         private System.Windows.Forms.TextBox txt_tel;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txt_mail;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txt_ciudad;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.GroupBox Detalles;
         private System.Windows.Forms.Button cmd_darAlta;

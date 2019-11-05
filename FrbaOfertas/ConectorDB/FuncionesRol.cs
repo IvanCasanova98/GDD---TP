@@ -22,7 +22,7 @@ namespace FrbaOfertas.ConectorDB
 
             SqlConnection connection = new SqlConnection(Conexion.getStringConnection());
             SqlCommand comm = connection.CreateCommand();
-            comm.CommandText = "SELECT Func_detalle FROM HPBC.Funcion f join HPBC.Funcion_Por_Rol fr on f.Func_ID = fr.Func_ID join HPBC.Rol r on fr.Rol_ID = r.Rol_ID where r.Rol_detalle =" + nombreRol;
+            comm.CommandText = "SELECT Func_detalle FROM HPBC.Funcion f join HPBC.Funcion_Por_Rol fr on f.Func_ID = fr.Func_ID join HPBC.Rol r on fr.Rol_ID = r.Rol_ID where r.Rol_detalle = '" + nombreRol+"'";
             comm.Connection = connection;
             comm.Connection.Open();
             SqlDataReader reader = comm.ExecuteReader() as SqlDataReader;
@@ -52,7 +52,8 @@ namespace FrbaOfertas.ConectorDB
 
 
         }
-        public static List<String> ObtenerRolesRegistrables() {
+        public static List<String> ObtenerRolesRegistrables()
+        {
             List<String> lista = new List<string>();
             SqlConnection connection = new SqlConnection(Conexion.getStringConnection());
             SqlCommand comm = connection.CreateCommand();
@@ -65,7 +66,7 @@ namespace FrbaOfertas.ConectorDB
                 lista.Add(reader["Rol_detalle"].ToString());
             }
             return lista;
-        
+
         }
         public static Boolean existeRol(string rol)
         {
@@ -85,19 +86,75 @@ namespace FrbaOfertas.ConectorDB
             comm.ExecuteNonQuery();
             comm.Connection.Close();
             connection.Close();
-            foreach (String funcion in listaFunciones) {
+            foreach (String funcion in listaFunciones)
+            {
                 FrbaOfertas.ConectorDB.FuncionesFuncion.GuardarRolXFuncion(Rol, funcion);
-           
-           }
+
+            }
         }
-        public static void BajaLogicaRol(int idRol){
+        public static void BajaLogicaRol(int idRol)
+        {
             FrbaOfertas.ConectorDB.FuncionesGlobales.BajaLogica(idRol, "Rol");
-        
-        
+
+
         }
+        public static string ObtenerDetalleRol(int Id)
+        {
+            SqlConnection connection = new SqlConnection(Conexion.getStringConnection());
+            SqlCommand comm = connection.CreateCommand();
+            comm.CommandText = "SELECT Rol_detalle from HPBC.Rol where Rol_ID = " + Id;
+            comm.Connection = connection;
+            comm.Connection.Open();
+            SqlDataReader reader = comm.ExecuteReader() as SqlDataReader;
+
+            if (reader.HasRows)
+            {
+                reader.Read();
+                return (string)reader["Rol_detalle"];
+            }
+            comm.Connection.Close();
+            return "Error";
 
 
 
+
+        }
+        public static Boolean ObtenerEstadoRol(int Id)
+        {
+            SqlConnection connection = new SqlConnection(Conexion.getStringConnection());
+            SqlCommand comm = connection.CreateCommand();
+            comm.CommandText = "SELECT Rol_Habilitado from HPBC.Rol where Rol_ID = " + Id;
+            comm.Connection = connection;
+            comm.Connection.Open();
+            SqlDataReader reader = comm.ExecuteReader() as SqlDataReader;
+
+            if (reader.HasRows)
+            {
+                reader.Read();
+                return (Boolean)reader["Rol_Habilitado"];
+            }
+            comm.Connection.Close();
+            return false;
+
+
+
+
+
+
+        }
+        public static void UpdatearRol(String RolNuevo,String Rol,bool habilitado, List<String> listaFunciones)
+        {
+            SqlConnection connection = new SqlConnection(Conexion.getStringConnection());
+            SqlCommand comm = connection.CreateCommand();
+
+            comm.CommandText = "UPDATE HPBC.Rol SET Rol_detalle = '" + RolNuevo + "', Rol_Habilitado = " + Convert.ToInt32(habilitado) + " Where Rol_detalle = '" + Rol + "'";
+                                
+            comm.Connection = connection;
+            comm.Connection.Open();
+            comm.ExecuteNonQuery();
+            comm.Connection.Close();
+            connection.Close();
+
+        }
     }
-
  }

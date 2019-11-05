@@ -20,9 +20,9 @@ namespace FrbaOfertas.ConectorDB
             
             SqlConnection connection = new SqlConnection(Conexion.getStringConnection());
             SqlCommand comm = connection.CreateCommand();
-            comm.CommandText = "INSERT INTO HPBC.Cliente (clie_nombre, clie_apellido, clie_dni, clie_mail, clie_tel, clie_direccion, clie_fecha_nac, clie_ciudad, clie_localidad, clie_habilitado, clie_monto, clie_usuario_ID) " +
+            comm.CommandText = "INSERT INTO HPBC.Cliente (clie_nombre, clie_apellido, clie_dni, clie_mail, clie_tel, clie_calle, clie_piso, clie_dpto , clie_fecha_nac,  clie_localidad, clie_habilitado, clie_monto, clie_usuario_ID) " +
                                 "VALUES ('" + cliente.nombre + "', '" + cliente.apellido + "', " + cliente.documento + ", '" + cliente.mail + "'," +
-                                " " + cliente.telefono + ",'" +cliente.Calle + " " + cliente.Piso + "" + cliente.Dpto +"', '" + cliente.fecha_nacimiento.ToString("yyyy-MM-dd") + "' ,'" + cliente.Ciudad + "', '" + cliente.Localidad + "', "+ cliente.habilitado +", " + cliente.monto + ",  (SELECT usuario_id from HPBC.Usuario where usuario_id not in (SELECT ID_Usuario from HPBC.Rol_Por_Usuario)))";               
+                                " " + cliente.telefono + ",'" +cliente.Calle + "', " + cliente.Piso + ",'" + cliente.Dpto +"', '" + cliente.fecha_nacimiento.ToString("yyyy-MM-dd") + "' , '" + cliente.Localidad + "', "+ cliente.habilitado +", " + cliente.monto + ",  (SELECT usuario_id from HPBC.Usuario where usuario_id not in (SELECT ID_Usuario from HPBC.Rol_Por_Usuario)))";               
             comm.Connection = connection;
             comm.Connection.Open();
             comm.ExecuteNonQuery();

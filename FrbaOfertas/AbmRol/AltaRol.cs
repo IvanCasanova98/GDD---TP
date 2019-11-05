@@ -131,7 +131,7 @@ namespace FrbaOfertas.AbmRol
         {
             if (e.ColumnIndex == dataGridView1.Columns["Eliminar"].Index && dataGridView1.Rows.Count > 1 && e.RowIndex != dataGridView1.Rows.Count - 1)
             {
-                //Put some logic here, for example to remove row from your binding list.
+                this.comboBox1.Items.Add(dataGridView1.Rows[e.RowIndex].Cells["Funcion"].Value.ToString());
                 dataGridView1.Rows.RemoveAt(e.RowIndex);
             }
         }

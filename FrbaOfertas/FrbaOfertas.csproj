@@ -193,6 +193,9 @@
     <EmbeddedResource Include="AbmRol\ListadoRol.resx">
       <DependentUpon>ListadoRol.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AbmRol\ModificacionRol.resx">
+      <DependentUpon>ModificacionRol.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Home\MenuPrincial.resx">
       <DependentUpon>MenuPrincial.cs</DependentUpon>
     </EmbeddedResource>

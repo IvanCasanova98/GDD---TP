@@ -24,9 +24,10 @@ CREATE TABLE HPBC.Cliente(
 	clie_dni numeric(18,0) UNIQUE NOT NULL,
 	clie_mail nvarchar(255) UNIQUE NOT NULL,
 	clie_tel numeric(18,0) UNIQUE NULL,
-	clie_direccion nvarchar(255) NOT NULL,
 	clie_fecha_nac date NOT NULL,
-	clie_ciudad nvarchar(255) NULL,
+	clie_calle varchar(255),
+	clie_piso numeric(2,0),
+	clie_dpto varchar(2),
 	clie_localidad nvarchar(255) NULL,
 	clie_habilitado bit NOT NULL,
 	clie_monto numeric(18,0) NOT NULL,
@@ -462,8 +463,8 @@ CREATE PROCEDURE HPBC.pr_limpiar_tabla_maestra_clientes
 	WHERE usuario_id NOT IN (SELECT ID_Usuario FROM HPBC.Rol_Por_Usuario)
 	
 	/* Ahora si se insertan los Clientes */
-	INSERT INTO HPBC.Cliente (clie_nombre, clie_apellido,  clie_dni, clie_mail, clie_tel, clie_direccion, clie_fecha_nac, clie_ciudad,clie_localidad, clie_habilitado,clie_monto, clie_usuario_id)
-	SELECT Nombre, Apellido, convert(numeric(18,0),Dni),  Email, Telefono, Cli_Direccion,Cli_Fecha_Nac,Cli_Ciudad,null, 1,200 ,u.usuario_id
+	INSERT INTO HPBC.Cliente (clie_nombre, clie_apellido,  clie_dni, clie_mail, clie_tel, clie_calle, clie_fecha_nac, clie_localidad, clie_habilitado,clie_monto, clie_usuario_id)
+	SELECT Nombre, Apellido, convert(numeric(18,0),Dni),  Email, Telefono, Cli_Direccion,Cli_Fecha_Nac,Cli_Ciudad, 1,200 ,u.usuario_id
 	FROM #Temp_Cli_Incons 
 	INNER JOIN HPBC.Usuario u
 	ON Dni = u.usuario_username

@@ -9,7 +9,8 @@ namespace FrbaOfertas.Modelo.AbmHandler
     //el proposito de esta clase es evitar repeticion de codigo creando 
     public abstract class Handler
     {
-        public abstract void darDeBaja(int id);
+        public abstract Boolean darDeBaja(int id);
+        public abstract void Modificar(int id);
 
     }
 }

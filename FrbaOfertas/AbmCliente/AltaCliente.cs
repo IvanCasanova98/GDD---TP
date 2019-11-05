@@ -24,7 +24,7 @@ namespace FrbaOfertas.AbmCliente
             txt_nombre.GotFocus += new EventHandler(this.UserGotFocus);
             txt_apellido.GotFocus += new EventHandler(this.UserGotFocus);
             txt_calle.GotFocus += new EventHandler(this.UserGotFocus);
-            txt_ciudad.GotFocus += new EventHandler(this.UserGotFocus);
+
             txt_dni.GotFocus += new EventHandler(this.UserGotFocus);
             txt_dpto.GotFocus += new EventHandler(this.UserGotFocus);
             txt_localidad.GotFocus += new EventHandler(this.UserGotFocus);
@@ -55,7 +55,18 @@ namespace FrbaOfertas.AbmCliente
             //Valida DNI
             pass = validador.validacionDni(txt_dni, pass);
             //Valida Calle
-            pass=validador.validaCadenaCaracter(txt_calle, pass);
+
+            if (validador.isEmpty(txt_calle.Text))
+            {
+                validador.ErrorFaltaCompletarCampo(txt_calle);
+                pass = false;
+            }
+            else if (validador.fueraDeRango(txt_calle.Text, 0, 255))
+            {
+                validador.ErrorSuperaRango(txt_calle);
+                pass = false;
+            }
+            
             //Valida Piso
             if (validador.isEmpty(txt_piso.Text))
             {
@@ -123,7 +134,7 @@ namespace FrbaOfertas.AbmCliente
                 pass = false;
             }
 
-            pass = validador.validaCadenaCaracter(txt_ciudad, pass);     
+
                                
                                   
  
@@ -152,7 +163,6 @@ namespace FrbaOfertas.AbmCliente
                 cliente.Localidad = txt_localidad.Text;
                 cliente.telefono = txt_tel.Text;
                 cliente.mail = txt_mail.Text;
-                cliente.Ciudad = txt_ciudad.Text;
                 cliente.fecha_nacimiento = dateTimePicker.Value;
                 cliente.habilitado = 1;
                 modoDeGuardado.Guardar(cliente);
@@ -181,7 +191,7 @@ namespace FrbaOfertas.AbmCliente
             txt_localidad.Text = "";
             txt_tel.Text = "";
             txt_mail.Text = "";
-            txt_ciudad.Text = "";
+
             dateTimePicker.Value = DateTime.Now;
 
             txt_nombre.Select();

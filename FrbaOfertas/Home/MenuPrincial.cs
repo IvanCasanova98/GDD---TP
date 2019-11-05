@@ -88,7 +88,7 @@ namespace FrbaOfertas.Home
 
         private void listadoRolToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrbaOfertas.AbmRol.ListadoRol dialog = new FrbaOfertas.AbmRol.ListadoRol(new ListadoModificar());
+            FrbaOfertas.AbmRol.ListadoRol dialog = new FrbaOfertas.AbmRol.ListadoRol(new ListadoModificar(new RolHandler()));
             dialog.ShowDialog(this);
         }
 

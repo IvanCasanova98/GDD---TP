@@ -36,7 +36,8 @@ namespace FrbaOfertas.Modelo.Listado
             DataGridView dataGridView1 = (DataGridView)sender;
             if (e.ColumnIndex == dataGridView1.Columns["Eliminar"].Index && (dataGridView1.Rows.Count > 1) && e.RowIndex != dataGridView1.Rows.Count-1)
             {
-                tipoAbm.darDeBaja(Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells["Id"].Value.ToString()));
+                if(tipoAbm.darDeBaja(Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells["Id"].Value.ToString())))
+                dataGridView1.Rows.RemoveAt(e.RowIndex);
                 dataGridView1.Refresh();
       {
                

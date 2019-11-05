@@ -12,8 +12,8 @@ namespace FrbaOfertas.Modelo.GuardarDB
         public override void Guardar(Rol RolAGuardar) {
             
             FrbaOfertas.ConectorDB.FuncionesUsername.GuardarUsuario(FrbaOfertas.Modelo.Usuario.username, FrbaOfertas.Modelo.Usuario.password);
-            FrbaOfertas.ConectorDB.FuncionesUsername.insertarRolxUsuario(RolAGuardar.getName(), FrbaOfertas.Modelo.Usuario.username);
             RolAGuardar.Instertar();
+            FrbaOfertas.ConectorDB.FuncionesUsername.insertarRolxUsuario(RolAGuardar.getName(), FrbaOfertas.Modelo.Usuario.username);
             MessageBox.Show("Usuario registrado con exito, puede loguearse con los datos ingresados anteriormente", "REGISTRO", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 

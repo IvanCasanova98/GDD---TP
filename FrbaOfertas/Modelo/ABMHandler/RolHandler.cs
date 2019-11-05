@@ -10,7 +10,7 @@ namespace FrbaOfertas.Modelo.ABMHandler
 {
     class RolHandler : Handler
     {
-        public override void darDeBaja(int id)
+        public override Boolean darDeBaja(int id)
         {
             if ((MessageBox.Show(
             "Esta por dar de baja un rol. Todos los usuarios perderan acceso al mismo. ¿Desea Continuar?",
@@ -19,8 +19,15 @@ namespace FrbaOfertas.Modelo.ABMHandler
             {
                 FrbaOfertas.ConectorDB.FuncionesRol.BajaLogicaRol(id);
                 MessageBox.Show("Rol dado de baja con exito", "ROL DADO DE BAJA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
             }
+            return false;
 
+        }
+        public override void Modificar(int id)
+        {
+            FrbaOfertas.AbmRol.ModificacionRol dialog = new FrbaOfertas.AbmRol.ModificacionRol(id);
+            dialog.ShowDialog();
         }
     }
 
