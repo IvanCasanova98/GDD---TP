@@ -91,7 +91,6 @@ CREATE TABLE HPBC.Rol(
 	Rol_ID INT identity(1,1) NOT NULL,
 	Rol_detalle nvarchar(255) NOT NULL,
 	Rol_Habilitado Bit DEFAULT 1,
-	Rol_baja_logica Bit DEFAULT 0,
  CONSTRAINT PK_Rol PRIMARY KEY CLUSTERED(
 	Rol_ID ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
@@ -421,7 +420,7 @@ GO
 create TRIGGER HPBC.trigger_baja_logica ON HPBC.Rol FOR UPDATE
 AS 
 BEGIN TRANSACTION
-	IF EXISTS(SELECT 1 FROM inserted i WHERE i.rol_habilitado = 0)
+	IF EXISTS(SELECT 1 FROM inserted i WHERE i.Rol_Habilitado = 0)
 	BEGIN
 		DELETE FROM HPBC.Rol_Por_Usuario
 		WHERE ID_Rol = (SELECT i.Rol_ID FROM inserted i)
@@ -719,4 +718,15 @@ if Exists(SELECT 1 FROM HPBC.Rol WHERE Rol_detalle = @buscado)
 	end
 return 0
 end
+GO
+
+IF EXISTS (SELECT name FROM sysobjects WHERE name='pr_bajaLogica_Rol' AND type='p')
+DROP PROCEDURE HPBC.pr_bajaLogica_Rol
+GO
+CREATE PROCEDURE HPBC.pr_bajaLogica_Rol(@ABajar int)
+AS
+BEGIN
+UPDATE HPBC.Rol set Rol_Habilitado = 0 
+WHERE Rol_ID = @ABajar 
+END
 GO

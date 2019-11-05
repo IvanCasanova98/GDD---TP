@@ -78,8 +78,8 @@ namespace FrbaOfertas.ConectorDB
             SqlConnection connection = new SqlConnection(Conexion.getStringConnection());
             SqlCommand comm = connection.CreateCommand();
 
-            comm.CommandText = "INSERT INTO HPBC.Rol(Rol_detalle, Rol_Habilitado, Rol_baja_logica) " +
-                                "VALUES ('" + Rol + "', 1 , 0)";
+            comm.CommandText = "INSERT INTO HPBC.Rol(Rol_detalle, Rol_Habilitado) " +
+                                "VALUES ('" + Rol + "', 1 )";
             comm.Connection = connection;
             comm.Connection.Open();
             comm.ExecuteNonQuery();
@@ -88,9 +88,16 @@ namespace FrbaOfertas.ConectorDB
             foreach (String funcion in listaFunciones) {
                 FrbaOfertas.ConectorDB.FuncionesFuncion.GuardarRolXFuncion(Rol, funcion);
            
-            }
-
+           }
+        }
+        public static void BajaLogicaRol(int idRol){
+            FrbaOfertas.ConectorDB.FuncionesGlobales.BajaLogica(idRol, "Rol");
+        
+        
         }
 
+
+
     }
-}
+
+ }

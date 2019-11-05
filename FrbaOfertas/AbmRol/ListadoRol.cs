@@ -15,10 +15,12 @@ namespace FrbaOfertas.AbmRol
 {
     public partial class ListadoRol : Form
     {
+        Listado tipoListado;
         public ListadoRol(Listado deco)
         {
             InitializeComponent();
-            deco.ModificarDataGrid(dataGridView1);
+            tipoListado = deco;
+            tipoListado.ModificarDataGrid(dataGridView1);
 
         }
 
@@ -43,9 +45,9 @@ namespace FrbaOfertas.AbmRol
             dataGridView1.Refresh();
             SqlConnection conn = new SqlConnection(Conexion.getStringConnection());
             conn.Open();
-            string SQL = "SELECT DISTINCT r.Rol_ID, r.Rol_detalle, r.rol_habilitado " +
+            string SQL = "SELECT DISTINCT r.Rol_ID, r.Rol_detalle, r.Rol_Habilitado " +
                          "FROM HPBC.Rol r " +
-                         "WHERE r.rol_baja_logica = 0";
+                         "WHERE (r.Rol_Habilitado = 1 OR r.Rol_Habilitado = " + tipoListado.MostrarBajasLogicas()+")" ;
 
             if (textBox1.Text != "")
             {
@@ -65,7 +67,7 @@ namespace FrbaOfertas.AbmRol
                     dataGridView1.Rows.Add();
                     dataGridView1.Rows[cont].Cells[0].Value = reader["Rol_ID"].ToString();
                     dataGridView1.Rows[cont].Cells[1].Value = reader["Rol_detalle"].ToString();
-                    dataGridView1.Rows[cont].Cells[2].Value = Convert.ToBoolean(reader["rol_habilitado"]);
+                    dataGridView1.Rows[cont].Cells[2].Value = Convert.ToBoolean(reader["Rol_Habilitado"]);
                     cont++;
                 }
             }
@@ -79,6 +81,11 @@ namespace FrbaOfertas.AbmRol
         }
 
         private void ListadoRol_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

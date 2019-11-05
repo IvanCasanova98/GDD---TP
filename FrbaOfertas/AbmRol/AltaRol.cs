@@ -129,7 +129,7 @@ namespace FrbaOfertas.AbmRol
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == dataGridView1.Columns["Eliminar"].Index && dataGridView1.Rows.Count >1)
+            if (e.ColumnIndex == dataGridView1.Columns["Eliminar"].Index && dataGridView1.Rows.Count > 1 && e.RowIndex != dataGridView1.Rows.Count - 1)
             {
                 //Put some logic here, for example to remove row from your binding list.
                 dataGridView1.Rows.RemoveAt(e.RowIndex);

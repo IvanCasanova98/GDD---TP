@@ -12,6 +12,10 @@ namespace FrbaOfertas.Modelo.Listado
         public override void ModificarDataGrid(DataGridView dgv) { 
   
         }
+        public override string MostrarBajasLogicas()
+        {
+            return "0";
+        }
 
 
     }

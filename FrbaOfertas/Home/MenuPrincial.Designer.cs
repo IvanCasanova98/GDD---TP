@@ -40,14 +40,17 @@
             this.altaRolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bajaRolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listadoRolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listadoRolToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.ABMDECLIENTES = new System.Windows.Forms.ToolStripMenuItem();
             this.altaClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bajaClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listadoClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listadoRolToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.ABMDEPROVEDOR = new System.Windows.Forms.ToolStripMenuItem();
             this.altaProveedorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bajaProveedorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listadoProveedoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listadoProveedorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CARGADECREDITO = new System.Windows.Forms.ToolStripMenuItem();
             this.COMPRAROFERTA = new System.Windows.Forms.ToolStripMenuItem();
             this.ENTREGACONSUMODEOFERTA = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,9 +71,6 @@
             this.clienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.proveedorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modificarDatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.listadoRolToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.listadoRolToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.listadoProveedorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -124,20 +124,20 @@
             // usuarioToolStripMenuItem1
             // 
             this.usuarioToolStripMenuItem1.Name = "usuarioToolStripMenuItem1";
-            this.usuarioToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.usuarioToolStripMenuItem1.Size = new System.Drawing.Size(128, 22);
             this.usuarioToolStripMenuItem1.Text = "Usuario";
             // 
             // clienteToolStripMenuItem1
             // 
             this.clienteToolStripMenuItem1.Name = "clienteToolStripMenuItem1";
-            this.clienteToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.clienteToolStripMenuItem1.Size = new System.Drawing.Size(128, 22);
             this.clienteToolStripMenuItem1.Text = "Cliente";
             this.clienteToolStripMenuItem1.Visible = false;
             // 
             // proveedorToolStripMenuItem1
             // 
             this.proveedorToolStripMenuItem1.Name = "proveedorToolStripMenuItem1";
-            this.proveedorToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.proveedorToolStripMenuItem1.Size = new System.Drawing.Size(128, 22);
             this.proveedorToolStripMenuItem1.Text = "Proveedor";
             this.proveedorToolStripMenuItem1.Visible = false;
             // 
@@ -174,6 +174,7 @@
             this.bajaRolToolStripMenuItem.Name = "bajaRolToolStripMenuItem";
             this.bajaRolToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.bajaRolToolStripMenuItem.Text = "Baja Rol";
+            this.bajaRolToolStripMenuItem.Click += new System.EventHandler(this.bajaRolToolStripMenuItem_Click);
             // 
             // listadoRolToolStripMenuItem
             // 
@@ -181,6 +182,13 @@
             this.listadoRolToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.listadoRolToolStripMenuItem.Text = "Modificar Rol";
             this.listadoRolToolStripMenuItem.Click += new System.EventHandler(this.listadoRolToolStripMenuItem_Click);
+            // 
+            // listadoRolToolStripMenuItem1
+            // 
+            this.listadoRolToolStripMenuItem1.Name = "listadoRolToolStripMenuItem1";
+            this.listadoRolToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.listadoRolToolStripMenuItem1.Text = "Listado Rol";
+            this.listadoRolToolStripMenuItem1.Click += new System.EventHandler(this.listadoRolToolStripMenuItem1_Click);
             // 
             // ABMDECLIENTES
             // 
@@ -213,6 +221,13 @@
             this.listadoClienteToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.listadoClienteToolStripMenuItem.Text = "Modificar Cliente";
             // 
+            // listadoRolToolStripMenuItem2
+            // 
+            this.listadoRolToolStripMenuItem2.Name = "listadoRolToolStripMenuItem2";
+            this.listadoRolToolStripMenuItem2.Size = new System.Drawing.Size(165, 22);
+            this.listadoRolToolStripMenuItem2.Text = "Listado Cliente";
+            this.listadoRolToolStripMenuItem2.Click += new System.EventHandler(this.listadoRolToolStripMenuItem2_Click);
+            // 
             // ABMDEPROVEDOR
             // 
             this.ABMDEPROVEDOR.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -243,6 +258,12 @@
             this.listadoProveedoToolStripMenuItem.Name = "listadoProveedoToolStripMenuItem";
             this.listadoProveedoToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.listadoProveedoToolStripMenuItem.Text = "Modificar Proveedor";
+            // 
+            // listadoProveedorToolStripMenuItem
+            // 
+            this.listadoProveedorToolStripMenuItem.Name = "listadoProveedorToolStripMenuItem";
+            this.listadoProveedorToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.listadoProveedorToolStripMenuItem.Text = "Listado Proveedor";
             // 
             // CARGADECREDITO
             // 
@@ -414,26 +435,6 @@
             this.modificarDatosToolStripMenuItem.Name = "modificarDatosToolStripMenuItem";
             this.modificarDatosToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
             this.modificarDatosToolStripMenuItem.Text = "Modificar datos personales";
-            // 
-            // listadoRolToolStripMenuItem1
-            // 
-            this.listadoRolToolStripMenuItem1.Name = "listadoRolToolStripMenuItem1";
-            this.listadoRolToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.listadoRolToolStripMenuItem1.Text = "Listado Rol";
-            this.listadoRolToolStripMenuItem1.Click += new System.EventHandler(this.listadoRolToolStripMenuItem1_Click);
-            // 
-            // listadoRolToolStripMenuItem2
-            // 
-            this.listadoRolToolStripMenuItem2.Name = "listadoRolToolStripMenuItem2";
-            this.listadoRolToolStripMenuItem2.Size = new System.Drawing.Size(165, 22);
-            this.listadoRolToolStripMenuItem2.Text = "Listado Cliente";
-            this.listadoRolToolStripMenuItem2.Click += new System.EventHandler(this.listadoRolToolStripMenuItem2_Click);
-            // 
-            // listadoProveedorToolStripMenuItem
-            // 
-            this.listadoProveedorToolStripMenuItem.Name = "listadoProveedorToolStripMenuItem";
-            this.listadoProveedorToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.listadoProveedorToolStripMenuItem.Text = "Listado Proveedor";
             // 
             // MenuPrincial
             // 

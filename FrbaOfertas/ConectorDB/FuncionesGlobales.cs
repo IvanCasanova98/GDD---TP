@@ -26,6 +26,22 @@ namespace FrbaOfertas.ConectorDB
             return existeUnico;
 
         }
+        public static void BajaLogica(int ABajar, string tabla)
+        {
+            SqlConnection conn = new SqlConnection(Conexion.getStringConnection());
+            string SQL = "HPBC.pr_bajaLogica_" + tabla;
+            SqlCommand command = new SqlCommand(SQL, conn);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@ABajar", SqlDbType.Int).Value = ABajar;
+            command.Connection = conn;
+            command.Connection.Open();
+            command.ExecuteNonQuery();
+            command.Connection.Close();
+            conn.Close();
+            
+
+        }
+
 
 
     }
