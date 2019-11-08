@@ -21,16 +21,15 @@ namespace FrbaOfertas.AbmCliente
             InitializeComponent();
 
             this.CenterToScreen();
-            txt_nombre.GotFocus += new EventHandler(this.UserGotFocus);
-            txt_apellido.GotFocus += new EventHandler(this.UserGotFocus);
-            txt_calle.GotFocus += new EventHandler(this.UserGotFocus);
-
-            txt_dni.GotFocus += new EventHandler(this.UserGotFocus);
-            txt_dpto.GotFocus += new EventHandler(this.UserGotFocus);
-            txt_localidad.GotFocus += new EventHandler(this.UserGotFocus);
-            txt_mail.GotFocus += new EventHandler(this.UserGotFocus);
-            txt_piso.GotFocus += new EventHandler(this.UserGotFocus);
-            txt_tel.GotFocus += new EventHandler(this.UserGotFocus);
+            txt_nombre.GotFocus += new EventHandler(FrbaOfertas.Utils.Validador.BorrarMensajeDeError);
+            txt_apellido.GotFocus += new EventHandler(FrbaOfertas.Utils.Validador.BorrarMensajeDeError);
+            txt_calle.GotFocus += new EventHandler(FrbaOfertas.Utils.Validador.BorrarMensajeDeError);
+            txt_dni.GotFocus += new EventHandler(FrbaOfertas.Utils.Validador.BorrarMensajeDeError);
+            txt_dpto.GotFocus += new EventHandler(FrbaOfertas.Utils.Validador.BorrarMensajeDeError);
+            txt_localidad.GotFocus += new EventHandler(FrbaOfertas.Utils.Validador.BorrarMensajeDeError);
+            txt_mail.GotFocus += new EventHandler(FrbaOfertas.Utils.Validador.BorrarMensajeDeError);
+            txt_piso.GotFocus += new EventHandler(FrbaOfertas.Utils.Validador.BorrarMensajeDeError);
+            txt_tel.GotFocus += new EventHandler(FrbaOfertas.Utils.Validador.BorrarMensajeDeError);
         }
 
         /*cuando haya que modificar descomentar este. Seria como un decorator medio trucho ya que le da la funcionalidad de agregar los datos de un cliente ya cargado
@@ -197,21 +196,17 @@ namespace FrbaOfertas.AbmCliente
             txt_nombre.Select();
         }
 
-        public void UserGotFocus(object sender, EventArgs e)
+        private void txt_nombre_TextChanged(object sender, EventArgs e)
         {
-            TextBox textBox = (TextBox)sender;
-            if (textBox.Text == "El campo ya existe" || textBox.Text == "Falta completar campo" || textBox.Text == "El Campo ingresado ya existe en la base de datos"
-                || textBox.Text == "El Campo no debe contener numeros" || textBox.Text == "El Campo no debe contener Letras" || textBox.Text == "El Campo supera el rango maximo de caracteres" || textBox.Text == "Usá el formato nombre@ejemplo.com")
-            {
-                textBox.Text = "";
-                textBox.ForeColor = Color.Black;
-            }
+
         }
 
         private void AltaCliente_Load(object sender, EventArgs e)
         {
 
         }
+
+
      
 
 

@@ -141,6 +141,7 @@
     <Compile Include="ListadoEstadistico\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modelo\ABMHandler\ClienteHandler.cs" />
     <Compile Include="Modelo\ABMHandler\Handler.cs" />
     <Compile Include="Modelo\ABMHandler\RolHandler.cs" />
     <Compile Include="Modelo\GuardarDB\AbmAltaGuardar.cs" />

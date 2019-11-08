@@ -136,6 +136,11 @@ namespace FrbaOfertas.AbmRol
             }
         }
 
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
 
     }
 }

@@ -8,18 +8,19 @@ using System.Windows.Forms;
 
 namespace FrbaOfertas.Modelo.ABMHandler
 {
-//Manja los listados para roles
-    class RolHandler : Handler
+    class ClienteHandler : Handler
     {
-        public override Boolean darDeBaja(int id)
+         public override Boolean darDeBaja(int id)
         {
             if ((MessageBox.Show(
-            "Esta por dar de baja un rol. Todos los usuarios perderan acceso al mismo. ¿Desea Continuar?",
+            "Esta por dar de baja un cliente. El usuario perderan acceso al mismo. ¿Desea Continuar?",
             "Baja Logica", MessageBoxButtons.YesNo,
             MessageBoxIcon.Question) == DialogResult.Yes))
             {
-                FrbaOfertas.ConectorDB.FuncionesRol.BajaLogicaRol(id);
-                MessageBox.Show("Rol dado de baja con exito", "ROL DADO DE BAJA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                FrbaOfertas.ConectorDB.FuncionesCliente.BajaLogicaCliente(id);
+
+
+                MessageBox.Show("Cliente dado de baja con exito", "ROL DADO DE BAJA", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return true;
             }
             return false;
@@ -31,5 +32,5 @@ namespace FrbaOfertas.Modelo.ABMHandler
             dialog.ShowDialog();
         }
     }
+ }
 
-}

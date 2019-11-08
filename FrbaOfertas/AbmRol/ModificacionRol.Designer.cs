@@ -55,12 +55,13 @@
             // 
             // Guardar
             // 
+            this.Guardar.BackColor = System.Drawing.Color.Gainsboro;
             this.Guardar.Location = new System.Drawing.Point(362, 473);
             this.Guardar.Name = "Guardar";
             this.Guardar.Size = new System.Drawing.Size(113, 37);
             this.Guardar.TabIndex = 17;
             this.Guardar.Text = "Guardar";
-            this.Guardar.UseVisualStyleBackColor = true;
+            this.Guardar.UseVisualStyleBackColor = false;
             this.Guardar.Click += new System.EventHandler(this.Guardar_Click);
             // 
             // dataGridView1
@@ -148,6 +149,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(509, 539);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.button3);

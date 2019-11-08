@@ -21,6 +21,7 @@ namespace FrbaOfertas.AbmRol
             InitializeComponent();
             tipoListado = deco;
             tipoListado.ModificarDataGrid(dataGridView1);
+            textBox1.GotFocus += new EventHandler(FrbaOfertas.Utils.Validador.BorrarMensajeDeError);
 
         }
 
@@ -73,7 +74,7 @@ namespace FrbaOfertas.AbmRol
             }
             else
             {
-                MessageBox.Show("No se encontraron resultados para estos parametros, modifique alguno e intente nuevamente!");
+                MessageBox.Show("No se encontraron resultados para estos filtros");
             }
 
             conn.Close();
@@ -86,6 +87,11 @@ namespace FrbaOfertas.AbmRol
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }

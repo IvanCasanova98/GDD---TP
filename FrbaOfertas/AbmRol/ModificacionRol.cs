@@ -13,14 +13,17 @@ namespace FrbaOfertas.AbmRol
     public partial class ModificacionRol : Form
     {
         int id;
+        string detalle; //necesito guardar el detalle en una variable ya que al ser unique debo validarlo
         public ModificacionRol(int idAModificar)
         {
             id = idAModificar;
             InitializeComponent();
+            textBox1.GotFocus += new EventHandler(FrbaOfertas.Utils.Validador.BorrarMensajeDeError);
         }
 
         private void cargarTodo() {
             textBox1.Text = FrbaOfertas.ConectorDB.FuncionesRol.ObtenerDetalleRol(id);
+            detalle = textBox1.Text;
             checkBox1.Checked = FrbaOfertas.ConectorDB.FuncionesRol.ObtenerEstadoRol(id);
             foreach (String listing in FrbaOfertas.ConectorDB.FuncionesFuncion.ObtenerFuncionalidades())
             {
@@ -53,6 +56,13 @@ namespace FrbaOfertas.AbmRol
             Boolean pass = true;
             FrbaOfertas.Utils.Validador validador = new FrbaOfertas.Utils.Validador();
             pass = validador.validaCadenaCaracter(textBox1, pass);
+            if (textBox1.Text != detalle) { 
+                if(FrbaOfertas.ConectorDB.FuncionesRol.existeRol(textBox1.Text)){
+                    validador.ErrorYaExisteRol(textBox1);
+                    pass=false;
+                }
+            
+            }
             if (this.dataGridView1.Rows.Count == 1)
             {
                 FrbaOfertas.Utils.Validador.crearCajaDeError("Elija alguna funcion", "ERROR FUNCION");

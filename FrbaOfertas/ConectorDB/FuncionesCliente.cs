@@ -41,6 +41,10 @@ namespace FrbaOfertas.ConectorDB
             return FrbaOfertas.ConectorDB.FuncionesGlobales.existeTabla(mail, "Email");
 
         }
+        public static void BajaLogicaCliente(int id) {
+
+            FrbaOfertas.ConectorDB.FuncionesGlobales.BajaLogica(id, "Cliente");
+        }
 
     }
 }

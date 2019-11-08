@@ -339,7 +339,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AltaProveedor";
             this.Text = "Alta Proveedor";
-            this.Load += new System.EventHandler(this.AltaProveedor_Load);
             this.Detalles.ResumeLayout(false);
             this.Detalles.PerformLayout();
             this.ResumeLayout(false);

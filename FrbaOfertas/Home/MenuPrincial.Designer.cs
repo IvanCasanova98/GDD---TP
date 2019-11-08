@@ -208,6 +208,7 @@
             this.altaClienteToolStripMenuItem.Name = "altaClienteToolStripMenuItem";
             this.altaClienteToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.altaClienteToolStripMenuItem.Text = "Alta Cliente";
+            this.altaClienteToolStripMenuItem.Click += new System.EventHandler(this.altaClienteToolStripMenuItem_Click);
             // 
             // bajaClienteToolStripMenuItem
             // 

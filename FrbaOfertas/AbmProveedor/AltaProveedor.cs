@@ -20,18 +20,18 @@ namespace FrbaOfertas.AbmProveedor
             this.modoDeGuardado = guardado;
             this.CenterToScreen();
             InitializeComponent();
-            txt_cuit.GotFocus += new EventHandler(this.UserGotFocus);
-            txt_razonsocial.GotFocus += new EventHandler(this.UserGotFocus);
-            txt_calle.GotFocus += new EventHandler(this.UserGotFocus);
-            txt_ciudad.GotFocus += new EventHandler(this.UserGotFocus);
-            txt_codpostal.GotFocus += new EventHandler(this.UserGotFocus);
-            txt_dpto.GotFocus += new EventHandler(this.UserGotFocus);
-            txt_localidad.GotFocus += new EventHandler(this.UserGotFocus);
-            txt_mail.GotFocus += new EventHandler(this.UserGotFocus);
-            txt_piso.GotFocus += new EventHandler(this.UserGotFocus);
-            txt_tel.GotFocus += new EventHandler(this.UserGotFocus);
-            txt_rubro.GotFocus += new EventHandler(this.UserGotFocus);
-            txt_nombreContacto.GotFocus += new EventHandler(this.UserGotFocus);
+            txt_cuit.GotFocus += new EventHandler(FrbaOfertas.Utils.Validador.BorrarMensajeDeError);
+            txt_razonsocial.GotFocus += new EventHandler(FrbaOfertas.Utils.Validador.BorrarMensajeDeError);
+            txt_calle.GotFocus += new EventHandler(FrbaOfertas.Utils.Validador.BorrarMensajeDeError);
+            txt_ciudad.GotFocus += new EventHandler(FrbaOfertas.Utils.Validador.BorrarMensajeDeError);
+            txt_codpostal.GotFocus += new EventHandler(FrbaOfertas.Utils.Validador.BorrarMensajeDeError);
+            txt_dpto.GotFocus += new EventHandler(FrbaOfertas.Utils.Validador.BorrarMensajeDeError);
+            txt_localidad.GotFocus += new EventHandler(FrbaOfertas.Utils.Validador.BorrarMensajeDeError);
+            txt_mail.GotFocus += new EventHandler(FrbaOfertas.Utils.Validador.BorrarMensajeDeError);
+            txt_piso.GotFocus += new EventHandler(FrbaOfertas.Utils.Validador.BorrarMensajeDeError);
+            txt_tel.GotFocus += new EventHandler(FrbaOfertas.Utils.Validador.BorrarMensajeDeError);
+            txt_rubro.GotFocus += new EventHandler(FrbaOfertas.Utils.Validador.BorrarMensajeDeError);
+            txt_nombreContacto.GotFocus += new EventHandler(FrbaOfertas.Utils.Validador.BorrarMensajeDeError);
         }
 
         private Boolean validarCampos() {
@@ -186,21 +186,7 @@ namespace FrbaOfertas.AbmProveedor
             txt_razonsocial.Select();
         }
 
-        private void AltaProveedor_Load(object sender, EventArgs e)
-        {
 
-        }
-
-        public void UserGotFocus(object sender, EventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
-            if (textBox.Text == "El campo ya existe" || textBox.Text == "Falta completar campo" || textBox.Text == "El Campo ingresado ya existe en la base de datos" || textBox.Text == "Utilice el formato tipo-DNI-DigitoVerificador, 11 numeros"
-                || textBox.Text == "El Campo no debe contener numeros" || textBox.Text == "El Campo no debe contener Letras" || textBox.Text == "El Campo supera el rango maximo de caracteres" || textBox.Text == "Usá el formato nombre@ejemplo.com")
-            {
-                textBox.Text = "";
-                textBox.ForeColor = Color.Black;
-            }
-        }
 
     }
 }

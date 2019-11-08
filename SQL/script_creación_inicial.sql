@@ -731,3 +731,15 @@ UPDATE HPBC.Rol set Rol_Habilitado = 0
 WHERE Rol_ID = @ABajar 
 END
 GO
+
+
+IF EXISTS (SELECT name FROM sysobjects WHERE name='pr_bajaLogica_Cliente' AND type='p')
+DROP PROCEDURE HPBC.pr_bajaLogica_Cliente
+GO
+CREATE PROCEDURE HPBC.pr_bajaLogica_Cliente(@ABajar int)
+AS
+BEGIN
+UPDATE HPBC.Cliente set clie_habilitado = 0 
+WHERE clie_habilitado = @ABajar 
+END
+GO

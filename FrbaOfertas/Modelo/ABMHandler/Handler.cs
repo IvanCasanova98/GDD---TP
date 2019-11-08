@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FrbaOfertas.Modelo.AbmHandler
 {
-    //el proposito de esta clase es evitar repeticion de codigo creando 
+    //el proposito de esta clase es evitar repeticion de codigo creando varios listados para lo mismo.
     public abstract class Handler
     {
         public abstract Boolean darDeBaja(int id);

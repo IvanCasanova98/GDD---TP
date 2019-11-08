@@ -94,7 +94,8 @@ namespace FrbaOfertas.Home
 
         private void listadoRolToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-
+            FrbaOfertas.AbmCliente.ListadoCliente dialog = new FrbaOfertas.AbmCliente.ListadoCliente(new ListadoNormal());
+            dialog.ShowDialog(this);
         }
 
         private void listadoRolToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -106,6 +107,12 @@ namespace FrbaOfertas.Home
         private void bajaRolToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrbaOfertas.AbmRol.ListadoRol dialog = new FrbaOfertas.AbmRol.ListadoRol(new ListadoBaja(new RolHandler()));
+            dialog.ShowDialog(this);
+        }
+
+        private void altaClienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrbaOfertas.AbmCliente.AltaCliente dialog = new FrbaOfertas.AbmCliente.AltaCliente(new Modelo.GuardarDB.AbmAltaGuardar());
             dialog.ShowDialog(this);
         }
 
