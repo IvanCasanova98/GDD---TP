@@ -15,7 +15,7 @@ namespace FrbaOfertas.AbmRol
         public AltaRol()
         {
             InitializeComponent();
-            textBox1.GotFocus += new EventHandler(this.UserGotFocus);
+            textBox1.GotFocus += new EventHandler(FrbaOfertas.Utils.Validador.BorrarMensajeDeError);
         }
 
         private void label1_Click(object sender, EventArgs e)

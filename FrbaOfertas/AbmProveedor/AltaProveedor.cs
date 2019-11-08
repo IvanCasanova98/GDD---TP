@@ -146,16 +146,16 @@ namespace FrbaOfertas.AbmProveedor
                 Proveedor proveedor = new Proveedor();
                 proveedor.RazonSocial = txt_razonsocial.Text;
                 proveedor.cuit = txt_cuit.Text.Replace("-", string.Empty);
-                proveedor.codigoPostal = txt_codpostal.Text;
+                proveedor.codigoPostal = txt_codpostal.Text.Trim();
                 proveedor.Calle = txt_calle.Text;
-                proveedor.Piso = txt_piso.Text;
-                proveedor.Dpto = txt_dpto.Text;
-                proveedor.Localidad = txt_localidad.Text;
-                proveedor.telefono = txt_tel.Text;
-                proveedor.mail = txt_mail.Text;
-                proveedor.Ciudad = txt_ciudad.Text;
-                proveedor.rubro = txt_rubro.Text;
-                proveedor.nombreContacto = txt_nombreContacto.Text;
+                proveedor.Piso = txt_piso.Text.Trim();
+                proveedor.Dpto = txt_dpto.Text.Trim();
+                proveedor.Localidad = txt_localidad.Text.Trim();
+                proveedor.telefono = txt_tel.Text.Trim();
+                proveedor.mail = txt_mail.Text.Trim();
+                proveedor.Ciudad = txt_ciudad.Text.Trim();
+                proveedor.rubro = txt_rubro.Text.Trim();
+                proveedor.nombreContacto = txt_nombreContacto.Text.Trim();
                 proveedor.habilitado = 1;
                 modoDeGuardado.Guardar(proveedor);
             

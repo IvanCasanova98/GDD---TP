@@ -116,6 +116,18 @@ namespace FrbaOfertas.Home
             dialog.ShowDialog(this);
         }
 
+        private void bajaClienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrbaOfertas.AbmCliente.ListadoCliente dialog = new FrbaOfertas.AbmCliente.ListadoCliente(new ListadoBaja(new ClienteHandler()));
+            dialog.ShowDialog(this);
+        }
+
+        private void listadoClienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrbaOfertas.AbmCliente.ListadoCliente dialog = new FrbaOfertas.AbmCliente.ListadoCliente(new ListadoModificar(new ClienteHandler()));
+            dialog.ShowDialog(this);
+        }
+
 
 
 

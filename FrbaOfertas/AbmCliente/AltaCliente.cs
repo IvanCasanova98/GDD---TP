@@ -153,15 +153,15 @@ namespace FrbaOfertas.AbmCliente
             
             if (this.validarDatos()) {
                 Cliente cliente = new Cliente();
-                cliente.nombre = txt_nombre.Text;
-                cliente.apellido = txt_apellido.Text;
-                cliente.documento = txt_dni.Text;
+                cliente.nombre = txt_nombre.Text.Trim();
+                cliente.apellido = txt_apellido.Text.Trim();
+                cliente.documento = txt_dni.Text.Trim();
                 cliente.Calle = txt_calle.Text;
-                cliente.Piso = txt_piso.Text;
-                cliente.Dpto = txt_dpto.Text;
-                cliente.Localidad = txt_localidad.Text;
-                cliente.telefono = txt_tel.Text;
-                cliente.mail = txt_mail.Text;
+                cliente.Piso = txt_piso.Text.Trim();
+                cliente.Dpto = txt_dpto.Text.Trim();
+                cliente.Localidad = txt_localidad.Text.Trim();
+                cliente.telefono = txt_tel.Text.Trim();
+                cliente.mail = txt_mail.Text.Trim();
                 cliente.fecha_nacimiento = dateTimePicker.Value;
                 cliente.habilitado = 1;
                 modoDeGuardado.Guardar(cliente);
