@@ -28,7 +28,7 @@ namespace FrbaOfertas.Modelo.ABMHandler
         }
         public override void Modificar(int id)
         {
-            FrbaOfertas.AbmRol.ModificacionRol dialog = new FrbaOfertas.AbmRol.ModificacionRol(id);
+            FrbaOfertas.AbmCliente.ModificacionCliente dialog = new FrbaOfertas.AbmCliente.ModificacionCliente(id);
             dialog.ShowDialog();
         }
     }

@@ -21,7 +21,7 @@ namespace FrbaOfertas.Modelo
         public string Dpto { get; set; }
         public string Localidad { get; set; }
         public string monto { get; set; }
-        public int habilitado { get; set; }
+        public Boolean habilitado { get; set; }
 
 
         public override string getIdentificadorPrincipal()

@@ -118,13 +118,13 @@
             // 
             this.txt_calle.Location = new System.Drawing.Point(80, 103);
             this.txt_calle.Name = "txt_calle";
-            this.txt_calle.Size = new System.Drawing.Size(148, 20);
+            this.txt_calle.Size = new System.Drawing.Size(313, 20);
             this.txt_calle.TabIndex = 3;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(20, 161);
+            this.label5.Location = new System.Drawing.Point(20, 212);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(30, 13);
             this.label5.TabIndex = 9;
@@ -132,7 +132,7 @@
             // 
             // txt_tel
             // 
-            this.txt_tel.Location = new System.Drawing.Point(80, 158);
+            this.txt_tel.Location = new System.Drawing.Point(80, 209);
             this.txt_tel.Name = "txt_tel";
             this.txt_tel.Size = new System.Drawing.Size(313, 20);
             this.txt_tel.TabIndex = 7;
@@ -140,7 +140,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(20, 187);
+            this.label6.Location = new System.Drawing.Point(20, 238);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(32, 13);
             this.label6.TabIndex = 11;
@@ -148,7 +148,7 @@
             // 
             // txt_mail
             // 
-            this.txt_mail.Location = new System.Drawing.Point(80, 187);
+            this.txt_mail.Location = new System.Drawing.Point(80, 238);
             this.txt_mail.Name = "txt_mail";
             this.txt_mail.Size = new System.Drawing.Size(313, 20);
             this.txt_mail.TabIndex = 8;
@@ -156,7 +156,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(20, 239);
+            this.label8.Location = new System.Drawing.Point(20, 268);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(93, 13);
             this.label8.TabIndex = 15;
@@ -189,7 +189,7 @@
             this.Detalles.Controls.Add(this.txt_tel);
             this.Detalles.Location = new System.Drawing.Point(9, 12);
             this.Detalles.Name = "Detalles";
-            this.Detalles.Size = new System.Drawing.Size(405, 311);
+            this.Detalles.Size = new System.Drawing.Size(405, 356);
             this.Detalles.TabIndex = 0;
             this.Detalles.TabStop = false;
             this.Detalles.Text = "Detalles Cliente";
@@ -200,7 +200,7 @@
             this.cmd_limpiar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.cmd_limpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmd_limpiar.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.cmd_limpiar.Location = new System.Drawing.Point(165, 272);
+            this.cmd_limpiar.Location = new System.Drawing.Point(165, 308);
             this.cmd_limpiar.Margin = new System.Windows.Forms.Padding(2);
             this.cmd_limpiar.Name = "cmd_limpiar";
             this.cmd_limpiar.Size = new System.Drawing.Size(86, 34);
@@ -211,7 +211,7 @@
             // 
             // txt_localidad
             // 
-            this.txt_localidad.Location = new System.Drawing.Point(80, 129);
+            this.txt_localidad.Location = new System.Drawing.Point(80, 180);
             this.txt_localidad.Name = "txt_localidad";
             this.txt_localidad.Size = new System.Drawing.Size(313, 20);
             this.txt_localidad.TabIndex = 6;
@@ -219,7 +219,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(20, 132);
+            this.label11.Location = new System.Drawing.Point(20, 183);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(53, 13);
             this.label11.TabIndex = 32;
@@ -227,15 +227,15 @@
             // 
             // txt_dpto
             // 
-            this.txt_dpto.Location = new System.Drawing.Point(357, 103);
+            this.txt_dpto.Location = new System.Drawing.Point(80, 154);
             this.txt_dpto.Name = "txt_dpto";
-            this.txt_dpto.Size = new System.Drawing.Size(36, 20);
+            this.txt_dpto.Size = new System.Drawing.Size(313, 20);
             this.txt_dpto.TabIndex = 5;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(321, 106);
+            this.label10.Location = new System.Drawing.Point(20, 157);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(30, 13);
             this.label10.TabIndex = 30;
@@ -243,15 +243,15 @@
             // 
             // txt_piso
             // 
-            this.txt_piso.Location = new System.Drawing.Point(279, 103);
+            this.txt_piso.Location = new System.Drawing.Point(80, 129);
             this.txt_piso.Name = "txt_piso";
-            this.txt_piso.Size = new System.Drawing.Size(36, 20);
+            this.txt_piso.Size = new System.Drawing.Size(313, 20);
             this.txt_piso.TabIndex = 4;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(246, 106);
+            this.label9.Location = new System.Drawing.Point(20, 128);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(27, 13);
             this.label9.TabIndex = 28;
@@ -263,7 +263,7 @@
             this.cmd_darAlta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.cmd_darAlta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmd_darAlta.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.cmd_darAlta.Location = new System.Drawing.Point(265, 272);
+            this.cmd_darAlta.Location = new System.Drawing.Point(265, 308);
             this.cmd_darAlta.Margin = new System.Windows.Forms.Padding(2);
             this.cmd_darAlta.Name = "cmd_darAlta";
             this.cmd_darAlta.Size = new System.Drawing.Size(128, 34);
@@ -278,7 +278,7 @@
             this.cmd_cancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.cmd_cancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmd_cancelar.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.cmd_cancelar.Location = new System.Drawing.Point(23, 272);
+            this.cmd_cancelar.Location = new System.Drawing.Point(23, 308);
             this.cmd_cancelar.Margin = new System.Windows.Forms.Padding(2);
             this.cmd_cancelar.Name = "cmd_cancelar";
             this.cmd_cancelar.Size = new System.Drawing.Size(128, 34);
@@ -289,7 +289,7 @@
             // 
             // dateTimePicker
             // 
-            this.dateTimePicker.Location = new System.Drawing.Point(119, 239);
+            this.dateTimePicker.Location = new System.Drawing.Point(119, 268);
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.Size = new System.Drawing.Size(274, 20);
             this.dateTimePicker.TabIndex = 10;
@@ -299,7 +299,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(426, 337);
+            this.ClientSize = new System.Drawing.Size(426, 374);
             this.Controls.Add(this.Detalles);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AltaCliente";

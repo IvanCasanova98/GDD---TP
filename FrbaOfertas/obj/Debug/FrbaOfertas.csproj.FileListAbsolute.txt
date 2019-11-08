@@ -45,3 +45,4 @@ C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.Home.S
 C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.Home.MenuPrincial.resources
 C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.AbmRol.ListadoRol.resources
 C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.AbmRol.ModificacionRol.resources
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.AbmCliente.ModificacionCliente.resources

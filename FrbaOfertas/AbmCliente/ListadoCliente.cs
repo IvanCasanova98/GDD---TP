@@ -26,6 +26,7 @@ namespace FrbaOfertas.AbmCliente
             txt_mail.GotFocus += new EventHandler(FrbaOfertas.Utils.Validador.BorrarMensajeDeError);
             tipoListado = deco;
             tipoListado.ModificarDataGrid(dataGridView1);
+            this.GotFocus += new EventHandler(button1_Click);
         }
 
         private void cmd_limpiar_Click(object sender, EventArgs e)
@@ -107,7 +108,7 @@ namespace FrbaOfertas.AbmCliente
                         dataGridView1.Rows[cont].Cells[3].Value = reader["clie_dni"].ToString();
                         dataGridView1.Rows[cont].Cells[4].Value = reader["clie_mail"].ToString();
                         dataGridView1.Rows[cont].Cells[5].Value = reader["clie_tel"].ToString();
-                        dataGridView1.Rows[cont].Cells[6].Value = Convert.ToDateTime(reader["clie_fecha_nac"]);
+                        dataGridView1.Rows[cont].Cells[6].Value = Convert.ToDateTime(reader["clie_fecha_nac"]).ToShortDateString();
                         dataGridView1.Rows[cont].Cells[7].Value = reader["clie_calle"].ToString();
                         dataGridView1.Rows[cont].Cells[8].Value = reader["clie_piso"].ToString();
                         dataGridView1.Rows[cont].Cells[9].Value = reader["clie_dpto"].ToString();
@@ -131,6 +132,11 @@ namespace FrbaOfertas.AbmCliente
         private void ListadoCliente_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
        

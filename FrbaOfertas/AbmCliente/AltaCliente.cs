@@ -72,7 +72,8 @@ namespace FrbaOfertas.AbmCliente
                 validador.ErrorFaltaCompletarCampo(txt_piso);
                 pass = false;
             }
-            else if (!validador.isNumeric(txt_piso.Text))
+            else
+            if (!validador.isNumeric(txt_piso.Text))
             {
                 validador.ErrornoContenerLetras(txt_piso);
                 pass = false;
@@ -86,6 +87,11 @@ namespace FrbaOfertas.AbmCliente
             if (validador.isEmpty(txt_dpto.Text))
             {
                 validador.ErrorFaltaCompletarCampo(txt_dpto);
+                pass = false;
+            }else
+            if (validador.isNumeric(txt_dpto.Text))
+            {
+                validador.ErrornoContenerNumeros(txt_dpto);
                 pass = false;
             }
             else if (validador.fueraDeRango(txt_dpto.Text, 0, 3))
@@ -163,7 +169,7 @@ namespace FrbaOfertas.AbmCliente
                 cliente.telefono = txt_tel.Text.Trim();
                 cliente.mail = txt_mail.Text.Trim();
                 cliente.fecha_nacimiento = dateTimePicker.Value;
-                cliente.habilitado = 1;
+                cliente.habilitado = true;
                 modoDeGuardado.Guardar(cliente);
                 
                 this.Close();

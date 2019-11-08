@@ -21,9 +21,9 @@ CREATE TABLE HPBC.Cliente(
 	clie_ID INT NOT NULL IDENTITY(1,1),
 	clie_nombre nvarchar(255) NOT NULL,
 	clie_apellido nvarchar(255) NOT NULL,
-	clie_dni numeric(18,0) UNIQUE NOT NULL,
-	clie_mail nvarchar(255) UNIQUE NOT NULL,
-	clie_tel numeric(18,0) UNIQUE NULL,
+	clie_dni numeric(18,0)  NOT NULL,
+	clie_mail nvarchar(255)  NOT NULL,
+	clie_tel numeric(18,0)  NULL,
 	clie_fecha_nac date NOT NULL,
 	clie_calle varchar(255),
 	clie_piso numeric(2,0),
@@ -57,7 +57,7 @@ GO
 IF NOT EXISTS (select * from sysobjects where name='Proveedor' and xtype='U')
 CREATE TABLE HPBC.Proveedor(
 	Provee_ID INT NOT NULL identity(1,1) ,
-	Provee_Rs varchar(100) UNIQUE NOT NULL,
+	Provee_Rs varchar(100)  NOT NULL,
 	Provee_Calle varchar(255),
 	Provee_Piso numeric(2,0),
 	Provee_Dpto varchar(2),
@@ -65,7 +65,7 @@ CREATE TABLE HPBC.Proveedor(
 	Provee_Ciudad varchar(255),
 	Provee_CodPostal numeric(4,0),
 	Provee_Mail varchar(255) ,
-	Provee_CUIT nvarchar(255) UNIQUE NOT NULL,
+	Provee_CUIT nvarchar(255)  NOT NULL,
 	Provee_Tel numeric(14,0) ,
 	Provee_NombreContacto varchar(100),
 	Provee_Habilitado Bit NOT NULL,
@@ -464,7 +464,7 @@ CREATE PROCEDURE HPBC.pr_limpiar_tabla_maestra_clientes
 	
 	/* Ahora si se insertan los Clientes */
 	INSERT INTO HPBC.Cliente (clie_nombre, clie_apellido,  clie_dni, clie_mail, clie_tel, clie_calle, clie_fecha_nac, clie_localidad, clie_habilitado,clie_monto, clie_usuario_id)
-	SELECT Nombre, Apellido, convert(numeric(18,0),Dni),  Email, Telefono, Cli_Direccion,Cli_Fecha_Nac,Cli_Ciudad, 1,200 ,u.usuario_id
+	SELECT Nombre, Apellido, convert(numeric(18,0),Dni),  REPLACE(Email,' ',''), Telefono, Cli_Direccion,Cli_Fecha_Nac,Cli_Ciudad, 1,200 ,u.usuario_id
 	FROM #Temp_Cli_Incons 
 	INNER JOIN HPBC.Usuario u
 	ON Dni = u.usuario_username

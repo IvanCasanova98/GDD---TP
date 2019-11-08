@@ -33,11 +33,12 @@ namespace FrbaOfertas.Modelo.Listado
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridView dataGridView1 = (DataGridView)sender;
-            if (e.ColumnIndex == dataGridView1.Columns["Modificar"].Index && dataGridView1.Rows.Count > 1)
+            if (e.ColumnIndex == dataGridView1.Columns["Modificar"].Index && (dataGridView1.Rows.Count > 1) && e.RowIndex != dataGridView1.Rows.Count - 1)
             {
                 tipoAbm.Modificar(Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells["Id"].Value.ToString()));
                 dataGridView1.DataSource = null;
                 dataGridView1.Rows.Clear();
+                
             }
         }
         public override string MostrarBajasLogicas()

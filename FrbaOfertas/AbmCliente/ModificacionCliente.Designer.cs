@@ -30,6 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModificacionCliente));
             this.Detalles = new System.Windows.Forms.GroupBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.txt_monto = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.txt_localidad = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.txt_dpto = new System.Windows.Forms.TextBox();
@@ -52,9 +55,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txt_tel = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txt_monto = new System.Windows.Forms.TextBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.Detalles.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -87,14 +87,41 @@
             this.Detalles.Controls.Add(this.txt_tel);
             this.Detalles.Location = new System.Drawing.Point(12, 12);
             this.Detalles.Name = "Detalles";
-            this.Detalles.Size = new System.Drawing.Size(405, 362);
+            this.Detalles.Size = new System.Drawing.Size(405, 444);
             this.Detalles.TabIndex = 1;
             this.Detalles.TabStop = false;
             this.Detalles.Text = "Detalles Cliente";
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(23, 362);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(73, 17);
+            this.checkBox1.TabIndex = 35;
+            this.checkBox1.Text = "Habilitado";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // txt_monto
+            // 
+            this.txt_monto.Location = new System.Drawing.Point(80, 326);
+            this.txt_monto.Name = "txt_monto";
+            this.txt_monto.Size = new System.Drawing.Size(310, 20);
+            this.txt_monto.TabIndex = 34;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(20, 326);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(37, 13);
+            this.label7.TabIndex = 33;
+            this.label7.Text = "Monto";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // txt_localidad
             // 
-            this.txt_localidad.Location = new System.Drawing.Point(80, 129);
+            this.txt_localidad.Location = new System.Drawing.Point(77, 189);
             this.txt_localidad.Name = "txt_localidad";
             this.txt_localidad.Size = new System.Drawing.Size(313, 20);
             this.txt_localidad.TabIndex = 6;
@@ -102,7 +129,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(20, 132);
+            this.label11.Location = new System.Drawing.Point(19, 192);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(53, 13);
             this.label11.TabIndex = 32;
@@ -110,15 +137,15 @@
             // 
             // txt_dpto
             // 
-            this.txt_dpto.Location = new System.Drawing.Point(357, 103);
+            this.txt_dpto.Location = new System.Drawing.Point(77, 157);
             this.txt_dpto.Name = "txt_dpto";
-            this.txt_dpto.Size = new System.Drawing.Size(36, 20);
+            this.txt_dpto.Size = new System.Drawing.Size(313, 20);
             this.txt_dpto.TabIndex = 5;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(321, 106);
+            this.label10.Location = new System.Drawing.Point(20, 157);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(30, 13);
             this.label10.TabIndex = 30;
@@ -126,15 +153,15 @@
             // 
             // txt_piso
             // 
-            this.txt_piso.Location = new System.Drawing.Point(279, 103);
+            this.txt_piso.Location = new System.Drawing.Point(77, 129);
             this.txt_piso.Name = "txt_piso";
-            this.txt_piso.Size = new System.Drawing.Size(36, 20);
+            this.txt_piso.Size = new System.Drawing.Size(313, 20);
             this.txt_piso.TabIndex = 4;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(246, 106);
+            this.label9.Location = new System.Drawing.Point(19, 128);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(27, 13);
             this.label9.TabIndex = 28;
@@ -146,13 +173,14 @@
             this.cmd_darAlta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.cmd_darAlta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmd_darAlta.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.cmd_darAlta.Location = new System.Drawing.Point(249, 321);
+            this.cmd_darAlta.Location = new System.Drawing.Point(249, 396);
             this.cmd_darAlta.Margin = new System.Windows.Forms.Padding(2);
             this.cmd_darAlta.Name = "cmd_darAlta";
             this.cmd_darAlta.Size = new System.Drawing.Size(128, 34);
             this.cmd_darAlta.TabIndex = 11;
             this.cmd_darAlta.Text = "Guardar";
             this.cmd_darAlta.UseVisualStyleBackColor = false;
+            this.cmd_darAlta.Click += new System.EventHandler(this.cmd_darAlta_Click);
             // 
             // cmd_cancelar
             // 
@@ -160,19 +188,20 @@
             this.cmd_cancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.cmd_cancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmd_cancelar.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.cmd_cancelar.Location = new System.Drawing.Point(23, 321);
+            this.cmd_cancelar.Location = new System.Drawing.Point(22, 396);
             this.cmd_cancelar.Margin = new System.Windows.Forms.Padding(2);
             this.cmd_cancelar.Name = "cmd_cancelar";
             this.cmd_cancelar.Size = new System.Drawing.Size(128, 34);
             this.cmd_cancelar.TabIndex = 13;
             this.cmd_cancelar.Text = "Cancelar";
             this.cmd_cancelar.UseVisualStyleBackColor = false;
+            this.cmd_cancelar.Click += new System.EventHandler(this.cmd_cancelar_Click);
             // 
             // dateTimePicker
             // 
-            this.dateTimePicker.Location = new System.Drawing.Point(119, 222);
+            this.dateTimePicker.Location = new System.Drawing.Point(119, 285);
             this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(274, 20);
+            this.dateTimePicker.Size = new System.Drawing.Size(271, 20);
             this.dateTimePicker.TabIndex = 10;
             // 
             // label1
@@ -186,7 +215,7 @@
             // 
             // txt_nombre
             // 
-            this.txt_nombre.Location = new System.Drawing.Point(80, 25);
+            this.txt_nombre.Location = new System.Drawing.Point(77, 25);
             this.txt_nombre.Name = "txt_nombre";
             this.txt_nombre.Size = new System.Drawing.Size(313, 20);
             this.txt_nombre.TabIndex = 0;
@@ -194,7 +223,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(20, 228);
+            this.label8.Location = new System.Drawing.Point(20, 291);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(93, 13);
             this.label8.TabIndex = 15;
@@ -202,7 +231,7 @@
             // 
             // txt_apellido
             // 
-            this.txt_apellido.Location = new System.Drawing.Point(80, 51);
+            this.txt_apellido.Location = new System.Drawing.Point(77, 51);
             this.txt_apellido.Name = "txt_apellido";
             this.txt_apellido.Size = new System.Drawing.Size(313, 20);
             this.txt_apellido.TabIndex = 1;
@@ -218,7 +247,7 @@
             // 
             // txt_dni
             // 
-            this.txt_dni.Location = new System.Drawing.Point(80, 77);
+            this.txt_dni.Location = new System.Drawing.Point(77, 77);
             this.txt_dni.Name = "txt_dni";
             this.txt_dni.Size = new System.Drawing.Size(313, 20);
             this.txt_dni.TabIndex = 2;
@@ -226,7 +255,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(20, 187);
+            this.label6.Location = new System.Drawing.Point(20, 250);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(32, 13);
             this.label6.TabIndex = 11;
@@ -243,22 +272,22 @@
             // 
             // txt_mail
             // 
-            this.txt_mail.Location = new System.Drawing.Point(80, 187);
+            this.txt_mail.Location = new System.Drawing.Point(77, 250);
             this.txt_mail.Name = "txt_mail";
             this.txt_mail.Size = new System.Drawing.Size(313, 20);
             this.txt_mail.TabIndex = 8;
             // 
             // txt_calle
             // 
-            this.txt_calle.Location = new System.Drawing.Point(80, 103);
+            this.txt_calle.Location = new System.Drawing.Point(77, 103);
             this.txt_calle.Name = "txt_calle";
-            this.txt_calle.Size = new System.Drawing.Size(148, 20);
+            this.txt_calle.Size = new System.Drawing.Size(313, 20);
             this.txt_calle.TabIndex = 3;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(20, 161);
+            this.label5.Location = new System.Drawing.Point(20, 224);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(30, 13);
             this.label5.TabIndex = 9;
@@ -275,44 +304,17 @@
             // 
             // txt_tel
             // 
-            this.txt_tel.Location = new System.Drawing.Point(80, 158);
+            this.txt_tel.Location = new System.Drawing.Point(77, 221);
             this.txt_tel.Name = "txt_tel";
             this.txt_tel.Size = new System.Drawing.Size(313, 20);
             this.txt_tel.TabIndex = 7;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(20, 263);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(37, 13);
-            this.label7.TabIndex = 33;
-            this.label7.Text = "Monto";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // txt_monto
-            // 
-            this.txt_monto.Location = new System.Drawing.Point(80, 263);
-            this.txt_monto.Name = "txt_monto";
-            this.txt_monto.Size = new System.Drawing.Size(313, 20);
-            this.txt_monto.TabIndex = 34;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(23, 299);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(73, 17);
-            this.checkBox1.TabIndex = 35;
-            this.checkBox1.Text = "Habilitado";
-            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // ModificacionCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(435, 385);
+            this.ClientSize = new System.Drawing.Size(435, 468);
             this.Controls.Add(this.Detalles);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ModificacionCliente";
