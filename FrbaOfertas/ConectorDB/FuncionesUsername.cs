@@ -22,17 +22,17 @@ namespace FrbaOfertas.ConectorDB
             SqlConnection conn = new SqlConnection(Conexion.getStringConnection());
             conn.Open();
             string SQL = "SELECT HPBC.validar_usuario(@usario,@pass)";
-                          
+
             SqlCommand command = new SqlCommand(SQL, conn);
-           // command.CommandType = CommandType.Text;
+            // command.CommandType = CommandType.Text;
             command.Parameters.AddWithValue("@usario", username);
-            command.Parameters.AddWithValue("@pass", password);  
+            command.Parameters.AddWithValue("@pass", password);
 
 
-            RespuestaProtocolo = (int) command.ExecuteScalar();
+            RespuestaProtocolo = (int)command.ExecuteScalar();
             conn.Close();
             return RespuestaProtocolo;
-            
+
         }
         public static void resetearCant_login_Fallido(string username)
         {
@@ -46,7 +46,7 @@ namespace FrbaOfertas.ConectorDB
             command.ExecuteNonQuery();
             command.Connection.Close();
             conn.Close();
-       
+
         }
         public static void aumentarCant_login_Fallido(string username)
         {
@@ -60,15 +60,15 @@ namespace FrbaOfertas.ConectorDB
             command.ExecuteNonQuery();
             command.Connection.Close();
             conn.Close();
-            
+
         }
 
         public static void recuperar_usuario_id(string username, string pass)
         {
-            
+
             SqlConnection conn = new SqlConnection(Conexion.getStringConnection());
             SqlCommand command = conn.CreateCommand();
-            command.CommandText = "SELECT usuario_id FROM HPBC.Usuario WHERE usuario_username = '"+username+"' and usuario_password = HASHBYTES('SHA2_256', '"+pass+"')";
+            command.CommandText = "SELECT usuario_id FROM HPBC.Usuario WHERE usuario_username = '" + username + "' and usuario_password = HASHBYTES('SHA2_256', '" + pass + "')";
             command.Connection = conn;
             command.Connection.Open();
             command.ExecuteNonQuery();
@@ -80,7 +80,7 @@ namespace FrbaOfertas.ConectorDB
             Usuario.password = pass;
             command.Connection.Close();
             conn.Close();
-            
+
 
         }
         public static List<String> ObtenerFuncionalidadesDeUnUsuario(string username)
@@ -90,7 +90,7 @@ namespace FrbaOfertas.ConectorDB
             SqlConnection connection = new SqlConnection(Conexion.getStringConnection());
             SqlCommand comm = connection.CreateCommand();
             comm.CommandText =
-                "SELECT Distinct Func_detalle FROM HPBC.Funcion f join HPBC.Funcion_Por_Rol fr on f.Func_ID = fr.Func_ID join HPBC.Rol r on fr.Rol_ID = r.Rol_ID join HPBC.Rol_Por_Usuario on ID_Rol = r.Rol_ID join HPBC.Usuario on usuario_id = ID_Usuario where usuario_username = '" + username+ "'";
+                "SELECT Distinct Func_detalle FROM HPBC.Funcion f join HPBC.Funcion_Por_Rol fr on f.Func_ID = fr.Func_ID join HPBC.Rol r on fr.Rol_ID = r.Rol_ID join HPBC.Rol_Por_Usuario on ID_Rol = r.Rol_ID join HPBC.Usuario on usuario_id = ID_Usuario where usuario_username = '" + username + "'";
             comm.Connection = connection;
             comm.Connection.Open();
             SqlDataReader reader = comm.ExecuteReader() as SqlDataReader;
@@ -101,11 +101,13 @@ namespace FrbaOfertas.ConectorDB
             return lista;
 
         }
-        public static Boolean existeUsername(string username) {
+        public static Boolean existeUsername(string username)
+        {
             return FrbaOfertas.ConectorDB.FuncionesGlobales.existeTabla(username, "Usuario");
         }
 
-        public static void GuardarUsuario(String usuario, String pass) {
+        public static void GuardarUsuario(String usuario, String pass)
+        {
             SqlConnection connection = new SqlConnection(Conexion.getStringConnection());
             SqlCommand comm = connection.CreateCommand();
 
@@ -116,11 +118,12 @@ namespace FrbaOfertas.ConectorDB
             comm.ExecuteNonQuery();
             comm.Connection.Close();
             connection.Close();
-        
-        
+
+
         }
 
-        public static void insertarRolxUsuario(string Rol, string usuario) {
+        public static void insertarRolxUsuario(string Rol, string usuario)
+        {
             SqlConnection connection = new SqlConnection(Conexion.getStringConnection());
             SqlCommand comm = connection.CreateCommand();
 
@@ -131,11 +134,27 @@ namespace FrbaOfertas.ConectorDB
             comm.ExecuteNonQuery();
             comm.Connection.Close();
             connection.Close();
-        
-        
+
+
         }
 
-    }
+        public static void updatearUsuario(int id, string contraseña, Boolean habilitado, Boolean bloqueado)
+        {
+            SqlConnection connection = new SqlConnection(Conexion.getStringConnection());
+            SqlCommand comm = connection.CreateCommand();
 
+            comm.CommandText = "UPDATE HPBC.Usuario SET usuario_password = " + "HASHBYTES('SHA2_256','" + contraseña + "'), usuario_habilitado = " + Convert.ToInt32(habilitado) + ", usuario_bloqueado = " + Convert.ToInt32(bloqueado) + ", usuario_cant_logeo_error = 0";
+            comm.Connection = connection;
+            comm.Connection.Open();
+            comm.ExecuteNonQuery();
+            comm.Connection.Close();
+            connection.Close();
+
+
+        }
+
+
+
+    }
 
 }

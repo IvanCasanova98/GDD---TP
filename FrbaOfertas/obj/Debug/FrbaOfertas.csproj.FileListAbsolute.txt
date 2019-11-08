@@ -46,3 +46,4 @@ C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.Home.M
 C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.AbmRol.ListadoRol.resources
 C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.AbmRol.ModificacionRol.resources
 C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.AbmCliente.ModificacionCliente.resources
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.DatosPersonales.Usuarios.DatosPersonalesUsuario.resources

@@ -155,6 +155,11 @@ namespace FrbaOfertas.RegistroUsuario
 
         }
 
+        private void tb_pass_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
 
 
     }

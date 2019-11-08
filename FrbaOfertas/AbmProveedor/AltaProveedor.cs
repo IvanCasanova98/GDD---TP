@@ -63,11 +63,17 @@ namespace FrbaOfertas.AbmProveedor
                 validador.ErrorFaltaCompletarCampo(txt_dpto);
                 pass = false;
             }
-            else if (validador.fueraDeRango(txt_dpto.Text, 0, 3))
-            {
-                validador.ErrorSuperaRango(txt_dpto);
-                pass = false;
-            }
+            else
+                if (validador.isNumeric(txt_dpto.Text))
+                {
+                    validador.ErrornoContenerNumeros(txt_dpto);
+                    pass = false;
+                }
+                else if (validador.fueraDeRango(txt_dpto.Text, 0, 3))
+                {
+                    validador.ErrorSuperaRango(txt_dpto);
+                    pass = false;
+                }
             //LOCALIDAD
             pass = validador.validaCadenaCaracter(txt_localidad, pass);
             //CIUDAD

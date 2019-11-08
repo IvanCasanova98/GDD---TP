@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListadoProveedor));
             this.button1 = new System.Windows.Forms.Button();
             this.txt_cuit = new System.Windows.Forms.TextBox();
             this.txt_razonsocial = new System.Windows.Forms.TextBox();
@@ -131,7 +132,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.lblnombre);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.Desktop;
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(698, 124);
@@ -151,11 +152,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(724, 635);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.cmd_limpiar);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ListadoProveedor";
             this.Text = "Listado Proveedor";
             this.groupBox1.ResumeLayout(false);

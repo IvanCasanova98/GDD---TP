@@ -112,8 +112,12 @@ namespace FrbaOfertas.Home
 
         private void altaClienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrbaOfertas.AbmCliente.AltaCliente dialog = new FrbaOfertas.AbmCliente.AltaCliente(new Modelo.GuardarDB.AbmAltaGuardar());
-            dialog.ShowDialog(this);
+            if (FrbaOfertas.ConectorDB.FuncionesRol.ObtenerEstadoRol(2))
+            {
+                FrbaOfertas.AbmCliente.AltaCliente dialog = new FrbaOfertas.AbmCliente.AltaCliente(new Modelo.GuardarDB.AbmAltaGuardar());
+                dialog.ShowDialog(this);
+            }
+            else MessageBox.Show("El Rol cliente se encuentra dado de bajo, no esta permitido dar de alta clientes", "Error alta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); 
         }
 
         private void bajaClienteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -126,6 +130,22 @@ namespace FrbaOfertas.Home
         {
             FrbaOfertas.AbmCliente.ListadoCliente dialog = new FrbaOfertas.AbmCliente.ListadoCliente(new ListadoModificar(new ClienteHandler()));
             dialog.ShowDialog(this);
+        }
+
+        private void usuarioToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FrbaOfertas.DatosPersonales.Usuarios.DatosPersonalesUsuario dialog = new FrbaOfertas.DatosPersonales.Usuarios.DatosPersonalesUsuario();
+            dialog.ShowDialog(this);
+        }
+
+        private void altaProveedorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (FrbaOfertas.ConectorDB.FuncionesRol.ObtenerEstadoRol(3))
+            {
+                FrbaOfertas.AbmProveedor.AltaProveedor dialog = new FrbaOfertas.AbmProveedor.AltaProveedor(new Modelo.GuardarDB.AbmAltaGuardar());
+                dialog.ShowDialog(this);
+            }
+            else MessageBox.Show("El Rol proveedor se encuentra dado de bajo, no esta permitido dar de alta clientes", "Error alta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); 
         }
 
 

@@ -117,6 +117,12 @@
     <Compile Include="CrearOferta\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="DatosPersonales\Usuarios\DatosPersonalesUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DatosPersonales\Usuarios\DatosPersonalesUsuario.Designer.cs">
+      <DependentUpon>DatosPersonalesUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Facturar\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -206,6 +212,9 @@
     <EmbeddedResource Include="AbmRol\ModificacionRol.resx">
       <DependentUpon>ModificacionRol.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DatosPersonales\Usuarios\DatosPersonalesUsuario.resx">
+      <DependentUpon>DatosPersonalesUsuario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Home\MenuPrincial.resx">
       <DependentUpon>MenuPrincial.cs</DependentUpon>
     </EmbeddedResource>
@@ -244,7 +253,10 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="DatosPersonales\Clientes\" />
+    <Folder Include="DatosPersonales\Proveedor\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
