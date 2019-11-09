@@ -20,7 +20,7 @@ namespace FrbaOfertas.Modelo.ABMHandler
                 FrbaOfertas.ConectorDB.FuncionesCliente.BajaLogicaCliente(id);
 
 
-                MessageBox.Show("Cliente dado de baja con exito", "ROL DADO DE BAJA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Cliente dado de baja con exito", "CLIENTE DADO DE BAJA", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return true;
             }
             return false;

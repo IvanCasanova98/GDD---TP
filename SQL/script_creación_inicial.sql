@@ -177,8 +177,6 @@ CREATE TABLE HPBC.Oferta(
 	Ofe_Fecha_Venc datetime,
 	Ofe_Descrip varchar(255),
 	Ofe_Cant numeric(18,0),
-	Ofe_Fecha_Compra datetime,
-	Ofe_Cod smallint NOT NULL,
 	Ofe_Max_Cant_Por_Usuario numeric(18,0) null,
 	Ofe_Accesible BIT DEFAULT 1
  CONSTRAINT PK_Oferta PRIMARY KEY CLUSTERED(
@@ -194,6 +192,7 @@ CREATE TABLE HPBC.Compra(
 	Compra_ID_Clie_Dest Int  NOT NULL,
 	Compra_Fecha datetime,
 	Compra_Cant numeric(18,0),
+	Compra_Facturada BIT DEFAULT 0,
  CONSTRAINT PK_Compra PRIMARY KEY CLUSTERED(
 	Compra_ID ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
@@ -418,6 +417,9 @@ GO
 
 --Creo triggers para bajas logicas
 
+IF EXISTS (SELECT name FROM sysobjects WHERE name='trigger_baja_logica' AND type='tr')
+DROP TRIGGER HPBC.trigger_baja_logica
+GO
 create TRIGGER HPBC.trigger_baja_logica ON HPBC.Rol FOR UPDATE
 AS 
 BEGIN TRANSACTION
@@ -428,6 +430,25 @@ BEGIN TRANSACTION
 	END
 COMMIT TRANSACTION
 GO
+
+
+IF EXISTS (SELECT name FROM sysobjects WHERE name='trigger_finalizar_oferta' AND type='tr')
+DROP TRIGGER HPBC.trigger_finalizar_oferta
+GO
+CREATE TRIGGER HPBC.trigger_finalizar_oferta
+ON HPBC.Oferta
+AFTER UPDATE AS
+BEGIN
+	IF EXISTS(SELECT 1 FROM HPBC.Oferta i WHERE i.Ofe_Cant <= 0 and i.Ofe_Accesible = 1)
+	BEGIN
+		UPDATE HPBC.Oferta
+		SET Ofe_Accesible = 0
+		WHERE Ofe_Cant <=0;
+	END
+END
+GO
+
+
 
 IF EXISTS (SELECT name FROM sysobjects WHERE name='pr_limpiar_tabla_maestra_clientes' AND type='p')
 DROP PROCEDURE HPBC.pr_limpiar_tabla_maestra_clientes
@@ -480,6 +501,10 @@ CREATE PROCEDURE HPBC.pr_limpiar_tabla_maestra_clientes
 EXEC HPBC.pr_limpiar_tabla_maestra_clientes
 GO
 
+
+IF EXISTS (SELECT name FROM sysobjects WHERE name='updatear_monto_por_carga' AND type='tr')
+DROP TRIGGER HPBC.updatear_monto_por_carga
+GO
 CREATE TRIGGER HPBC.updatear_monto_por_carga ON HPBC.Credito for insert
 AS
 BEGIN TRANSACTION
@@ -582,6 +607,48 @@ BEGIN
 exec HPBC.pr_cargar_provedores
 
 
+IF EXISTS (SELECT name FROM sysobjects WHERE name='pr_cargar_ofertas' AND type='p')
+DROP PROCEDURE HPBC.pr_cargar_ofertas
+GO
+CREATE PROCEDURE HPBC.pr_cargar_ofertas
+AS
+BEGIN
+	INSERT INTO HPBC.Oferta(Ofe_Descrip,Ofe_Precio_Ficticio,Ofe_Fecha, Ofe_Fecha_Venc,Ofe_Cant,Ofe_Precio,Ofe_Max_Cant_Por_Usuario,Ofe_Accesible,Ofe_ID_Proveedor)
+	SELECT DISTINCT Oferta_Descripcion, Oferta_Precio_Ficticio,Oferta_Fecha, Oferta_Fecha_Venc,  Oferta_Cantidad,Oferta_Precio, Oferta_Cantidad,1, Provee_ID 
+	from gd_esquema.Maestra r, HPBC.Proveedor p
+	WHERE p.Provee_Rs= r.Provee_RS and r.Oferta_Cantidad is not null and r.Oferta_Descripcion is not null and r.Oferta_Precio_Ficticio is not null  and r.Oferta_Fecha is not null and r.Oferta_Fecha_Venc is not null and r.Oferta_Precio is not null
+END
+GO
+
+exec HPBC.pr_cargar_ofertas
+
+
+IF EXISTS (SELECT name FROM sysobjects WHERE name='pr_cargar_compras' AND type='p')
+DROP PROCEDURE HPBC.pr_cargar_compras
+GO
+CREATE PROCEDURE HPBC.pr_cargar_compras
+AS
+BEGIN
+	INSERT INTO HPBC.Compra(Compra_ID_Oferta,Compra_ID_Clie_Dest,Compra_Fecha, Compra_Cant)
+	SELECT o.Ofe_ID,c.clie_ID, gd.Oferta_Fecha_Compra, 1
+	from gd_esquema.Maestra gd, HPBC.Cliente c,HPBC.Oferta o, HPBC.Proveedor p  
+	where gd.Oferta_Fecha_Compra is not null and c.clie_apellido = gd.Cli_Apellido AND c.clie_nombre = gd.Cli_Nombre AND c.clie_dni = gd.Cli_Dni 
+	AND p.Provee_Rs = gd.Provee_RS and p.Provee_CUIT = REPLACE(gd.Provee_CUIT , '-' , '') and o.Ofe_ID_Proveedor = p.Provee_ID and o.Ofe_Precio = gd.Oferta_Precio 
+	and o.Ofe_Cant = gd.Oferta_Cantidad and o.Ofe_Descrip = gd.Oferta_Descripcion and o.Ofe_Fecha = gd.Oferta_Fecha and o.Ofe_Fecha_Venc = gd.Oferta_Fecha_Venc 
+	and gd.Oferta_Entregado_Fecha is null and gd.Factura_Fecha is null and gd.Factura_Nro is null
+
+END
+GO
+
+
+exec HPBC.pr_cargar_compras
+
+
+UPDATE o SET o.Ofe_Cant = o.Ofe_Cant - (SELECT COUNT(*)  FROM HPBC.Compra c WHERE c.Compra_ID_Oferta = o.Ofe_ID  group by c.Compra_ID_Oferta)
+FROM HPBC.Oferta o
+
+
+
 IF EXISTS (SELECT name FROM sysobjects WHERE name='validar_usuario' AND type='fn')
 DROP FUNCTION HPBC.validar_usuario
 GO
@@ -638,7 +705,9 @@ WHERE usuario_id = (SELECT u.usuario_id FROM HPBC.Usuario u WHERE u.usuario_user
 END
 GO
 
-
+IF EXISTS (SELECT name FROM sysobjects WHERE name='tr_bloquear_usuario' AND type='tr')
+DROP TRIGGER HPBC.tr_bloquear_usuario
+GO
 CREATE TRIGGER HPBC.tr_bloquear_usuario on HPBC.Usuario after UPDATE
 AS
 BEGIN TRANSACTION
@@ -660,6 +729,9 @@ END
 GO
 
 
+IF EXISTS (SELECT name FROM sysobjects WHERE name='existeUsuario' AND type='F')
+DROP FUNCTION HPBC.existeUsuario
+GO
 CREATE FUNCTION HPBC.existeUsuario(@buscado varchar(255))
 returns Bit
 AS
@@ -672,6 +744,9 @@ return 0
 end
 GO
 
+IF EXISTS (SELECT name FROM sysobjects WHERE name='existeDNI' AND type='F')
+DROP FUNCTION HPBC.existeDNI
+GO
 CREATE FUNCTION HPBC.existeDNI(@buscado varchar(255))
 returns Bit
 AS
@@ -684,6 +759,9 @@ return 0
 end
 GO
 
+IF EXISTS (SELECT name FROM sysobjects WHERE name='existeEmail' AND type='F')
+DROP FUNCTION HPBC.existeEmail
+GO
 CREATE FUNCTION HPBC.existeEmail(@buscado varchar(255))
 returns Bit
 AS
@@ -696,7 +774,9 @@ return 0
 end
 GO
 
-
+IF EXISTS (SELECT name FROM sysobjects WHERE name='existeRubro' AND type='F')
+DROP FUNCTION HPBC.existeRubro
+GO
 CREATE FUNCTION HPBC.existeRubro(@buscado varchar(255))
 returns Bit
 AS
@@ -709,6 +789,9 @@ return 0
 end
 GO
 
+IF EXISTS (SELECT name FROM sysobjects WHERE name='existeRol' AND type='F')
+DROP FUNCTION HPBC.existeRol
+GO
 CREATE FUNCTION HPBC.existeRol(@buscado varchar(255))
 returns Bit
 AS
@@ -720,6 +803,7 @@ if Exists(SELECT 1 FROM HPBC.Rol WHERE Rol_detalle = @buscado)
 return 0
 end
 GO
+
 
 IF EXISTS (SELECT name FROM sysobjects WHERE name='pr_bajaLogica_Rol' AND type='p')
 DROP PROCEDURE HPBC.pr_bajaLogica_Rol
@@ -741,5 +825,17 @@ AS
 BEGIN
 UPDATE HPBC.Cliente set clie_habilitado = 0 
 WHERE clie_habilitado = @ABajar 
+END
+GO
+
+
+IF EXISTS (SELECT name FROM sysobjects WHERE name='pr_bajaLogica_Usuario' AND type='p')
+DROP PROCEDURE HPBC.pr_bajaLogica_Usuario
+GO
+CREATE PROCEDURE HPBC.pr_bajaLogica_Usuario(@ABajar int)
+AS
+BEGIN
+UPDATE HPBC.Usuario set usuario_habilitado = 0 
+WHERE usuario_id = @ABajar 
 END
 GO
