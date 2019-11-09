@@ -53,6 +53,7 @@
             this.label2.Size = new System.Drawing.Size(133, 25);
             this.label2.TabIndex = 1;
             this.label2.Text = "Contraseña";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -63,6 +64,7 @@
             this.label3.Size = new System.Drawing.Size(118, 25);
             this.label3.TabIndex = 2;
             this.label3.Text = "Username";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // username
             // 
@@ -71,6 +73,7 @@
             this.username.ReadOnly = true;
             this.username.Size = new System.Drawing.Size(268, 20);
             this.username.TabIndex = 3;
+            this.username.TextChanged += new System.EventHandler(this.username_TextChanged);
             // 
             // contraseña
             // 
@@ -79,6 +82,7 @@
             this.contraseña.ReadOnly = true;
             this.contraseña.Size = new System.Drawing.Size(268, 20);
             this.contraseña.TabIndex = 4;
+            this.contraseña.TextChanged += new System.EventHandler(this.contraseña_TextChanged);
             // 
             // button1
             // 
@@ -120,6 +124,7 @@
             this.label1.Size = new System.Drawing.Size(203, 25);
             this.label1.TabIndex = 8;
             this.label1.Text = "Nueva contraseña";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label4
             // 
@@ -130,6 +135,7 @@
             this.label4.Size = new System.Drawing.Size(204, 25);
             this.label4.TabIndex = 9;
             this.label4.Text = "Repita contraseña";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // nuevaContra
             // 
@@ -137,6 +143,7 @@
             this.nuevaContra.Name = "nuevaContra";
             this.nuevaContra.Size = new System.Drawing.Size(198, 20);
             this.nuevaContra.TabIndex = 10;
+            this.nuevaContra.TextChanged += new System.EventHandler(this.nuevaContra_TextChanged);
             // 
             // RepitaContra
             // 
@@ -144,6 +151,7 @@
             this.RepitaContra.Name = "RepitaContra";
             this.RepitaContra.Size = new System.Drawing.Size(198, 20);
             this.RepitaContra.TabIndex = 11;
+            this.RepitaContra.TextChanged += new System.EventHandler(this.RepitaContra_TextChanged);
             // 
             // button3
             // 

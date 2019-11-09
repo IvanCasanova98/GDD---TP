@@ -23,7 +23,8 @@ namespace FrbaOfertas.DatosPersonales.Usuarios
         {
             if (e.ColumnIndex == dataGridView1.Columns["Seleccionar"].Index && (dataGridView1.Rows.Count > 1) && e.RowIndex != dataGridView1.Rows.Count - 1)
             {
-                tipoAbm.Modificar(Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells["Id"].Value.ToString()));
+                FrbaOfertas.DatosPersonales.Usuarios.ModificarUsuario dialog = new FrbaOfertas.DatosPersonales.Usuarios.ModificarUsuario(dataGridView1.Rows[e.RowIndex].Cells["Username"].Value.ToString());
+                dialog.ShowDialog();
                 dataGridView1.DataSource = null;
                 dataGridView1.Rows.Clear();
 

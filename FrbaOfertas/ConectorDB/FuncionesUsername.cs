@@ -83,6 +83,11 @@ namespace FrbaOfertas.ConectorDB
 
 
         }
+
+
+
+
+
         public static List<String> ObtenerFuncionalidadesDeUnUsuario(string username)
         {
             List<String> lista = new List<string>();
@@ -143,7 +148,7 @@ namespace FrbaOfertas.ConectorDB
             SqlConnection connection = new SqlConnection(Conexion.getStringConnection());
             SqlCommand comm = connection.CreateCommand();
 
-            comm.CommandText = "UPDATE HPBC.Usuario SET usuario_password = " + "HASHBYTES('SHA2_256','" + contraseña + "'), usuario_habilitado = " + Convert.ToInt32(habilitado) + ", usuario_bloqueado = " + Convert.ToInt32(bloqueado) + ", usuario_cant_logeo_error = 0";
+            comm.CommandText = "UPDATE HPBC.Usuario SET usuario_password = " + "HASHBYTES('SHA2_256','" + contraseña + "'), usuario_habilitado = " + Convert.ToInt32(habilitado) + ", usuario_bloqueado = " + Convert.ToInt32(bloqueado) + ", usuario_cant_logeo_error = 0 WHERE usuario_id = "+ id;
             comm.Connection = connection;
             comm.Connection.Open();
             comm.ExecuteNonQuery();
@@ -153,7 +158,45 @@ namespace FrbaOfertas.ConectorDB
 
         }
 
+        public static int get_id(string username)
+        {
 
+            SqlConnection conn = new SqlConnection(Conexion.getStringConnection());
+            SqlCommand command = conn.CreateCommand();
+            command.CommandText = "SELECT usuario_id FROM HPBC.Usuario WHERE usuario_username = '" + username + "'";
+            command.Connection = conn;
+            command.Connection.Open();
+            command.ExecuteNonQuery();
+            SqlDataReader reader = command.ExecuteReader() as SqlDataReader;
+            reader.Read();
+
+            int id = (int)reader["usuario_id"];
+            command.Connection.Close();
+            conn.Close();
+            return id;
+
+
+        }
+
+        public static void desbloquearUsuario(int id) {
+            SqlConnection connection = new SqlConnection(Conexion.getStringConnection());
+            SqlCommand comm = connection.CreateCommand();
+
+            comm.CommandText = "UPDATE HPBC.Usuario SET usuario_bloqueado = 0 , usuario_cant_logeo_error = 0 WHERE usuario_id = "+ id;
+            comm.Connection = connection;
+            comm.Connection.Open();
+            comm.ExecuteNonQuery();
+            comm.Connection.Close();
+            connection.Close();
+        
+        
+        }
+
+        public static void BajaLogicaUsuario(int id) {
+
+            FrbaOfertas.ConectorDB.FuncionesGlobales.BajaLogica(id, "Usuario");
+        
+        }
 
     }
 

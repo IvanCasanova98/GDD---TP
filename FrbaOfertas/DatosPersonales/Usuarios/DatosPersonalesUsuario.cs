@@ -125,5 +125,45 @@ namespace FrbaOfertas.DatosPersonales.Usuarios
             FrbaOfertas.DatosPersonales.Usuarios.ListadoUsuario dialog = new FrbaOfertas.DatosPersonales.Usuarios.ListadoUsuario();
             dialog.ShowDialog(this);
         }
+
+        private void RepitaContra_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void nuevaContra_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void contraseña_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void username_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
