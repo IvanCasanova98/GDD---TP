@@ -119,5 +119,11 @@ namespace FrbaOfertas.DatosPersonales.Usuarios
         {
             this.Close();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            FrbaOfertas.DatosPersonales.Usuarios.ListadoUsuario dialog = new FrbaOfertas.DatosPersonales.Usuarios.ListadoUsuario();
+            dialog.ShowDialog(this);
+        }
     }
 }

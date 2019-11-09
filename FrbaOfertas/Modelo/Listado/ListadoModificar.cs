@@ -19,10 +19,10 @@ namespace FrbaOfertas.Modelo.Listado
         public override void ModificarDataGrid(DataGridView dgv)
         {
             DataGridViewButtonColumn uninstallButtonColumn = new DataGridViewButtonColumn();
-            uninstallButtonColumn.Name = "Modificar";
-            uninstallButtonColumn.Text = "Modificar";
+            uninstallButtonColumn.Name = "Seleccionar";
+            uninstallButtonColumn.Text = "Seleccionar";
             int columnIndex = dgv.Columns.Count;
-            if (dgv.Columns["Modificar"] == null)
+            if (dgv.Columns["Seleccionar"] == null)
             {
                 dgv.Columns.Insert(columnIndex, uninstallButtonColumn);
             }
@@ -33,7 +33,7 @@ namespace FrbaOfertas.Modelo.Listado
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridView dataGridView1 = (DataGridView)sender;
-            if (e.ColumnIndex == dataGridView1.Columns["Modificar"].Index && (dataGridView1.Rows.Count > 1) && e.RowIndex != dataGridView1.Rows.Count - 1)
+            if (e.ColumnIndex == dataGridView1.Columns["Seleccionar"].Index && (dataGridView1.Rows.Count > 1) && e.RowIndex != dataGridView1.Rows.Count - 1)
             {
                 tipoAbm.Modificar(Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells["Id"].Value.ToString()));
                 dataGridView1.DataSource = null;

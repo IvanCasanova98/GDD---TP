@@ -123,6 +123,12 @@
     <Compile Include="DatosPersonales\Usuarios\DatosPersonalesUsuario.Designer.cs">
       <DependentUpon>DatosPersonalesUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="DatosPersonales\Usuarios\ListadoUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DatosPersonales\Usuarios\ListadoUsuario.Designer.cs">
+      <DependentUpon>ListadoUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Facturar\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -214,6 +220,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DatosPersonales\Usuarios\DatosPersonalesUsuario.resx">
       <DependentUpon>DatosPersonalesUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DatosPersonales\Usuarios\ListadoUsuario.resx">
+      <DependentUpon>ListadoUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home\MenuPrincial.resx">
       <DependentUpon>MenuPrincial.cs</DependentUpon>
