@@ -649,6 +649,7 @@ FROM HPBC.Oferta o
 Where (select isnull(COUNT(*),0)  FROM HPBC.Compra c WHERE c.Compra_ID_Oferta = o.Ofe_ID  group by c.Compra_ID_Oferta) != 0 --por alguna razon si da 0 el campo queda en null
 
 
+--Creo un cupon por CADA compra algunos ya estan entregados otros no;
 
 IF EXISTS (SELECT name FROM sysobjects WHERE name='pr_cargar_cupones' AND type='p')
 DROP PROCEDURE HPBC.pr_cargar_cupones
@@ -657,19 +658,14 @@ CREATE PROCEDURE HPBC.pr_cargar_cupones
 AS
 BEGIN
 	INSERT INTO HPBC.Cupon(Cupon_ID_Compra,Cup_Codigo,Cup_Fecha_Consumo,Cup_Fecha_Venc)
-	SELECT Compra_ID, CONCAT(Oferta_Codigo,Compra_ID),Oferta_Entregado_Fecha, Oferta_Fecha_Venc
+	SELECT   Compra_ID, CONCAT(Ofe_Codigo,Compra_ID),gd.Oferta_Entregado_Fecha, DATEADD(MM, 1, Ofe_Fecha_Venc)
 	FROM HPBC.Compra INNER join HPBC.Oferta ON Compra_ID_Oferta = Ofe_ID 
-	INNER JOIN gd_esquema.Maestra on Oferta_Codigo = Ofe_Codigo
-	where Factura_Fecha is null and Factura_Nro is null and Oferta_Entregado_Fecha is not null
-	group by Compra_ID, CONCAT(Oferta_Codigo,Compra_ID),Oferta_Entregado_Fecha,Oferta_Fecha_Venc
-	
-
-	INSERT INTO HPBC.Cupon(Cupon_ID_Compra,Cup_Codigo,Cup_Fecha_Consumo,Cup_Fecha_Venc)
-	SELECT Compra_ID, CONCAT(Oferta_Codigo,Compra_ID),Oferta_Entregado_Fecha, Oferta_Fecha_Venc
-	FROM HPBC.Compra INNER join HPBC.Oferta ON Compra_ID_Oferta = Ofe_ID 
-	INNER JOIN gd_esquema.Maestra on Oferta_Codigo = Ofe_Codigo
-	where Factura_Fecha is null and Factura_Nro is null and Oferta_Entregado_Fecha is null and not exists(select 1 from HPBC.Cupon c where c.Cupon_ID = Cupon_ID)
-	group by Compra_ID, CONCAT(Oferta_Codigo,Compra_ID),Oferta_Entregado_Fecha,Oferta_Fecha_Venc
+	, gd_esquema.Maestra gd
+	where (Factura_Fecha is null and Factura_Nro is null and Oferta_Codigo = Ofe_Codigo) and ((Oferta_Entregado_Fecha is not null)or Oferta_Entregado_Fecha is null 
+	and not exists(SELECT 1 FROM gd_esquema.Maestra gd2 where gd2.Oferta_Codigo = Ofe_Codigo and gd2.Oferta_Entregado_Fecha is not null and Compra_ID_Clie_Dest = (SELECT clie_ID from HPBC.Cliente where clie_dni = Cli_Dni) and  Compra_Fecha = gd2.Oferta_Fecha_Compra)) 
+	and Compra_ID_Clie_Dest = (SELECT clie_ID from HPBC.Cliente where clie_dni = Cli_Dni) and Compra_Fecha = gd.Oferta_Fecha_Compra
+	group by Compra_ID, CONCAT(Ofe_Codigo,Compra_ID),Oferta_Entregado_Fecha, DATEADD(MM, 1, Ofe_Fecha_Venc)
+	ORDER BY Compra_ID
 END
 GO
 exec HPBC.pr_cargar_cupones
