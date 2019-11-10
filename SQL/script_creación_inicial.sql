@@ -178,6 +178,7 @@ CREATE TABLE HPBC.Oferta(
 	Ofe_Descrip varchar(255),
 	Ofe_Cant numeric(18,0),
 	Ofe_Max_Cant_Por_Usuario numeric(18,0) null,
+	Ofe_Codigo varchar(255),
 	Ofe_Accesible BIT DEFAULT 1
  CONSTRAINT PK_Oferta PRIMARY KEY CLUSTERED(
 	Ofe_ID ASC
@@ -205,6 +206,7 @@ CREATE TABLE HPBC.Cupon(
 	Cupon_ID_Compra Int NOT NULL,
 	Cup_Fecha_Consumo datetime,
 	Cup_Fecha_Venc datetime,
+	Cup_Codigo varchar(255),
  CONSTRAINT PK_Cupon PRIMARY KEY CLUSTERED(
 	Cupon_ID ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
@@ -442,7 +444,7 @@ BEGIN
 	IF EXISTS(SELECT 1 FROM HPBC.Oferta i WHERE i.Ofe_Cant <= 0 and i.Ofe_Accesible = 1)
 	BEGIN
 		UPDATE HPBC.Oferta
-		SET Ofe_Accesible = 0
+		SET Ofe_Accesible = 0, Ofe_Cant = 0
 		WHERE Ofe_Cant <=0;
 	END
 END
@@ -613,10 +615,10 @@ GO
 CREATE PROCEDURE HPBC.pr_cargar_ofertas
 AS
 BEGIN
-	INSERT INTO HPBC.Oferta(Ofe_Descrip,Ofe_Precio_Ficticio,Ofe_Fecha, Ofe_Fecha_Venc,Ofe_Cant,Ofe_Precio,Ofe_Max_Cant_Por_Usuario,Ofe_Accesible,Ofe_ID_Proveedor)
-	SELECT DISTINCT Oferta_Descripcion, Oferta_Precio_Ficticio,Oferta_Fecha, Oferta_Fecha_Venc,  Oferta_Cantidad,Oferta_Precio, Oferta_Cantidad,1, Provee_ID 
+	insert into HPBC.Oferta(Ofe_Codigo, Ofe_Descrip, Ofe_Precio_Ficticio,Ofe_Fecha,Ofe_Fecha_Venc,Ofe_Cant,Ofe_Precio,Ofe_Max_Cant_Por_Usuario,Ofe_Accesible,Ofe_ID_Proveedor)
+	SELECT DISTINCT Oferta_Codigo, Oferta_Descripcion, Oferta_Precio_Ficticio,Oferta_Fecha, Oferta_Fecha_Venc,  Oferta_Cantidad,Oferta_Precio, Oferta_Cantidad,1, Provee_ID 
 	from gd_esquema.Maestra r, HPBC.Proveedor p
-	WHERE p.Provee_Rs= r.Provee_RS and r.Oferta_Cantidad is not null and r.Oferta_Descripcion is not null and r.Oferta_Precio_Ficticio is not null  and r.Oferta_Fecha is not null and r.Oferta_Fecha_Venc is not null and r.Oferta_Precio is not null
+	WHERE p.Provee_Rs= r.Provee_RS and p.Provee_CUIT = REPLACE(r.Provee_CUIT , '-' , '') and r.Oferta_Cantidad is not null and r.Oferta_Descripcion is not null and r.Oferta_Precio_Ficticio is not null  and r.Oferta_Fecha is not null and r.Oferta_Fecha_Venc is not null and r.Oferta_Precio is not null
 END
 GO
 
@@ -631,12 +633,10 @@ AS
 BEGIN
 	INSERT INTO HPBC.Compra(Compra_ID_Oferta,Compra_ID_Clie_Dest,Compra_Fecha, Compra_Cant)
 	SELECT o.Ofe_ID,c.clie_ID, gd.Oferta_Fecha_Compra, 1
-	from gd_esquema.Maestra gd, HPBC.Cliente c,HPBC.Oferta o, HPBC.Proveedor p  
+	from gd_esquema.Maestra gd, HPBC.Cliente c,HPBC.Oferta o
 	where gd.Oferta_Fecha_Compra is not null and c.clie_apellido = gd.Cli_Apellido AND c.clie_nombre = gd.Cli_Nombre AND c.clie_dni = gd.Cli_Dni 
-	AND p.Provee_Rs = gd.Provee_RS and p.Provee_CUIT = REPLACE(gd.Provee_CUIT , '-' , '') and o.Ofe_ID_Proveedor = p.Provee_ID and o.Ofe_Precio = gd.Oferta_Precio 
-	and o.Ofe_Cant = gd.Oferta_Cantidad and o.Ofe_Descrip = gd.Oferta_Descripcion and o.Ofe_Fecha = gd.Oferta_Fecha and o.Ofe_Fecha_Venc = gd.Oferta_Fecha_Venc 
-	and gd.Oferta_Entregado_Fecha is null and gd.Factura_Fecha is null and gd.Factura_Nro is null
-
+	and o.Ofe_Codigo = gd.Oferta_Codigo
+	and gd.Oferta_Entregado_Fecha is null and gd.Factura_Fecha is null and gd.Factura_Nro is null 
 END
 GO
 
@@ -644,8 +644,36 @@ GO
 exec HPBC.pr_cargar_compras
 
 
-UPDATE o SET o.Ofe_Cant = o.Ofe_Cant - (SELECT COUNT(*)  FROM HPBC.Compra c WHERE c.Compra_ID_Oferta = o.Ofe_ID  group by c.Compra_ID_Oferta)
+UPDATE o SET o.Ofe_Cant =  o.Ofe_Cant - (select isnull(COUNT(*),0)  FROM HPBC.Compra c WHERE c.Compra_ID_Oferta = o.Ofe_ID  group by c.Compra_ID_Oferta)
 FROM HPBC.Oferta o
+Where (select isnull(COUNT(*),0)  FROM HPBC.Compra c WHERE c.Compra_ID_Oferta = o.Ofe_ID  group by c.Compra_ID_Oferta) != 0 --por alguna razon si da 0 el campo queda en null
+
+
+
+IF EXISTS (SELECT name FROM sysobjects WHERE name='pr_cargar_cupones' AND type='p')
+DROP PROCEDURE HPBC.pr_cargar_cupones
+GO
+CREATE PROCEDURE HPBC.pr_cargar_cupones
+AS
+BEGIN
+	INSERT INTO HPBC.Cupon(Cupon_ID_Compra,Cup_Codigo,Cup_Fecha_Consumo,Cup_Fecha_Venc)
+	SELECT Compra_ID, CONCAT(Oferta_Codigo,Compra_ID),Oferta_Entregado_Fecha, Oferta_Fecha_Venc
+	FROM HPBC.Compra INNER join HPBC.Oferta ON Compra_ID_Oferta = Ofe_ID 
+	INNER JOIN gd_esquema.Maestra on Oferta_Codigo = Ofe_Codigo
+	where Factura_Fecha is null and Factura_Nro is null and Oferta_Entregado_Fecha is not null
+	group by Compra_ID, CONCAT(Oferta_Codigo,Compra_ID),Oferta_Entregado_Fecha,Oferta_Fecha_Venc
+	
+
+	INSERT INTO HPBC.Cupon(Cupon_ID_Compra,Cup_Codigo,Cup_Fecha_Consumo,Cup_Fecha_Venc)
+	SELECT Compra_ID, CONCAT(Oferta_Codigo,Compra_ID),Oferta_Entregado_Fecha, Oferta_Fecha_Venc
+	FROM HPBC.Compra INNER join HPBC.Oferta ON Compra_ID_Oferta = Ofe_ID 
+	INNER JOIN gd_esquema.Maestra on Oferta_Codigo = Ofe_Codigo
+	where Factura_Fecha is null and Factura_Nro is null and Oferta_Entregado_Fecha is null and not exists(select 1 from HPBC.Cupon c where c.Cupon_ID = Cupon_ID)
+	group by Compra_ID, CONCAT(Oferta_Codigo,Compra_ID),Oferta_Entregado_Fecha,Oferta_Fecha_Venc
+END
+GO
+exec HPBC.pr_cargar_cupones
+
 
 
 
