@@ -52,7 +52,60 @@ namespace FrbaOfertas.ConectorDB
             return FrbaOfertas.ConectorDB.FuncionesGlobales.existeTabla(rubro, "Rubro");
 
         }
+        public static void BajaLogicaCliente(int id)
+        {
 
+            FrbaOfertas.ConectorDB.FuncionesGlobales.BajaLogica(id, "Proveedor");
+        }
 
+        public static Proveedor traerProveedor(int id) { 
+
+            Proveedor proveedorBuscado = new Proveedor();
+            SqlConnection connection = new SqlConnection(Conexion.getStringConnection());
+            SqlCommand comm = connection.CreateCommand();
+            comm.CommandText = "SELECT DISTINCT Provee_ID, Provee_Rs, Provee_Calle, Provee_Piso, Provee_Dpto, Provee_Localidad, Provee_Ciudad, Provee_CodPostal, Provee_Mail, Provee_CUIT, Provee_Tel, Provee_NombreContacto, Provee_Habilitado, Rubro_detalle  " +
+                                "FROM HPBC.Proveedor join HPBC.Rubro on Provee_Rubro = Rubro_ID  WHERE Provee_ID = "+ id ;
+            comm.Connection = connection;
+            comm.Connection.Open();
+            SqlDataReader reader = comm.ExecuteReader() as SqlDataReader;
+            while (reader.Read())
+            {
+                proveedorBuscado.RazonSocial = reader["Provee_Rs"].ToString();
+                proveedorBuscado.Calle = reader["Provee_Calle"].ToString();
+                proveedorBuscado.Piso = reader["Provee_Piso"].ToString();
+                proveedorBuscado.Dpto = reader["Provee_Dpto"].ToString();
+                proveedorBuscado.Localidad = reader["Provee_Localidad"].ToString();
+                proveedorBuscado.Ciudad = reader["Provee_Ciudad"].ToString();
+                proveedorBuscado.codigoPostal = reader["Provee_CodPostal"].ToString();
+                proveedorBuscado.mail = reader["Provee_Mail"].ToString();
+                proveedorBuscado.cuit = reader["Provee_CUIT"].ToString();
+                proveedorBuscado.telefono = reader["Provee_Tel"].ToString();
+                proveedorBuscado.nombreContacto = reader["Provee_NombreContacto"].ToString();
+                proveedorBuscado.rubro = reader["Rubro_detalle"].ToString();
+                proveedorBuscado.habilitado = Convert.ToBoolean(reader["Provee_Habilitado"].ToString());
+            }
+
+            proveedorBuscado.id = id;
+            connection.Close();
+            return proveedorBuscado;
+        }
+        public static void UpdateProveedor(Proveedor proveedor)
+        {
+            if (!FuncionesProveedor.existeRubro(proveedor.rubro))
+                FuncionesProveedor.crearRubro(proveedor.rubro);
+            
+            SqlConnection connection = new SqlConnection(Conexion.getStringConnection());
+            SqlCommand comm = connection.CreateCommand();
+            comm.CommandText = "UPDATE HPBC.Proveedor SET Provee_Rs = '" + proveedor.RazonSocial + "', Provee_Calle= '" + proveedor.Calle + "', Provee_Piso= " + proveedor.Piso + ", Provee_Localidad= '" + proveedor.Localidad + "' , Provee_Ciudad= '" + proveedor.Ciudad + "', Provee_CodPostal= " + proveedor.codigoPostal + ", Provee_Mail= '" + proveedor.mail + "', Provee_CUIT = '" + proveedor.cuit + "' , Provee_NombreContacto = '" + proveedor.nombreContacto+ "' , Provee_Habilitado = " + Convert.ToInt32(proveedor.habilitado) + ", Provee_Rubro= (SELECT Rubro_ID from HPBC.Rubro where UPPER('"+proveedor.rubro+"') = UPPER(Rubro_detalle))" +
+                               " WHERE Provee_ID = " + proveedor.id;
+            comm.Connection = connection;
+            comm.Connection.Open();
+            comm.ExecuteNonQuery();
+            comm.Connection.Close();
+            connection.Close();
+        }
+        
+        
+        }
     }
-}
+

@@ -66,7 +66,7 @@ namespace FrbaOfertas.AbmCliente
                 dataGridView1.Refresh();
                 SqlConnection conn = new SqlConnection(Conexion.getStringConnection());
                 conn.Open();
-                string SQL = "SELECT DISTINCT c.clie_ID, c.clie_nombre, c.clie_apellido, c.clie_dni, c.clie_mail, c.clie_tel, c.clie_fecha_nac, c.clie_calle, c.clie_piso, c.clie_dpto, c.clie_localidad, c.clie_monto, c.clie_habilitado " +
+                string SQL = "SELECT c.clie_ID, c.clie_nombre, c.clie_apellido, c.clie_dni, c.clie_mail, c.clie_tel, c.clie_fecha_nac, c.clie_calle, c.clie_piso, c.clie_dpto, c.clie_localidad, c.clie_monto, c.clie_habilitado " +
                              "FROM HPBC.Cliente c " +
                              "WHERE (c.clie_habilitado = 1 OR c.clie_habilitado = " + tipoListado.MostrarBajasLogicas() + ")";
 

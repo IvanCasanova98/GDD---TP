@@ -21,7 +21,7 @@ namespace FrbaOfertas.Modelo.Roles
         public string Localidad { get; set; }
         public string rubro { get; set; }
         public string nombreContacto { get; set; }
-        public int habilitado { get; set; }
+        public Boolean habilitado { get; set; }
         
         public override string getIdentificadorPrincipal()
         {

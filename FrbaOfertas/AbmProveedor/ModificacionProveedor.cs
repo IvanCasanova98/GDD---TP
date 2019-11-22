@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FrbaOfertas.Modelo.Roles;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,18 +8,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using FrbaOfertas.Modelo.Roles;
-using FrbaOfertas.Modelo;
-using FrbaOfertas.Properties;
+
 namespace FrbaOfertas.AbmProveedor
 {
-    public partial class AltaProveedor : Form
+    public partial class ModificacionProveedor : Form
     {
-        StateGuardar modoDeGuardado;
-        public AltaProveedor(StateGuardar guardado)
+        int id;
+        string rs;
+        string cuit;
+        public ModificacionProveedor(int idamodificar)
         {
-            this.modoDeGuardado = guardado;
-            this.CenterToScreen();
+            id = idamodificar;
             InitializeComponent();
             txt_cuit.GotFocus += new EventHandler(FrbaOfertas.Utils.Validador.BorrarMensajeDeError);
             txt_razonsocial.GotFocus += new EventHandler(FrbaOfertas.Utils.Validador.BorrarMensajeDeError);
@@ -32,12 +32,32 @@ namespace FrbaOfertas.AbmProveedor
             txt_tel.GotFocus += new EventHandler(FrbaOfertas.Utils.Validador.BorrarMensajeDeError);
             txt_rubro.GotFocus += new EventHandler(FrbaOfertas.Utils.Validador.BorrarMensajeDeError);
             txt_nombreContacto.GotFocus += new EventHandler(FrbaOfertas.Utils.Validador.BorrarMensajeDeError);
+            cargarTodo();
         }
-
-        private Boolean validarCampos() {
+        private void cargarTodo()
+        {
+            Proveedor ProveedorAModificar = FrbaOfertas.ConectorDB.FuncionesProveedor.traerProveedor(id);
+            txt_razonsocial.Text = ProveedorAModificar.RazonSocial.ToString();
+            rs = txt_razonsocial.Text;
+            txt_calle.Text = ProveedorAModificar.Calle.ToString();
+            txt_piso.Text = ProveedorAModificar.Piso.ToString();
+            txt_dpto.Text = ProveedorAModificar.Dpto.ToString();
+            txt_localidad.Text = ProveedorAModificar.Localidad.ToString();
+            txt_ciudad.Text = ProveedorAModificar.Ciudad.ToString();
+            txt_codpostal.Text = ProveedorAModificar.codigoPostal.ToString();
+            txt_mail.Text = ProveedorAModificar.mail.ToString();
+            txt_cuit.Text = ProveedorAModificar.cuit.ToString();
+            cuit = txt_cuit.Text;
+            txt_tel.Text = ProveedorAModificar.telefono.ToString();
+            txt_rubro.Text = ProveedorAModificar.rubro.ToString();
+            checkBox1.Checked = Convert.ToBoolean(ProveedorAModificar.habilitado);
+        }
+        private Boolean validarCampos()
+        {
             Boolean pass = true;
             FrbaOfertas.Utils.Validador validador = new FrbaOfertas.Utils.Validador();
             //RS
+            if (txt_razonsocial.Text != rs)
             pass = validador.validaCadenaCaracter(txt_razonsocial, pass);
             //CALLE
             if (validador.isEmpty(txt_calle.Text))
@@ -125,6 +145,7 @@ namespace FrbaOfertas.AbmProveedor
                 pass = false;
             }
             //CUIT
+            if (txt_cuit.Text != cuit)
             pass = validador.validarCuit(txt_cuit, pass);
             //TELEFONO
             if (validador.isEmpty(txt_tel.Text))
@@ -146,62 +167,39 @@ namespace FrbaOfertas.AbmProveedor
             pass = validador.validaCadenaCaracter(txt_rubro, pass);
             //PROV CONTACTO
             pass = validador.validaCadenaCaracter(txt_nombreContacto, pass);
-            
-            
-            
-            return pass;
-        
-        }
 
+
+
+            return pass;
+
+        }
 
         private void cmd_darAlta_Click(object sender, EventArgs e)
         {
-            FrbaOfertas.Utils.Validador validador = new FrbaOfertas.Utils.Validador();
-            if (this.validarCampos()) {
-                Proveedor proveedor = new Proveedor();
-                proveedor.RazonSocial = txt_razonsocial.Text;
-                proveedor.cuit = txt_cuit.Text.Replace("-", string.Empty);
-                proveedor.codigoPostal = txt_codpostal.Text.Trim();
-                proveedor.Calle = txt_calle.Text;
-                proveedor.Piso = txt_piso.Text.Trim();
-                proveedor.Dpto = txt_dpto.Text.Trim();
-                proveedor.Localidad = txt_localidad.Text.Trim();
-                proveedor.telefono = txt_tel.Text.Trim();
-                proveedor.mail = txt_mail.Text.Trim();
-                proveedor.Ciudad = txt_ciudad.Text.Trim();
-                proveedor.rubro = txt_rubro.Text.Trim();
-                proveedor.nombreContacto = txt_nombreContacto.Text.Trim();
-                proveedor.habilitado = true;
-                modoDeGuardado.Guardar(proveedor);
+            if (validarCampos()) {
+                Proveedor proveedorUpdateado = new Proveedor();
+                proveedorUpdateado.RazonSocial = txt_razonsocial.Text;
+                proveedorUpdateado.Calle = txt_calle.Text;
+                proveedorUpdateado.Piso=txt_piso.Text;
+                proveedorUpdateado.Dpto=txt_dpto.Text;
+                proveedorUpdateado.Localidad=txt_localidad.Text;
+                proveedorUpdateado.Ciudad=txt_ciudad.Text;
+                proveedorUpdateado.codigoPostal=txt_codpostal.Text;
+                proveedorUpdateado.mail=txt_mail.Text;
+                proveedorUpdateado.cuit = txt_cuit.Text;
+                proveedorUpdateado.telefono=txt_tel.Text;
+                proveedorUpdateado.rubro=txt_rubro.Text;
+                proveedorUpdateado.habilitado= checkBox1.Checked;
+                FrbaOfertas.ConectorDB.FuncionesProveedor.UpdateProveedor(proveedorUpdateado);
+                MessageBox.Show("Proveedor modificado con exito", "Modificacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
             
             }
-
         }
 
         private void cmd_cancelar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
-        private void cmd_limpiar_Click(object sender, EventArgs e)
-        {
-            txt_razonsocial.Text = "";
-            txt_codpostal.Text = "";
-            txt_cuit.Text = "";
-            txt_calle.Text = "";
-            txt_piso.Text = "";
-            txt_dpto.Text = "";
-            txt_localidad.Text = "";
-            txt_tel.Text = "";
-            txt_mail.Text = "";
-            txt_ciudad.Text = "";
-            txt_rubro.Text = "";
-            txt_nombreContacto.Text = "";
-
-            txt_razonsocial.Select();
-        }
-
-
-
     }
 }

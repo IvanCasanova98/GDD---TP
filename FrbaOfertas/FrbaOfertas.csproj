@@ -74,6 +74,12 @@
     <Compile Include="AbmProveedor\ListadoProveedor.Designer.cs">
       <DependentUpon>ListadoProveedor.cs</DependentUpon>
     </Compile>
+    <Compile Include="AbmProveedor\ModificacionProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmProveedor\ModificacionProveedor.Designer.cs">
+      <DependentUpon>ModificacionProveedor.cs</DependentUpon>
+    </Compile>
     <Compile Include="AbmRol\AltaRol.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -167,6 +173,7 @@
     </Compile>
     <Compile Include="Modelo\ABMHandler\ClienteHandler.cs" />
     <Compile Include="Modelo\ABMHandler\Handler.cs" />
+    <Compile Include="Modelo\ABMHandler\ProveedorHandle.cs" />
     <Compile Include="Modelo\ABMHandler\RolHandler.cs" />
     <Compile Include="Modelo\GuardarDB\AbmAltaGuardar.cs" />
     <Compile Include="Modelo\GuardarDB\AbmModificarGuardar.cs" />
@@ -214,6 +221,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AbmProveedor\ListadoProveedor.resx">
       <DependentUpon>ListadoProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmProveedor\ModificacionProveedor.resx">
+      <DependentUpon>ModificacionProveedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AbmRol\AltaRol.resx">
       <DependentUpon>AltaRol.cs</DependentUpon>

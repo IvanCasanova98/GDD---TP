@@ -123,7 +123,7 @@ namespace FrbaOfertas.AbmCliente
                 validador.ErrornoContenerLetras(txt_tel);
                 pass = false;
             }
-            else if (validador.fueraDeRango(txt_tel.Text, 8, 15))
+            else if (validador.fueraDeRango(txt_tel.Text, 7, 15))
             {
                 validador.ErrorSuperaRango(txt_tel);
                 pass = false;

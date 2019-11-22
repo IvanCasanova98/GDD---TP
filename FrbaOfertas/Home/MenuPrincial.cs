@@ -148,6 +148,24 @@ namespace FrbaOfertas.Home
             else MessageBox.Show("El Rol proveedor se encuentra dado de bajo, no esta permitido dar de alta clientes", "Error alta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); 
         }
 
+        private void listadoProveedorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrbaOfertas.AbmProveedor.ListadoProveedor dialog = new FrbaOfertas.AbmProveedor.ListadoProveedor(new ListadoNormal());
+            dialog.ShowDialog(this);
+        }
+
+        private void listadoProveedoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrbaOfertas.AbmProveedor.ListadoProveedor dialog = new FrbaOfertas.AbmProveedor.ListadoProveedor(new ListadoModificar(new ProveedorHandle()));
+            dialog.ShowDialog(this);
+        }
+
+        private void bajaProveedorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrbaOfertas.AbmProveedor.ListadoProveedor dialog = new FrbaOfertas.AbmProveedor.ListadoProveedor(new ListadoBaja(new ProveedorHandle()));
+            dialog.ShowDialog(this);
+        }
+
 
 
 
