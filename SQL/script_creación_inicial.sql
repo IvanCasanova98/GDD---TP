@@ -465,7 +465,7 @@ BEGIN
 	END
 GO
 
-IF EXISTS (SELECT name FROM sysobjects WHERE name='trigger_factura_monto' AND type='tr')
+/*IF EXISTS (SELECT name FROM sysobjects WHERE name='trigger_factura_monto' AND type='tr')
 DROP TRIGGER HPBC.trigger_factura_monto
 GO
 CREATE TRIGGER HPBC.trigger_factura_monto
@@ -476,7 +476,7 @@ BEGIN
 		SET Fact_Monto = (Select sum(Ofe_Precio*Compra_Cant) from
 		WHERE Compra_ID = (SELECT i.Detalle_ID_Compra from inserted i where Compra_ID = i.Detalle_ID_Compra)
 	END
-GO
+GO*/
 
 
 IF EXISTS (SELECT name FROM sysobjects WHERE name='pr_limpiar_tabla_maestra_clientes' AND type='p')
@@ -704,10 +704,11 @@ GO
 CREATE PROCEDURE HPBC.pr_carga_facturas
 AS
 BEGIN
-	INSERT INTO HPBC.Factura(Fact_Nro,Fact_ID_Proveedor,Fact_Fecha)
-	SELECT Distinct gd.Factura_Nro, p.Provee_ID , gd.Factura_Fecha
+	INSERT INTO HPBC.Factura(Fact_Nro,Fact_ID_Proveedor,Fact_Fecha,Fact_Monto)
+	SELECT Distinct gd.Factura_Nro, p.Provee_ID , gd.Factura_Fecha, SUM(gd.Oferta_Precio)
 	from gd_esquema.Maestra gd join HPBC.Proveedor p on p.Provee_Rs = gd.Provee_RS and REPLACE(gd.Provee_CUIT,'-','') = p.Provee_CUIT
 	where Factura_Nro is not null and Factura_Fecha is not null
+	group by gd.Factura_Nro, p.Provee_ID , gd.Factura_Fecha
 	order by Factura_Nro
 END
 GO
@@ -721,8 +722,9 @@ CREATE PROCEDURE HPBC.pr_cargar_item_factura
 AS
 BEGIN
 	INSERT INTO HPBC.Detalle_Fact(Detalle_ID_Fact,Detalle_ID_Compra)
-	SELECT f.Fact_ID,Compra_ID from HPBC.Factura f JOIN gd_esquema.Maestra gd on gd.Factura_Nro = f.Fact_Nro 
-
+	SELECT f.Fact_ID,c.Compra_ID from HPBC.Factura f JOIN gd_esquema.Maestra gd on gd.Factura_Nro = f.Fact_Nro 
+	join HPBC.Compra c on gd.Cli_Dni = (Select clie_dni from HPBC.Cliente where c.Compra_ID_Clie_Dest = clie_ID)
+	where gd.Factura_Nro is not null and gd.Factura_Fecha is not null
 END
 GO
 exec HPBC.pr_cargar_item_factura
@@ -845,7 +847,7 @@ CREATE FUNCTION HPBC.existeEmail(@buscado varchar(255))
 returns Bit
 AS
 BEGIN
-if Exists(SELECT 1 FROM HPBC.Cliente WHERE clie_mail = @buscado)
+if Exists(SELECT 1 FROM HPBC.Cliente WHERE UPPER(clie_mail) = UPPER(@buscado))
 	Begin
 	return 1
 	end
@@ -860,7 +862,7 @@ CREATE FUNCTION HPBC.existeRubro(@buscado varchar(255))
 returns Bit
 AS
 BEGIN
-if Exists(SELECT 1 FROM HPBC.Rubro WHERE Rubro_detalle = @buscado)
+if Exists(SELECT 1 FROM HPBC.Rubro WHERE UPPER(Rubro_detalle) = UPPER(@buscado))
 	Begin
 	return 1
 	end
@@ -875,7 +877,7 @@ CREATE FUNCTION HPBC.existeRol(@buscado varchar(255))
 returns Bit
 AS
 BEGIN
-if Exists(SELECT 1 FROM HPBC.Rol WHERE Rol_detalle = @buscado)
+if Exists(SELECT 1 FROM HPBC.Rol WHERE UPPER(Rol_detalle) = UPPER(@buscado))
 	Begin
 	return 1
 	end
