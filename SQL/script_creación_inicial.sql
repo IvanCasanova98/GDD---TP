@@ -194,7 +194,7 @@ CREATE TABLE HPBC.Compra(
 	Compra_ID_Clie_Dest Int  NOT NULL,
 	Compra_Fecha datetime,
 	Compra_Cant numeric(18,0),
-	Compra_Facturada bit
+	Compra_Facturada BIT DEFAULT 0
  CONSTRAINT PK_Compra PRIMARY KEY CLUSTERED(
 	Compra_ID ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
