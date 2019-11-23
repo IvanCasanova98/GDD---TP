@@ -194,7 +194,7 @@ CREATE TABLE HPBC.Compra(
 	Compra_ID_Clie_Dest Int  NOT NULL,
 	Compra_Fecha datetime,
 	Compra_Cant numeric(18,0),
-	Compra_Facturada BIT DEFAULT 0,
+	Compra_Facturada bit
  CONSTRAINT PK_Compra PRIMARY KEY CLUSTERED(
 	Compra_ID ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
@@ -319,6 +319,12 @@ IF NOT EXISTS (select * from sysobjects where name='FK_Detalle_ID_Compra' and xt
 ALTER TABLE HPBC.Detalle_Fact  WITH CHECK ADD CONSTRAINT FK_Detalle_ID_Compra FOREIGN KEY (Detalle_ID_Compra)
 REFERENCES HPBC.Compra(Compra_ID)
 GO
+
+--IF NOT EXISTS (select * from sysobjects where name='FK_Compra_Factura' and xtype='F')
+--ALTER TABLE HPBC.Compra  WITH CHECK ADD CONSTRAINT FK_Compra_Factura FOREIGN KEY (Compra_ID_Factura)
+--REFERENCES HPBC.Factura(Fact_ID)
+-----GO
+
 
 USE [master]
 GO
@@ -452,7 +458,7 @@ END
 GO
 
 
-IF EXISTS (SELECT name FROM sysobjects WHERE name='trigger_facturar_compra' AND type='tr')
+/*IF EXISTS (SELECT name FROM sysobjects WHERE name='trigger_facturar_compra' AND type='tr')
 DROP TRIGGER HPBC.trigger_facturar_compra
 GO
 CREATE TRIGGER HPBC.trigger_facturar_compra
@@ -461,23 +467,9 @@ AFTER Insert AS
 BEGIN
 		UPDATE HPBC.Compra
 		SET Compra_Facturada = 1
-		WHERE Compra_ID = (SELECT i.Detalle_ID_Compra from inserted i where Compra_ID = i.Detalle_ID_Compra)
-	END
-GO
-
-/*IF EXISTS (SELECT name FROM sysobjects WHERE name='trigger_factura_monto' AND type='tr')
-DROP TRIGGER HPBC.trigger_factura_monto
-GO
-CREATE TRIGGER HPBC.trigger_factura_monto
-ON HPBC.Factura
-AFTER Insert AS
-BEGIN
-		UPDATE HPBC.Factura
-		SET Fact_Monto = (Select sum(Ofe_Precio*Compra_Cant) from
-		WHERE Compra_ID = (SELECT i.Detalle_ID_Compra from inserted i where Compra_ID = i.Detalle_ID_Compra)
+		WHERE Compra_ID IN (SELECT i.Detalle_ID_Compra from inserted i where Compra_ID = i.Detalle_ID_Compra)
 	END
 GO*/
-
 
 IF EXISTS (SELECT name FROM sysobjects WHERE name='pr_limpiar_tabla_maestra_clientes' AND type='p')
 DROP PROCEDURE HPBC.pr_limpiar_tabla_maestra_clientes
@@ -636,6 +628,23 @@ BEGIN
 exec HPBC.pr_cargar_provedores
 
 
+IF EXISTS (SELECT name FROM sysobjects WHERE name='pr_carga_facturas' AND type='p')
+DROP PROCEDURE HPBC.pr_carga_facturas
+GO
+CREATE PROCEDURE HPBC.pr_carga_facturas
+AS
+BEGIN
+	INSERT INTO HPBC.Factura(Fact_Nro,Fact_ID_Proveedor,Fact_Fecha,Fact_Monto)
+	SELECT Distinct gd.Factura_Nro, p.Provee_ID , gd.Factura_Fecha, SUM(gd.Oferta_Precio)
+	from gd_esquema.Maestra gd join HPBC.Proveedor p on p.Provee_Rs = gd.Provee_RS and REPLACE(gd.Provee_CUIT,'-','') = p.Provee_CUIT
+	where Factura_Nro is not null and Factura_Fecha is not null
+	group by gd.Factura_Nro, p.Provee_ID , gd.Factura_Fecha
+	order by Factura_Nro
+END
+GO
+exec HPBC.pr_carga_facturas
+
+
 IF EXISTS (SELECT name FROM sysobjects WHERE name='pr_cargar_ofertas' AND type='p')
 DROP PROCEDURE HPBC.pr_cargar_ofertas
 GO
@@ -659,7 +668,10 @@ CREATE PROCEDURE HPBC.pr_cargar_compras
 AS
 BEGIN
 	INSERT INTO HPBC.Compra(Compra_ID_Oferta,Compra_ID_Clie_Dest,Compra_Fecha, Compra_Cant)
-	SELECT o.Ofe_ID,c.clie_ID, gd.Oferta_Fecha_Compra, 1
+	SELECT	o.Ofe_ID,
+			c.clie_ID, 
+			gd.Oferta_Fecha_Compra, 
+			1
 	from gd_esquema.Maestra gd, HPBC.Cliente c,HPBC.Oferta o
 	where gd.Oferta_Fecha_Compra is not null and c.clie_apellido = gd.Cli_Apellido AND c.clie_nombre = gd.Cli_Nombre AND c.clie_dni = gd.Cli_Dni 
 	and o.Ofe_Codigo = gd.Oferta_Codigo
@@ -669,6 +681,8 @@ GO
 
 
 exec HPBC.pr_cargar_compras
+
+  
 
 
 UPDATE o SET o.Ofe_Cant =  o.Ofe_Cant - (select isnull(COUNT(*),0)  FROM HPBC.Compra c WHERE c.Compra_ID_Oferta = o.Ofe_ID  group by c.Compra_ID_Oferta)
@@ -697,26 +711,26 @@ END
 GO
 exec HPBC.pr_cargar_cupones
 
-
-IF EXISTS (SELECT name FROM sysobjects WHERE name='pr_carga_facturas' AND type='p')
-DROP PROCEDURE HPBC.pr_carga_facturas
-GO
-CREATE PROCEDURE HPBC.pr_carga_facturas
-AS
-BEGIN
-	INSERT INTO HPBC.Factura(Fact_Nro,Fact_ID_Proveedor,Fact_Fecha,Fact_Monto)
-	SELECT Distinct gd.Factura_Nro, p.Provee_ID , gd.Factura_Fecha, SUM(gd.Oferta_Precio)
-	from gd_esquema.Maestra gd join HPBC.Proveedor p on p.Provee_Rs = gd.Provee_RS and REPLACE(gd.Provee_CUIT,'-','') = p.Provee_CUIT
-	where Factura_Nro is not null and Factura_Fecha is not null
-	group by gd.Factura_Nro, p.Provee_ID , gd.Factura_Fecha
-	order by Factura_Nro
-END
-GO
-exec HPBC.pr_carga_facturas
-
-
 IF EXISTS (SELECT name FROM sysobjects WHERE name='pr_cargar_item_factura' AND type='p')
 DROP PROCEDURE HPBC.pr_cargar_item_factura
+GO
+CREATE PROCEDURE HPBC.pr_cargar_item_factura
+AS
+BEGIN
+	INSERT INTO HPBC.Detalle_Fact 
+	SELECT Fact_ID,Compra_ID 
+	FROM gd_esquema.Maestra, HPBC.Compra,HPBC.Factura
+	where Factura_Nro = Fact_Nro and Cli_Dni = (SELECT clie_dni FROM HPBC.Cliente WHERE clie_ID = Compra_ID_Clie_Dest)  and Oferta_Codigo = (SELECT Ofe_Codigo FROM HPBC.Oferta where Ofe_ID = Compra_ID_Oferta) and Oferta_Fecha_Compra = Compra_Fecha
+end
+GO
+exec HPBC.pr_cargar_item_factura
+
+UPDATE c SET Compra_Facturada = 1
+FROM HPBC.Compra c
+WHERE c.Compra_ID = (SELECT Detalle_ID_Compra from HPBC.Detalle_Fact where Detalle_ID_Compra = c.Compra_ID)
+
+/*IF EXISTS (SELECT name FROM sysobjects WHERE name='pr_cargar_item_factura' AND type='p')
+DROP PROCEDURE HPBC.pr_cargar_item_factura 
 GO
 CREATE PROCEDURE HPBC.pr_cargar_item_factura
 AS
@@ -727,7 +741,7 @@ BEGIN
 	where gd.Factura_Nro is not null and gd.Factura_Fecha is not null
 END
 GO
-exec HPBC.pr_cargar_item_factura
+exec HPBC.pr_cargar_item_factura*/
 
 
 IF EXISTS (SELECT name FROM sysobjects WHERE name='validar_usuario' AND type='fn')
