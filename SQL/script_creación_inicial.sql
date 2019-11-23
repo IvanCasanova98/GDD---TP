@@ -824,10 +824,10 @@ END
 GO
 
 
-IF EXISTS (SELECT name FROM sysobjects WHERE name='existeUsuario' AND type='F')
-DROP FUNCTION HPBC.existeUsuario
-GO
-CREATE FUNCTION HPBC.existeUsuario(@buscado varchar(255))
+--IF EXISTS (SELECT name FROM sysobjects WHERE name='existeUsuario' AND type='F')
+--DROP FUNCTION HPBC.existeUsuario
+--GO
+ALTER FUNCTION HPBC.existeUsuario(@buscado varchar(255))
 returns Bit
 AS
 BEGIN
@@ -839,10 +839,10 @@ return 0
 end
 GO
 
-IF EXISTS (SELECT name FROM sysobjects WHERE name='existeDNI' AND type='F')
-DROP FUNCTION HPBC.existeDNI
-GO
-CREATE FUNCTION HPBC.existeDNI(@buscado varchar(255))
+--IF EXISTS (SELECT name FROM sysobjects WHERE name='existeDNI' AND type='F')
+--DROP FUNCTION HPBC.existeDNI
+--GO
+ALTER FUNCTION HPBC.existeDNI(@buscado varchar(255))
 returns Bit
 AS
 BEGIN
@@ -854,10 +854,10 @@ return 0
 end
 GO
 
-IF EXISTS (SELECT name FROM sysobjects WHERE name='existeEmail' AND type='F')
-DROP FUNCTION HPBC.existeEmail
-GO
-CREATE FUNCTION HPBC.existeEmail(@buscado varchar(255))
+--IF EXISTS (SELECT name FROM sysobjects WHERE name='existeEmail' AND type='F')
+--DROP FUNCTION HPBC.existeEmail
+--GO
+ALTER FUNCTION HPBC.existeEmail(@buscado varchar(255))
 returns Bit
 AS
 BEGIN
@@ -869,10 +869,10 @@ return 0
 end
 GO
 
-IF EXISTS (SELECT name FROM sysobjects WHERE name='existeRubro' AND type='F')
-DROP FUNCTION HPBC.existeRubro
-GO
-CREATE FUNCTION HPBC.existeRubro(@buscado varchar(255))
+--IF EXISTS (SELECT name FROM sysobjects WHERE name='existeRubro' AND type='F')
+--DROP FUNCTION HPBC.existeRubro
+--GO
+ALTER FUNCTION HPBC.existeRubro(@buscado varchar(255))
 returns Bit
 AS
 BEGIN
@@ -884,10 +884,10 @@ return 0
 end
 GO
 
-IF EXISTS (SELECT name FROM sysobjects WHERE name='existeRol' AND type='F')
-DROP FUNCTION HPBC.existeRol
-GO
-CREATE FUNCTION HPBC.existeRol(@buscado varchar(255))
+--IF EXISTS (SELECT name FROM sysobjects WHERE name='existeRol' AND type='F')
+--DROP FUNCTION HPBC.existeRol
+--GO
+ALTER FUNCTION HPBC.existeRol(@buscado varchar(255))
 returns Bit
 AS
 BEGIN
