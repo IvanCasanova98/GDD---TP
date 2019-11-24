@@ -320,6 +320,7 @@
             this.LISTADOESTADISTICO.Size = new System.Drawing.Size(210, 29);
             this.LISTADOESTADISTICO.Text = "Listado Estadístico";
             this.LISTADOESTADISTICO.Visible = false;
+            this.LISTADOESTADISTICO.Click += new System.EventHandler(this.LISTADOESTADISTICO_Click);
             // 
             // groupBox1
             // 

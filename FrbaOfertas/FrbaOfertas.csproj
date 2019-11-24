@@ -111,6 +111,7 @@
     <Compile Include="CargaCredito\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConectorDB\ObtenerRangoAñosFacturas.cs" />
     <Compile Include="ConectorDB\FuncionesCliente.cs" />
     <Compile Include="ConectorDB\FuncionesFuncion.cs" />
     <Compile Include="ConectorDB\FuncionesGlobales.cs" />
@@ -165,11 +166,11 @@
     <Compile Include="Login\LOGIN.Designer.cs">
       <DependentUpon>LOGIN.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListadoEstadistico\Form1.cs">
+    <Compile Include="ListadoEstadistico\ListadoEstadistico.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ListadoEstadistico\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="ListadoEstadistico\ListadoEstadistico.Designer.cs">
+      <DependentUpon>ListadoEstadistico.cs</DependentUpon>
     </Compile>
     <Compile Include="Modelo\ABMHandler\ClienteHandler.cs" />
     <Compile Include="Modelo\ABMHandler\Handler.cs" />
@@ -234,6 +235,9 @@
     <EmbeddedResource Include="AbmRol\ModificacionRol.resx">
       <DependentUpon>ModificacionRol.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CargaCredito\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DatosPersonales\Usuarios\DatosPersonalesUsuario.resx">
       <DependentUpon>DatosPersonalesUsuario.cs</DependentUpon>
     </EmbeddedResource>
@@ -248,6 +252,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Home\SeleccionarRol.resx">
       <DependentUpon>SeleccionarRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListadoEstadistico\ListadoEstadistico.resx">
+      <DependentUpon>ListadoEstadistico.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\LOGIN.resx">
       <DependentUpon>LOGIN.cs</DependentUpon>

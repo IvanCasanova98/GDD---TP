@@ -166,6 +166,12 @@ namespace FrbaOfertas.Home
             dialog.ShowDialog(this);
         }
 
+        private void LISTADOESTADISTICO_Click(object sender, EventArgs e)
+        {
+            FrbaOfertas.ListadoEstadistico.ListadoEstadistico dialog = new FrbaOfertas.ListadoEstadistico.ListadoEstadistico();
+            dialog.ShowDialog(this);
+        }
+
 
 
 

@@ -42,7 +42,6 @@ namespace FrbaOfertas
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.loginPng = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -153,7 +152,6 @@ namespace FrbaOfertas
             this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
             this.groupBox1.Controls.Add(this.pictureBox3);
             this.groupBox1.Controls.Add(this.loginPng);
-            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.txtPassword);
             this.groupBox1.Controls.Add(this.txtUsuario);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -184,17 +182,6 @@ namespace FrbaOfertas
             this.loginPng.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.loginPng.TabIndex = 1;
             this.loginPng.TabStop = false;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.DarkRed;
-            this.button1.Location = new System.Drawing.Point(266, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(28, 26);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "X";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // LOGIN
             // 
@@ -236,7 +223,6 @@ namespace FrbaOfertas
         private System.Windows.Forms.LinkLabel lblContraseña;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox loginPng;
 

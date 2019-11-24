@@ -50,3 +50,5 @@ C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.DatosP
 C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.DatosPersonales.Usuarios.ListadoUsuario.resources
 C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.DatosPersonales.Usuarios.ModificarUsuario.resources
 C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.AbmProveedor.ModificacionProveedor.resources
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.CragaCredito.Form1.resources
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.ListadoEstadistico.ListadoEstadistico.resources
