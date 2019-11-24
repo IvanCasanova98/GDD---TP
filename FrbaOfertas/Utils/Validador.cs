@@ -98,6 +98,10 @@ namespace FrbaOfertas.Utils
         public void ErrornoContenerNumeros(TextBox textbox) {
             textoDeError(textbox, "El Campo no debe contener numeros");
         }
+        public void ErrornoNumeroEnteroPositivo(TextBox textbox)
+        {
+            textoDeError(textbox, "El credito a cargar debe ser entero y positivo");
+        }
         public void ErrornoContenerLetras(TextBox textbox)
         {
             textoDeError(textbox, "El Campo no debe contener Letras");
@@ -198,7 +202,7 @@ namespace FrbaOfertas.Utils
         {
             TextBox textBox = (TextBox)sender;
             if (textBox.Text == "El campo ya existe" || textBox.Text == "Falta completar campo" || textBox.Text == "El Campo ingresado ya existe en la base de datos" || textBox.Text == "El Rol ya existe"
-                || textBox.Text == "El Campo no debe contener numeros" || textBox.Text == "El Campo no debe contener Letras" || textBox.Text == "El Campo supera el rango maximo de caracteres" || textBox.Text == "Usá el formato nombre@ejemplo.com")
+                || textBox.Text == "El Campo no debe contener numeros" || textBox.Text == "El Campo no debe contener Letras" || textBox.Text == "El Campo supera el rango maximo de caracteres" || textBox.Text == "Usá el formato nombre@ejemplo.com" || textBox.Text == "El credito a cargar debe ser entero y positivo")
             {
                 textBox.Text = "";
                 textBox.ForeColor = Color.Black;

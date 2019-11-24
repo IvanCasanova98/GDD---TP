@@ -91,5 +91,25 @@ namespace FrbaOfertas.ConectorDB
             connection.Close();
         }
 
+        public static int ConseguirMontoActual() {
+            SqlConnection connection = new SqlConnection(Conexion.getStringConnection());
+            SqlCommand comm = connection.CreateCommand();
+            comm.CommandText = "SELECT clie_monto from HPBC.Cliente where clie_usuario_ID = " + FrbaOfertas.Modelo.Usuario.id;
+            comm.Connection = connection;
+            comm.Connection.Open();
+            SqlDataReader reader = comm.ExecuteReader() as SqlDataReader;
+            reader.Read();
+            if (reader["clie_monto"].ToString() != "")
+            {
+                int monto = Int32.Parse(reader["clie_monto"].ToString());
+                comm.Connection.Close();
+                connection.Close();
+                return monto;
+            }
+                comm.Connection.Close();
+                connection.Close();
+                return -1;
+        }
+
     }
 }

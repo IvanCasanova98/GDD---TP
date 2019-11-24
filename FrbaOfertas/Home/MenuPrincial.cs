@@ -172,6 +172,12 @@ namespace FrbaOfertas.Home
             dialog.ShowDialog(this);
         }
 
+        private void CARGADECREDITO_Click(object sender, EventArgs e)
+        {
+            FrbaOfertas.CargaCredito.CargarCredito dialog = new FrbaOfertas.CargaCredito.CargarCredito();
+            dialog.ShowDialog(this);
+        }
+
 
 
 

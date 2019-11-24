@@ -201,6 +201,11 @@ namespace FrbaOfertas.AbmProveedor
             txt_razonsocial.Select();
         }
 
+        private void AltaProveedor_Load(object sender, EventArgs e)
+        {
+
+        }
+
 
 
     }

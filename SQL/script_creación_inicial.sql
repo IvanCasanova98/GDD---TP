@@ -808,7 +808,7 @@ AS
 BEGIN TRANSACTION
 UPDATE HPBC.Usuario
 SET usuario_bloqueado = 1
-Where usuario_id = (SELECT u.usuario_id from HPBC.Usuario u Where u.usuario_username = usuario_username and usuario_cant_logeo_error >= 3)
+Where usuario_id in (SELECT u.usuario_id from HPBC.Usuario u Where u.usuario_username = usuario_username and usuario_cant_logeo_error >= 3)
 COMMIT TRANSACTION
 go
 

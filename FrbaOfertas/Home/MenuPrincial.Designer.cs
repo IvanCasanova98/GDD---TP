@@ -280,6 +280,7 @@
             this.CARGADECREDITO.Size = new System.Drawing.Size(210, 29);
             this.CARGADECREDITO.Text = "Cargar Credito";
             this.CARGADECREDITO.Visible = false;
+            this.CARGADECREDITO.Click += new System.EventHandler(this.CARGADECREDITO_Click);
             // 
             // COMPRAROFERTA
             // 
