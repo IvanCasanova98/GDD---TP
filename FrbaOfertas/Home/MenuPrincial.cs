@@ -178,6 +178,12 @@ namespace FrbaOfertas.Home
             dialog.ShowDialog(this);
         }
 
+        private void CONFECCIÓNYPUBLICACIONDEOFERTAS_Click(object sender, EventArgs e)
+        {
+            FrbaOfertas.CrearOferta.CrearOfertaAdministrador dialog = new FrbaOfertas.CrearOferta.CrearOfertaAdministrador();
+            dialog.ShowDialog(this);
+        }
+
 
 
 

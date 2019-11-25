@@ -124,11 +124,18 @@
     <Compile Include="ConectorDB\FuncionesProveedor.cs" />
     <Compile Include="ConectorDB\FuncionesRol.cs" />
     <Compile Include="ConectorDB\FuncionesUsername.cs" />
-    <Compile Include="CrearOferta\Form1.cs">
+    <Compile Include="ConectorDB\ObtenerTodosLosProveedores.cs" />
+    <Compile Include="CrearOferta\CrearOfertaAdministrador.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CrearOferta\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="CrearOferta\CrearOfertaAdministrador.Designer.cs">
+      <DependentUpon>CrearOfertaAdministrador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrearOferta\CrearOfertaProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrearOferta\CrearOfertaProveedor.Designer.cs">
+      <DependentUpon>CrearOfertaProveedor.cs</DependentUpon>
     </Compile>
     <Compile Include="DatosPersonales\Usuarios\DatosPersonalesUsuario.cs">
       <SubType>Form</SubType>
@@ -246,6 +253,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CargaCredito\CargaTarjeta.resx">
       <DependentUpon>CargaTarjeta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ComprarOferta\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrearOferta\CrearOfertaAdministrador.resx">
+      <DependentUpon>CrearOfertaAdministrador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrearOferta\CrearOfertaProveedor.resx">
+      <DependentUpon>CrearOfertaProveedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DatosPersonales\Usuarios\DatosPersonalesUsuario.resx">
       <DependentUpon>DatosPersonalesUsuario.cs</DependentUpon>
