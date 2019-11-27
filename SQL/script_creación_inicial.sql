@@ -15,6 +15,32 @@ RETURN HASHBYTES('SHA2_256', @AEncriptar);
 END
 GO
 
+IF EXISTS (SELECT name FROM sysobjects WHERE name='fnBase36' AND type='F')
+DROP FUNCTION HPBC.fnBase36
+GO
+CREATE FUNCTION HPBC.fnBase36
+(
+    @Val BIGINT
+)
+RETURNS VARCHAR(9)
+AS
+BEGIN
+    DECLARE @Result VARCHAR(9) = ''
+
+    IF (@Val <= 0)
+    BEGIN
+        RETURN '0'
+    END
+
+    WHILE (@Val > 0)
+    BEGIN
+        SELECT @Result = CHAR(@Val % 36 + CASE WHEN @Val % 36 < 10 THEN 48 ELSE 55 END) + @Result,
+               @Val = FLOOR(@Val/36)
+    END
+
+    RETURN @Result
+END
+GO
 
 IF NOT EXISTS (select * from sysobjects where name='Cliente' and xtype='U')
 CREATE TABLE HPBC.Cliente(
@@ -77,16 +103,6 @@ CREATE TABLE HPBC.Proveedor(
 )ON [PRIMARY]
 GO
 
-IF NOT EXISTS (select * from sysobjects where name='Administrativo' and xtype='U')
-CREATE TABLE HPBC.Administrativo(
-	Admin_ID INT identity(1,1) NOT NULL,
- CONSTRAINT PK_Administrativo PRIMARY KEY CLUSTERED(
-	Admin_ID ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-)ON [PRIMARY]
-GO
-
-
 IF NOT EXISTS (select * from sysobjects where name='Rol' and xtype='U')
 CREATE TABLE HPBC.Rol(
 	Rol_ID INT identity(1,1) NOT NULL,
@@ -148,7 +164,7 @@ CREATE TABLE HPBC.Tipo_Pago(
 	Tipo_Pago_ID INT NOT NULL identity(1,1) ,
 	Tarj_Detalle nvarchar(255) NOT NULL,
 	Tarj_Nro numeric(20,0) null,
-	Tarj_Cod_Seg numeric(3,0) null,
+	Tarj_Cod_Seg numeric(4,0) null,
  CONSTRAINT PK_Tipo_Pago PRIMARY KEY CLUSTERED(
 	Tipo_Pago_ID ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
@@ -494,7 +510,7 @@ CREATE PROCEDURE HPBC.pr_limpiar_tabla_maestra_clientes
 	
 	/* Se cren los usuarios de los Clientes */
 	INSERT INTO HPBC.Usuario (usuario_username, usuario_password, usuario_habilitado, usuario_bloqueado, usuario_cant_logeo_error)
-	SELECT Dni AS username , HASHBYTES('SHA2_256',Dni), 1, 0, 0
+	SELECT Dni AS username , HASHBYTES('SHA2_256',convert(varchar(255),Dni)), 1, 0, 0
 	FROM #Temp_Cli_Incons
 	WHERE cantDni = 1 AND cantEmail = 1 
 	
@@ -605,7 +621,7 @@ BEGIN
 	
 	/* Se cren los usuarios de los Clientes */
 	INSERT INTO HPBC.Usuario (usuario_username, usuario_password, usuario_habilitado, usuario_bloqueado, usuario_cant_logeo_error)
-	SELECT CUIT AS username , HASHBYTES('SHA2_256',CUIT), 1, 0, 0
+	SELECT CUIT AS username , HASHBYTES('SHA2_256',convert(varchar(255),CUIT)), 1, 0, 0
 	FROM #Temp_Provee_Incons
 	WHERE cantRS = 1 AND cantCUIT = 1
 
@@ -824,10 +840,10 @@ END
 GO
 
 
---IF EXISTS (SELECT name FROM sysobjects WHERE name='existeUsuario' AND type='F')
---DROP FUNCTION HPBC.existeUsuario
---GO
-ALTER FUNCTION HPBC.existeUsuario(@buscado varchar(255))
+IF EXISTS (SELECT name FROM sysobjects WHERE name='existeUsuario' AND type='F')
+DROP FUNCTION HPBC.existeUsuario
+GO
+CREATE FUNCTION HPBC.existeUsuario(@buscado varchar(255))
 returns Bit
 AS
 BEGIN
@@ -839,10 +855,10 @@ return 0
 end
 GO
 
---IF EXISTS (SELECT name FROM sysobjects WHERE name='existeDNI' AND type='F')
---DROP FUNCTION HPBC.existeDNI
---GO
-ALTER FUNCTION HPBC.existeDNI(@buscado varchar(255))
+IF EXISTS (SELECT name FROM sysobjects WHERE name='existeDNI' AND type='F')
+DROP FUNCTION HPBC.existeDNI
+GO
+CREATE FUNCTION HPBC.existeDNI(@buscado varchar(255))
 returns Bit
 AS
 BEGIN
@@ -854,10 +870,10 @@ return 0
 end
 GO
 
---IF EXISTS (SELECT name FROM sysobjects WHERE name='existeEmail' AND type='F')
---DROP FUNCTION HPBC.existeEmail
---GO
-ALTER FUNCTION HPBC.existeEmail(@buscado varchar(255))
+IF EXISTS (SELECT name FROM sysobjects WHERE name='existeEmail' AND type='F')
+DROP FUNCTION HPBC.existeEmail
+GO
+Create FUNCTION HPBC.existeEmail(@buscado varchar(255))
 returns Bit
 AS
 BEGIN
@@ -869,10 +885,10 @@ return 0
 end
 GO
 
---IF EXISTS (SELECT name FROM sysobjects WHERE name='existeRubro' AND type='F')
---DROP FUNCTION HPBC.existeRubro
---GO
-ALTER FUNCTION HPBC.existeRubro(@buscado varchar(255))
+IF EXISTS (SELECT name FROM sysobjects WHERE name='existeRubro' AND type='F')
+DROP FUNCTION HPBC.existeRubro
+GO
+CREATE FUNCTION HPBC.existeRubro(@buscado varchar(255))
 returns Bit
 AS
 BEGIN
@@ -884,10 +900,11 @@ return 0
 end
 GO
 
---IF EXISTS (SELECT name FROM sysobjects WHERE name='existeRol' AND type='F')
---DROP FUNCTION HPBC.existeRol
---GO
-ALTER FUNCTION HPBC.existeRol(@buscado varchar(255))
+
+IF EXISTS (SELECT name FROM sysobjects WHERE name='existeRol' AND type='F')
+DROP FUNCTION HPBC.existeRol
+GO
+CREATE FUNCTION HPBC.existeRol(@buscado varchar(255))
 returns Bit
 AS
 BEGIN

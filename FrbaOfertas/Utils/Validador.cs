@@ -123,7 +123,10 @@ namespace FrbaOfertas.Utils
         {
             textoDeError(textbox, "Utilice el formato tipo-DNI-DigitoVerificador, 11 numeros");
         }
-
+        public void ErrorTarjeta(TextBox textbox)
+        {
+            textoDeError(textbox, "Numero invalido de tarjeta (deben ser 16 caracteres)");
+        }
         public static void  crearCajaDeError(string texto, string titulo)
         {
             MessageBox.Show(texto, titulo, MessageBoxButtons.OK, MessageBoxIcon.Error);

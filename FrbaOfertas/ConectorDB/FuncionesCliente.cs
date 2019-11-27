@@ -39,7 +39,9 @@ namespace FrbaOfertas.ConectorDB
             comm.Connection.Open();
             SqlDataReader reader = comm.ExecuteReader() as SqlDataReader;
             while (reader.Read())
+            
             {
+                clienteBuscado.id = Int32.Parse(reader["clie_ID"].ToString());
                 clienteBuscado.nombre = reader["clie_nombre"].ToString();
                 clienteBuscado.apellido = reader["clie_apellido"].ToString();
                 clienteBuscado.documento = reader["clie_dni"].ToString();
@@ -99,8 +101,8 @@ namespace FrbaOfertas.ConectorDB
             comm.Connection.Open();
             SqlDataReader reader = comm.ExecuteReader() as SqlDataReader;
             reader.Read();
-            if (reader["clie_monto"].ToString() != "")
-            {
+            if (reader.HasRows)
+            { 
                 int monto = Int32.Parse(reader["clie_monto"].ToString());
                 comm.Connection.Close();
                 connection.Close();
@@ -110,6 +112,24 @@ namespace FrbaOfertas.ConectorDB
                 connection.Close();
                 return -1;
         }
-
+        public static int Get_Cliente_id(int usuarioID) {
+            
+            SqlConnection connection = new SqlConnection(Conexion.getStringConnection());
+            SqlCommand comm = connection.CreateCommand();
+            comm.CommandText = "SELECT DISTINCT clie_ID " +
+                                "FROM HPBC.Cliente  WHERE clie_usuario_ID = "+ usuarioID ;
+            comm.Connection = connection;
+            comm.Connection.Open();
+            SqlDataReader reader = comm.ExecuteReader() as SqlDataReader;
+            reader.Read();
+            int id =  Int32.Parse(reader["clie_ID"].ToString());
+            comm.Connection.Close();
+            connection.Close();
+            return id;
+        }
+        
+        
+        
+        }
     }
-}
+

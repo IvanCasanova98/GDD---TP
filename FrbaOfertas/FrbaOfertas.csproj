@@ -117,6 +117,7 @@
     <Compile Include="CargaCredito\CargarCredito.Designer.cs">
       <DependentUpon>CargarCredito.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConectorDB\FuncionesCarga.cs" />
     <Compile Include="ConectorDB\ObtenerRangoAñosFacturas.cs" />
     <Compile Include="ConectorDB\FuncionesCliente.cs" />
     <Compile Include="ConectorDB\FuncionesFuncion.cs" />
@@ -196,6 +197,7 @@
     <Compile Include="Modelo\Roles\Proveedor.cs" />
     <Compile Include="Modelo\Roles\Rol.cs" />
     <Compile Include="Modelo\GuardarDB\StateGuardar.cs" />
+    <Compile Include="Modelo\Tarjeta.cs" />
     <Compile Include="Modelo\Usuario.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

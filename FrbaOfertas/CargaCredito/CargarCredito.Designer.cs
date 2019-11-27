@@ -50,8 +50,9 @@
             // 
             this.cantidad.Location = new System.Drawing.Point(126, 128);
             this.cantidad.Name = "cantidad";
-            this.cantidad.Size = new System.Drawing.Size(281, 20);
+            this.cantidad.Size = new System.Drawing.Size(255, 20);
             this.cantidad.TabIndex = 1;
+            this.cantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.solonumeros_KeyPress);
             // 
             // label1
             // 
@@ -74,7 +75,7 @@
             // 
             // Cargar
             // 
-            this.Cargar.Location = new System.Drawing.Point(207, 179);
+            this.Cargar.Location = new System.Drawing.Point(198, 183);
             this.Cargar.Name = "Cargar";
             this.Cargar.Size = new System.Drawing.Size(75, 23);
             this.Cargar.TabIndex = 4;

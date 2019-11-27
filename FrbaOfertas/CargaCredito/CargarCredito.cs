@@ -30,7 +30,7 @@ namespace FrbaOfertas.CargaCredito
                 lblmontoactual.Text = "Su monto actual es : " + monto;
             }
                 else {
-                    MessageBox.Show("Un provedor no puede cargar credito", "ERROR CARGA", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    MessageBox.Show("El rol actual no puede cargar credito", "ERROR CARGA", MessageBoxButtons.OK,MessageBoxIcon.Error);
                     this.Close();
                 
                 
@@ -63,10 +63,26 @@ namespace FrbaOfertas.CargaCredito
         private void Cargar_Click(object sender, EventArgs e)
         {
 
-            if (this.validarMonto()) { 
-            FrbaOfertas.CargaCredito.CargaTarjeta dialog =  new FrbaOfertas.CargaCredito.CargaTarjeta ();
-            dialog.ShowDialog(this);
+            if (this.validarMonto()) {
+                FrbaOfertas.CargaCredito.CargaTarjeta dialog = new FrbaOfertas.CargaCredito.CargaTarjeta(cantidad.Text);
+                dialog.ShowDialog(this);
+                int monto = FrbaOfertas.ConectorDB.FuncionesCliente.ConseguirMontoActual();
+                if (monto != -1)
+                {
+                    lblmontoactual.Text = "Su monto actual es : " + monto;
+                }
+                cantidad.Text = "";
+
             }
+        }
+        private void solonumeros_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+                (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
         }
     }
 }

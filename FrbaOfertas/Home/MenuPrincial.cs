@@ -174,8 +174,13 @@ namespace FrbaOfertas.Home
 
         private void CARGADECREDITO_Click(object sender, EventArgs e)
         {
-            FrbaOfertas.CargaCredito.CargarCredito dialog = new FrbaOfertas.CargaCredito.CargarCredito();
-            dialog.ShowDialog(this);
+            if (FrbaOfertas.ConectorDB.FuncionesCliente.ConseguirMontoActual() != -1)
+            {
+                FrbaOfertas.CargaCredito.CargarCredito dialog = new FrbaOfertas.CargaCredito.CargarCredito();
+                dialog.ShowDialog(this);
+            }
+            else
+                MessageBox.Show("El rol actual no puede cargar credito", "ERROR CARGA", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
 
