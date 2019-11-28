@@ -118,6 +118,7 @@
       <DependentUpon>CargarCredito.cs</DependentUpon>
     </Compile>
     <Compile Include="ConectorDB\FuncionesCarga.cs" />
+    <Compile Include="ConectorDB\FuncionesOferta.cs" />
     <Compile Include="ConectorDB\ObtenerRangoAñosFacturas.cs" />
     <Compile Include="ConectorDB\FuncionesCliente.cs" />
     <Compile Include="ConectorDB\FuncionesFuncion.cs" />

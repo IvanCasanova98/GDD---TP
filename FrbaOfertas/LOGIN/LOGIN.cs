@@ -89,8 +89,6 @@ namespace FrbaOfertas
                 FrbaOfertas.Home.MenuPrincial menu = new FrbaOfertas.Home.MenuPrincial();
                 FrbaOfertas.Utils.Transicion.transicionForms(this, menu);
 
-                FrbaOfertas.CrearOferta.CrearOfertaAdministrador crearOferta = new FrbaOfertas.CrearOferta.CrearOfertaAdministrador();
-                crearOferta.Show();
 
             }
         }

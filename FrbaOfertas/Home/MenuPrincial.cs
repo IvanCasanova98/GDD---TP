@@ -18,12 +18,9 @@ namespace FrbaOfertas.Home
         {
             InitializeComponent();
         }
-        
- 
 
-        private void MenuPrincial_Load(object sender, EventArgs e)
+        private void Update()
         {
-
             label2.Text = "Bienvenido " + FrbaOfertas.Modelo.Usuario.username;
             foreach (String listing in FrbaOfertas.ConectorDB.FuncionesRol.ObtenerRolesDeUnUsuario(FrbaOfertas.Modelo.Usuario.id))
             {
@@ -36,27 +33,34 @@ namespace FrbaOfertas.Home
                 ListViewItem itemrol = new ListViewItem(listing);
                 listView1.Items.Add(itemrol);
             }
-            
-             //Itero por la lista de funciones y voy "activando los botones del menu en caso de que coincidan"
-                
-            
-                foreach (ToolStripMenuItem item in menuStrip1.Items)
-                {
-                    List<String> Funciones = FrbaOfertas.ConectorDB.FuncionesUsername.ObtenerFuncionalidadesDeUnUsuario(FrbaOfertas.Modelo.Usuario.username);    
-                    if (Funciones.Contains(item.Text.ToUpper()))
-                    {
-                        item.Visible = true;
-                    }
 
-                    foreach (ToolStripDropDownItem rol in modificiarDatosPersonalesToolStripMenuItem.DropDownItems)
+            //Itero por la lista de funciones y voy "activando los botones del menu en caso de que coincidan"
+
+
+            foreach (ToolStripMenuItem item in menuStrip1.Items)
+            {
+                List<String> Funciones = FrbaOfertas.ConectorDB.FuncionesUsername.ObtenerFuncionalidadesDeUnUsuario(FrbaOfertas.Modelo.Usuario.username);
+                if (Funciones.Contains(item.Text.ToUpper()))
+                {
+                    item.Visible = true;
+                }
+
+                foreach (ToolStripDropDownItem rol in modificiarDatosPersonalesToolStripMenuItem.DropDownItems)
+                {
+                    List<String> roles = FrbaOfertas.ConectorDB.FuncionesRol.ObtenerRolesDeUnUsuario(FrbaOfertas.Modelo.Usuario.id);
+                    if (roles.Contains(rol.Text))
                     {
-                        List<String> roles = FrbaOfertas.ConectorDB.FuncionesRol.ObtenerRolesDeUnUsuario(FrbaOfertas.Modelo.Usuario.id);
-                        if (roles.Contains(rol.Text))
-                        {
-                            rol.Visible = true;
-                        }
+                        rol.Visible = true;
                     }
+                }
+
             }
+        }
+
+        private void MenuPrincial_Load(object sender, EventArgs e)
+        {
+
+            this.Update();
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -90,6 +94,12 @@ namespace FrbaOfertas.Home
         {
             FrbaOfertas.AbmRol.ListadoRol dialog = new FrbaOfertas.AbmRol.ListadoRol(new ListadoModificar(new RolHandler()));
             dialog.ShowDialog(this);
+            listView1.Items.Clear();
+            listView1.Update();
+            RolesView.Items.Clear();
+            RolesView.Update();
+            this.Update(); 
+           
         }
 
         private void listadoRolToolStripMenuItem2_Click(object sender, EventArgs e)
@@ -185,8 +195,21 @@ namespace FrbaOfertas.Home
 
         private void CONFECCIÓNYPUBLICACIONDEOFERTAS_Click(object sender, EventArgs e)
         {
-            FrbaOfertas.CrearOferta.CrearOfertaAdministrador dialog = new FrbaOfertas.CrearOferta.CrearOfertaAdministrador();
-            dialog.ShowDialog(this);
+            List<String> roles = FrbaOfertas.ConectorDB.FuncionesRol.ObtenerRolesDeUnUsuario(FrbaOfertas.Modelo.Usuario.id);
+            if (roles.Contains("Administrativo"))
+            {
+                FrbaOfertas.CrearOferta.CrearOfertaAdministrador dialog = new FrbaOfertas.CrearOferta.CrearOfertaAdministrador();
+                dialog.ShowDialog(this);
+            }
+            else if (roles.Contains("Proveedor"))
+            {
+                FrbaOfertas.CrearOferta.CrearOfertaProveedor dialog = new FrbaOfertas.CrearOferta.CrearOfertaProveedor();
+                dialog.ShowDialog(this);
+
+            }
+            else MessageBox.Show("Su rol no puede acceder a esta funcion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
         }
 
 

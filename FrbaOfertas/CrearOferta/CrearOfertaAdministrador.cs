@@ -1,4 +1,5 @@
 ﻿using FrbaOfertas.Modelo;
+using FrbaOfertas.Modelo.Roles;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -109,7 +110,7 @@ namespace FrbaOfertas.CrearOferta
                 pass = false;
             }
 
-            if (validador.fechaAnteriorA(dateTimePickerVencimiento.Value, dateTimePickerOferta.Value))
+            if (validador.fechaAnteriorA(dateTimePickerOferta.Value,dateTimePickerVencimiento.Value))
             {
                 MessageBox.Show("La fecha de vencimiento debe ser futura al de la oferta");
                 pass = false;
@@ -130,13 +131,19 @@ namespace FrbaOfertas.CrearOferta
             if (this.validarDatos())
             {
                 Oferta oferta = new Oferta();
+
+                oferta.Ofe_Stock = txt_stockDisponible.Text;
                 oferta.Ofe_Descrip = txt_descripcion.Text.Trim();
                 oferta.Ofe_Fecha = dateTimePickerOferta.Value;
                 oferta.Ofe_Fecha_Venc = dateTimePickerVencimiento.Value;
-                oferta.Ofe_Max_Cant_Por_Usuario = Int32.Parse(txt_maxUnidadesPorCliente.Text);
-                oferta.Ofe_Precio = double.Parse(txt_precioLista.Text);
-                oferta.Ofe_Precio_Ficticio = double.Parse(txt_precioOferta.Text);
+                oferta.Ofe_Max_Cant_Por_Usuario = txt_maxUnidadesPorCliente.Text;
+                oferta.Ofe_Precio = txt_precioLista.Text;
+                oferta.Ofe_Precio_Ficticio = txt_precioOferta.Text;
                 oferta.Ofe_Accesible = 1;
+                int id = FrbaOfertas.ConectorDB.FuncionesProveedor.Get_Proveedor_id_con_razon_social(cboProveedores.Text);
+                Proveedor provee = FrbaOfertas.ConectorDB.FuncionesProveedor.traerProveedor(id);
+                FrbaOfertas.ConectorDB.FuncionesOferta.AltaOferta(oferta, provee);
+                MessageBox.Show("Oferta Insertada con exito", "Oferta Insertada", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
         }

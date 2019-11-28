@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CrearOfertaAdministrador));
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePickerOferta = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
@@ -43,13 +44,13 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txt_maxUnidadesPorCliente = new System.Windows.Forms.TextBox();
             this.Detalles = new System.Windows.Forms.GroupBox();
+            this.txt_descripcion = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.cboProveedores = new System.Windows.Forms.ComboBox();
             this.cmd_limpiar = new System.Windows.Forms.Button();
             this.cmd_darAlta = new System.Windows.Forms.Button();
             this.cmd_cancelar = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txt_descripcion = new System.Windows.Forms.TextBox();
             this.Detalles.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -206,6 +207,24 @@
             this.Detalles.TabStop = false;
             this.Detalles.Text = "Detalle de Oferta";
             // 
+            // txt_descripcion
+            // 
+            this.txt_descripcion.Location = new System.Drawing.Point(157, 111);
+            this.txt_descripcion.Name = "txt_descripcion";
+            this.txt_descripcion.Size = new System.Drawing.Size(314, 20);
+            this.txt_descripcion.TabIndex = 17;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label10.Location = new System.Drawing.Point(18, 114);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(131, 13);
+            this.label10.TabIndex = 16;
+            this.label10.Text = "Descripción de Oferta";
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -271,30 +290,12 @@
             this.cmd_cancelar.UseVisualStyleBackColor = false;
             this.cmd_cancelar.Click += new System.EventHandler(this.cmd_cancelar_Click);
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label10.Location = new System.Drawing.Point(18, 114);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(131, 13);
-            this.label10.TabIndex = 16;
-            this.label10.Text = "Descripción de Oferta";
-            // 
-            // txt_descripcion
-            // 
-            this.txt_descripcion.Location = new System.Drawing.Point(157, 111);
-            this.txt_descripcion.Name = "txt_descripcion";
-            this.txt_descripcion.Size = new System.Drawing.Size(314, 20);
-            this.txt_descripcion.TabIndex = 17;
-            // 
             // CrearOfertaAdministrador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(629, 459);
+            this.ClientSize = new System.Drawing.Size(629, 428);
             this.Controls.Add(this.cmd_limpiar);
             this.Controls.Add(this.cmd_darAlta);
             this.Controls.Add(this.cmd_cancelar);
@@ -303,6 +304,7 @@
             this.Controls.Add(this.dateTimePickerOferta);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Detalles);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CrearOfertaAdministrador";
             this.Text = "Crear Oferta";
             this.Load += new System.EventHandler(this.CrearOfertaAdministrador_Load);

@@ -132,18 +132,18 @@ namespace FrbaOfertas.Utils
         {
             textoDeError(textbox, "Utilice el formato tipo-DNI-DigitoVerificador, 11 numeros");
         }
-<<<<<<< HEAD
+
         public void ErrorTarjeta(TextBox textbox)
         {
             textoDeError(textbox, "Numero invalido de tarjeta (deben ser 16 caracteres)");
         }
-=======
+
         public void ErrornoEsNumerico(TextBox textbox)
         {
             textoDeError(textbox, "Este campo debe ser un entero positivo");
         }
 
->>>>>>> 676423ebc6192cde26e48da2973bb25d596ebf16
+
         public static void  crearCajaDeError(string texto, string titulo)
         {
             MessageBox.Show(texto, titulo, MessageBoxButtons.OK, MessageBoxIcon.Error);

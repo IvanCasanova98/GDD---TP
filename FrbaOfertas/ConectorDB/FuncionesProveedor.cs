@@ -104,7 +104,53 @@ namespace FrbaOfertas.ConectorDB
             comm.Connection.Close();
             connection.Close();
         }
-        
+
+        public static int Get_Proveedor_id(int usuarioID)
+        {
+
+            SqlConnection connection = new SqlConnection(Conexion.getStringConnection());
+            SqlCommand comm = connection.CreateCommand();
+            comm.CommandText = "SELECT DISTINCT Provee_ID " +
+                                "FROM HPBC.Proveedor WHERE clie_usuario_ID = " + usuarioID;
+            comm.Connection = connection;
+            comm.Connection.Open();
+            SqlDataReader reader = comm.ExecuteReader() as SqlDataReader;
+            reader.Read();
+            int id = Int32.Parse(reader["Provee_ID"].ToString());
+            comm.Connection.Close();
+            connection.Close();
+            return id;
+        }
+        public static int Get_Proveedor_id_con_razon_social(string RS)
+        {
+
+            SqlConnection connection = new SqlConnection(Conexion.getStringConnection());
+            SqlCommand comm = connection.CreateCommand();
+            comm.CommandText = "SELECT DISTINCT Provee_ID " +
+                                "FROM HPBC.Proveedor WHERE Provee_Rs = '" + RS+"'";
+            comm.Connection = connection;
+            comm.Connection.Open();
+            SqlDataReader reader = comm.ExecuteReader() as SqlDataReader;
+            reader.Read();
+            int id = Int32.Parse(reader["Provee_ID"].ToString());
+            comm.Connection.Close();
+            connection.Close();
+            return id;
+        }
+        public static int ConseguirCantidadDeFacturasTotal(int idProv)
+        {
+            SqlConnection connection = new SqlConnection(Conexion.getStringConnection());
+            SqlCommand comm = connection.CreateCommand();
+            comm.CommandText = "SELECT Count(*) from HPBC.Oferta where Ofe_ID_Proveedor = " + idProv;
+            comm.Connection = connection;
+            comm.Connection.Open();
+            int count = (Int32)comm.ExecuteScalar();
+
+            return count;
+        }
+
+
+
         
         }
     }

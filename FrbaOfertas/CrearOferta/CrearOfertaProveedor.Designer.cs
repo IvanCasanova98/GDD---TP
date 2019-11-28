@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CrearOfertaProveedor));
             this.cmd_limpiar = new System.Windows.Forms.Button();
             this.cmd_darAlta = new System.Windows.Forms.Button();
             this.cmd_cancelar = new System.Windows.Forms.Button();
@@ -151,9 +152,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(17, 29);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 13);
+            this.label1.Size = new System.Drawing.Size(132, 13);
             this.label1.TabIndex = 18;
-            this.label1.Text = "Fecha De Oferta";
+            this.label1.Text = "Fecha De Publicación";
             // 
             // txt_descripcion
             // 
@@ -268,11 +269,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(619, 398);
+            this.ClientSize = new System.Drawing.Size(619, 413);
             this.Controls.Add(this.cmd_limpiar);
             this.Controls.Add(this.cmd_darAlta);
             this.Controls.Add(this.cmd_cancelar);
             this.Controls.Add(this.Detalles);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CrearOfertaProveedor";
             this.Text = "Crear Oferta";
             this.Load += new System.EventHandler(this.CrearOfertaProveedor_Load);

@@ -16,7 +16,7 @@ namespace FrbaOfertas.ConectorDB
         {
             SqlConnection conn = new SqlConnection(Conexion.getStringConnection());
             conn.Open();
-            string SQL = "SELECT DISTINCT [Provee_Rs] FROM [GD2C2019].[HPBC].[Proveedor]";
+            string SQL = "SELECT [Provee_Rs] FROM [GD2C2019].[HPBC].[Proveedor]";
 
             SqlCommand command = new SqlCommand(SQL, conn);
 

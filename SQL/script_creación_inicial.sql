@@ -190,8 +190,8 @@ CREATE TABLE HPBC.Oferta(
 	Ofe_ID_Proveedor INT NOT NULL,
 	Ofe_Precio numeric(18,2) NOT NULL,
 	Ofe_Precio_Ficticio numeric(18,2),
-	Ofe_Fecha datetime,
-	Ofe_Fecha_Venc datetime,
+	Ofe_Fecha date,
+	Ofe_Fecha_Venc date,
 	Ofe_Descrip varchar(255),
 	Ofe_Cant numeric(18,0),
 	Ofe_Max_Cant_Por_Usuario numeric(18,0) null,
@@ -873,11 +873,9 @@ GO
 IF EXISTS (SELECT name FROM sysobjects WHERE name='existeEmail' AND type='F')
 DROP FUNCTION HPBC.existeEmail
 GO
-<<<<<<< HEAD
-Create FUNCTION HPBC.existeEmail(@buscado varchar(255))
-=======
+
+
 CREATE FUNCTION HPBC.existeEmail(@buscado varchar(255))
->>>>>>> 676423ebc6192cde26e48da2973bb25d596ebf16
 returns Bit
 AS
 BEGIN
@@ -904,10 +902,7 @@ return 0
 end
 GO
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 676423ebc6192cde26e48da2973bb25d596ebf16
 IF EXISTS (SELECT name FROM sysobjects WHERE name='existeRol' AND type='F')
 DROP FUNCTION HPBC.existeRol
 GO
