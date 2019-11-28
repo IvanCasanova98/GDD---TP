@@ -313,6 +313,7 @@
             this.CONFECCIÓNYPUBLICACIONDEOFERTAS.Size = new System.Drawing.Size(210, 29);
             this.CONFECCIÓNYPUBLICACIONDEOFERTAS.Text = "Confección y publicación de Ofertas";
             this.CONFECCIÓNYPUBLICACIONDEOFERTAS.Visible = false;
+            this.CONFECCIÓNYPUBLICACIONDEOFERTAS.Click += new System.EventHandler(this.CONFECCIÓNYPUBLICACIONDEOFERTAS_Click);
             // 
             // LISTADOESTADISTICO
             // 

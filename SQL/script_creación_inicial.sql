@@ -873,7 +873,11 @@ GO
 IF EXISTS (SELECT name FROM sysobjects WHERE name='existeEmail' AND type='F')
 DROP FUNCTION HPBC.existeEmail
 GO
+<<<<<<< HEAD
 Create FUNCTION HPBC.existeEmail(@buscado varchar(255))
+=======
+CREATE FUNCTION HPBC.existeEmail(@buscado varchar(255))
+>>>>>>> 676423ebc6192cde26e48da2973bb25d596ebf16
 returns Bit
 AS
 BEGIN
@@ -900,7 +904,10 @@ return 0
 end
 GO
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 676423ebc6192cde26e48da2973bb25d596ebf16
 IF EXISTS (SELECT name FROM sysobjects WHERE name='existeRol' AND type='F')
 DROP FUNCTION HPBC.existeRol
 GO

@@ -183,6 +183,12 @@ namespace FrbaOfertas.Home
                 MessageBox.Show("El rol actual no puede cargar credito", "ERROR CARGA", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void CONFECCIÓNYPUBLICACIONDEOFERTAS_Click(object sender, EventArgs e)
+        {
+            FrbaOfertas.CrearOferta.CrearOfertaAdministrador dialog = new FrbaOfertas.CrearOferta.CrearOfertaAdministrador();
+            dialog.ShowDialog(this);
+        }
+
 
 
 

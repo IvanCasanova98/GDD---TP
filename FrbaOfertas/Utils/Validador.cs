@@ -82,6 +82,11 @@ namespace FrbaOfertas.Utils
             return DateTime.Compare(fechaDelDateTimePicker, DateTime.Now) > 0;
         }
 
+        public Boolean fechaAnteriorA(DateTime fechaUno, DateTime fechaDos)
+        {
+            return DateTime.Compare(fechaUno, fechaDos) > 0;
+        }
+
         public void textoDeError(TextBox textbox, string texto) {
             textbox.Text = texto;
             textbox.ForeColor = Color.Red;
@@ -100,7 +105,11 @@ namespace FrbaOfertas.Utils
         }
         public void ErrornoNumeroEnteroPositivo(TextBox textbox)
         {
-            textoDeError(textbox, "El credito a cargar debe ser entero y positivo");
+            textoDeError(textbox, "El monto a cargar debe ser entero y positivo");
+        }
+        public void ErrorPrecioOfertaNoPuedeSerMayorOIgualQuePrecioLista(TextBox textbox)
+        {
+            textoDeError(textbox, "La Oferta debe ser menor o igual al precio de lista");
         }
         public void ErrornoContenerLetras(TextBox textbox)
         {
@@ -123,10 +132,18 @@ namespace FrbaOfertas.Utils
         {
             textoDeError(textbox, "Utilice el formato tipo-DNI-DigitoVerificador, 11 numeros");
         }
+<<<<<<< HEAD
         public void ErrorTarjeta(TextBox textbox)
         {
             textoDeError(textbox, "Numero invalido de tarjeta (deben ser 16 caracteres)");
         }
+=======
+        public void ErrornoEsNumerico(TextBox textbox)
+        {
+            textoDeError(textbox, "Este campo debe ser un entero positivo");
+        }
+
+>>>>>>> 676423ebc6192cde26e48da2973bb25d596ebf16
         public static void  crearCajaDeError(string texto, string titulo)
         {
             MessageBox.Show(texto, titulo, MessageBoxButtons.OK, MessageBoxIcon.Error);
