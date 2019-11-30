@@ -17,9 +17,9 @@ namespace FrbaOfertas.Facturar
     public partial class FacturarListaProveedores : Form
     {
         FechasFacturas fechasFacturas;
-        Listado tipoListado;
 
-        public FacturarListaProveedores(FechasFacturas fechas, Listado deco)
+
+        public FacturarListaProveedores(FechasFacturas fechas)
         {
             InitializeComponent();
 
@@ -28,8 +28,6 @@ namespace FrbaOfertas.Facturar
             txt_mail.GotFocus += new EventHandler(FrbaOfertas.Utils.Validador.BorrarMensajeDeError);
 
             fechasFacturas = fechas;
-            tipoListado = deco;
-            tipoListado.ModificarDataGrid(dataGridView1);
 
             
         }
@@ -65,7 +63,7 @@ namespace FrbaOfertas.Facturar
             conn.Open();
             string SQL = "SELECT p.Provee_ID, p.Provee_Rs, p.Provee_Piso, p.Provee_Calle, p.Provee_Dpto, p.Provee_Localidad, p.Provee_Ciudad, p.Provee_CodPostal, p.Provee_Mail, p.Provee_CUIT, p.Provee_Tel, p.Provee_NombreContacto, p.Provee_Habilitado, r.Rubro_detalle " +
                          "FROM HPBC.Proveedor p join HPBC.Rubro r on r.Rubro_ID = p.Provee_Rubro " +
-                         "WHERE (p.Provee_Habilitado = 1 OR p.Provee_Habilitado = " + tipoListado.MostrarBajasLogicas() + ")";
+                         "WHERE p.Provee_Habilitado = 1 ";
 
             if (txt_razonsocial.Text.Trim() != "")
             {
@@ -114,6 +112,25 @@ namespace FrbaOfertas.Facturar
             }
 
             conn.Close();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            if (e.ColumnIndex == dataGridView1.Columns["Seleccionar"].Index && (dataGridView1.Rows.Count > 1) && e.RowIndex != dataGridView1.Rows.Count - 1)
+            {
+
+
+                    int idProveedor = Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells["Id"].Value.ToString());
+                    if (FrbaOfertas.ConectorDB.FuncionesFactura.CalcularMonto(idProveedor,fechasFacturas.Fecha_Desde,fechasFacturas.Fecha_Hasta)!=-1){
+                    FrbaOfertas.Facturar.OfertasAdquiridasFacturaDeProveedor dialog = new FrbaOfertas.Facturar.OfertasAdquiridasFacturaDeProveedor(fechasFacturas, idProveedor);
+                    dialog.ShowDialog(this);
+                    }
+                    else MessageBox.Show("Todas las compras del proveedor ya fueron facturadas en el periodo seleccionado","Facturacion",MessageBoxButtons.OK,MessageBoxIcon.Information);
+
+            }
+
+            
         }
     }
 }

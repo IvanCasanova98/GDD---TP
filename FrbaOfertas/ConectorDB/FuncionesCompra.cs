@@ -30,7 +30,7 @@ namespace FrbaOfertas.ConectorDB
             connection.Close();
             FrbaOfertas.ConectorDB.FuncionesCompra.UpdateMonto(idCliente, Int32.Parse(compraNueva.Compra_cantidad) * (int)float.Parse(compraNueva.Compra_Precio));
             FrbaOfertas.ConectorDB.FuncionesCompra.UpdateStock(Int32.Parse(compraNueva.Compra_ID_Oferta), Int32.Parse(compraNueva.Compra_cantidad));
-            MessageBox.Show(string.Format("Compra realizada con exito!. Su cupon para retirar su oferta es: {0}, anotelo!!!", FrbaOfertas.ConectorDB.FuncionesCliente.get_cupon_mas_reciente(idCliente)), "Codigo Oferta", MessageBoxButtons.OK);
+            MessageBox.Show(string.Format("Compra realizada con exito!. Su cupon para retirar su oferta es: {0}", FrbaOfertas.ConectorDB.FuncionesCliente.get_cupon_mas_reciente(idCliente)), "Codigo Oferta", MessageBoxButtons.OK);
         }
         public static void AltaCupon(Compra compraNueva)
         {

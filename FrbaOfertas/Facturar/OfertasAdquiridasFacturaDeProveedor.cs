@@ -18,7 +18,6 @@ namespace FrbaOfertas.Facturar
     public partial class OfertasAdquiridasFacturaDeProveedor : Form
     {
         
-        Listado tipoListado;
         DateTime fecha_desde;
         DateTime fecha_hasta;
         int ID_PROVEEDOR;
@@ -44,11 +43,9 @@ namespace FrbaOfertas.Facturar
             dataGridView1.Refresh();
             SqlConnection conn = new SqlConnection(Conexion.getStringConnection());
             conn.Open();
-            string SQL = "SELECT Ofe_ID , Ofe_Descrip , clie_nombre , Ofe_Precio_Ficticio , Compra_Cant FROM HPBC.Proveedor "
-                          + " JOIN HPBC.Oferta ON Ofe_ID_Proveedor = Provee_ID "
+            string SQL = "SELECT Ofe_ID , Ofe_Descrip , Compra_Fecha , Ofe_Precio_Ficticio , Compra_Cant, Compra_ID FROM HPBC.Oferta "
                           + " JOIN HPBC.Compra ON Compra_ID_Oferta = Ofe_ID "
-                          + " JOIN HPBC.Cliente ON Compra_ID_Clie_Dest = clie_ID "
-                          + " WHERE Provee_ID = '" + ID_PROVEEDOR + "' AND (Compra_Fecha BETWEEN " + fecha_desde.ToString("yyyy-MM-dd") + " AND " + fecha_hasta.ToString("yyyy-MM-dd") + ")" + " AND Compra_facturada = 0";
+                          + " WHERE Ofe_ID_Proveedor = " + this.ID_PROVEEDOR + " AND Compra_Fecha BETWEEN '" + fecha_desde.ToString("yyyy-MM-dd") + "' AND '" + fecha_hasta.ToString("yyyy-MM-dd") + "' AND Compra_facturada = 0";
 
             SqlCommand command = new SqlCommand(SQL, conn);
 
@@ -64,17 +61,18 @@ namespace FrbaOfertas.Facturar
                     dataGridView1.Rows.Add();
                     dataGridView1.Rows[cont].Cells[0].Value = reader["Ofe_ID"].ToString();
                     dataGridView1.Rows[cont].Cells[1].Value = reader["Ofe_Descrip"].ToString();
-                    dataGridView1.Rows[cont].Cells[2].Value = reader["clie_nombre"].ToString();
+                    dataGridView1.Rows[cont].Cells[2].Value = Convert.ToDateTime(reader["Compra_Fecha"]).ToShortDateString();
                     dataGridView1.Rows[cont].Cells[3].Value = reader["Ofe_Precio_Ficticio"].ToString();
-                    dataGridView1.Rows[cont].Cells[3].Value = reader["Compra_Cant"].ToString();
+                    dataGridView1.Rows[cont].Cells[4].Value = reader["Compra_Cant"].ToString();
+                    dataGridView1.Rows[cont].Cells[5].Value = reader["Compra_ID"].ToString();
                     cont++;
                 }
             }
             else
             {
-    
+                this.Close();
                 MessageBox.Show("No se adquirieron ofertas en el periodo seleccionado con respecto a este proveedor");
-
+                
             }
 
             conn.Close();
@@ -82,25 +80,18 @@ namespace FrbaOfertas.Facturar
 
         private void cmd_facturar_Click(object sender, EventArgs e)
         {
-
-            SqlConnection connection = new SqlConnection(Conexion.getStringConnection());
-            SqlCommand comm = connection.CreateCommand();
-            comm.CommandText = "INSERT INTO HPBC.Factura (Fact_ID_Proveedor, Fact_Fecha, Fact_Nro, Fact_Monto) " +
-                                " VALUES ( SELECT Fact_ID_Proveedor, " + Config.Default.fechaSistema + ", MAX(Fact_Nro)+1, SUM(Ofe_Precio_Ficticio*Compra_Cant) FROM HPBC.Proveedor "
-                                       + " JOIN HPBC.Oferta ON Ofe_ID_Proveedor = Provee_ID "
-                                       + " JOIN HPBC.Compra ON Compra_ID_Oferta = Ofe_ID "
-                                       + " JOIN HPBC.Cliente ON Compra_ID_Clie_Dest = clie_ID "
-                                       + " JOIN HPBC.Factura ON Fact_ID_Proveedor = Provee_ID "
-                                       + " WHERE Provee_ID = '" + ID_PROVEEDOR + "' AND (Compra_Fecha BETWEEN " + fecha_desde.ToString("yyyy-MM-dd") + " AND " + fecha_hasta.ToString("yyyy-MM-dd") + ")" + " AND Compra_facturada = 0"
-                                       + " GROUP BY Fact_ID_Proveedor )";
-
-            comm.Connection = connection;
-            comm.Connection.Open();
-            comm.ExecuteNonQuery();
-            comm.Connection.Close();
-            connection.Close();
-
+            int monto = FrbaOfertas.ConectorDB.FuncionesFactura.CalcularMonto(ID_PROVEEDOR, fecha_desde, fecha_hasta);
+            FrbaOfertas.ConectorDB.FuncionesFactura.AltaFactura(ID_PROVEEDOR, monto);
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                FrbaOfertas.ConectorDB.FuncionesFactura.CompraXFactura(Int32.Parse(row.Cells["IdCompra"].Value.ToString()), ID_PROVEEDOR);
+            }
             
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

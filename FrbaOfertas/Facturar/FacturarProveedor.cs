@@ -54,8 +54,10 @@ namespace FrbaOfertas.Facturar
             if (this.validarDatos())
             {
                 FrbaOfertas.Modelo.FechasFacturas fechas = new FrbaOfertas.Modelo.FechasFacturas();
+                fechas.Fecha_Desde = dateTimeDesde.Value;
+                fechas.Fecha_Hasta = dateTimeHasta.Value;
 
-                FrbaOfertas.Facturar.FacturarListaProveedores listaProveedores = new FrbaOfertas.Facturar.FacturarListaProveedores(fechas, new FrbaOfertas.Modelo.Listado.ListadoSeleccionFacturar()); 
+                FrbaOfertas.Facturar.FacturarListaProveedores listaProveedores = new FrbaOfertas.Facturar.FacturarListaProveedores(fechas); 
                 listaProveedores.ShowDialog(this);
 
             }

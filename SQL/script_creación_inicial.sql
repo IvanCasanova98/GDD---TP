@@ -179,7 +179,7 @@ CREATE TABLE HPBC.Factura(
 	Fact_ID_Proveedor INT NOT NULL,
 	Fact_Fecha datetime,
 	Fact_Nro numeric (18,0),
-	Fact_Monto numeric (18,0)
+	Fact_Monto int
  CONSTRAINT PK_Fact PRIMARY KEY CLUSTERED(
 	Fact_ID ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
@@ -190,8 +190,8 @@ IF NOT EXISTS (select * from sysobjects where name='Oferta' and xtype='U')
 CREATE TABLE HPBC.Oferta(
 	Ofe_ID INT identity(1,1) NOT NULL,
 	Ofe_ID_Proveedor INT NOT NULL,
-	Ofe_Precio numeric(18,2) NOT NULL,
-	Ofe_Precio_Ficticio numeric(18,2),
+	Ofe_Precio numeric(18,0) NOT NULL,
+	Ofe_Precio_Ficticio numeric(18,0),
 	Ofe_Fecha date,
 	Ofe_Fecha_Venc date,
 	Ofe_Descrip varchar(255),
@@ -994,4 +994,15 @@ BEGIN
 		
 	END
 END
+GO
+
+IF EXISTS (SELECT name FROM sysobjects WHERE name='trigger_compra_facturada' AND type='tr')
+DROP TRIGGER HPBC.trigger_compra_facturada
+GO
+create TRIGGER HPBC.trigger_compra_facturada ON HPBC.Detalle_Fact FOR INSERT
+AS 
+BEGIN TRANSACTION
+UPDATE HPBC.Compra set Compra_Facturada = 1 
+WHERE Exists(Select 1 From inserted where Compra_ID = Detalle_ID_Compra) 
+COMMIT TRANSACTION
 GO

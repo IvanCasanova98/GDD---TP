@@ -110,3 +110,6 @@ C:\Users\Lolok\OneDrive\Escritorio\GDD]\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfert
 =======
 C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.ComprarOferta.CantidadOfe.resources
 >>>>>>> 4649797bc862fb3bc6fd3a1ec3e70f65a1553760
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.Facturar.FacturarListaProveedores.resources
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.Facturar.FacturarProveedor.resources
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.Facturar.OfertasAdquiridasFacturaDeProveedor.resources

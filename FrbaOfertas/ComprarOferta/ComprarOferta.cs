@@ -56,7 +56,7 @@ namespace FrbaOfertas.ComprarOferta
 
             string SQL = "SELECT p.Provee_Rs, Ofe_Precio_Ficticio,Ofe_Descrip , Ofe_Cant,  (case when Ofe_Max_Cant_Por_Usuario-HPBC.comprasDeOfertaRealizadas(" + clienteactual.documento + ", Ofe_Codigo) > Ofe_Cant then Ofe_Cant else Ofe_Max_Cant_Por_Usuario-HPBC.comprasDeOfertaRealizadas(" + clienteactual.documento + ", Ofe_Codigo) end) as 'Limite', Ofe_ID " +
                          "FROM HPBC.Proveedor p join HPBC.Oferta  on Ofe_ID_Proveedor = p.Provee_ID " +
-                         "WHERE (p.Provee_Habilitado = 1 and Ofe_Accesible = 1 and '"+fechaCarga+"' between Ofe_Fecha AND Ofe_Fecha_Venc)";
+                         "WHERE (p.Provee_Habilitado = 1 and Ofe_Accesible = 1 and '"+fechaCarga+"' between Ofe_Fecha AND Ofe_Fecha_Venc) ";
 
             if (txtBuscador.Text.Trim() != "")
             {

@@ -13,7 +13,6 @@ namespace FrbaOfertas.Modelo.Listado
     {
 
         Oferta oferta;
-        Handler rolHandle;
         public ListadoSeleccion(Oferta ofertaACargar)
         {
 
