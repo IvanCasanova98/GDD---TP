@@ -111,7 +111,7 @@ namespace FrbaOfertas.ConectorDB
             SqlConnection connection = new SqlConnection(Conexion.getStringConnection());
             SqlCommand comm = connection.CreateCommand();
             comm.CommandText = "SELECT DISTINCT Provee_ID " +
-                                "FROM HPBC.Proveedor WHERE clie_usuario_ID = " + usuarioID;
+                                "FROM HPBC.Proveedor WHERE Provee_usuario_id = " + usuarioID;
             comm.Connection = connection;
             comm.Connection.Open();
             SqlDataReader reader = comm.ExecuteReader() as SqlDataReader;

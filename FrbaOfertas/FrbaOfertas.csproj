@@ -125,6 +125,7 @@
     </Compile>
     <Compile Include="ConectorDB\FuncionesCarga.cs" />
     <Compile Include="ConectorDB\FuncionesCompra.cs" />
+    <Compile Include="ConectorDB\FuncionesCupon.cs" />
     <Compile Include="ConectorDB\FuncionesFactura.cs" />
     <Compile Include="ConectorDB\FuncionesOferta.cs" />
     <Compile Include="ConectorDB\ObtenerRangoAñosFacturas.cs" />
@@ -164,6 +165,12 @@
     </Compile>
     <Compile Include="DatosPersonales\Usuarios\ModificarUsuario.Designer.cs">
       <DependentUpon>ModificarUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntregaOferta\EntregarOferta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EntregaOferta\EntregarOferta.designer.cs">
+      <DependentUpon>EntregarOferta.cs</DependentUpon>
     </Compile>
     <Compile Include="Facturar\FacturarListaProveedores.cs">
       <SubType>Form</SubType>
@@ -220,7 +227,6 @@
     <Compile Include="Modelo\Listado\ListadoModificar.cs" />
     <Compile Include="Modelo\Listado\ListadoNormal.cs" />
     <Compile Include="Modelo\Listado\ListadoSeleccion.cs" />
-    <Compile Include="Modelo\Listado\ListadoSeleccionFacturar.cs" />
     <Compile Include="Modelo\Oferta.cs" />
     <Compile Include="Modelo\Roles\Administrativo.cs" />
     <Compile Include="Modelo\Roles\Cliente.cs" />
@@ -303,6 +309,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DatosPersonales\Usuarios\ModificarUsuario.resx">
       <DependentUpon>ModificarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EntregaOferta\EntregarOferta.resx">
+      <DependentUpon>EntregarOferta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Facturar\FacturarListaProveedores.resx">
       <DependentUpon>FacturarListaProveedores.cs</DependentUpon>

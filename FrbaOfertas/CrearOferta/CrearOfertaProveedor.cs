@@ -145,5 +145,10 @@ namespace FrbaOfertas.CrearOferta
 
         }
 
+        private void cmd_cancelar_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
     }
 }
