@@ -157,11 +157,23 @@
     <Compile Include="DatosPersonales\Usuarios\ModificarUsuario.Designer.cs">
       <DependentUpon>ModificarUsuario.cs</DependentUpon>
     </Compile>
-    <Compile Include="Facturar\Form1.cs">
+    <Compile Include="Facturar\FacturarListaProveedores.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Facturar\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Facturar\FacturarListaProveedores.Designer.cs">
+      <DependentUpon>FacturarListaProveedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Facturar\FacturarProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Facturar\FacturarProveedor.Designer.cs">
+      <DependentUpon>FacturarProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Facturar\OfertasAdquiridasFacturaDeProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Facturar\OfertasAdquiridasFacturaDeProveedor.Designer.cs">
+      <DependentUpon>OfertasAdquiridasFacturaDeProveedor.cs</DependentUpon>
     </Compile>
     <Compile Include="Home\SeleccionarRol.cs">
       <SubType>Form</SubType>
@@ -191,6 +203,7 @@
     <Compile Include="Modelo\ABMHandler\Handler.cs" />
     <Compile Include="Modelo\ABMHandler\ProveedorHandle.cs" />
     <Compile Include="Modelo\ABMHandler\RolHandler.cs" />
+    <Compile Include="Modelo\FechasFacturas.cs" />
     <Compile Include="Modelo\GuardarDB\AbmAltaGuardar.cs" />
     <Compile Include="Modelo\GuardarDB\AbmModificarGuardar.cs" />
     <Compile Include="Modelo\GuardarDB\RegistroGuardar.cs" />
@@ -199,6 +212,7 @@
     <Compile Include="Modelo\Listado\ListadoModificar.cs" />
     <Compile Include="Modelo\Listado\ListadoNormal.cs" />
     <Compile Include="Modelo\Listado\ListadoSeleccion.cs" />
+    <Compile Include="Modelo\Listado\ListadoSeleccionFacturar.cs" />
     <Compile Include="Modelo\Oferta.cs" />
     <Compile Include="Modelo\Roles\Administrativo.cs" />
     <Compile Include="Modelo\Roles\Cliente.cs" />
@@ -277,8 +291,14 @@
     <EmbeddedResource Include="DatosPersonales\Usuarios\ModificarUsuario.resx">
       <DependentUpon>ModificarUsuario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Facturar\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Facturar\FacturarListaProveedores.resx">
+      <DependentUpon>FacturarListaProveedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Facturar\FacturarProveedor.resx">
+      <DependentUpon>FacturarProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Facturar\OfertasAdquiridasFacturaDeProveedor.resx">
+      <DependentUpon>OfertasAdquiridasFacturaDeProveedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home\MenuPrincial.resx">
       <DependentUpon>MenuPrincial.cs</DependentUpon>

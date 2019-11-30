@@ -99,7 +99,18 @@ namespace FrbaOfertas
             this.Close();
         }
 
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
 
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnLogin.PerformClick();
+            }
+        }
       
 
 

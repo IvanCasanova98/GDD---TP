@@ -50,8 +50,8 @@ namespace FrbaOfertas.PropiedadesConfig {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=IVAN-PC\\SQLSERVER2012;Initial Catalog=GD2C2019;Persist Security Info=" +
-            "True;User ID=gdCupon2019;Password=gd2019")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=localhost\\SQLSERVER2012;Initial Catalog=GD2C2019;Persist Security Inf" +
+            "o=True;User ID=gd;Password=gd2019")]
         public string connectionString {
             get {
                 return ((string)(this["connectionString"]));

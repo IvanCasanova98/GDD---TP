@@ -210,6 +210,20 @@ namespace FrbaOfertas.Home
                 MessageBox.Show("El rol actual no puede cargar credito, no posee un monto", "ERROR CARGA", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void FACTURACIONPROVEDOR_Click(object sender, EventArgs e)
+        {
+
+            List<String> roles = FrbaOfertas.ConectorDB.FuncionesRol.ObtenerRolesDeUnUsuario(FrbaOfertas.Modelo.Usuario.id);
+            if (roles.Contains("Administrativo"))
+            {
+                FrbaOfertas.Facturar.FacturarProveedor dialog = new FrbaOfertas.Facturar.FacturarProveedor();
+                //FrbaOfertas.F .CrearOfertaAdministrador dialog = new FrbaOfertas.CrearOferta.CrearOfertaAdministrador();
+                dialog.ShowDialog(this);
+            }
+            else MessageBox.Show("Su rol no puede acceder a esta funcion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        }
+
 
 
 

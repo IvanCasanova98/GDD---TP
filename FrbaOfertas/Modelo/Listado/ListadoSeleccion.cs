@@ -35,6 +35,8 @@ namespace FrbaOfertas.Modelo.Listado
            
         }
 
+
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridView dataGridView1 = (DataGridView)sender;
