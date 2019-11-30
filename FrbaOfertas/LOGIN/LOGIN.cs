@@ -93,15 +93,10 @@ namespace FrbaOfertas
             }
         }
 
-        private void txtUsuario_TextChanged(object sender, EventArgs e)
+
+        private void pictureBox4_Click(object sender, EventArgs e)
         {
-
-          
-        }
-
-        private void txtPassword_TextChanged(object sender, EventArgs e)
-        {
-
+            this.Close();
         }
 
 

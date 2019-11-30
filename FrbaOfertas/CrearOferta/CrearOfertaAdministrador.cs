@@ -1,4 +1,6 @@
 ﻿using FrbaOfertas.Modelo;
+using FrbaOfertas.Modelo.ABMHandler;
+using FrbaOfertas.Modelo.Listado;
 using FrbaOfertas.Modelo.Roles;
 using System;
 using System.Collections.Generic;
@@ -17,17 +19,14 @@ namespace FrbaOfertas.CrearOferta
         public CrearOfertaAdministrador()
         {
             InitializeComponent();
+            txt_descripcion.GotFocus += new EventHandler(FrbaOfertas.Utils.Validador.BorrarMensajeDeError);
+            txt_precioOferta.GotFocus += new EventHandler(FrbaOfertas.Utils.Validador.BorrarMensajeDeError);
+            txt_stockDisponible.GotFocus += new EventHandler(FrbaOfertas.Utils.Validador.BorrarMensajeDeError);
+            txt_precioLista.GotFocus += new EventHandler(FrbaOfertas.Utils.Validador.BorrarMensajeDeError);
+            txt_maxUnidadesPorCliente.GotFocus += new EventHandler(FrbaOfertas.Utils.Validador.BorrarMensajeDeError);
+            
         }
 
-        private void CrearOfertaAdministrador_Load(object sender, EventArgs e)
-        {
-            List<String> lstProveedores = FrbaOfertas.ConectorDB.ObtenerTodosLosProveedores.getListaProveedores();
-
-                foreach (string proveedor in lstProveedores)
-                {
-                    cboProveedores.Items.Add(proveedor);
-                }
-        }
 
         private void cmd_cancelar_Click(object sender, EventArgs e)
         {
@@ -116,11 +115,6 @@ namespace FrbaOfertas.CrearOferta
                 pass = false;
             }
 
-            if (cboProveedores.Text == "")
-            {
-                MessageBox.Show("Seleccione un proveedor para asignarle la oferta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                pass = false;
-            }
 
             return pass;
         }
@@ -130,6 +124,7 @@ namespace FrbaOfertas.CrearOferta
         {
             if (this.validarDatos())
             {
+               
                 Oferta oferta = new Oferta();
 
                 oferta.Ofe_Stock = txt_stockDisponible.Text;
@@ -140,10 +135,17 @@ namespace FrbaOfertas.CrearOferta
                 oferta.Ofe_Precio = txt_precioLista.Text;
                 oferta.Ofe_Precio_Ficticio = txt_precioOferta.Text;
                 oferta.Ofe_Accesible = 1;
-                int id = FrbaOfertas.ConectorDB.FuncionesProveedor.Get_Proveedor_id_con_razon_social(cboProveedores.Text);
-                Proveedor provee = FrbaOfertas.ConectorDB.FuncionesProveedor.traerProveedor(id);
-                FrbaOfertas.ConectorDB.FuncionesOferta.AltaOferta(oferta, provee);
-                MessageBox.Show("Oferta Insertada con exito", "Oferta Insertada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
+                FrbaOfertas.AbmProveedor.ListadoProveedor lstProveedor = new FrbaOfertas.AbmProveedor.ListadoProveedor(new ListadoSeleccion(oferta));
+                lstProveedor.ShowDialog();
+                this.Close();
+                this.txt_precioLista.Text = "";
+                this.txt_precioOferta.Text = "";
+                this.txt_stockDisponible.Text = "";
+                this.txt_maxUnidadesPorCliente.Text = "";
+                this.txt_descripcion.Text = "";
+                this.dateTimePickerOferta.Value = DateTime.Now;
+                this.dateTimePickerVencimiento.Value = DateTime.Now;
             }
 
         }
@@ -157,6 +159,11 @@ namespace FrbaOfertas.CrearOferta
             this.txt_descripcion.Text = "";
             this.dateTimePickerOferta.Value = DateTime.Now;
             this.dateTimePickerVencimiento.Value = DateTime.Now;
+        }
+
+        private void cboProveedores_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

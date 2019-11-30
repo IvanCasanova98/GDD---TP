@@ -17,6 +17,11 @@ namespace FrbaOfertas.CrearOferta
         public CrearOfertaProveedor()
         {
             InitializeComponent();
+            txt_descripcion.GotFocus += new EventHandler(FrbaOfertas.Utils.Validador.BorrarMensajeDeError);
+            txt_precioOferta.GotFocus += new EventHandler(FrbaOfertas.Utils.Validador.BorrarMensajeDeError);
+            txt_stockDisponible.GotFocus += new EventHandler(FrbaOfertas.Utils.Validador.BorrarMensajeDeError);
+            txt_precioLista.GotFocus += new EventHandler(FrbaOfertas.Utils.Validador.BorrarMensajeDeError);
+            txt_maxUnidadesPorCliente.GotFocus += new EventHandler(FrbaOfertas.Utils.Validador.BorrarMensajeDeError);
         }
 
         private void CrearOfertaProveedor_Load(object sender, EventArgs e)

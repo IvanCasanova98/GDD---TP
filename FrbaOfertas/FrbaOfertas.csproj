@@ -198,6 +198,7 @@
     <Compile Include="Modelo\Listado\ListadoBaja.cs" />
     <Compile Include="Modelo\Listado\ListadoModificar.cs" />
     <Compile Include="Modelo\Listado\ListadoNormal.cs" />
+    <Compile Include="Modelo\Listado\ListadoSeleccion.cs" />
     <Compile Include="Modelo\Oferta.cs" />
     <Compile Include="Modelo\Roles\Administrativo.cs" />
     <Compile Include="Modelo\Roles\Cliente.cs" />

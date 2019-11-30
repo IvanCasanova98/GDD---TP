@@ -36,8 +36,8 @@ namespace FrbaOfertas.Utils
         {
             //Estos son mensajes de error de no estar aca podrian crearse usuario con username = "El campo ya existe"
             if (palabra == "El campo ya existe" || palabra == "Falta completar campo" || palabra == "El Campo ingresado ya existe en la base de datos" || palabra == "El Rol ya existe"
-               || palabra == "El Campo no debe contener numeros" || palabra == "El Campo no debe contener Letras" || palabra == "El Campo supera el rango maximo de caracteres" || palabra == "Usá el formato nombre@ejemplo.com" 
-               || palabra == "El usuario ya existe")
+               || palabra == "El Campo no debe contener numeros" || palabra == "El Campo no debe contener Letras" || palabra == "El Campo supera el rango maximo de caracteres" || palabra == "Usá el formato nombre@ejemplo.com"
+               || palabra == "El usuario ya existe" || palabra == "La Oferta debe ser menor o igual al precio de lista")
             {
                 return true;
             }
@@ -222,7 +222,7 @@ namespace FrbaOfertas.Utils
         {
             TextBox textBox = (TextBox)sender;
             if (textBox.Text == "El campo ya existe" || textBox.Text == "Falta completar campo" || textBox.Text == "El Campo ingresado ya existe en la base de datos" || textBox.Text == "El Rol ya existe"
-                || textBox.Text == "El Campo no debe contener numeros" || textBox.Text == "El Campo no debe contener Letras" || textBox.Text == "El Campo supera el rango maximo de caracteres" || textBox.Text == "Usá el formato nombre@ejemplo.com" || textBox.Text == "El credito a cargar debe ser entero y positivo")
+                || textBox.Text == "El Campo no debe contener numeros" || textBox.Text == "El Campo no debe contener Letras" || textBox.Text == "El Campo supera el rango maximo de caracteres" || textBox.Text == "Usá el formato nombre@ejemplo.com" || textBox.Text == "El credito a cargar debe ser entero y positivo" || textBox.Text == "La Oferta debe ser menor o igual al precio de lista")
             {
                 textBox.Text = "";
                 textBox.ForeColor = Color.Black;

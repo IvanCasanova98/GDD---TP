@@ -206,6 +206,11 @@ namespace FrbaOfertas.AbmProveedor
 
         }
 
+        private void txt_razonsocial_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
 
 
     }

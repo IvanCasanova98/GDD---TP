@@ -19,7 +19,7 @@ namespace FrbaOfertas.Home
             InitializeComponent();
         }
 
-        private void Update()
+        private void UpdateName()
         {
             label2.Text = "Bienvenido " + FrbaOfertas.Modelo.Usuario.username;
             foreach (String listing in FrbaOfertas.ConectorDB.FuncionesRol.ObtenerRolesDeUnUsuario(FrbaOfertas.Modelo.Usuario.id))
@@ -60,23 +60,9 @@ namespace FrbaOfertas.Home
         private void MenuPrincial_Load(object sender, EventArgs e)
         {
 
-            this.Update();
+            this.UpdateName();
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ABMDEROL_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
 
         private void cerrarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -98,7 +84,7 @@ namespace FrbaOfertas.Home
             listView1.Update();
             RolesView.Items.Clear();
             RolesView.Update();
-            this.Update(); 
+            this.UpdateName(); 
            
         }
 
@@ -190,7 +176,7 @@ namespace FrbaOfertas.Home
                 dialog.ShowDialog(this);
             }
             else
-                MessageBox.Show("El rol actual no puede cargar credito", "ERROR CARGA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("El rol actual no puede cargar credito, no posee un monto", "ERROR CARGA", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void CONFECCIÓNYPUBLICACIONDEOFERTAS_Click(object sender, EventArgs e)
@@ -198,6 +184,7 @@ namespace FrbaOfertas.Home
             List<String> roles = FrbaOfertas.ConectorDB.FuncionesRol.ObtenerRolesDeUnUsuario(FrbaOfertas.Modelo.Usuario.id);
             if (roles.Contains("Administrativo"))
             {
+
                 FrbaOfertas.CrearOferta.CrearOfertaAdministrador dialog = new FrbaOfertas.CrearOferta.CrearOfertaAdministrador();
                 dialog.ShowDialog(this);
             }
@@ -211,6 +198,19 @@ namespace FrbaOfertas.Home
 
 
         }
+
+        private void COMPRAROFERTA_Click(object sender, EventArgs e)
+        {
+            if (FrbaOfertas.ConectorDB.FuncionesCliente.ConseguirMontoActual() != -1)
+            {
+                FrbaOfertas.CargaCredito.CargarCredito dialog = new FrbaOfertas.CargaCredito.CargarCredito();
+                dialog.ShowDialog(this);
+            }
+            else
+                MessageBox.Show("El rol actual no puede cargar credito, no posee un monto", "ERROR CARGA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+
 
 
 

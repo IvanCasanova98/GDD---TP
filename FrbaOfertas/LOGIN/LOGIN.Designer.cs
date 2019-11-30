@@ -35,18 +35,18 @@ namespace FrbaOfertas
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.lblRegistrarse = new System.Windows.Forms.LinkLabel();
-            this.lblContraseña = new System.Windows.Forms.LinkLabel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.loginPng = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.loginPng)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // txtUsuario
@@ -59,7 +59,6 @@ namespace FrbaOfertas
             this.txtUsuario.TabIndex = 0;
             this.txtUsuario.Tag = "";
             this.txtUsuario.Text = "Nombre de usuario";
-            this.txtUsuario.TextChanged += new System.EventHandler(this.txtUsuario_TextChanged);
             // 
             // txtPassword
             // 
@@ -72,7 +71,6 @@ namespace FrbaOfertas
             this.txtPassword.Size = new System.Drawing.Size(196, 26);
             this.txtPassword.TabIndex = 1;
             this.txtPassword.Text = "Contraseña";
-            this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
             // 
             // btnLogin
             // 
@@ -96,46 +94,19 @@ namespace FrbaOfertas
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.SystemColors.Control;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label4.Location = new System.Drawing.Point(177, 189);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(12, 13);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "/";
-            // 
             // lblRegistrarse
             // 
             this.lblRegistrarse.ActiveLinkColor = System.Drawing.Color.RoyalBlue;
             this.lblRegistrarse.AutoSize = true;
             this.lblRegistrarse.BackColor = System.Drawing.SystemColors.Control;
             this.lblRegistrarse.LinkColor = System.Drawing.SystemColors.ControlText;
-            this.lblRegistrarse.Location = new System.Drawing.Point(187, 189);
+            this.lblRegistrarse.Location = new System.Drawing.Point(112, 190);
             this.lblRegistrarse.Name = "lblRegistrarse";
             this.lblRegistrarse.Size = new System.Drawing.Size(60, 13);
             this.lblRegistrarse.TabIndex = 3;
             this.lblRegistrarse.TabStop = true;
             this.lblRegistrarse.Text = "Registrarse";
             this.lblRegistrarse.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblRegistrarse_LinkClicked);
-            // 
-            // lblContraseña
-            // 
-            this.lblContraseña.ActiveLinkColor = System.Drawing.SystemColors.Control;
-            this.lblContraseña.AutoSize = true;
-            this.lblContraseña.BackColor = System.Drawing.SystemColors.Control;
-            this.lblContraseña.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblContraseña.LinkColor = System.Drawing.SystemColors.ControlText;
-            this.lblContraseña.Location = new System.Drawing.Point(47, 189);
-            this.lblContraseña.Name = "lblContraseña";
-            this.lblContraseña.Size = new System.Drawing.Size(133, 13);
-            this.lblContraseña.TabIndex = 4;
-            this.lblContraseña.TabStop = true;
-            this.lblContraseña.Text = "He olvidado mi contraseña";
             // 
             // pictureBox2
             // 
@@ -150,7 +121,9 @@ namespace FrbaOfertas
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.groupBox1.Controls.Add(this.pictureBox4);
             this.groupBox1.Controls.Add(this.pictureBox3);
+            this.groupBox1.Controls.Add(this.lblRegistrarse);
             this.groupBox1.Controls.Add(this.loginPng);
             this.groupBox1.Controls.Add(this.txtPassword);
             this.groupBox1.Controls.Add(this.txtUsuario);
@@ -183,6 +156,17 @@ namespace FrbaOfertas
             this.loginPng.TabIndex = 1;
             this.loginPng.TabStop = false;
             // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.Location = new System.Drawing.Point(261, 0);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(33, 26);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 4;
+            this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
+            // 
             // LOGIN
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -190,9 +174,6 @@ namespace FrbaOfertas
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(297, 220);
             this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.lblContraseña);
-            this.Controls.Add(this.lblRegistrarse);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.groupBox1);
             this.ForeColor = System.Drawing.SystemColors.Control;
@@ -207,8 +188,8 @@ namespace FrbaOfertas
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.loginPng)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -218,13 +199,12 @@ namespace FrbaOfertas
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.LinkLabel lblRegistrarse;
-        private System.Windows.Forms.LinkLabel lblContraseña;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox loginPng;
+        private System.Windows.Forms.PictureBox pictureBox4;
 
     }
 }

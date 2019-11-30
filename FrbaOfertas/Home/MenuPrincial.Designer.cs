@@ -98,7 +98,6 @@
             this.menuStrip1.Size = new System.Drawing.Size(211, 505);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "NavBar";
-            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // opcionesToolStripMenuItem
             // 
@@ -161,7 +160,6 @@
             this.ABMDEROL.Size = new System.Drawing.Size(210, 29);
             this.ABMDEROL.Text = "ABM de Rol";
             this.ABMDEROL.Visible = false;
-            this.ABMDEROL.Click += new System.EventHandler(this.ABMDEROL_Click);
             // 
             // altaRolToolStripMenuItem
             // 
@@ -289,6 +287,7 @@
             this.COMPRAROFERTA.Size = new System.Drawing.Size(210, 29);
             this.COMPRAROFERTA.Text = "Comprar Oferta";
             this.COMPRAROFERTA.Visible = false;
+            this.COMPRAROFERTA.Click += new System.EventHandler(this.COMPRAROFERTA_Click);
             // 
             // ENTREGACONSUMODEOFERTA
             // 
@@ -355,7 +354,6 @@
             this.label2.Size = new System.Drawing.Size(211, 47);
             this.label2.TabIndex = 2;
             this.label2.Text = "Bienvenido ";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // RolesView
             // 

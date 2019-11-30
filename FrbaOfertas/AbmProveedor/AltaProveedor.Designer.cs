@@ -249,6 +249,7 @@
             this.txt_razonsocial.Name = "txt_razonsocial";
             this.txt_razonsocial.Size = new System.Drawing.Size(284, 20);
             this.txt_razonsocial.TabIndex = 0;
+            this.txt_razonsocial.TextChanged += new System.EventHandler(this.txt_razonsocial_TextChanged);
             // 
             // label7
             // 

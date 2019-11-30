@@ -21,7 +21,7 @@ namespace FrbaOfertas.ConectorDB
 
             SqlConnection connection = new SqlConnection(Conexion.getStringConnection());
             SqlCommand comm = connection.CreateCommand();
-            comm.CommandText = "INSERT INTO HPBC.Oferta (Ofe_ID_Proveedor, Ofe_Precio, Ofe_Precio_Ficticio, Ofe_Fecha, Ofe_Fecha_Venc, Ofe_Descrip, Ofe_Cant, Ofe_Max_Cant_Por_Usuario, Ofe_Accesible) " +
+            comm.CommandText = "INSERT INTO HPBC.Oferta (Ofe_ID_Proveedor, Ofe_Precio, Ofe_Precio_Ficticio, Ofe_Fecha, Ofe_Fecha_Venc, Ofe_Descrip, Ofe_Cant, Ofe_Max_Cant_Por_Usuario, Ofe_Codigo, Ofe_Accesible) " +
                                 " VALUES (" + prov.id + 
                                 ", " + OfertaInsertar.Ofe_Precio + 
                                 ", " + OfertaInsertar.Ofe_Precio_Ficticio + 
@@ -30,8 +30,8 @@ namespace FrbaOfertas.ConectorDB
                                 "' , '" + OfertaInsertar.Ofe_Descrip + 
                                 "' , " + OfertaInsertar.Ofe_Stock + 
                                 " , " + OfertaInsertar.Ofe_Max_Cant_Por_Usuario +
-                                //", (SELECT CONCAT('A', HPBC.fnBase36(" + prov.id + "+" + prov.cuit + "+" + FrbaOfertas.ConectorDB.FuncionesProveedor.ConseguirCantidadDeFacturasTotal(prov.id) + "))), 1 )";
-                                " , 1 )";
+                                //", , 1 )";
+                                ",(SELECT CONCAT('A', HPBC.fnBase36(" + prov.id + "+" + prov.cuit + "+" + FrbaOfertas.ConectorDB.FuncionesProveedor.ConseguirCantidadDeFacturasTotal(prov.id) + "))) , 1 )";
             comm.Connection = connection;
             comm.Connection.Open();
             comm.ExecuteNonQuery();

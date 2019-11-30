@@ -46,8 +46,6 @@
             this.Detalles = new System.Windows.Forms.GroupBox();
             this.txt_descripcion = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.cboProveedores = new System.Windows.Forms.ComboBox();
             this.cmd_limpiar = new System.Windows.Forms.Button();
             this.cmd_darAlta = new System.Windows.Forms.Button();
             this.cmd_cancelar = new System.Windows.Forms.Button();
@@ -186,8 +184,6 @@
             // 
             this.Detalles.Controls.Add(this.txt_descripcion);
             this.Detalles.Controls.Add(this.label10);
-            this.Detalles.Controls.Add(this.label9);
-            this.Detalles.Controls.Add(this.cboProveedores);
             this.Detalles.Controls.Add(this.label3);
             this.Detalles.Controls.Add(this.txt_maxUnidadesPorCliente);
             this.Detalles.Controls.Add(this.label5);
@@ -202,7 +198,7 @@
             this.Detalles.ForeColor = System.Drawing.SystemColors.WindowText;
             this.Detalles.Location = new System.Drawing.Point(50, 12);
             this.Detalles.Name = "Detalles";
-            this.Detalles.Size = new System.Drawing.Size(514, 338);
+            this.Detalles.Size = new System.Drawing.Size(514, 321);
             this.Detalles.TabIndex = 14;
             this.Detalles.TabStop = false;
             this.Detalles.Text = "Detalle de Oferta";
@@ -224,26 +220,6 @@
             this.label10.Size = new System.Drawing.Size(131, 13);
             this.label10.TabIndex = 16;
             this.label10.Text = "Descripción de Oferta";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label9.Location = new System.Drawing.Point(17, 313);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(65, 13);
-            this.label9.TabIndex = 15;
-            this.label9.Text = "Proveedor";
-            // 
-            // cboProveedores
-            // 
-            this.cboProveedores.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboProveedores.FormattingEnabled = true;
-            this.cboProveedores.Location = new System.Drawing.Point(102, 310);
-            this.cboProveedores.Name = "cboProveedores";
-            this.cboProveedores.Size = new System.Drawing.Size(369, 21);
-            this.cboProveedores.TabIndex = 0;
             // 
             // cmd_limpiar
             // 
@@ -307,7 +283,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CrearOfertaAdministrador";
             this.Text = "Crear Oferta";
-            this.Load += new System.EventHandler(this.CrearOfertaAdministrador_Load);
+          
             this.Detalles.ResumeLayout(false);
             this.Detalles.PerformLayout();
             this.ResumeLayout(false);
@@ -332,8 +308,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txt_maxUnidadesPorCliente;
         private System.Windows.Forms.GroupBox Detalles;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox cboProveedores;
         private System.Windows.Forms.Button cmd_limpiar;
         private System.Windows.Forms.Button cmd_darAlta;
         private System.Windows.Forms.Button cmd_cancelar;
