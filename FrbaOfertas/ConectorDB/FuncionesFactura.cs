@@ -85,5 +85,20 @@ namespace FrbaOfertas.ConectorDB
         
         }
 
+        public static int get_ultima_id_Factura()
+        {
+            SqlConnection connection = new SqlConnection(Conexion.getStringConnection());
+            SqlCommand comm = connection.CreateCommand();
+            comm.CommandText = "SELECT Fact_ID as 'max' FROM HPBC.Factura where Fact_Nro = (SELECT max(Fact_Nro) as 'max' FROM HPBC.Factura) ";
+            comm.Connection = connection;
+            comm.Connection.Open();
+            SqlDataReader reader = comm.ExecuteReader() as SqlDataReader;
+            reader.Read();
+            int max = Int32.Parse(reader["max"].ToString());
+            comm.Connection.Close();
+            connection.Close();
+            return max;
+        }
+
     }
 }

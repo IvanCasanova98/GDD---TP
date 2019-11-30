@@ -83,11 +83,13 @@ namespace FrbaOfertas.Facturar
             int monto = FrbaOfertas.ConectorDB.FuncionesFactura.CalcularMonto(ID_PROVEEDOR, fecha_desde, fecha_hasta);
             
             FrbaOfertas.ConectorDB.FuncionesFactura.AltaFactura(ID_PROVEEDOR, monto);
+            int numeroFactura = FrbaOfertas.ConectorDB.FuncionesFactura.get_ultima_factura();
+            int idFacturar = FrbaOfertas.ConectorDB.FuncionesFactura.get_ultima_id_Factura();
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
-                FrbaOfertas.ConectorDB.FuncionesFactura.CompraXFactura(Int32.Parse(row.Cells["IdCompra"].Value.ToString()), ID_PROVEEDOR);
+                FrbaOfertas.ConectorDB.FuncionesFactura.CompraXFactura(Int32.Parse(row.Cells["IdCompra"].Value.ToString()), idFacturar);
             }
-            int numeroFactura = FrbaOfertas.ConectorDB.FuncionesFactura.get_ultima_factura();
+            
             MessageBox.Show(string.Format("Facturacion realizada con exito!. Numero de la factura: {0}, Importe:{1}",numeroFactura,monto) , "Facturacion", MessageBoxButtons.OK);
             this.Close();
         }

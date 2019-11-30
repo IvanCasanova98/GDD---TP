@@ -63,7 +63,7 @@ namespace FrbaOfertas.Facturar
             conn.Open();
             string SQL = "SELECT p.Provee_ID, p.Provee_Rs, p.Provee_Piso, p.Provee_Calle, p.Provee_Dpto, p.Provee_Localidad, p.Provee_Ciudad, p.Provee_CodPostal, p.Provee_Mail, p.Provee_CUIT, p.Provee_Tel, p.Provee_NombreContacto, p.Provee_Habilitado, r.Rubro_detalle " +
                          "FROM HPBC.Proveedor p join HPBC.Rubro r on r.Rubro_ID = p.Provee_Rubro " +
-                         "WHERE p.Provee_Habilitado = 1 ";
+                         "WHERE p.Provee_Habilitado = 1 AND EXISTS(SELECT 1 FROM HPBC.Oferta join HPBC.Compra on Ofe_ID = Compra_ID_Oferta where p.Provee_ID = Ofe_ID_Proveedor and Compra_Facturada=0)";
 
             if (txt_razonsocial.Text.Trim() != "")
             {
