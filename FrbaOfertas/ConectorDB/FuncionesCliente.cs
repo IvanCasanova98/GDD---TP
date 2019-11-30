@@ -16,30 +16,30 @@ namespace FrbaOfertas.ConectorDB
         public static void altaCliente(Cliente cliente)
         {
             if (string.IsNullOrEmpty(cliente.monto)) cliente.monto = "200";
-            
-            
+
+
             SqlConnection connection = new SqlConnection(Conexion.getStringConnection());
             SqlCommand comm = connection.CreateCommand();
             comm.CommandText = "INSERT INTO HPBC.Cliente (clie_nombre, clie_apellido, clie_dni, clie_mail, clie_tel, clie_calle, clie_piso, clie_dpto , clie_fecha_nac,  clie_localidad, clie_habilitado, clie_monto, clie_usuario_ID) " +
                                 "VALUES ('" + cliente.nombre + "', '" + cliente.apellido + "', " + cliente.documento + ", '" + cliente.mail + "'," +
-                                " " + cliente.telefono + ",'" + cliente.Calle + "', " + cliente.Piso + ",'" + cliente.Dpto + "', '" + cliente.fecha_nacimiento.ToString("yyyy-MM-dd") + "' , '" + cliente.Localidad + "', " + Convert.ToInt32(cliente.habilitado) + ", " + cliente.monto + ",  (SELECT usuario_id from HPBC.Usuario where usuario_id not in (SELECT ID_Usuario from HPBC.Rol_Por_Usuario)))";               
+                                " " + cliente.telefono + ",'" + cliente.Calle + "', " + cliente.Piso + ",'" + cliente.Dpto + "', '" + cliente.fecha_nacimiento.ToString("yyyy-MM-dd") + "' , '" + cliente.Localidad + "', " + Convert.ToInt32(cliente.habilitado) + ", " + cliente.monto + ",  (SELECT usuario_id from HPBC.Usuario where usuario_id not in (SELECT ID_Usuario from HPBC.Rol_Por_Usuario)))";
             comm.Connection = connection;
             comm.Connection.Open();
             comm.ExecuteNonQuery();
             comm.Connection.Close();
             connection.Close();
         }
-        public static Cliente traerCliente(int id) {
+        public static Cliente traerCliente(int id)
+        {
             Cliente clienteBuscado = new Cliente();
             SqlConnection connection = new SqlConnection(Conexion.getStringConnection());
             SqlCommand comm = connection.CreateCommand();
             comm.CommandText = "SELECT DISTINCT clie_ID, clie_nombre, clie_apellido, clie_dni, clie_mail, clie_tel, clie_fecha_nac, clie_calle, clie_piso, clie_dpto, clie_localidad, clie_monto, clie_habilitado " +
-                                "FROM HPBC.Cliente  WHERE clie_ID = "+ id ;
+                                "FROM HPBC.Cliente  WHERE clie_ID = " + id;
             comm.Connection = connection;
             comm.Connection.Open();
             SqlDataReader reader = comm.ExecuteReader() as SqlDataReader;
             while (reader.Read())
-            
             {
                 clienteBuscado.id = Int32.Parse(reader["clie_ID"].ToString());
                 clienteBuscado.nombre = reader["clie_nombre"].ToString();
@@ -64,7 +64,7 @@ namespace FrbaOfertas.ConectorDB
 
         public static Boolean existeDNI(string dni)
         {
-           return FrbaOfertas.ConectorDB.FuncionesGlobales.existeTabla(dni, "DNI");
+            return FrbaOfertas.ConectorDB.FuncionesGlobales.existeTabla(dni, "DNI");
 
         }
 
@@ -75,7 +75,8 @@ namespace FrbaOfertas.ConectorDB
         }
 
 
-        public static void BajaLogicaCliente(int id) {
+        public static void BajaLogicaCliente(int id)
+        {
 
             FrbaOfertas.ConectorDB.FuncionesGlobales.BajaLogica(id, "Cliente");
         }
@@ -93,7 +94,8 @@ namespace FrbaOfertas.ConectorDB
             connection.Close();
         }
 
-        public static int ConseguirMontoActual() {
+        public static int ConseguirMontoActual()
+        {
             SqlConnection connection = new SqlConnection(Conexion.getStringConnection());
             SqlCommand comm = connection.CreateCommand();
             comm.CommandText = "SELECT clie_monto from HPBC.Cliente where clie_usuario_ID = " + FrbaOfertas.Modelo.Usuario.id;
@@ -102,34 +104,55 @@ namespace FrbaOfertas.ConectorDB
             SqlDataReader reader = comm.ExecuteReader() as SqlDataReader;
             reader.Read();
             if (reader.HasRows)
-            { 
+            {
                 int monto = Int32.Parse(reader["clie_monto"].ToString());
                 comm.Connection.Close();
                 connection.Close();
                 return monto;
             }
-                comm.Connection.Close();
-                connection.Close();
-                return -1;
+            comm.Connection.Close();
+            connection.Close();
+            return -1;
         }
-        public static int Get_Cliente_id(int usuarioID) {
-            
+        public static int Get_Cliente_id(int usuarioID)
+        {
+
             SqlConnection connection = new SqlConnection(Conexion.getStringConnection());
             SqlCommand comm = connection.CreateCommand();
             comm.CommandText = "SELECT DISTINCT clie_ID " +
-                                "FROM HPBC.Cliente  WHERE clie_usuario_ID = "+ usuarioID ;
+                                "FROM HPBC.Cliente  WHERE clie_usuario_ID = " + usuarioID;
             comm.Connection = connection;
             comm.Connection.Open();
             SqlDataReader reader = comm.ExecuteReader() as SqlDataReader;
             reader.Read();
-            int id =  Int32.Parse(reader["clie_ID"].ToString());
+            int id = Int32.Parse(reader["clie_ID"].ToString());
             comm.Connection.Close();
             connection.Close();
             return id;
         }
-        
-        
-        
-        }
-    }
+        public static List<String> ObtenerCuponesClientes(int idCliente)
+        {
+            List<String> lista = new List<string>();
 
+            SqlConnection connection = new SqlConnection(Conexion.getStringConnection());
+            SqlCommand comm = connection.CreateCommand();
+            comm.CommandText =
+                "SELECT Distinct Cup_Codigo FROM HPBC.Compra join HPBC.Cupon on Cupon_ID_Compra = Compra_ID where Compra_ID_Clie_Dest = " + idCliente;
+            comm.Connection = connection;
+            comm.Connection.Open();
+            SqlDataReader reader = comm.ExecuteReader() as SqlDataReader;
+            while (reader.Read())
+            {
+                lista.Add(reader["Cup_Codigo"].ToString());
+            }
+            return lista;
+
+
+        }
+
+        public static string get_cupon_mas_reciente(int idCliente) {
+            return FrbaOfertas.ConectorDB.FuncionesCliente.ObtenerCuponesClientes(idCliente).Last();
+        }
+
+    }
+}

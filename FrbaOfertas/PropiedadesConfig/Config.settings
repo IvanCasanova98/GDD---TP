@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="fechaSistema" Type="System.String" Scope="User">
-      <Value Profile="(Default)">2019-01-01 12:00:00</Value>
+      <Value Profile="(Default)">2020-01-01 12:00:00</Value>
     </Setting>
     <Setting Name="formatoFecha" Type="System.String" Scope="User">
       <Value Profile="(Default)">yyyy-MM-dd HH:mm:ss</Value>

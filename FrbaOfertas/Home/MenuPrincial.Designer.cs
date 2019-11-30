@@ -95,7 +95,7 @@
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.menuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.menuStrip1.Size = new System.Drawing.Size(211, 505);
+            this.menuStrip1.Size = new System.Drawing.Size(71, 505);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "NavBar";
             // 
@@ -107,7 +107,7 @@
             this.opcionesToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 110, 0, 0);
             this.opcionesToolStripMenuItem.Name = "opcionesToolStripMenuItem";
             this.opcionesToolStripMenuItem.Padding = new System.Windows.Forms.Padding(10, 10, 0, 5);
-            this.opcionesToolStripMenuItem.Size = new System.Drawing.Size(210, 34);
+            this.opcionesToolStripMenuItem.Size = new System.Drawing.Size(70, 34);
             this.opcionesToolStripMenuItem.Text = "Opciones";
             // 
             // modificiarDatosPersonalesToolStripMenuItem
@@ -318,7 +318,7 @@
             // 
             this.LISTADOESTADISTICO.Name = "LISTADOESTADISTICO";
             this.LISTADOESTADISTICO.Padding = new System.Windows.Forms.Padding(4, 10, 4, 0);
-            this.LISTADOESTADISTICO.Size = new System.Drawing.Size(210, 29);
+            this.LISTADOESTADISTICO.Size = new System.Drawing.Size(115, 29);
             this.LISTADOESTADISTICO.Text = "Listado Estadístico";
             this.LISTADOESTADISTICO.Visible = false;
             this.LISTADOESTADISTICO.Click += new System.EventHandler(this.LISTADOESTADISTICO_Click);
@@ -458,6 +458,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MenuPrincial";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

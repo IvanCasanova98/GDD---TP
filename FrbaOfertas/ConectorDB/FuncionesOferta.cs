@@ -31,7 +31,7 @@ namespace FrbaOfertas.ConectorDB
                                 "' , " + OfertaInsertar.Ofe_Stock + 
                                 " , " + OfertaInsertar.Ofe_Max_Cant_Por_Usuario +
                                 //", , 1 )";
-                                ",(SELECT CONCAT('A', HPBC.fnBase36(" + prov.id + "+" + prov.cuit + "+" + FrbaOfertas.ConectorDB.FuncionesProveedor.ConseguirCantidadDeFacturasTotal(prov.id) + "))) , 1 )";
+                                ",(SELECT HPBC.fnBase36(" + prov.id + "+" + prov.cuit + "+" + FrbaOfertas.ConectorDB.FuncionesProveedor.ConseguirCantidadDeFacturasTotal(prov.id) + ")) , 1 )";
             comm.Connection = connection;
             comm.Connection.Open();
             comm.ExecuteNonQuery();

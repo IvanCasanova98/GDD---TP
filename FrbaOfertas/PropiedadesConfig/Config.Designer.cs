@@ -25,7 +25,7 @@ namespace FrbaOfertas.PropiedadesConfig {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2019-01-01 12:00:00")]
+        [global::System.Configuration.DefaultSettingValueAttribute("2020-01-01 12:00:00")]
         public string fechaSistema {
             get {
                 return ((string)(this["fechaSistema"]));

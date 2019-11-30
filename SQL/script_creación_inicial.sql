@@ -6,6 +6,7 @@ EXEC('create schema HPBC')
 END;
 GO
 
+--Usamos Hash
 create FUNCTION HPBC.Hash_Contraseña(@AEncriptar nvarchar(255))
 RETURNS varbinary(8000)
 BEGIN
@@ -15,6 +16,7 @@ RETURN HASHBYTES('SHA2_256', @AEncriptar);
 END
 GO
 
+--Usamos base36 para generar codigos nuevos y asegurar unicidad
 IF EXISTS (SELECT name FROM sysobjects WHERE name='fnBase36' AND type='F')
 DROP FUNCTION HPBC.fnBase36
 GO
@@ -41,7 +43,7 @@ BEGIN
     RETURN @Result
 END
 GO
-
+------------------------------------------ CREACION DE TABLAS ------------------------------------------
 IF NOT EXISTS (select * from sysobjects where name='Cliente' and xtype='U')
 CREATE TABLE HPBC.Cliente(
 	clie_ID INT NOT NULL IDENTITY(1,1),
@@ -251,7 +253,7 @@ CREATE TABLE HPBC.Rubro(
 )ON [PRIMARY]
 GO
 
-/* Creacion de las 16 FOREIGN KEYS */
+------------------------------------------ Creacion de las FOREIGN KEYSS ------------------------------------------
 
 IF NOT EXISTS (select * from sysobjects where name='FK_Cliente_ID_Usuario' and xtype='F')
 ALTER TABLE HPBC.Cliente WITH CHECK ADD CONSTRAINT FK_Cliente_ID_Usuario  FOREIGN KEY(clie_usuario_ID)
@@ -356,7 +358,6 @@ GO
 CREATE PROCEDURE HPBC.limpiar_tablas
 AS
 BEGIN
-DELETE FROM [HPBC].[Administrativo]
 DELETE FROM [HPBC].[Cliente]
 DELETE FROM [HPBC].[Compra]
 DELETE FROM [HPBC].[Credito]
@@ -668,7 +669,7 @@ CREATE PROCEDURE HPBC.pr_cargar_ofertas
 AS
 BEGIN
 	insert into HPBC.Oferta(Ofe_Codigo, Ofe_Descrip, Ofe_Precio_Ficticio,Ofe_Fecha,Ofe_Fecha_Venc,Ofe_Cant,Ofe_Precio,Ofe_Max_Cant_Por_Usuario,Ofe_Accesible,Ofe_ID_Proveedor)
-	SELECT DISTINCT Oferta_Codigo, Oferta_Descripcion, Oferta_Precio_Ficticio,Oferta_Fecha, Oferta_Fecha_Venc,  Oferta_Cantidad,Oferta_Precio, Oferta_Cantidad,1, Provee_ID 
+	SELECT DISTINCT Oferta_Codigo, Oferta_Descripcion, Oferta_Precio,Oferta_Fecha, Oferta_Fecha_Venc,  Oferta_Cantidad,Oferta_Precio_Ficticio, Oferta_Cantidad,1, Provee_ID 
 	from gd_esquema.Maestra r, HPBC.Proveedor p
 	WHERE p.Provee_Rs= r.Provee_RS and p.Provee_CUIT = REPLACE(r.Provee_CUIT , '-' , '') and r.Oferta_Cantidad is not null and r.Oferta_Descripcion is not null and r.Oferta_Precio_Ficticio is not null  and r.Oferta_Fecha is not null and r.Oferta_Fecha_Venc is not null and r.Oferta_Precio is not null
 END
@@ -715,13 +716,13 @@ CREATE PROCEDURE HPBC.pr_cargar_cupones
 AS
 BEGIN
 	INSERT INTO HPBC.Cupon(Cupon_ID_Compra,Cup_Codigo,Cup_Fecha_Consumo,Cup_Fecha_Venc)
-	SELECT Compra_ID, CONCAT(Ofe_Codigo,Compra_ID),gd.Oferta_Entregado_Fecha, DATEADD(MM, 1, Ofe_Fecha_Venc)
+	SELECT Compra_ID, Ofe_Codigo + HPBC.fnBase36(Compra_ID),gd.Oferta_Entregado_Fecha, DATEADD(MM, 1, Ofe_Fecha_Venc)
 	FROM HPBC.Compra INNER join HPBC.Oferta ON Compra_ID_Oferta = Ofe_ID 
 	, gd_esquema.Maestra gd
 	where (Factura_Fecha is null and Factura_Nro is null and Oferta_Codigo = Ofe_Codigo) and ((Oferta_Entregado_Fecha is not null)or Oferta_Entregado_Fecha is null 
 	and not exists(SELECT 1 FROM gd_esquema.Maestra gd2 where gd2.Oferta_Codigo = Ofe_Codigo and gd2.Oferta_Entregado_Fecha is not null and Compra_ID_Clie_Dest = (SELECT clie_ID from HPBC.Cliente where clie_dni = Cli_Dni) and  Compra_Fecha = gd2.Oferta_Fecha_Compra)) 
 	and Compra_ID_Clie_Dest = (SELECT clie_ID from HPBC.Cliente where clie_dni = Cli_Dni) and Compra_Fecha = gd.Oferta_Fecha_Compra
-	group by Compra_ID, CONCAT(Ofe_Codigo,Compra_ID),Oferta_Entregado_Fecha, DATEADD(MM, 1, Ofe_Fecha_Venc)
+	group by Compra_ID, Ofe_Codigo + HPBC.fnBase36(Compra_ID),Oferta_Entregado_Fecha, DATEADD(MM, 1, Ofe_Fecha_Venc)
 	ORDER BY Compra_ID
 END
 GO
@@ -962,5 +963,35 @@ AS
 BEGIN
 UPDATE HPBC.Proveedor set Provee_Habilitado = 0 
 WHERE Provee_Habilitado = @ABajar 
+END
+GO
+
+IF EXISTS (SELECT name FROM sysobjects WHERE name='comprasDeOfertaRealizadas' AND type='F')
+DROP FUNCTION HPBC.comprasDeOfertaRealizadas
+GO
+CREATE FUNCTION HPBC.comprasDeOfertaRealizadas(@dni int,@codOferta varchar(255))
+returns INT
+AS
+BEGIN
+	RETURN (SELECT count(*) from HPBC.Compra 
+	where Compra_ID_Clie_Dest = (select clie_ID from HPBC.Cliente WHERE @dni =	clie_dni) 
+	and Compra_ID_Oferta = (select Ofe_ID from HPBC.Oferta where @codOferta = Ofe_Codigo))
+END
+GO
+
+
+IF EXISTS (SELECT name FROM sysobjects WHERE name='trigger_crear_cupon' AND type='tr')
+DROP TRIGGER HPBC.trigger_finalizar_oferta
+GO
+CREATE TRIGGER HPBC.trigger_crear_cupon
+ON HPBC.Compra
+AFTER Insert AS
+BEGIN
+	IF NOT EXISTS(SELECT 1 FROM inserted i join HPBC.Cupon c on c.Cupon_ID_Compra = i.Compra_ID)
+	BEGIN
+		INSERT INTO HPBC.Cupon(Cupon_ID_Compra,Cup_Fecha_Consumo,Cup_Fecha_Venc,Cup_Codigo)
+		SELECT i.Compra_ID, null, DATEADD(MM, 1, i.Compra_Fecha), Ofe_Codigo + HPBC.fnBase36(i.Compra_ID) FROM inserted i join HPBC.Oferta on i.Compra_ID_Oferta = Ofe_ID
+		
+	END
 END
 GO

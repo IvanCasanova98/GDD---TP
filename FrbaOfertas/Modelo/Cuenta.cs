@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FrbaOfertas.Modelo
 {
-    class Cuenta
+    public class Cuenta
     {
         public int id { get; set; }
         public string TARJ_NRO { get; set; }

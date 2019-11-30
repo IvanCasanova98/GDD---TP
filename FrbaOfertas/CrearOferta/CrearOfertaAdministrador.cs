@@ -137,7 +137,7 @@ namespace FrbaOfertas.CrearOferta
                 oferta.Ofe_Accesible = 1;
                 
                 FrbaOfertas.AbmProveedor.ListadoProveedor lstProveedor = new FrbaOfertas.AbmProveedor.ListadoProveedor(new ListadoSeleccion(oferta));
-                lstProveedor.ShowDialog();
+                lstProveedor.ShowDialog(this);
                 this.Close();
                 this.txt_precioLista.Text = "";
                 this.txt_precioOferta.Text = "";
