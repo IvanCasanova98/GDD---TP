@@ -105,11 +105,17 @@
     <Compile Include="CargaCredito\CargaTarjeta.Designer.cs">
       <DependentUpon>CargaTarjeta.cs</DependentUpon>
     </Compile>
-    <Compile Include="ComprarOferta\Form1.cs">
+    <Compile Include="ComprarOferta\CantidadOfe.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ComprarOferta\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="ComprarOferta\CantidadOfe.Designer.cs">
+      <DependentUpon>CantidadOfe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ComprarOferta\ComprarOferta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ComprarOferta\ComprarOferta.Designer.cs">
+      <DependentUpon>ComprarOferta.cs</DependentUpon>
     </Compile>
     <Compile Include="CargaCredito\CargarCredito.cs">
       <SubType>Form</SubType>
@@ -118,6 +124,7 @@
       <DependentUpon>CargarCredito.cs</DependentUpon>
     </Compile>
     <Compile Include="ConectorDB\FuncionesCarga.cs" />
+    <Compile Include="ConectorDB\FuncionesCompra.cs" />
     <Compile Include="ConectorDB\FuncionesOferta.cs" />
     <Compile Include="ConectorDB\ObtenerRangoAñosFacturas.cs" />
     <Compile Include="ConectorDB\FuncionesCliente.cs" />
@@ -218,6 +225,7 @@
     <Compile Include="Modelo\Roles\Cliente.cs" />
     <Compile Include="Modelo\Cuenta.cs" />
     <Compile Include="Modelo\Funcionalidad.cs" />
+    <Compile Include="Modelo\Compra.cs" />
     <Compile Include="Modelo\Roles\Proveedor.cs" />
     <Compile Include="Modelo\Roles\Rol.cs" />
     <Compile Include="Modelo\GuardarDB\StateGuardar.cs" />
@@ -273,8 +281,11 @@
     <EmbeddedResource Include="CargaCredito\CargaTarjeta.resx">
       <DependentUpon>CargaTarjeta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ComprarOferta\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="ComprarOferta\CantidadOfe.resx">
+      <DependentUpon>CantidadOfe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ComprarOferta\ComprarOferta.resx">
+      <DependentUpon>ComprarOferta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CrearOferta\CrearOfertaAdministrador.resx">
       <DependentUpon>CrearOfertaAdministrador.cs</DependentUpon>

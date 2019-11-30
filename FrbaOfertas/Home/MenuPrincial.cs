@@ -203,7 +203,7 @@ namespace FrbaOfertas.Home
         {
             if (FrbaOfertas.ConectorDB.FuncionesCliente.ConseguirMontoActual() != -1)
             {
-                FrbaOfertas.CargaCredito.CargarCredito dialog = new FrbaOfertas.CargaCredito.CargarCredito();
+                FrbaOfertas.ComprarOferta.ComprarOferta dialog = new FrbaOfertas.ComprarOferta.ComprarOferta();
                 dialog.ShowDialog(this);
             }
             else

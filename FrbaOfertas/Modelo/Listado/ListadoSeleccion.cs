@@ -53,7 +53,7 @@ namespace FrbaOfertas.Modelo.Listado
         }
         public override string MostrarBajasLogicas()
         {
-            return "0";
+            return "1";
         }
     }
 }

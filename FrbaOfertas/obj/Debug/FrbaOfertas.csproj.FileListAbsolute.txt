@@ -73,6 +73,7 @@ C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\Frb
 C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.CrearOferta.CrearOfertaAdministrador.resources
 C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.CrearOferta.CrearOfertaProveedor.resources
 C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.ComprarOferta.ComprarOferta.resources
+<<<<<<< HEAD
 C:\Users\Lolok\OneDrive\Escritorio\GDD]\GDD---TP\FrbaOfertas\bin\Debug\FrbaOfertas.exe.config
 C:\Users\Lolok\OneDrive\Escritorio\GDD]\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.exe
 C:\Users\Lolok\OneDrive\Escritorio\GDD]\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.pdb
@@ -106,3 +107,6 @@ C:\Users\Lolok\OneDrive\Escritorio\GDD]\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfert
 C:\Users\Lolok\OneDrive\Escritorio\GDD]\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.csproj.GenerateResource.Cache
 C:\Users\Lolok\OneDrive\Escritorio\GDD]\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.Facturar.FacturarListaProveedores.resources
 C:\Users\Lolok\OneDrive\Escritorio\GDD]\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.Facturar.OfertasAdquiridasFacturaDeProveedor.resources
+=======
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.ComprarOferta.CantidadOfe.resources
+>>>>>>> 4649797bc862fb3bc6fd3a1ec3e70f65a1553760

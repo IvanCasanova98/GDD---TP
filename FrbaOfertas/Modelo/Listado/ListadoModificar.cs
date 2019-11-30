@@ -35,7 +35,7 @@ namespace FrbaOfertas.Modelo.Listado
             DataGridView dataGridView1 = (DataGridView)sender;
             if (e.ColumnIndex == dataGridView1.Columns["Seleccionar"].Index && (dataGridView1.Rows.Count > 1) && e.RowIndex != dataGridView1.Rows.Count - 1)
             {
-                tipoAbm.Modificar(Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells["Id"].Value.ToString()));
+                tipoAbm.Modificar(Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells["OfeID"].Value.ToString()));
                 
                 dataGridView1.DataSource = null;
                 dataGridView1.Rows.Clear();
