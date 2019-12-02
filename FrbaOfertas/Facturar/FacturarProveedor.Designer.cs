@@ -128,7 +128,6 @@
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "FacturarProveedor";
             this.Text = "Facturar";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

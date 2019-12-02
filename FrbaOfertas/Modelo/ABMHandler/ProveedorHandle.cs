@@ -32,6 +32,11 @@ namespace FrbaOfertas.Modelo.ABMHandler
                 FrbaOfertas.AbmProveedor.ModificacionProveedor dialog = new FrbaOfertas.AbmProveedor.ModificacionProveedor(id);
                 dialog.ShowDialog();
             }
+
+            public override void SetearUsuario(int identificador)
+            {
+                FrbaOfertas.ConectorDB.FuncionesProveedor.LoguearUsuarioProveedor(identificador);
+            }
         }
     }
 

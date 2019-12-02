@@ -12,6 +12,8 @@ using FrbaOfertas.Modelo.Roles;
 using System.Windows.Forms;
 using FrbaOfertas.PropiedadesConfig;
 
+//FUNCIONES UTILIZADAS PARA LAS FACTURAS DE APLICACION-SQLSERVER
+
 namespace FrbaOfertas.ConectorDB
 {
     class FuncionesFactura
@@ -56,7 +58,8 @@ namespace FrbaOfertas.ConectorDB
             reader.Read();
             if (!reader.IsDBNull(0))
             {
-                    int monto = Int32.Parse(reader["Monto"].ToString());
+
+                    int monto = (int) Double.Parse(reader["Monto"].ToString());
                     comm.Connection.Close();
                     connection.Close();
                     return monto;

@@ -9,6 +9,8 @@ using FrbaOfertas.Modelo.Roles;
 using System.Globalization;
 using FrbaOfertas.BaseDeDatos;
 
+//FUNCIONES UTILIZADAS PARA LOS PROVEEDORES DE APLICACION-SQLSERVER
+
 namespace FrbaOfertas.ConectorDB
 {
     class FuncionesProveedor
@@ -149,7 +151,23 @@ namespace FrbaOfertas.ConectorDB
             return count;
         }
 
+        public static void LoguearUsuarioProveedor(int id)
+        {
+            SqlConnection connection = new SqlConnection(Conexion.getStringConnection());
+            SqlCommand comm = connection.CreateCommand();
+            comm.CommandText = "SELECT usuario_id HPBC.Usuario join HPBC.Proveedor on usuario_id = Provee_usuario_id where Provee_usuario_id = " + id;
+            comm.Connection = connection;
+            comm.Connection.Open();
+            SqlDataReader reader = comm.ExecuteReader() as SqlDataReader;
+            while (reader.Read())
+            {
+                FrbaOfertas.Modelo.Usuario.id = Int32.Parse(reader["usuario_id"].ToString());
+            }
+            comm.Connection.Close();
+            connection.Close();
 
+
+        }
 
         
         }

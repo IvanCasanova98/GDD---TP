@@ -10,6 +10,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
+//LISTADO DE USUARIOS QUE UTILIZA UN ADMINISTRATIVO PARA BUSCAR LOS USUARIOS A MODIFICAR
+
 namespace FrbaOfertas.DatosPersonales.Usuarios
 {
     public partial class ListadoUsuario : Form
@@ -81,5 +84,7 @@ namespace FrbaOfertas.DatosPersonales.Usuarios
             conn.Close();
 
         }
+
+
     }
 }

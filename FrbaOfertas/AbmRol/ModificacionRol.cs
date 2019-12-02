@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+//FORM PARA MODIFICACION DE ROLES
+
 namespace FrbaOfertas.AbmRol
 {
     public partial class ModificacionRol : Form
@@ -37,11 +39,6 @@ namespace FrbaOfertas.AbmRol
                 
             }
 
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
 
         }
 

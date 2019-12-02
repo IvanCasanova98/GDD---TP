@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
+
 //Clase creada con el proposito de validar todos los campos que lo requieran tanto dentro de la app desktop (Nombres y apellidos sin numeros), como con la Base de datos (usuario unicos)
 
 namespace FrbaOfertas.Utils
@@ -50,6 +51,7 @@ namespace FrbaOfertas.Utils
             palabra = palabra.Trim();
             return palabra.All(char.IsNumber);
         }
+
 
         public Boolean superaCantidadCaracteres(String palabra, int length)
         {
@@ -222,7 +224,9 @@ namespace FrbaOfertas.Utils
         {
             TextBox textBox = (TextBox)sender;
             if (textBox.Text == "El campo ya existe" || textBox.Text == "Falta completar campo" || textBox.Text == "El Campo ingresado ya existe en la base de datos" || textBox.Text == "El Rol ya existe"
-                || textBox.Text == "El Campo no debe contener numeros" || textBox.Text == "El Campo no debe contener Letras" || textBox.Text == "El Campo supera el rango maximo de caracteres" || textBox.Text == "Usá el formato nombre@ejemplo.com" || textBox.Text == "El credito a cargar debe ser entero y positivo" || textBox.Text == "La Oferta debe ser menor o igual al precio de lista")
+                || textBox.Text == "El Campo no debe contener numeros" || textBox.Text == "El Campo no debe contener Letras" || textBox.Text == "El Campo supera el rango maximo de caracteres" 
+                || textBox.Text == "Usá el formato nombre@ejemplo.com" || textBox.Text == "El credito a cargar debe ser entero y positivo" || textBox.Text == "La Oferta debe ser menor o igual al precio de lista" 
+                || textBox.Text == "El monto a cargar debe ser entero y positivo")
             {
                 textBox.Text = "";
                 textBox.ForeColor = Color.Black;

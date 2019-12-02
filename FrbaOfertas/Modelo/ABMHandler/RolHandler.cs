@@ -30,6 +30,10 @@ namespace FrbaOfertas.Modelo.ABMHandler
             FrbaOfertas.AbmRol.ModificacionRol dialog = new FrbaOfertas.AbmRol.ModificacionRol(id);
             dialog.ShowDialog();
         }
+        public override void SetearUsuario(int identificador)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

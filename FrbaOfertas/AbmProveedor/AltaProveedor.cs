@@ -10,6 +10,9 @@ using System.Windows.Forms;
 using FrbaOfertas.Modelo.Roles;
 using FrbaOfertas.Modelo;
 using FrbaOfertas.Properties;
+
+//FORM PARA CREACION DE PROVEEDORES
+
 namespace FrbaOfertas.AbmProveedor
 {
     public partial class AltaProveedor : Form

@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FrbaOfertas.ConectorDB;
+
+//FORM PARA CREACION DE ROLES
+
 namespace FrbaOfertas.AbmRol
 {
     public partial class AltaRol : Form
@@ -38,23 +41,6 @@ namespace FrbaOfertas.AbmRol
             this.cargarComboFunciones();
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (comboBox1.SelectedItem != null)
-            {
-                
-            }
-        }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {

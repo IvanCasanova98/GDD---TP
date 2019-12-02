@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+//FORM PARA MODIFICACION DE CLIENTES
+
 namespace FrbaOfertas.AbmCliente
 {
     public partial class ModificacionCliente : Form

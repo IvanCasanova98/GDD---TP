@@ -8,6 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
+//PERMITE CAMBIO DE CONTRASEÑAS Y TAMBIEN CAMBIO DE CONTRASEÑAS A OTROS USUARIOS EN CASO DE SER ADMINISTRATIVO
+
+
 namespace FrbaOfertas.DatosPersonales.Usuarios
 {
     public partial class DatosPersonalesUsuario : Form
@@ -19,10 +23,6 @@ namespace FrbaOfertas.DatosPersonales.Usuarios
             RepitaContra.GotFocus += new EventHandler(this.Enmascarar);
         }
 
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void DatosPersonalesUsuario_Load(object sender, EventArgs e)
         {
@@ -126,44 +126,5 @@ namespace FrbaOfertas.DatosPersonales.Usuarios
             dialog.ShowDialog(this);
         }
 
-        private void RepitaContra_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void nuevaContra_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void contraseña_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void username_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

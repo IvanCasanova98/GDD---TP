@@ -150,15 +150,7 @@ namespace FrbaOfertas.RegistroUsuario
             }
         }
 
-        private void cbo_rol_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-        }
-
-        private void tb_pass_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
 
 

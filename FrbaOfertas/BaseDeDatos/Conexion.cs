@@ -2,6 +2,8 @@
 using System.Data.SqlClient;
 using System;
 
+//Clase globlal para generar las conexiones con la base de datos SQL Server
+
 namespace FrbaOfertas.BaseDeDatos
 {
     class Conexion

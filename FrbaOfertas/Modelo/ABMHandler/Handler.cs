@@ -11,6 +11,6 @@ namespace FrbaOfertas.Modelo.AbmHandler
     {
         public abstract Boolean darDeBaja(int id);
         public abstract void Modificar(int id);
-
+        public abstract void SetearUsuario(int identificador);
     }
 }

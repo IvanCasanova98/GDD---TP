@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+//ESTE FORM SE ENCARGA DE HACER LAS MODIFICACIONES NECESARIAS A UN USUARIO SIENDO UN ADMINISTRATIVO
+
 namespace FrbaOfertas.DatosPersonales.Usuarios
 {
     public partial class ModificarUsuario : Form

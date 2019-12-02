@@ -10,6 +10,8 @@ using System.Globalization;
 using FrbaOfertas.BaseDeDatos;
 using FrbaOfertas.PropiedadesConfig;
 
+//FUNCIONES UTILIZADAS PARA LAS CARGAS DE CREDITO DE APLICACION-SQLSERVER
+
 namespace FrbaOfertas.ConectorDB
 {
     class FuncionesCarga

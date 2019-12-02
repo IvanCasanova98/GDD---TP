@@ -32,12 +32,6 @@ namespace FrbaOfertas.Facturar
             
         }
 
-        private void FacturarListaProveedores_Load(object sender, EventArgs e)
-        {
-            
-
-
-        }
 
         private void cmd_cancelar_Click(object sender, EventArgs e)
         {

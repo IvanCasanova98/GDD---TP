@@ -2,6 +2,7 @@
 using System.Text;
 using System.Security.Cryptography;
 
+//Funciones para Hashear a SHA256 una contraseña dada
 
 namespace FrbaOfertas.Utils
 {

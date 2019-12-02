@@ -9,6 +9,8 @@ using FrbaOfertas.Modelo;
 using System.Globalization;
 using FrbaOfertas.BaseDeDatos;
 
+//FUNCIONES UTILIZADAS PARA LOS CLIENTES DE APLICACION-SQLSERVER
+
 namespace FrbaOfertas.ConectorDB
 {
     class FuncionesCliente
@@ -152,6 +154,23 @@ namespace FrbaOfertas.ConectorDB
 
         public static string get_cupon_mas_reciente(int idCliente) {
             return FrbaOfertas.ConectorDB.FuncionesCliente.ObtenerCuponesClientes(idCliente).Last();
+        }
+
+        public static void LoguearUsuarioCliente(int id) {
+            SqlConnection connection = new SqlConnection(Conexion.getStringConnection());
+            SqlCommand comm = connection.CreateCommand();
+            comm.CommandText = "SELECT usuario_id FROM HPBC.Usuario join HPBC.Cliente on usuario_id = clie_usuario_ID where clie_ID = " + id;
+            comm.Connection = connection;
+            comm.Connection.Open();
+            SqlDataReader reader = comm.ExecuteReader() as SqlDataReader;
+            while (reader.Read())
+            {
+                FrbaOfertas.Modelo.Usuario.id = Int32.Parse(reader["usuario_id"].ToString());
+            }
+            comm.Connection.Close();
+            connection.Close();       
+        
+
         }
 
     }

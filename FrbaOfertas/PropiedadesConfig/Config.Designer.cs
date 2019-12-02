@@ -25,7 +25,7 @@ namespace FrbaOfertas.PropiedadesConfig {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2020-01-01 12:00:00")]
+        [global::System.Configuration.DefaultSettingValueAttribute("2019-01-01 12:00:00")]
         public string fechaSistema {
             get {
                 return ((string)(this["fechaSistema"]));
@@ -47,17 +47,6 @@ namespace FrbaOfertas.PropiedadesConfig {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=localhost\\SQLSERVER2012;Initial Catalog=GD2C2019;Persist Security Inf" +
-            "o=True;User ID=gd;Password=gd2019")]
-        public string connectionString {
-            get {
-                return ((string)(this["connectionString"]));
-            }
-        }
-        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("9000")]
@@ -67,6 +56,17 @@ namespace FrbaOfertas.PropiedadesConfig {
             }
             set {
                 this["Command_Timeout"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=localhost\\SQLSERVER2012;Initial Catalog=GD2C2019;Persist Security Inf" +
+            "o=True;User ID=gdCupon2019;Password=gd2019")]
+        public string connectionString {
+            get {
+                return ((string)(this["connectionString"]));
             }
         }
     }

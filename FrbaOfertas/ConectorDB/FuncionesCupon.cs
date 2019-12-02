@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+//FUNCIONES UTILIZADAS PARA LOS CUPONES DE APLICACION-SQLSERVER
+
 namespace FrbaOfertas.ConectorDB
 {
     class FuncionesCupon

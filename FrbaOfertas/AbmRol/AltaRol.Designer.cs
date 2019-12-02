@@ -88,7 +88,7 @@
             this.label3.Size = new System.Drawing.Size(121, 13);
             this.label3.TabIndex = 5;
             this.label3.Text = "Listado Funcionalidades";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+
             // 
             // dataGridView1
             // 

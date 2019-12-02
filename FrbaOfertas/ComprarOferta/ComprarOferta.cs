@@ -45,7 +45,6 @@ namespace FrbaOfertas.ComprarOferta
 
         private void cargarBusquedas() {
             cacheBusqueda=txtBuscador.Text.Trim(); 
-          
             string fechaCarga = Config.Default.fechaSistema;
             this.dataGridCompraOfertas.DataSource = null;
             this.dataGridCompraOfertas.Rows.Clear();
@@ -54,7 +53,7 @@ namespace FrbaOfertas.ComprarOferta
             conn.Open();
             Cliente clienteactual = FrbaOfertas.ConectorDB.FuncionesCliente.traerCliente(FrbaOfertas.ConectorDB.FuncionesCliente.Get_Cliente_id(FrbaOfertas.Modelo.Usuario.id));
 
-            string SQL = "SELECT p.Provee_Rs, Ofe_Precio_Ficticio,Ofe_Descrip , Ofe_Cant,  (case when Ofe_Max_Cant_Por_Usuario-HPBC.comprasDeOfertaRealizadas(" + clienteactual.documento + ", Ofe_Codigo) > Ofe_Cant then Ofe_Cant else Ofe_Max_Cant_Por_Usuario-HPBC.comprasDeOfertaRealizadas(" + clienteactual.documento + ", Ofe_Codigo) end) as 'Limite', Ofe_ID " +
+            string SQL = "SELECT p.Provee_Rs, Ofe_Precio_Ficticio,Ofe_Descrip , Ofe_Cant,  Ofe_Max_Cant_Por_Usuario as 'Limite', Ofe_ID " +
                          "FROM HPBC.Proveedor p join HPBC.Oferta  on Ofe_ID_Proveedor = p.Provee_ID " +
                          "WHERE (p.Provee_Habilitado = 1 and Ofe_Accesible = 1 and '"+fechaCarga+"' between Ofe_Fecha AND Ofe_Fecha_Venc) ";
 
@@ -132,6 +131,12 @@ namespace FrbaOfertas.ComprarOferta
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void historial_Click(object sender, EventArgs e)
+        {
+            FrbaOfertas.ComprarOferta.HistorialCupones dialog = new FrbaOfertas.ComprarOferta.HistorialCupones();
+            dialog.ShowDialog(this);
         }
         }
 }

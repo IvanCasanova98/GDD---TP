@@ -11,6 +11,8 @@ using FrbaOfertas.BaseDeDatos;
 using FrbaOfertas.Modelo.Roles;
 using System.Windows.Forms;
 
+//FUNCIONES UTILIZADAS PARA LAS COMPRAS DE APLICACION-SQLSERVER
+
 namespace FrbaOfertas.ConectorDB
 {
     class FuncionesCompra

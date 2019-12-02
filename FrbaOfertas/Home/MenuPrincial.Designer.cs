@@ -98,6 +98,7 @@
             this.menuStrip1.Size = new System.Drawing.Size(71, 505);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "NavBar";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // opcionesToolStripMenuItem
             // 
@@ -335,6 +336,7 @@
             this.groupBox1.Size = new System.Drawing.Size(959, 100);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // label1
             // 

@@ -10,6 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+//FORM PARA CARGAR OFERTAS PARA UN PROVEEDOR
+
 namespace FrbaOfertas.CrearOferta
 {
     public partial class CrearOfertaProveedor : Form
@@ -22,11 +24,6 @@ namespace FrbaOfertas.CrearOferta
             txt_stockDisponible.GotFocus += new EventHandler(FrbaOfertas.Utils.Validador.BorrarMensajeDeError);
             txt_precioLista.GotFocus += new EventHandler(FrbaOfertas.Utils.Validador.BorrarMensajeDeError);
             txt_maxUnidadesPorCliente.GotFocus += new EventHandler(FrbaOfertas.Utils.Validador.BorrarMensajeDeError);
-        }
-
-        private void CrearOfertaProveedor_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void cmd_cancelar_Click(object sender, EventArgs e)

@@ -12,6 +12,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+//FORM PARA CARGAR OFERTAS SIENDO ADMINISTRATIVO
+
 namespace FrbaOfertas.CrearOferta
 {
     public partial class CrearOfertaAdministrador : Form
@@ -69,7 +71,7 @@ namespace FrbaOfertas.CrearOferta
                     validador.ErrornoNumeroEnteroPositivo(txt_precioLista);
                     pass = false;
                 }
-                else if ( (Int32.Parse(this.txt_precioOferta.Text)) >= (Int32.Parse(this.txt_precioLista.Text)) )
+                else if ((Int32.Parse(this.txt_precioOferta.Text)) >= (Int32.Parse(this.txt_precioLista.Text)))
                 {
                     validador.ErrorPrecioOfertaNoPuedeSerMayorOIgualQuePrecioLista(txt_precioOferta);
                     pass = false;
@@ -136,7 +138,7 @@ namespace FrbaOfertas.CrearOferta
                 oferta.Ofe_Precio_Ficticio = txt_precioOferta.Text;
                 oferta.Ofe_Accesible = 1;
                 
-                FrbaOfertas.AbmProveedor.ListadoProveedor lstProveedor = new FrbaOfertas.AbmProveedor.ListadoProveedor(new ListadoSeleccion(oferta));
+                FrbaOfertas.AbmProveedor.ListadoProveedor lstProveedor = new FrbaOfertas.AbmProveedor.ListadoProveedor(new ListadoOferta(oferta));
                 lstProveedor.ShowDialog(this);
                 this.Close();
                 this.txt_precioLista.Text = "";
@@ -161,9 +163,6 @@ namespace FrbaOfertas.CrearOferta
             this.dateTimePickerVencimiento.Value = DateTime.Now;
         }
 
-        private void cboProveedores_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-        }
     }
 }

@@ -11,6 +11,8 @@ using FrbaOfertas.BaseDeDatos;
 using FrbaOfertas.PropiedadesConfig;
 using FrbaOfertas.Modelo.Roles;
 
+//FUNCIONES UTILIZADAS PARA LAS OFERTAS CARGADAS DE APLICACION-SQLSERVER
+
 namespace FrbaOfertas.ConectorDB
 {
     class FuncionesOferta

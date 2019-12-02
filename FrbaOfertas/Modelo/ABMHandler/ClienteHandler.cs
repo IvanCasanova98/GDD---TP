@@ -31,6 +31,11 @@ namespace FrbaOfertas.Modelo.ABMHandler
             FrbaOfertas.AbmCliente.ModificacionCliente dialog = new FrbaOfertas.AbmCliente.ModificacionCliente(id);
             dialog.ShowDialog();
         }
+
+        public override void SetearUsuario(int identificador)
+        {
+            FrbaOfertas.ConectorDB.FuncionesCliente.LoguearUsuarioCliente(identificador);
+        }
     }
  }
 

@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FrbaOfertas.ConectorDB;
+
+//Protocolo usado para el login de los usuarios
+
 namespace FrbaOfertas.Utils
 {
     class ProtocoloSQL

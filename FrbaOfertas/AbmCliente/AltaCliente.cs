@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using FrbaOfertas.Modelo;
 using FrbaOfertas.Properties;
+
+//FORM PARA ALTA DE CLIENTES
+
 namespace FrbaOfertas.AbmCliente
 {
     public partial class AltaCliente : Form

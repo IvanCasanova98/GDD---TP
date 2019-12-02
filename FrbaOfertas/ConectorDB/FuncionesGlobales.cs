@@ -8,6 +8,8 @@ using System.Data;
 using FrbaOfertas.Modelo;
 using System.Globalization;
 using FrbaOfertas.BaseDeDatos;
+
+
 //Aca van las funciones que las demas clases comparten ej: tanto proveedor, cliente como usuario deben validar que no existan campos duplicados
 namespace FrbaOfertas.ConectorDB
 {

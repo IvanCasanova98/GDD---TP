@@ -23,10 +23,6 @@ namespace FrbaOfertas
             txtPassword.LostFocus += new EventHandler(this.PassLostFocus);
         }
 
-        private void LOGIN_Load(object sender, EventArgs e)
-        {
-            
-        }
 
 
         private void lblRegistrarse_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -86,6 +82,7 @@ namespace FrbaOfertas
         {
             if(FrbaOfertas.Utils.ProtocoloSQL.protocoloLoginSQL(txtUsuario.Text,txtPassword.Text)){
                 FrbaOfertas.Modelo.Usuario.IngresoUsuario(txtUsuario.Text, txtPassword.Text);
+                FrbaOfertas.Modelo.UsuarioLogeado.IngresoUsuario(txtUsuario.Text, txtPassword.Text);
                 FrbaOfertas.Home.MenuPrincial menu = new FrbaOfertas.Home.MenuPrincial();
                 FrbaOfertas.Utils.Transicion.transicionForms(this, menu);
 
@@ -99,10 +96,7 @@ namespace FrbaOfertas
             this.Close();
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
 
-        }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {

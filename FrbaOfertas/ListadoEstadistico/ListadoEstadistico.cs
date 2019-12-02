@@ -68,11 +68,11 @@ namespace FrbaOfertas.ListadoEstadistico
                     SqlConnection conn = new SqlConnection(Conexion.getStringConnection());
                     conn.Open();
 
-                    string SQL = "	SELECT TOP 5 oferta.Ofe_ID_Proveedor AS 'ID PROVEEDOR', (SELECT Provee_Rs FROM [GD2C2019].[HPBC].[Proveedor] WHERE Provee_ID = oferta.Ofe_ID_Proveedor) AS 'Razon Social', CONCAT(COUNT(Ofe_ID_Proveedor),' ofertas') AS 'Cantidad Ofertas Realizadas',  CONCAT(AVG((((Ofe_Precio_Ficticio) - (Ofe_Precio))/ Ofe_Precio_Ficticio))*100,' %')  AS 'Porcentaje de Descuento Ofrecido'"
+                    string SQL = "	SELECT TOP 5 oferta.Ofe_ID_Proveedor AS 'ID PROVEEDOR', (SELECT Provee_Rs FROM [GD2C2019].[HPBC].[Proveedor] WHERE Provee_ID = oferta.Ofe_ID_Proveedor) AS 'Razon Social', CONCAT(COUNT(Ofe_ID_Proveedor),' ofertas') AS 'Cantidad Ofertas Realizadas',  CONCAT(AVG((((Ofe_Precio) - (Ofe_Precio_Ficticio))/ Ofe_Precio))*100,' %')  AS 'Porcentaje de Descuento Ofrecido'"
                         + " FROM [HPBC].[Oferta] oferta"
                         + " WHERE YEAR(Ofe_Fecha) ='" + cboAños.SelectedItem + "' AND ((MONTH(Ofe_Fecha)) BETWEEN " + rango_inf + " AND " + rango_sup + ")"
                         + " GROUP BY Ofe_ID_Proveedor "
-                        + " ORDER BY AVG((((Ofe_Precio_Ficticio) - (Ofe_Precio))/ Ofe_Precio_Ficticio)) DESC";
+                        + " ORDER BY AVG((((Ofe_Precio) - (Ofe_Precio_Ficticio))/ Ofe_Precio)) DESC";
 
                     SqlCommand command = new SqlCommand(SQL, conn);
 

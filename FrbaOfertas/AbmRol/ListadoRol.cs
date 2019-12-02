@@ -11,6 +11,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+//FORM PARA LISTADO DE ROLES
+
+
 namespace FrbaOfertas.AbmRol
 {
     public partial class ListadoRol : Form

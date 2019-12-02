@@ -11,6 +11,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+//FORM PARA LISTADO DE PROVEEDORES
+
 namespace FrbaOfertas.AbmProveedor
 {
     public partial class ListadoProveedor : Form

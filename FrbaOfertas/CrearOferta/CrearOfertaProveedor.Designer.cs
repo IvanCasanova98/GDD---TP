@@ -278,7 +278,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CrearOfertaProveedor";
             this.Text = "Crear Oferta";
-            this.Load += new System.EventHandler(this.CrearOfertaProveedor_Load);
             this.Detalles.ResumeLayout(false);
             this.Detalles.PerformLayout();
             this.ResumeLayout(false);

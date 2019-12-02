@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
+//Funcion utilizada para realizar transicion entre forms
 
 namespace FrbaOfertas.Utils
 {

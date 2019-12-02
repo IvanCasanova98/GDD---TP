@@ -306,7 +306,6 @@
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FacturarListaProveedores";
             this.Text = "FacturarListaProveedores";
-            this.Load += new System.EventHandler(this.FacturarListaProveedores_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

@@ -52,7 +52,7 @@ CREATE TABLE HPBC.Cliente(
 	clie_dni numeric(18,0)  NOT NULL,
 	clie_mail nvarchar(255)  NOT NULL,
 	clie_tel numeric(18,0)  NULL,
-	clie_fecha_nac date NOT NULL,
+	clie_fecha_nac datetime NOT NULL,
 	clie_calle varchar(255),
 	clie_piso numeric(2,0),
 	clie_dpto varchar(2),
@@ -190,8 +190,8 @@ IF NOT EXISTS (select * from sysobjects where name='Oferta' and xtype='U')
 CREATE TABLE HPBC.Oferta(
 	Ofe_ID INT identity(1,1) NOT NULL,
 	Ofe_ID_Proveedor INT NOT NULL,
-	Ofe_Precio numeric(18,0) NOT NULL,
-	Ofe_Precio_Ficticio numeric(18,0),
+	Ofe_Precio numeric(18,2) NOT NULL,
+	Ofe_Precio_Ficticio numeric(18,2),
 	Ofe_Fecha date,
 	Ofe_Fecha_Venc date,
 	Ofe_Descrip varchar(255),
@@ -402,7 +402,7 @@ INSERT INTO HPBC.Funcion(Func_detalle)
 Values('LISTADO ESTADÍSTICO')
 
 INSERT INTO HPBC.Rol(Rol_detalle)
-Values('Administrativo')
+Values('Administrador General')
 INSERT INTO HPBC.Rol(Rol_detalle)
 Values('Cliente')
 INSERT INTO HPBC.Rol(Rol_detalle)
@@ -415,9 +415,19 @@ Values(1,3)
 INSERT INTO HPBC.Funcion_Por_Rol(Rol_ID,Func_ID)
 Values(1,4)
 INSERT INTO HPBC.Funcion_Por_Rol(Rol_ID,Func_ID)
+Values(1,6)
+INSERT INTO HPBC.Funcion_Por_Rol(Rol_ID,Func_ID)
 Values(1,9)
 INSERT INTO HPBC.Funcion_Por_Rol(Rol_ID,Func_ID)
 Values(1,10)
+INSERT INTO HPBC.Funcion_Por_Rol(Rol_ID,Func_ID)
+Values(1,5)
+INSERT INTO HPBC.Funcion_Por_Rol(Rol_ID,Func_ID)
+Values(1,7)
+INSERT INTO HPBC.Funcion_Por_Rol(Rol_ID,Func_ID)
+Values(1,8)
+
+
 
 INSERT INTO HPBC.Funcion_Por_Rol(Rol_ID,Func_ID)
 Values(2,2)
@@ -435,7 +445,7 @@ Values(3,8)
 
 --admin
 INSERT INTO HPBC.Usuario(usuario_username, usuario_password, usuario_habilitado, usuario_bloqueado, usuario_cant_logeo_error)
-VALUES('admin',HASHBYTES('SHA2_256','admin'),1,0,0)
+VALUES('admin',HASHBYTES('SHA2_256','w23e'),1,0,0)
 GO
 INSERT INTO HPBC.Rol_Por_Usuario(ID_Rol ,ID_Usuario)
 SELECT 1, (SELECT usuario_id from  HPBC.Usuario WHERE usuario_username= 'admin')
