@@ -1,0 +1,79 @@
+C:\Users\Matias\Desktop\Groupon2019\src\FrbaOfertas\FrbaOfertas\bin\Debug\FrbaOfertas.exe.config
+C:\Users\Ivan\Desktop\TPGDD\Aplicacion\FrbaOfertas\FrbaOfertas\bin\Debug\FrbaOfertas.exe.config
+C:\Users\Ivan\Desktop\TPGDD\Aplicacion\FrbaOfertas\GDD---TP\FrbaOfertas\bin\Debug\FrbaOfertas.exe.config
+C:\Users\Ivan\Desktop\TPGDD\Aplicacion\FrbaOfertas\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.csprojResolveAssemblyReference.cache
+C:\Users\Ivan\Desktop\TPGDD\Aplicacion\FrbaOfertas\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.LOGIN.resources
+C:\Users\Ivan\Desktop\TPGDD\Aplicacion\FrbaOfertas\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.Properties.Resources.resources
+C:\Users\Ivan\Desktop\TPGDD\Aplicacion\FrbaOfertas\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.csproj.GenerateResource.Cache
+C:\Users\Ivan\Desktop\TPGDD\Aplicacion\FrbaOfertas\GDD---TP\FrbaOfertas\bin\Debug\FrbaOfertas.exe
+C:\Users\Ivan\Desktop\TPGDD\Aplicacion\FrbaOfertas\GDD---TP\FrbaOfertas\bin\Debug\FrbaOfertas.pdb
+C:\Users\Ivan\Desktop\TPGDD\Aplicacion\FrbaOfertas\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.exe
+C:\Users\Ivan\Desktop\TPGDD\Aplicacion\FrbaOfertas\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.pdb
+C:\Users\Ivan\Desktop\TPGDD\Aplicacion\FrbaOfertas\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.RegistroUsuario.RegistroUsr.resources
+C:\Users\Ivan\Desktop\TPGDD\Aplicacion\FrbaOfertas\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.AbmCliente.AltaCliente.resources
+C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\bin\Debug\FrbaOfertas.exe.config
+C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.exe
+C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.pdb
+C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\bin\Debug\FrbaOfertas.exe
+C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\bin\Debug\FrbaOfertas.pdb
+C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.csprojResolveAssemblyReference.cache
+C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.AbmCliente.AltaCliente.resources
+C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.LOGIN.resources
+C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.Properties.Resources.resources
+C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.RegistroUsuario.RegistroUsr.resources
+C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.csproj.GenerateResource.Cache
+C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.AbmProveedor.AltaProveedor.resources
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\bin\Debug\FrbaOfertas.exe.config
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.exe
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.pdb
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\bin\Debug\FrbaOfertas.exe
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\bin\Debug\FrbaOfertas.pdb
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.csprojResolveAssemblyReference.cache
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.AbmCliente.AltaCliente.resources
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.AbmProveedor.AltaProveedor.resources
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.AbmRol.AltaRol.resources
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.LOGIN.resources
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.Properties.Resources.resources
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.RegistroUsuario.RegistroUsr.resources
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.csproj.GenerateResource.Cache
+C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.AbmRol.AltaRol.resources
+C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.AbmCliente.ModificacionCliente.resources
+C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.AbmProveedor.ModificacionProveedor.resources
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.AbmCliente.ListadoCliente.resources
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.AbmProveedor.ListadoProveedor.resources
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.Home.MenuPrincial.resources
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.AbmRol.ListadoRol.resources
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.AbmRol.ModificacionRol.resources
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.AbmCliente.ModificacionCliente.resources
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.DatosPersonales.Usuarios.DatosPersonalesUsuario.resources
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.DatosPersonales.Usuarios.ListadoUsuario.resources
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.DatosPersonales.Usuarios.ModificarUsuario.resources
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.AbmProveedor.ModificacionProveedor.resources
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.ListadoEstadistico.ListadoEstadistico.resources
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.CargaCredito.CargaTarjeta.resources
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.CargaCredito.CargarCredito.resources
+C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.AbmCliente.ListadoCliente.resources
+C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.AbmProveedor.ListadoProveedor.resources
+C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.AbmRol.ListadoRol.resources
+C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.AbmRol.ModificacionRol.resources
+C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.CargaCredito.CargarCredito.resources
+C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.CargaCredito.CargaTarjeta.resources
+C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.ComprarOferta.Form1.resources
+C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.CrearOferta.CrearOfertaAdministrador.resources
+C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.CrearOferta.CrearOfertaProveedor.resources
+C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.DatosPersonales.Usuarios.DatosPersonalesUsuario.resources
+C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.DatosPersonales.Usuarios.ListadoUsuario.resources
+C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.DatosPersonales.Usuarios.ModificarUsuario.resources
+C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.Facturar.Form1.resources
+C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.Home.MenuPrincial.resources
+C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.Home.SeleccionarRol.resources
+C:\Users\Elitebook 8470p\Desktop\UTN+idioma\3ERO\GDD\GDD - TP ANUAL\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.ListadoEstadistico.ListadoEstadistico.resources
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.CrearOferta.CrearOfertaAdministrador.resources
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.CrearOferta.CrearOfertaProveedor.resources
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.ComprarOferta.ComprarOferta.resources
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.ComprarOferta.CantidadOfe.resources
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.Facturar.FacturarListaProveedores.resources
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.Facturar.FacturarProveedor.resources
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.Facturar.OfertasAdquiridasFacturaDeProveedor.resources
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.EntregarOferta.EntregarOferta.resources
+C:\Users\Ivan\Documents\GitHub\GDD---TP\FrbaOfertas\obj\Debug\FrbaOfertas.ComprarOferta.HistorialCupones.resources
