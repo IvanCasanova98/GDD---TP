@@ -88,7 +88,6 @@
             this.label3.Size = new System.Drawing.Size(121, 13);
             this.label3.TabIndex = 5;
             this.label3.Text = "Listado Funcionalidades";
-
             // 
             // dataGridView1
             // 
@@ -163,6 +162,7 @@
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AltaRol";
             this.Text = "Alta Rol";

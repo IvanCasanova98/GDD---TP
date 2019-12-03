@@ -253,12 +253,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(943, 688);
+            this.ClientSize = new System.Drawing.Size(953, 651);
             this.Controls.Add(this.dataGridViewListadoOFERTAS);
             this.Controls.Add(this.cmdCancelar);
             this.Controls.Add(this.cmdLimpiar);
             this.Controls.Add(this.dataGridViewListadoFACTURAS);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ListadoEstadistico";
             this.Text = "Listado Estadistico";

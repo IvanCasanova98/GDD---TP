@@ -309,6 +309,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.cmd_limpiar);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ListadoCliente";
             this.Text = "Listado Cliente";

@@ -106,6 +106,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cantidad);
             this.Controls.Add(this.lblmontoactual);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CargarCredito";
             this.Text = "Carga Credito";

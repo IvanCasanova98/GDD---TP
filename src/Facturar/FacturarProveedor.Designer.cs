@@ -41,9 +41,10 @@
             // listView1
             // 
             this.listView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.listView1.Location = new System.Drawing.Point(48, 10);
+            this.listView1.Location = new System.Drawing.Point(24, 5);
+            this.listView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(708, 252);
+            this.listView1.Size = new System.Drawing.Size(356, 133);
             this.listView1.TabIndex = 19;
             this.listView1.UseCompatibleStateImageBehavior = false;
             // 
@@ -51,9 +52,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(88, 45);
+            this.label1.Location = new System.Drawing.Point(44, 23);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(178, 25);
+            this.label1.Size = new System.Drawing.Size(96, 13);
             this.label1.TabIndex = 20;
             this.label1.Text = "Facturas Desde";
             // 
@@ -61,24 +63,27 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(88, 170);
+            this.label2.Location = new System.Drawing.Point(44, 88);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(172, 25);
+            this.label2.Size = new System.Drawing.Size(93, 13);
             this.label2.TabIndex = 21;
             this.label2.Text = "Facturas Hasta";
             // 
             // dateTimeDesde
             // 
-            this.dateTimeDesde.Location = new System.Drawing.Point(305, 45);
+            this.dateTimeDesde.Location = new System.Drawing.Point(152, 23);
+            this.dateTimeDesde.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dateTimeDesde.Name = "dateTimeDesde";
-            this.dateTimeDesde.Size = new System.Drawing.Size(429, 31);
+            this.dateTimeDesde.Size = new System.Drawing.Size(216, 20);
             this.dateTimeDesde.TabIndex = 22;
             // 
             // dateTimeHasta
             // 
-            this.dateTimeHasta.Location = new System.Drawing.Point(305, 170);
+            this.dateTimeHasta.Location = new System.Drawing.Point(152, 88);
+            this.dateTimeHasta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dateTimeHasta.Name = "dateTimeHasta";
-            this.dateTimeHasta.Size = new System.Drawing.Size(429, 31);
+            this.dateTimeHasta.Size = new System.Drawing.Size(216, 20);
             this.dateTimeHasta.TabIndex = 23;
             // 
             // cmd_cancelar
@@ -87,10 +92,10 @@
             this.cmd_cancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.cmd_cancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmd_cancelar.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.cmd_cancelar.Location = new System.Drawing.Point(802, 27);
-            this.cmd_cancelar.Margin = new System.Windows.Forms.Padding(4);
+            this.cmd_cancelar.Location = new System.Drawing.Point(401, 14);
+            this.cmd_cancelar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmd_cancelar.Name = "cmd_cancelar";
-            this.cmd_cancelar.Size = new System.Drawing.Size(256, 65);
+            this.cmd_cancelar.Size = new System.Drawing.Size(128, 34);
             this.cmd_cancelar.TabIndex = 26;
             this.cmd_cancelar.Text = "Cancelar";
             this.cmd_cancelar.UseVisualStyleBackColor = false;
@@ -102,10 +107,10 @@
             this.cmd_avanzar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.cmd_avanzar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmd_avanzar.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.cmd_avanzar.Location = new System.Drawing.Point(802, 164);
-            this.cmd_avanzar.Margin = new System.Windows.Forms.Padding(4);
+            this.cmd_avanzar.Location = new System.Drawing.Point(401, 85);
+            this.cmd_avanzar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmd_avanzar.Name = "cmd_avanzar";
-            this.cmd_avanzar.Size = new System.Drawing.Size(256, 65);
+            this.cmd_avanzar.Size = new System.Drawing.Size(128, 34);
             this.cmd_avanzar.TabIndex = 27;
             this.cmd_avanzar.Text = "Avanzar";
             this.cmd_avanzar.UseVisualStyleBackColor = false;
@@ -113,10 +118,10 @@
             // 
             // FacturarProveedor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(1102, 304);
+            this.ClientSize = new System.Drawing.Size(551, 158);
             this.Controls.Add(this.cmd_avanzar);
             this.Controls.Add(this.cmd_cancelar);
             this.Controls.Add(this.dateTimeHasta);
@@ -124,8 +129,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listView1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "FacturarProveedor";
             this.Text = "Facturar";
             this.ResumeLayout(false);

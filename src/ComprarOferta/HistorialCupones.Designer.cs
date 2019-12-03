@@ -30,13 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HistorialCupones));
             this.dataGridHistorial = new System.Windows.Forms.DataGridView();
-            this.lblHistorial = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.CodigoCupon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Detalle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FechaVenc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Canjeado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblHistorial = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridHistorial)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,26 +57,6 @@
             this.dataGridHistorial.Size = new System.Drawing.Size(893, 437);
             this.dataGridHistorial.TabIndex = 0;
             this.dataGridHistorial.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // lblHistorial
-            // 
-            this.lblHistorial.AutoSize = true;
-            this.lblHistorial.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHistorial.Location = new System.Drawing.Point(278, 29);
-            this.lblHistorial.Name = "lblHistorial";
-            this.lblHistorial.Size = new System.Drawing.Size(351, 39);
-            this.lblHistorial.TabIndex = 1;
-            this.lblHistorial.Text = "Historial de cupones";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(29, 47);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(85, 40);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Volver";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // CodigoCupon
             // 
@@ -111,6 +91,26 @@
             this.Canjeado.Name = "Canjeado";
             this.Canjeado.ReadOnly = true;
             // 
+            // lblHistorial
+            // 
+            this.lblHistorial.AutoSize = true;
+            this.lblHistorial.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHistorial.Location = new System.Drawing.Point(278, 29);
+            this.lblHistorial.Name = "lblHistorial";
+            this.lblHistorial.Size = new System.Drawing.Size(351, 39);
+            this.lblHistorial.TabIndex = 1;
+            this.lblHistorial.Text = "Historial de cupones";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(29, 47);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(85, 40);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Volver";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // HistorialCupones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -120,6 +120,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lblHistorial);
             this.Controls.Add(this.dataGridHistorial);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "HistorialCupones";
             this.Text = "HistorialCupones";

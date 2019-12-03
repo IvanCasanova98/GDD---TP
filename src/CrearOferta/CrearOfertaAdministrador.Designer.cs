@@ -280,10 +280,10 @@
             this.Controls.Add(this.dateTimePickerOferta);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Detalles);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CrearOfertaAdministrador";
             this.Text = "Crear Oferta";
-          
             this.Detalles.ResumeLayout(false);
             this.Detalles.PerformLayout();
             this.ResumeLayout(false);

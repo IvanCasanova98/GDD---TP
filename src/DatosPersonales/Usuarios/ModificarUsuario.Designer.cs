@@ -162,6 +162,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.username);
             this.Controls.Add(this.label3);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ModificarUsuario";
             this.Text = "ModificarUsuario";

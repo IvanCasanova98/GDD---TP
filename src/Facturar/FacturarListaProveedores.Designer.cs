@@ -45,6 +45,7 @@
             this.Nombre_Contacto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Rubro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Habilitado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Seleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txt_cuit = new System.Windows.Forms.TextBox();
             this.txt_razonsocial = new System.Windows.Forms.TextBox();
@@ -54,7 +55,6 @@
             this.lblnombre = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.cmd_limpiar = new System.Windows.Forms.Button();
-            this.Seleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -66,7 +66,7 @@
             this.cmd_cancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmd_cancelar.ForeColor = System.Drawing.SystemColors.ControlText;
             this.cmd_cancelar.Location = new System.Drawing.Point(1236, 20);
-            this.cmd_cancelar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmd_cancelar.Margin = new System.Windows.Forms.Padding(2);
             this.cmd_cancelar.Name = "cmd_cancelar";
             this.cmd_cancelar.Size = new System.Drawing.Size(128, 34);
             this.cmd_cancelar.TabIndex = 27;
@@ -186,6 +186,12 @@
             this.Habilitado.Name = "Habilitado";
             this.Habilitado.ReadOnly = true;
             // 
+            // Seleccionar
+            // 
+            this.Seleccionar.HeaderText = "Seleccionar";
+            this.Seleccionar.Name = "Seleccionar";
+            this.Seleccionar.ReadOnly = true;
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.txt_cuit);
@@ -261,7 +267,7 @@
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.button1.Location = new System.Drawing.Point(1236, 80);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(128, 34);
             this.button1.TabIndex = 31;
@@ -276,19 +282,13 @@
             this.cmd_limpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmd_limpiar.ForeColor = System.Drawing.SystemColors.ControlText;
             this.cmd_limpiar.Location = new System.Drawing.Point(1236, 50);
-            this.cmd_limpiar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmd_limpiar.Margin = new System.Windows.Forms.Padding(2);
             this.cmd_limpiar.Name = "cmd_limpiar";
             this.cmd_limpiar.Size = new System.Drawing.Size(128, 34);
             this.cmd_limpiar.TabIndex = 30;
             this.cmd_limpiar.Text = "Limpiar";
             this.cmd_limpiar.UseVisualStyleBackColor = false;
             this.cmd_limpiar.Click += new System.EventHandler(this.cmd_limpiar_Click);
-            // 
-            // Seleccionar
-            // 
-            this.Seleccionar.HeaderText = "Seleccionar";
-            this.Seleccionar.Name = "Seleccionar";
-            this.Seleccionar.ReadOnly = true;
             // 
             // FacturarListaProveedores
             // 
@@ -302,8 +302,9 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.cmd_cancelar);
             this.ForeColor = System.Drawing.Color.Black;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FacturarListaProveedores";
             this.Text = "FacturarListaProveedores";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

@@ -30,14 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OfertasAdquiridasFacturaDeProveedor));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.cmd_cancelar = new System.Windows.Forms.Button();
-            this.cmd_facturar = new System.Windows.Forms.Button();
             this.Ofe_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ofe_Descrip = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clie_nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ofe_Precio_Ficticio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Compra_Cant = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmd_cancelar = new System.Windows.Forms.Button();
+            this.cmd_facturar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,43 +54,13 @@
             this.Compra_Cant,
             this.IdCompra});
             this.dataGridView1.Location = new System.Drawing.Point(6, 43);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 33;
             this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridView1.Size = new System.Drawing.Size(1374, 494);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // cmd_cancelar
-            // 
-            this.cmd_cancelar.BackColor = System.Drawing.SystemColors.Control;
-            this.cmd_cancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.cmd_cancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmd_cancelar.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.cmd_cancelar.Location = new System.Drawing.Point(6, 6);
-            this.cmd_cancelar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.cmd_cancelar.Name = "cmd_cancelar";
-            this.cmd_cancelar.Size = new System.Drawing.Size(128, 34);
-            this.cmd_cancelar.TabIndex = 28;
-            this.cmd_cancelar.Text = "Cancelar";
-            this.cmd_cancelar.UseVisualStyleBackColor = false;
-            this.cmd_cancelar.Click += new System.EventHandler(this.cmd_cancelar_Click);
-            // 
-            // cmd_facturar
-            // 
-            this.cmd_facturar.BackColor = System.Drawing.SystemColors.Control;
-            this.cmd_facturar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.cmd_facturar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmd_facturar.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.cmd_facturar.Location = new System.Drawing.Point(1252, 6);
-            this.cmd_facturar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.cmd_facturar.Name = "cmd_facturar";
-            this.cmd_facturar.Size = new System.Drawing.Size(128, 34);
-            this.cmd_facturar.TabIndex = 29;
-            this.cmd_facturar.Text = "Facturar";
-            this.cmd_facturar.UseVisualStyleBackColor = false;
-            this.cmd_facturar.Click += new System.EventHandler(this.cmd_facturar_Click);
             // 
             // Ofe_ID
             // 
@@ -133,6 +103,36 @@
             this.IdCompra.ReadOnly = true;
             this.IdCompra.Visible = false;
             // 
+            // cmd_cancelar
+            // 
+            this.cmd_cancelar.BackColor = System.Drawing.SystemColors.Control;
+            this.cmd_cancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.cmd_cancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmd_cancelar.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.cmd_cancelar.Location = new System.Drawing.Point(6, 6);
+            this.cmd_cancelar.Margin = new System.Windows.Forms.Padding(2);
+            this.cmd_cancelar.Name = "cmd_cancelar";
+            this.cmd_cancelar.Size = new System.Drawing.Size(128, 34);
+            this.cmd_cancelar.TabIndex = 28;
+            this.cmd_cancelar.Text = "Cancelar";
+            this.cmd_cancelar.UseVisualStyleBackColor = false;
+            this.cmd_cancelar.Click += new System.EventHandler(this.cmd_cancelar_Click);
+            // 
+            // cmd_facturar
+            // 
+            this.cmd_facturar.BackColor = System.Drawing.SystemColors.Control;
+            this.cmd_facturar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.cmd_facturar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmd_facturar.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.cmd_facturar.Location = new System.Drawing.Point(1252, 6);
+            this.cmd_facturar.Margin = new System.Windows.Forms.Padding(2);
+            this.cmd_facturar.Name = "cmd_facturar";
+            this.cmd_facturar.Size = new System.Drawing.Size(128, 34);
+            this.cmd_facturar.TabIndex = 29;
+            this.cmd_facturar.Text = "Facturar";
+            this.cmd_facturar.UseVisualStyleBackColor = false;
+            this.cmd_facturar.Click += new System.EventHandler(this.cmd_facturar_Click);
+            // 
             // OfertasAdquiridasFacturaDeProveedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -142,8 +142,9 @@
             this.Controls.Add(this.cmd_facturar);
             this.Controls.Add(this.cmd_cancelar);
             this.Controls.Add(this.dataGridView1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "OfertasAdquiridasFacturaDeProveedor";
             this.Text = "OfertasAdquiridasFacturaDeProveedor";
             this.Load += new System.EventHandler(this.OfertasAdquiridasFacturaDeProveedor_Load);

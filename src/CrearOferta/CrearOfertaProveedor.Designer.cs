@@ -275,6 +275,7 @@
             this.Controls.Add(this.cmd_darAlta);
             this.Controls.Add(this.cmd_cancelar);
             this.Controls.Add(this.Detalles);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CrearOfertaProveedor";
             this.Text = "Crear Oferta";

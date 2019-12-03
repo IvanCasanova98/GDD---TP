@@ -53,7 +53,6 @@
             this.label2.Size = new System.Drawing.Size(133, 25);
             this.label2.TabIndex = 1;
             this.label2.Text = "Contraseña";
-
             // 
             // label3
             // 
@@ -64,7 +63,6 @@
             this.label3.Size = new System.Drawing.Size(118, 25);
             this.label3.TabIndex = 2;
             this.label3.Text = "Username";
-
             // 
             // username
             // 
@@ -73,7 +71,6 @@
             this.username.ReadOnly = true;
             this.username.Size = new System.Drawing.Size(268, 20);
             this.username.TabIndex = 3;
-
             // 
             // contraseña
             // 
@@ -82,7 +79,6 @@
             this.contraseña.ReadOnly = true;
             this.contraseña.Size = new System.Drawing.Size(268, 20);
             this.contraseña.TabIndex = 4;
-
             // 
             // button1
             // 
@@ -124,7 +120,6 @@
             this.label1.Size = new System.Drawing.Size(203, 25);
             this.label1.TabIndex = 8;
             this.label1.Text = "Nueva contraseña";
-
             // 
             // label4
             // 
@@ -135,7 +130,6 @@
             this.label4.Size = new System.Drawing.Size(204, 25);
             this.label4.TabIndex = 9;
             this.label4.Text = "Repita contraseña";
-
             // 
             // nuevaContra
             // 
@@ -143,7 +137,6 @@
             this.nuevaContra.Name = "nuevaContra";
             this.nuevaContra.Size = new System.Drawing.Size(198, 20);
             this.nuevaContra.TabIndex = 10;
-
             // 
             // RepitaContra
             // 
@@ -151,7 +144,6 @@
             this.RepitaContra.Name = "RepitaContra";
             this.RepitaContra.Size = new System.Drawing.Size(198, 20);
             this.RepitaContra.TabIndex = 11;
-
             // 
             // button3
             // 
@@ -193,6 +185,7 @@
             this.Controls.Add(this.username);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "DatosPersonalesUsuario";
             this.Text = "DatosPersonalesUsuario";
